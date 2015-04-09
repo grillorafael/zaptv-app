@@ -26,6 +26,9 @@
 
         Socket.onChannelStatus(function(schedule) {
             console.log('Schedule', schedule);
+            if(schedule.id !== $scope.schedule.id) {
+                // Current schedule changed
+            }
         });
 
         $scope.submitMessage = function(currentMessage) {
