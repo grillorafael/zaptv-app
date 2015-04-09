@@ -2,9 +2,11 @@
     'use strict';
     angular.module('zaptv', [
         'ionic',
-        'zaptv.services'
+        'zaptv.services',
+        'angularMoment'
         ])
-        .run(function($ionicPlatform) {
+        .run(function($ionicPlatform, amMoment) {
+            amMoment.changeLocale('pt-br');
             $ionicPlatform.ready(function() {
                 if (window.cordova && window.cordova.plugins.Keyboard) {
                     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);

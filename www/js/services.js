@@ -111,12 +111,17 @@
             socket.on('message to device', fc);
         }
 
+        function onChannelStatus(fc) {
+            socket.on('channel status', fc);
+        }
+
         return {
             connect: connect,
             joinChannel: joinChannel,
             leaveChannel: leaveChannel,
             onMessage: onMessage,
-            sendMessage: sendMessage
+            sendMessage: sendMessage,
+            onChannelStatus: onChannelStatus
         };
     }
 })();

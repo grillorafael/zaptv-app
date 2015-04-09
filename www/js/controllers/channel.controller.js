@@ -2,7 +2,7 @@
     'use strict';
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
-    function ChannelCtrl($scope, $stateParams, $ionicScrollDelegate, Socket, Channel, Auth) {
+    function ChannelCtrl($scope, $stateParams, $ionicScrollDelegate, $ionicActionSheet, Socket, Channel, Auth) {
         var token = Auth.getToken();
         $scope.currentMessage = '';
         $scope.messages = [];
@@ -15,13 +15,17 @@
         });
 
         Channel.lastMessages($stateParams.id).then(function(messages) {
-            $scope.messages = messages;
-            $ionicScrollDelegate.scrollBottom();
+            $scope.messages = messages.reverse();
+            $ionicScrollDelegate.scrollBottom(true);
         });
 
         Socket.onMessage(function(msg) {
             $scope.messages.push(msg);
-            $ionicScrollDelegate.scrollBottom();
+            $ionicScrollDelegate.scrollBottom(true);
+        });
+
+        Socket.onChannelStatus(function(schedule) {
+            console.log('Schedule', schedule);
         });
 
         $scope.submitMessage = function(currentMessage) {
@@ -33,6 +37,26 @@
 
             Socket.sendMessage(info);
             $scope.currentMessage = '';
+        };
+
+        $scope.messageOptions = function(message) {
+            console.log(message);
+            $ionicActionSheet.show({
+                buttons: [{
+                    text: '<b>Share</b> This'
+                }, {
+                    text: 'Move'
+                }],
+                destructiveText: 'Delete',
+                titleText: 'Modify your album',
+                cancelText: 'Cancel',
+                cancel: function() {
+                    // add cancel code..
+                },
+                buttonClicked: function(index) {
+                    return true;
+                }
+            });
         };
     }
 })();
