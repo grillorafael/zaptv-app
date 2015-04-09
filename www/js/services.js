@@ -4,10 +4,23 @@
         .factory('User', User)
         .factory('Channel', Channel)
         .factory('Socket', Socket)
+        .factory('Auth', Auth)
         .value('Config', {
             'ENDPOINT': 'http://localhost:3000/api',
             'SOCKET_ADDR': 'http://localhost:3000'
         });
+
+    function Auth() {
+        return {
+            appendToken: function(url) {
+                var token = localStorage.getItem('auth_token');
+                return url + '?token=' + token;
+            },
+            getToken: function() {
+                return localStorage.getItem('auth_token');
+            }
+        };
+    }
 
     function User($http, $q, Config) {
         function register() {
@@ -30,18 +43,41 @@
         };
     }
 
-    function Channel($http, $q, Config) {
+    function Channel($http, $q, Config, Auth) {
         function list() {
+            var deferred = $q.defer();
 
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/list'))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
         }
 
         function getInfo(id) {
+            var deferred = $q.defer();
 
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/current'))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
+        function lastMessages(id) {
+            var deferred = $q.defer();
+
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/last'))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
         }
 
         return {
             list: list,
-            getInfo: getInfo
+            getInfo: getInfo,
+            lastMessages: lastMessages
         };
     }
 
@@ -67,6 +103,10 @@
             }
         }
 
+        function sendMessage(info) {
+            socket.emit('device sent message', info);
+        }
+
         function onMessage(fc) {
             socket.on('message to device', fc);
         }
@@ -75,7 +115,8 @@
             connect: connect,
             joinChannel: joinChannel,
             leaveChannel: leaveChannel,
-            onMessage: onMessage
+            onMessage: onMessage,
+            sendMessage: sendMessage
         };
     }
 })();
