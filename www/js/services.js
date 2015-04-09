@@ -5,7 +5,8 @@
         .factory('Channel', Channel)
         .factory('Socket', Socket)
         .value('Config', {
-            'ENDPOINT': 'http://localhost:3000/api'
+            'ENDPOINT': 'http://localhost:3000/api',
+            'SOCKET_ADDR': 'http://localhost:3000'
         });
 
     function User($http, $q, Config) {
@@ -46,31 +47,35 @@
 
     function Socket($q, Config) {
         var currentChannel = null;
+        var socket = null;
 
         function connect() {
-
+            socket = io(Config.SOCKET_ADDR);
         }
 
         function joinChannel(id) {
             currentChannel = id;
+            socket.emit('join channel', id);
         }
 
         function leaveChannel(id) {
             if(id === undefined && currentChannel === null) {
                 return;
             }
-            else if(id !== undefined){
-
+            else {
+                socket.emit('leave channel', id || currentChannel);
             }
-            else { // currentChannel is not null
+        }
 
-            }
+        function onMessage(fc) {
+            socket.on('message to device', fc);
         }
 
         return {
             connect: connect,
             joinChannel: joinChannel,
-            leaveChannel: leaveChannel
+            leaveChannel: leaveChannel,
+            onMessage: onMessage
         };
     }
 })();
