@@ -1,0 +1,15 @@
+<ion-view view-title="Login" hide-back-button="true">
+    <ion-content>
+        <form ng-submit="localLogin(ll)">
+            <label class="item item-input">
+                <input type="email" placeholder="Email" ng-model="ll.email">
+            </label>
+            <label class="item item-input">
+                <input type="password" placeholder="Password" ng-model="ll.password">
+            </label>
+            <button class="button button-block button-positive">
+                Enviar
+            </button>
+        </form>
+    </ion-content>
+</ion-view>
