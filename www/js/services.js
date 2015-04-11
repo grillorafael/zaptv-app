@@ -6,8 +6,8 @@
         .factory('Socket', Socket)
         .factory('Auth', Auth)
         .value('Config', {
-            'ENDPOINT': 'http://localhost:3000/api',
-            'SOCKET_ADDR': 'http://localhost:3000'
+            'ENDPOINT': 'http://104.236.227.193/api',
+            'SOCKET_ADDR': 'http://104.236.227.193'
         });
 
     function Auth() {
@@ -44,6 +44,8 @@
     }
 
     function Channel($http, $q, Config, Auth) {
+        var lastChannel = null;
+
         function list() {
             var deferred = $q.defer();
 
@@ -74,10 +76,20 @@
             return deferred.promise;
         }
 
+        function setLastChannel(id) {
+            lastChannel = id;
+        }
+
+        function getLastChannel() {
+            return lastChannel;
+        }
+
         return {
             list: list,
             getInfo: getInfo,
-            lastMessages: lastMessages
+            lastMessages: lastMessages,
+            setLastChannel: setLastChannel,
+            getLastChannel: getLastChannel
         };
     }
 

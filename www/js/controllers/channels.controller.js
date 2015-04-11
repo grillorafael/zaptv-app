@@ -5,6 +5,11 @@
     function ChannelsCtrl($scope, $state, Channel, Socket) {
         Socket.connect();
 
+        var lastChannel = Channel.getLastChannel();
+        if(lastChannel !== null) {
+            Socket.leaveChannel(lastChannel);
+        }
+
         Channel.list().then(function(channels) {
             $scope.channels = channels;
         }, function() {

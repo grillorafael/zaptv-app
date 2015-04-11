@@ -16,7 +16,8 @@
                 }
             });
         })
-        .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+        .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider) {
+            $ionicConfigProvider.views.maxCache(0);
             $httpProvider.interceptors.push('AuthInterceptor');
             $stateProvider
                 .state('login', {

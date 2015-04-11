@@ -10,6 +10,8 @@
         Socket.connect();
         Socket.joinChannel($stateParams.id);
 
+        Channel.setLastChannel($stateParams.id);
+
         Channel.getInfo($stateParams.id).then(function(schedule) {
             $scope.schedule = schedule;
         });
@@ -26,7 +28,7 @@
 
         Socket.onChannelStatus(function(schedule) {
             console.log('Schedule', schedule);
-            if(schedule.id !== $scope.schedule.id) {
+            if($scope.schedule && schedule.id !== $scope.schedule.id) {
                 $scope.$apply(function() {
                     $scope.schedule = schedule;
                 });
