@@ -38,6 +38,15 @@
                         }
                     }
                 })
+                .state('bootstrap', {
+                    url: '/bootstrap',
+                    views: {
+                        'mainContent': {
+                            templateUrl: 'templates/bootstrap.html',
+                            controller: 'BootstrapCtrl'
+                        }
+                    }
+                })
                 .state('channel', {
                     url: '/channel/:id',
                     views: {
@@ -47,6 +56,6 @@
                         }
                     }
                 });
-            $urlRouterProvider.otherwise('/login');
+            $urlRouterProvider.otherwise('/bootstrap');
         });
 }());

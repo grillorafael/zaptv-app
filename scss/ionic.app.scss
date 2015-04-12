@@ -14,10 +14,28 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+@import "animations";
 
+.bootstrap-loader {
+    border-radius: 100%;
+    width: 25vw;
+    height: 25vw;
+    margin: 70% auto auto;
+    border: 1px solid black;
+    .inner-circle {
+        width: 20vw;
+        height: 20vw;
+        margin: 2.5vw auto auto;
+        border-top-left-radius: 20vw;
+        border-top-right-radius: 20vw;
+        border: 1px solid red;
+        border-bottom: 0;
+        box-sizing: border-box;
+
+        animation: rotate-360 1s infinite;
+    }
+}
