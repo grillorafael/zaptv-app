@@ -5,10 +5,23 @@
         .factory('Channel', Channel)
         .factory('Socket', Socket)
         .factory('Auth', Auth)
+        .factory('$animationTrigger', $animationTrigger)
         .value('Config', {
             'ENDPOINT': 'http://104.236.227.193/api',
             'SOCKET_ADDR': 'http://104.236.227.193'
         });
+
+    function $animationTrigger($rootScope, $timeout) {
+        return {
+            START: 1,
+            STOP: 0,
+            trigger: function(handler, animation, mode) {
+                $timeout(function() {
+                    $rootScope.$broadcast('animation:trigger:' + handler, handler, animation, mode);
+                });
+            }
+        };
+    }
 
     function Auth() {
         return {

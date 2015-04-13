@@ -7419,6 +7419,10 @@ a.button {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
+.rotate-360-continuous {
+  -webkit-animation: rotate-360 1s infinite;
+  animation: rotate-360 1s infinite; }
+
 .bootstrap-loader {
   border-radius: 100%;
   width: 25vw;
@@ -7433,6 +7437,4 @@ a.button {
     border-top-right-radius: 20vw;
     border: 1px solid red;
     border-bottom: 0;
-    box-sizing: border-box;
-    -webkit-animation: rotate-360 1s infinite;
-    animation: rotate-360 1s infinite; }
+    box-sizing: border-box; }

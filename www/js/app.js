@@ -3,6 +3,7 @@
     angular.module('zaptv', [
         'ionic',
         'zaptv.services',
+        'zaptv.directives',
         'angularMoment'
         ])
         .run(function($ionicPlatform, amMoment) {
