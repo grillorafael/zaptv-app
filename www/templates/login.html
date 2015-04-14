@@ -1,15 +1,40 @@
-<ion-view view-title="Login" hide-back-button="true">
+<ion-view hide-nav-bar="true" hide-back-button="true" class="LoginView">
     <ion-content>
-        <form ng-submit="localLogin(ll)">
-            <label class="item item-input">
-                <input type="email" placeholder="Email" ng-model="ll.email">
-            </label>
-            <label class="item item-input">
-                <input type="password" placeholder="Password" ng-model="ll.password">
-            </label>
-            <button class="button button-block button-positive">
-                Enviar
-            </button>
-        </form>
+        <h1 class="text-center">
+            <img src="img/logo.png" alt="" width="150">
+        </h1>
+        
+        <div class="padding form-login">
+            <form ng-submit="localLogin(ll)" class="list list-inset">
+                <label class="item item-input bg-transparent">
+                    <i class="icon ion-ios-person-outline    placeholder-icon"></i>
+                    <input type="email" placeholder="Email" ng-model="ll.email">
+                </label>
+                <label class="item item-input bradius-bottom bg-transparent">
+                    <i class="icon ion-ios-locked-outline placeholder-icon"></i>
+                    <input type="password" placeholder="Senha" ng-model="ll.password">
+                </label>
+                <button class="button button-block button-balanced">
+                    Entrar
+                </button>
+            </form>
+
+        </div>
+        
+        <div class="list">
+            <a class="item item-icon-left item-icon-right button-facebook" href="#">
+                <i class="icon ion-social-facebook "></i>
+                Entre com o Facebook
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+            <a class="item item-icon-left item-icon-right" href="#">
+                <i class="icon ion-ios-monitor-outline"></i>
+                Quero me cadastrar!
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+        </div>
     </ion-content>
 </ion-view>
+<div >
+ 
+</div>

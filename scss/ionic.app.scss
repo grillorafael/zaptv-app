@@ -1,24 +1,22 @@
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
 
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
+$balanced:                       #f75f51 !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
-*/
+
+
+$facebook:   #3b5998;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "animations";
+
 
 .bootstrap-loader {
     border-radius: 100%;
@@ -35,5 +33,62 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         border: 1px solid red;
         border-bottom: 0;
         box-sizing: border-box;
+    }
+}
+
+
+.LoginView {
+    background: #ede1b5;
+    background: url('/img/bgLogin.jpg');
+    background-size: cover;
+    .padding {
+        padding: 25px;
+        padding-top: 10px;
+    }
+    h1 {
+        margin-bottom: 0;
+    }
+    .list-inset {
+        background-color: transparent;
+        .button {
+            border-radius: 6px;
+        }
+
+    }
+    label.item {
+        border: 1px solid rgba(255,255,255,0.5);
+    }
+    .card .item:first-child, .list-inset .item:first-child, .padding > .list .item:first-child {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    .bradius-bottom {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    .item.bg-transparent {
+        background: rgba(255,255,255,0.4);
+    }
+    .placeholder-icon:first-child {
+        font-size: 1.6em;
+    }
+    .item-icon-left .icon {
+        font-size: 1.7em;
+    }
+    a.item {
+        font-size: 1em;
+        border: 0;
+    }
+    .item {
+        background: rgba(255,255,255,0.7);
+    }
+    .button-facebook {
+     background-color:rgba(59, 89, 152, 0.7);
+    }
+    a.button-facebook {
+        color: white;
+    }
+    .placeholder-icon {
+        color: black;
     }
 }
