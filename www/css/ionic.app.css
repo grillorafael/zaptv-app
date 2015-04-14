@@ -7407,21 +7407,10 @@ a.button {
   -webkit-animation: rotate-360 1s infinite;
   animation: rotate-360 1s infinite; }
 
-.bootstrap-loader {
-  border-radius: 100%;
-  width: 25vw;
-  height: 25vw;
-  margin: 70% auto auto;
-  border: 1px solid black; }
-  .bootstrap-loader .inner-circle {
-    width: 20vw;
-    height: 20vw;
-    margin: 2.5vw auto auto;
-    border-top-left-radius: 20vw;
-    border-top-right-radius: 20vw;
-    border: 1px solid red;
-    border-bottom: 0;
-    box-sizing: border-box; }
+.chatView .timestamp {
+  font-size: 0.8em;
+  float: right;
+  color: #d8d8d8; }
 
 .LoginView {
   background: #ede1b5;
@@ -7461,3 +7450,19 @@ a.button {
     color: white; }
   .LoginView .placeholder-icon {
     color: black; }
+
+.bootstrap-loader {
+  border-radius: 100%;
+  width: 25vw;
+  height: 25vw;
+  margin: 70% auto auto;
+  border: 1px solid black; }
+  .bootstrap-loader .inner-circle {
+    width: 20vw;
+    height: 20vw;
+    margin: 2.5vw auto auto;
+    border-top-left-radius: 20vw;
+    border-top-right-radius: 20vw;
+    border: 1px solid red;
+    border-bottom: 0;
+    box-sizing: border-box; }
