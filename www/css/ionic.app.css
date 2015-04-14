@@ -7414,7 +7414,7 @@ a.button {
 
 .LoginView {
   background: #ede1b5;
-  background: url('/img/bgLogin.jpg');
+  background: url('img/bgLogin.jpg');
   background-size: cover; }
   .LoginView .padding {
     padding: 25px;
