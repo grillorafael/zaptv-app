@@ -1,8 +1,10 @@
 <div class="a-card" data-ng-click="mother.joinChannel(card)">
-    <img src="" data-ng-src="{{card.current_schedule.image_url}}">
+    <img src="img/placeholder.jpg" data-ng-src="{{card.current_schedule.image_url}}">
     <div class="card-info">
     	<img src="img/globo.png" alt="logo da emissora">
     	<h2>{{card.name}}</h2>
+    	<p>{{card.current_schedule.name}}</p>
     	<p>100 participantes</p>
+    	<button class="btn button-salmon">Participar</button>
     </div>
 </div>

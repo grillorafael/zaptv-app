@@ -6,10 +6,11 @@ $calm:                            #11c1f3 !default;
 $balanced:                       rgba(245, 58, 41, 0.7) !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
+$royal:                           #4fc6b3 !default;
+$dark:                           #444 !default;
 
 
+$salmon: #f75f51;
 $facebook:   #3b5998;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -19,14 +20,26 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "chat";
 @import "login";
 
- .button.button-login {
+.button.button-login {
     border-radius: 6px;
     border: 0;
 }
+.button-salmon, .bar-salmon {
+    background: $salmon;
+    color: white;
+    border: 0;
+}
 
+.bar-salmon .button-clear.button-clear{
+    color: white;
+}
 
-
-
+.btn {
+    padding: 0.3em;
+    width: 100%;
+    margin-top: 10%;
+    border-radius: 5px;
+}
 
 .bootstrap-loader {
     border-radius: 100%;
@@ -104,7 +117,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .channels-view {
     background: #ede1b5;
-    background: url('../img/bg-login.jpg');
+    .title {
+        color: white;
+    }
+    .list-inset {
+        margin: 0;
+    }
+    .button-clear.button-clear {
+        color: white;
+    }
     .deckgrid[deckgrid]::before {
         /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
         content: '2 .column.column-1-2';
@@ -133,11 +154,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
             padding: 0.5em 1em;
             position: relative;
             display: block;
+            margin-top: -5px;
+            .button-salmon {
+                margin-bottom: 10px;
+
+            }
 
             h2 {
-                font-size: 1em;
-                margin-top: 0;
-                margin-bottom: 0;
+                font-size: 1.1em;
+                margin-top: 3px;
+                margin-bottom: 15px;
                 padding-left: 25px;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -145,10 +171,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
             }
             p {
                 font-size: 0.8em;
-                padding-left: 25px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+                margin-bottom: 0;
+                line-height: 1.7;
+
             }
             img {
                 position: absolute;
