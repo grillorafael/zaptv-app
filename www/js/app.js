@@ -4,7 +4,8 @@
         'ionic',
         'zaptv.services',
         'zaptv.directives',
-        'angularMoment'
+        'angularMoment',
+        'akoenig.deckgrid'
         ])
         .run(function($ionicPlatform, amMoment) {
             amMoment.changeLocale('pt-br');

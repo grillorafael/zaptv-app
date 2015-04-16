@@ -1,9 +1,7 @@
-<ion-view view-title="Channels" hide-nav-bar="true" hide-back-button="true">
+<ion-view view-title="Channels" hide-back-button="true" class="channels-view">
     <ion-content>
-        <ion-list>
-            <ion-item collection-repeat="channel in channels" ng-click="joinChannel(channel)">
-                {{channel.name}}
-            </ion-item>
-        </ion-list>
+    	<div class="padding">
+        	<div deckgrid source="channels"  cardTemplate="templates/channel_tile.html" class="deckgrid"></div>
+        </div>
     </ion-content>
 </ion-view>

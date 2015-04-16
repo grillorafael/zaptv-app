@@ -3,7 +3,7 @@ $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
-$balanced:                       #f75f51 !default;
+$balanced:                       rgba(245, 58, 41, 0.7) !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
@@ -18,6 +18,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "animations";
 @import "chat";
 @import "login";
+
+ .button.button-login {
+    border-radius: 6px;
+    border: 0;
+}
+
+
+
 
 
 .bootstrap-loader {
@@ -38,4 +46,125 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     }
 }
 
+.login-view {
+    background: #ede1b5;
+    background: url('../img/bg-login.jpg');
+    background-size: cover;
+    .padding {
+        padding: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    h1 {
+        margin-bottom: 0;
+    }
+    .list-inset {
+        background-color: transparent;
+
+
+    }
+    label.item {
+        border: 2px solid rgba(255,255,255,0.4);
+    }
+    .card .item:first-child, .list-inset .item:first-child, .padding > .list .item:first-child {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    .bradius-bottom {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    .item.bg-transparent {
+        background: rgba(255,255,255,0.8);
+    }
+    .placeholder-icon:first-child {
+        font-size: 1.6em;
+    }
+    .item-icon-left .icon {
+        font-size: 1.7em;
+    }
+    a.item {
+        font-size: 1em;
+    }
+    .item {
+        background: rgba(255,255,255,0.8);
+        border: 0;
+    }
+    .button-facebook {
+        background-color:rgba(59, 89, 152, 0.7);
+    }
+    a.button-facebook {
+        color: white;
+    }
+    .placeholder-icon {
+        color: black;
+    }
+ 
+}
+
+.channels-view {
+    .deckgrid[deckgrid]::before {
+        /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
+        content: '2 .column.column-1-2';
+        font-size: 0;
+        visibility: hidden;
+    }
+    .deckgrid .column {
+        float: left;
+    }
+    .deckgrid .column-1-2 {
+        width: 50%;
+    }
+    .a-card {
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, .15);
+        margin: 0 10px 10px 0;
+        &:nth-child(even) {
+            margin-right: 0;
+        }
+        img {
+            width: 100%;
+        }
+        .card-info {
+            padding: 0.5em 1em;
+            position: relative;
+            display: block;
+
+            h2 {
+                font-size: 1em;
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-left: 25px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            p {
+                font-size: 0.8em;
+                padding-left: 25px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            img {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                max-width: 25px;
+                max-height: 25px;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+
+}
+.chatView {
+    .timestamp {
+        font-size: 0.8em;
+        float: right;
+        color: #d8d8d8;
+    }
+}
 
