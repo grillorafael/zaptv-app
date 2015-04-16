@@ -103,6 +103,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .channels-view {
+    background: #ede1b5;
+    background: url('../img/bg-login.jpg');
     .deckgrid[deckgrid]::before {
         /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
         content: '2 .column.column-1-2';
@@ -119,13 +121,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         border-radius: 5px;
         border: 1px solid rgba(0, 0, 0, .15);
         margin: 0 10px 10px 0;
-        &:nth-child(even) {
-            margin-right: 0;
-        }
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        
         img {
             width: 100%;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
         }
         .card-info {
+            background: white;
             padding: 0.5em 1em;
             position: relative;
             display: block;
@@ -158,6 +162,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         }
     }
 
+    #channels-box {
+        .column:nth-child(2) {
+            .a-card {
+                margin-right: 0;
+            }
+        }
+    }
+
 
 }
 .chatView {
@@ -167,4 +179,5 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         color: #d8d8d8;
     }
 }
+
 

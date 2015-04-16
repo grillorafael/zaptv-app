@@ -7465,49 +7465,56 @@ a.button {
   .login-view .placeholder-icon {
     color: black; }
 
-.channels-view .deckgrid[deckgrid]::before {
-  /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
-  content: '2 .column.column-1-2';
-  font-size: 0;
-  visibility: hidden; }
-.channels-view .deckgrid .column {
-  float: left; }
-.channels-view .deckgrid .column-1-2 {
-  width: 50%; }
-.channels-view .a-card {
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  margin: 0 10px 10px 0; }
-  .channels-view .a-card:nth-child(even) {
-    margin-right: 0; }
-  .channels-view .a-card img {
-    width: 100%; }
-  .channels-view .a-card .card-info {
-    padding: 0.5em 1em;
-    position: relative;
-    display: block; }
-    .channels-view .a-card .card-info h2 {
-      font-size: 1em;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding-left: 25px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap; }
-    .channels-view .a-card .card-info p {
-      font-size: 0.8em;
-      padding-left: 25px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap; }
-    .channels-view .a-card .card-info img {
-      position: absolute;
-      top: 6px;
-      left: 6px;
-      max-width: 25px;
-      max-height: 25px;
+.channels-view {
+  background: #ede1b5;
+  background: url('../img/bg-login.jpg'); }
+  .channels-view .deckgrid[deckgrid]::before {
+    /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
+    content: '2 .column.column-1-2';
+    font-size: 0;
+    visibility: hidden; }
+  .channels-view .deckgrid .column {
+    float: left; }
+  .channels-view .deckgrid .column-1-2 {
+    width: 50%; }
+  .channels-view .a-card {
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    margin: 0 10px 10px 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }
+    .channels-view .a-card img {
       width: 100%;
-      height: 100%; }
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px; }
+    .channels-view .a-card .card-info {
+      background: white;
+      padding: 0.5em 1em;
+      position: relative;
+      display: block; }
+      .channels-view .a-card .card-info h2 {
+        font-size: 1em;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 25px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+      .channels-view .a-card .card-info p {
+        font-size: 0.8em;
+        padding-left: 25px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+      .channels-view .a-card .card-info img {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        max-width: 25px;
+        max-height: 25px;
+        width: 100%;
+        height: 100%; }
+  .channels-view #channels-box .column:nth-child(2) .a-card {
+    margin-right: 0; }
 
 .chatView .timestamp {
   font-size: 0.8em;
