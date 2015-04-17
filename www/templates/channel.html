@@ -12,11 +12,11 @@
             </ion-item>
         </ion-list>
     </ion-content>
-    <div class="bar bar-footer item-input-inset">
+    <ion-footer-bar class="item-input-inset">
         <label class="item-input-wrapper">
             <i class="icon ion-ios7-search placeholder-icon"></i>
             <form ng-submit="submitMessage(currentMessage)">
-                <input type="search" placeholder="Digite sua mensagem.." ng-model="currentMessage">
+                <input type="text" placeholder="Digite sua mensagem.." ng-model="currentMessage">
             </form>
         </label>
         <button class="button button-clear" ng-click="submitMessage(currentMessage)" ng-class="{
@@ -24,5 +24,5 @@
         }">
             Enviar
         </button>
-    </div>
+    </ion-footer-bar>
 </ion-view>
