@@ -5,7 +5,7 @@
     function ChannelsCtrl($scope, $state, $ionicPlatform, Channel, Socket) {
         $ionicPlatform.ready(function() {
             if (window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
         });
         Socket.connect();
