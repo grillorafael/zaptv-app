@@ -15,7 +15,9 @@
     <div class="bar bar-footer item-input-inset">
         <label class="item-input-wrapper">
             <i class="icon ion-ios7-search placeholder-icon"></i>
-            <input type="search" placeholder="Digite sua mensagem.." ng-model="currentMessage">
+            <form ng-submit="submitMessage(currentMessage)">
+                <input type="search" placeholder="Digite sua mensagem.." ng-model="currentMessage">
+            </form>
         </label>
         <button class="button button-clear" ng-click="submitMessage(currentMessage)" ng-class="{
             disabled: currentMessage.length == 0
