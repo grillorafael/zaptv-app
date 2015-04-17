@@ -2,7 +2,12 @@
     'use strict';
     angular.module('zaptv').controller('ChannelsCtrl', ChannelsCtrl);
 
-    function ChannelsCtrl($scope, $state, Channel, Socket) {
+    function ChannelsCtrl($scope, $state, $ionicPlatform, Channel, Socket) {
+        $ionicPlatform.ready(function() {
+            if (window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            }
+        });
         Socket.connect();
 
         var lastChannel = Channel.getLastChannel();

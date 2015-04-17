@@ -5,20 +5,24 @@
     <ion-content class="has-header has-footer">
         <ion-list>
             <ion-item class="item-text-wrap" collection-repeat="message in messages" on-hold="messageOptions(message)">
-                <h2>{{message.user.name}} <span class="timestamp" am-time-ago="message.created_at"></span></h2>
+                <h2>{{message.user.name}}
+                    <span class="timestamp" am-time-ago="message.created_at"></span>
+                </h2>
                 <p>{{message.content}}</p>
             </ion-item>
         </ion-list>
     </ion-content>
-    <div class="bar bar-footer item-input-inset">
+    <ion-footer-bar class="item-input-inset">
         <label class="item-input-wrapper">
             <i class="icon ion-ios7-search placeholder-icon"></i>
-            <input type="search" placeholder="Digite sua mensagem.." ng-model="currentMessage">
+            <form ng-submit="submitMessage(currentMessage)">
+                <input type="text" placeholder="Digite sua mensagem.." ng-model="currentMessage">
+            </form>
         </label>
         <button class="button button-clear" ng-click="submitMessage(currentMessage)" ng-class="{
             disabled: currentMessage.length == 0
         }">
             Enviar
         </button>
-    </div>
+    </ion-footer-bar>
 </ion-view>
