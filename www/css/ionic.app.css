@@ -7517,7 +7517,7 @@ a.button {
         font-size: 1.1em;
         margin-top: 3px;
         margin-bottom: 15px;
-        padding-left: 25px;
+        padding-left: 30px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap; }
@@ -7530,8 +7530,8 @@ a.button {
         line-height: 1.7; }
       .channels-view .a-card .card-info img {
         position: absolute;
-        top: 6px;
-        left: 6px;
+        top: 7px;
+        left: 13px;
         max-width: 25px;
         max-height: 25px;
         width: 100%;
