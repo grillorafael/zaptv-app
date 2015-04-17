@@ -1,20 +1,16 @@
-<ion-view hide-nav-bar="true" hide-back-button="true" class="channels-view">
-	<ion-header-bar class="bar-salmon">
-		
-		<h1 class="title">Canais</h1>
-		<div class="buttons">
-			<button class="button button-clear icon ion-android-more-horizontal"></button>
-		</div>
-	</ion-header-bar>
+<ion-view hide-back-button="true" class="channels-view" view-title="Canais">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear icon ion-android-more-horizontal"></button>
+    </ion-nav-buttons>
     <ion-content>
-		<div class="list list-inset">
-			<label class="item item-input">
-				<i class="icon ion-search placeholder-icon"></i>
-				<input type="text" placeholder="Buscar canais">
-			</label>
-		</div>
-    	<div class="padding">
-        	<div deckgrid source="channels"  id="channels-box" cardTemplate="templates/channel_tile.html" class="deckgrid"></div>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Buscar canais">
+            </label>
+        </div>
+        <div class="padding">
+            <div deckgrid source="channels" id="channels-box" cardTemplate="templates/channel_tile.html" class="deckgrid"></div>
         </div>
     </ion-content>
 </ion-view>

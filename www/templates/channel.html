@@ -5,7 +5,9 @@
     <ion-content class="has-header has-footer">
         <ion-list>
             <ion-item class="item-text-wrap" collection-repeat="message in messages" on-hold="messageOptions(message)">
-                <h2>{{message.user.name}} <span class="timestamp" am-time-ago="message.created_at"></span></h2>
+                <h2>{{message.user.name}}
+                    <span class="timestamp" am-time-ago="message.created_at"></span>
+                </h2>
                 <p>{{message.content}}</p>
             </ion-item>
         </ion-list>
