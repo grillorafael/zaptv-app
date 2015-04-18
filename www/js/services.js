@@ -95,19 +95,20 @@
             return deferred.promise;
         }
 
-        function getInfo(id) {
+        function getInfo(id, geoState) {
             var deferred = $q.defer();
 
-            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/current'))
+            var stateInfo = geoState === undefined ? "" : geoState;
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/current/' + stateInfo))
                 .success(deferred.resolve)
                 .error(deferred.reject);
 
             return deferred.promise;
         }
 
-        function lastMessages(id, geoState) {
+        function lastMessages(id) {
             var deferred = $q.defer();
-            var stateInfo = geoState === undefined ? "" : geoState;
+
 
             $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/last/' + stateInfo))
                 .success(deferred.resolve)
