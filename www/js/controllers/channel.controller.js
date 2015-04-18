@@ -9,7 +9,7 @@
         $scope.messages = [];
 
         Socket.connect();
-        Socket.joinChannel($stateParams.id, State.get('geo_state'));
+        Socket.joinChannel($stateParams.id);
 
         State.set('last_channel', $stateParams.id);
 

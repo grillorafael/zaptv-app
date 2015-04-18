@@ -132,12 +132,9 @@
             socket = io(Config.SOCKET_ADDR);
         }
 
-        function joinChannel(id, geoState) {
+        function joinChannel(id) {
             currentChannel = id;
-            socket.emit('join channel', {
-                id: id,
-                geo_state: geoState
-            });
+            socket.emit('join channel', id);
         }
 
         function leaveChannel(id) {
