@@ -2,21 +2,22 @@
     'use strict';
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
-    function ChannelCtrl($scope, $stateParams, $ionicScrollDelegate, $ionicActionSheet, Socket, Channel, Auth) {
+    function ChannelCtrl($scope, $stateParams, $ionicScrollDelegate, $ionicActionSheet,
+        State, Socket, Channel, Auth) {
         var token = Auth.getToken();
         $scope.currentMessage = '';
         $scope.messages = [];
 
         Socket.connect();
-        Socket.joinChannel($stateParams.id);
+        Socket.joinChannel($stateParams.id, State.get('geo_state'));
 
-        Channel.setLastChannel($stateParams.id);
+        State.set('last_channel', $stateParams.id);
 
         Channel.getInfo($stateParams.id).then(function(schedule) {
             $scope.schedule = schedule;
         });
 
-        Channel.lastMessages($stateParams.id).then(function(messages) {
+        Channel.lastMessages($stateParams.id, State.get('geo_state')).then(function(messages) {
             $scope.messages = messages.reverse();
             $ionicScrollDelegate.scrollBottom(true);
         });
@@ -24,16 +25,6 @@
         Socket.onMessage(function(msg) {
             $scope.messages.push(msg);
             $ionicScrollDelegate.scrollBottom(true);
-        });
-
-        Socket.onChannelStatus(function(schedule) {
-            console.log('Schedule', schedule);
-            if($scope.schedule && schedule.id !== $scope.schedule.id) {
-                $scope.$apply(function() {
-                    $scope.schedule = schedule;
-                });
-                // Current schedule changed
-            }
         });
 
         $scope.submitMessage = function(currentMessage) {

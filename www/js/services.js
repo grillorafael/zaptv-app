@@ -6,10 +6,37 @@
         .factory('Socket', Socket)
         .factory('Auth', Auth)
         .factory('$animationTrigger', $animationTrigger)
+        .factory('ReverseGeolocation', ReverseGeolocation)
+        .factory('State', State)
         .value('Config', {
             'ENDPOINT': 'http://104.236.227.193/api',
             'SOCKET_ADDR': 'http://104.236.227.193'
         });
+
+    function State() {
+        var states = {};
+        return {
+            set: function(key, value) {
+                states[key] = value;
+            },
+            get: function(key) {
+                return states[key];
+            }
+        };
+    }
+
+    function ReverseGeolocation($http, $q) {
+        return {
+            get: function(lat, lng) {
+                var deferred = $q.defer();
+                $http.get('http://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lng + '&zoom=18&addressdetails=1')
+                    .success(deferred.resolve)
+                    .error(deferred.reject);
+                return deferred.promise;
+            }
+        };
+    }
+
 
     function $animationTrigger($rootScope, $timeout) {
         return {
@@ -57,12 +84,11 @@
     }
 
     function Channel($http, $q, Config, Auth) {
-        var lastChannel = null;
-
-        function list() {
+        function list(geoState) {
             var deferred = $q.defer();
 
-            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/list'))
+            var stateInfo = geoState === undefined ? "" : geoState;
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/list/' + stateInfo))
                 .success(deferred.resolve)
                 .error(deferred.reject);
 
@@ -79,30 +105,21 @@
             return deferred.promise;
         }
 
-        function lastMessages(id) {
+        function lastMessages(id, geoState) {
             var deferred = $q.defer();
+            var stateInfo = geoState === undefined ? "" : geoState;
 
-            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/last'))
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/last/' + stateInfo))
                 .success(deferred.resolve)
                 .error(deferred.reject);
 
             return deferred.promise;
         }
 
-        function setLastChannel(id) {
-            lastChannel = id;
-        }
-
-        function getLastChannel() {
-            return lastChannel;
-        }
-
         return {
             list: list,
             getInfo: getInfo,
-            lastMessages: lastMessages,
-            setLastChannel: setLastChannel,
-            getLastChannel: getLastChannel
+            lastMessages: lastMessages
         };
     }
 
@@ -114,9 +131,12 @@
             socket = io(Config.SOCKET_ADDR);
         }
 
-        function joinChannel(id) {
+        function joinChannel(id, geoState) {
             currentChannel = id;
-            socket.emit('join channel', id);
+            socket.emit('join channel', {
+                id: id,
+                geo_state: geoState
+            });
         }
 
         function leaveChannel(id) {
@@ -136,17 +156,12 @@
             socket.on('message to device', fc);
         }
 
-        function onChannelStatus(fc) {
-            socket.on('channel status', fc);
-        }
-
         return {
             connect: connect,
             joinChannel: joinChannel,
             leaveChannel: leaveChannel,
             onMessage: onMessage,
-            sendMessage: sendMessage,
-            onChannelStatus: onChannelStatus
+            sendMessage: sendMessage
         };
     }
 })();
