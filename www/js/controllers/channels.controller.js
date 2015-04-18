@@ -8,12 +8,15 @@
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
         });
+
         Socket.connect();
 
-        var lastChannel = Channel.getLastChannel();
-        if(lastChannel !== null) {
-            Socket.leaveChannel(lastChannel);
-        }
+        $scope.$on('$ionicView.enter', function() {
+            var lastChannel = Channel.getLastChannel();
+            if (lastChannel !== null) {
+                Socket.leaveChannel(lastChannel);
+            }
+        });
 
         Channel.list().then(function(channels) {
             $scope.channels = channels;
