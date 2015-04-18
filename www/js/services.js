@@ -110,7 +110,7 @@
             var deferred = $q.defer();
 
 
-            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/last/' + stateInfo))
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/last'))
                 .success(deferred.resolve)
                 .error(deferred.reject);
 
