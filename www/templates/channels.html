@@ -2,13 +2,13 @@
     <ion-nav-buttons side="right">
         <button class="button button-clear icon ion-android-more-horizontal"></button>
     </ion-nav-buttons>
-    <ion-content>
-        <div class="list list-inset">
-            <label class="item item-input">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input type="text" placeholder="Buscar canais">
-            </label>
-        </div>
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Buscar canais">
+        </label>
+    </div>
+    <ion-content class="has-subheader">
         <div class="padding">
             <div deckgrid source="channels" id="channels-box" cardTemplate="templates/channel_tile.html" class="deckgrid"></div>
         </div>
