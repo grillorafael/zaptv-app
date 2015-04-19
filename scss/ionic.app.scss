@@ -200,11 +200,42 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
 }
-.chatView {
+.chat-view {
+    background: #ede1b5;
+    img {
+        margin: 0;
+        float: left;
+        margin-left: 5px;
+    }
+    .chat-bubble {
+        margin-left: 13%;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 0.1px;
+        padding-top: 5px;
+        -webkit-transform:translate3d(0px, 0px, 0px);
+        background: white;
+        border-radius: 5px;
+        &:after {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width:8px 10px 8px 0;
+        border-color: transparent #FFFFFF;
+        display: block;
+        width: 0;
+        z-index: 1;
+        left: -8px;
+        top: 6px;
+        }
+    }
     .timestamp {
         font-size: 0.8em;
         float: right;
         color: #d8d8d8;
+    }
+    .c-username {
+        font-size: 1em;
     }
 }
 

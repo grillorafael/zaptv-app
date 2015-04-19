@@ -1,15 +1,19 @@
-<ion-view class="chatView" enable-menu-with-back-views="false">
+<ion-view class="chat-view" enable-menu-with-back-views="false">
     <ion-nav-title>
         {{schedule.name || "Carregando.."}}
     </ion-nav-title>
     <ion-content class="has-header has-footer">
         <ion-list>
-            <ion-item class="item-text-wrap" collection-repeat="message in messages" on-hold="messageOptions(message)">
-                <h2>{{message.user.name}}
-                    <span class="timestamp" am-time-ago="message.created_at"></span>
-                </h2>
-                <p>{{message.content}}</p>
-            </ion-item>
+        
+            <div class="item-text-wrap" style="height: 63px;width: 310px;  "collection-repeat="message in messages" on-hold="messageOptions(message)">
+                <img src="img/globo.png" alt="" width="25">
+                <div class="chat-bubble">
+                    <h2 class="c-username">{{message.user.name}}
+                        <span class="timestamp" am-time-ago="message.created_at"></span>
+                    </h2>
+                    <p>{{message.content}}</p>
+                </div>
+            </div>
         </ion-list>
     </ion-content>
     <ion-footer-bar class="item-input-inset">
@@ -19,7 +23,7 @@
                 <input type="text" placeholder="Digite sua mensagem.." ng-model="currentMessage">
             </form>
         </label>
-        <button class="button button-clear" ng-click="submitMessage(currentMessage)" ng-class="{
+        <button class="button button-clear button-enviar" ng-click="submitMessage(currentMessage)" ng-class="{
             disabled: currentMessage.length == 0
         }">
             Enviar
