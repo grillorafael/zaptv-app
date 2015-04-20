@@ -7407,6 +7407,10 @@ a.button {
   -webkit-animation: rotate-360 1s infinite;
   animation: rotate-360 1s infinite; }
 
+.white-spinner {
+  stroke: white;
+  fill: white; }
+
 .button.button-login {
   border-radius: 6px;
   border: 0; }

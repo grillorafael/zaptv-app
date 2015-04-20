@@ -1,6 +1,9 @@
 <ion-view hide-back-button="true" class="channels-view" view-title="Canais" enable-menu-with-back-views="false">
     <ion-nav-buttons side="right">
-        <button class="button button-clear icon ion-android-more-horizontal" ng-click="openPopover($event)"></button>
+        <button class="button button-clear" ng-click="openPopover($event)">
+            <ion-spinner icon="dots" ng-show="isLoading" class="white-spinner"></ion-spinner>
+            <i class="icon ion-android-more-horizontal" ng-hide="isLoading"></i>
+        </button>
     </ion-nav-buttons>
     <div class="bar bar-subheader item-input-inset">
         <label class="item-input-wrapper">
@@ -26,6 +29,10 @@
                 <ion-item class="item-icon-left">
                     <i class="icon ion-person"></i>
                     Meu Perfil
+                </ion-item>
+                <ion-item class="item-icon-left" ng-click="refresh()">
+                    <i class="icon ion-refresh"></i>
+                    Atualizar
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="logout()">
                     <i class="icon ion-log-out"></i>

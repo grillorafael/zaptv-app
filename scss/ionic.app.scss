@@ -20,6 +20,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "chat";
 @import "login";
 
+.white-spinner {
+    stroke: white;
+    fill: white;
+}
+
 .button.button-login {
     border-radius: 6px;
     border: 0;
@@ -112,7 +117,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     .placeholder-icon {
         color: black;
     }
- 
+
 }
 
 .channels-view {
@@ -143,7 +148,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         border: 1px solid rgba(0, 0, 0, .15);
         margin: 0 10px 10px 0;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-        
+
         img {
             width: 100%;
             border-top-right-radius: 5px;
@@ -238,5 +243,3 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         font-size: 1em;
     }
 }
-
-

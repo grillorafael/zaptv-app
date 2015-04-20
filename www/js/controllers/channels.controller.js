@@ -4,6 +4,9 @@
 
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
         $ionicPopover, $ionicHistory, Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket) {
+        var geoState = null;
+        $scope.isLoading = true;
+
         $ionicPlatform.ready(function() {
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -34,7 +37,7 @@
                 var lat = position.coords.latitude;
                 var lng = position.coords.longitude;
                 ReverseGeolocation.get(lat, lng).then(function(locationInfo) {
-                    var geoState = GeoInfo[locationInfo.address.country_code][locationInfo.address.county];
+                    geoState = GeoInfo[locationInfo.address.country_code][locationInfo.address.county];
                     State.set('geo_state', geoState);
                     listChannels(geoState);
                 }, function() {
@@ -48,13 +51,21 @@
             });
 
 
-        function listChannels(geoState) {
-            Channel.list(geoState).then(function(channels) {
+        function listChannels(gs) {
+            $scope.isLoading = true;
+            Channel.list(gs).then(function(channels) {
                 $scope.channels = channels;
             }, function() {
                 // TODO Handle
-            });
+            }).finally(function() {
+                $scope.isLoading = false;
+            })
         }
+
+        $scope.refresh = function() {
+            listChannels(geoState);
+            $scope.popover.hide();
+        };
 
         $scope.logout = function() {
             Auth.clear();
