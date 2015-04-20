@@ -54,12 +54,23 @@
         function listChannels(gs) {
             $scope.isLoading = true;
             Channel.list(gs).then(function(channels) {
+                $scope.evenChannels = channels.filter(function(c, i) {
+                    return i % 2 === 0;
+                });
+
+                $scope.oddChannels = channels.filter(function(c, i) {
+                    return i % 2 !== 0;
+                });
+
+                console.log($scope.evenChannels);
+                console.log($scope.oddChannels);
+
                 $scope.channels = channels;
             }, function() {
                 // TODO Handle
             }).finally(function() {
                 $scope.isLoading = false;
-            })
+            });
         }
 
         $scope.refresh = function() {

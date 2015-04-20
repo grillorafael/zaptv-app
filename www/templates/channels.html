@@ -8,12 +8,20 @@
     <div class="bar bar-subheader item-input-inset">
         <label class="item-input-wrapper">
             <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Buscar canais">
+            <input type="text" placeholder="Buscar canais" ng-model="filter.name">
         </label>
     </div>
     <ion-content class="has-subheader">
-        <div class="padding">
-            <div deckgrid source="channels" id="channels-box" cardTemplate="templates/channel_tile.html" class="deckgrid"></div>
+        <div class="padding" id="channels-list">
+            <div class="row">
+                <div class="col col-50">
+                    <ng-include ng-repeat="channel in evenChannels | filter:filter" src="'templates/channel_tile.html'"></ng-include>
+                </div>
+                <div class="col col-50">
+                    <ng-include ng-repeat="channel in oddChannels | filter:filter" src="'templates/channel_tile.html'"></ng-include>
+                </div>
+            </div>
+            <!-- <div deckgrid source="channels" id="channels-box" cardTemplate="templates/channel_tile.html" class="deckgrid"></div> -->
         </div>
     </ion-content>
 </ion-view>
@@ -27,16 +35,13 @@
         <ion-content>
             <ion-list>
                 <ion-item class="item-icon-left">
-                    <i class="icon ion-person"></i>
-                    Meu Perfil
+                    <i class="icon ion-person"></i> Meu Perfil
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="refresh()">
-                    <i class="icon ion-refresh"></i>
-                    Atualizar
+                    <i class="icon ion-refresh"></i> Atualizar
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="logout()">
-                    <i class="icon ion-log-out"></i>
-                    Sair
+                    <i class="icon ion-log-out"></i> Sair
                 </ion-item>
             </ion-list>
         </ion-content>

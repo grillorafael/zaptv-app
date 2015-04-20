@@ -6,7 +6,6 @@
         'zaptv.directives',
         'zaptv.values',
         'angularMoment',
-        'akoenig.deckgrid',
         'ngCordova'
         ])
         .run(function($ionicPlatform, amMoment) {

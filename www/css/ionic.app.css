@@ -7491,15 +7491,10 @@ a.button {
     margin: 0; }
   .channels-view .button-clear.button-clear {
     color: white; }
-  .channels-view .deckgrid[deckgrid]::before {
-    /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
-    content: '2 .column.column-1-2';
-    font-size: 0;
-    visibility: hidden; }
-  .channels-view .deckgrid .column {
-    float: left; }
-  .channels-view .deckgrid .column-1-2 {
-    width: 50%; }
+  .channels-view #channels-list .col {
+    padding: 0; }
+  .channels-view #channels-list .row {
+    padding: 0; }
   .channels-view .a-card {
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.15);
