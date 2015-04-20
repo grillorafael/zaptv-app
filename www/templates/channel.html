@@ -4,7 +4,7 @@
     </ion-nav-title>
     <ion-content class="has-header has-footer">
         <ion-list>
-        
+
             <div class="item-text-wrap" style="height: 63px;width: 310px;  "collection-repeat="message in messages" on-hold="messageOptions(message)">
                 <img src="img/globo.png" alt="" width="25">
                 <div class="chat-bubble">
@@ -20,7 +20,7 @@
         <label class="item-input-wrapper">
             <i class="icon ion-ios7-search placeholder-icon"></i>
             <form ng-submit="submitMessage(currentMessage)">
-                <input type="text" placeholder="Digite sua mensagem.." ng-model="currentMessage">
+                <input type="text" placeholder="Digite sua mensagem.." ng-model="currentMessage" autofocus>
             </form>
         </label>
         <button class="button button-clear button-enviar" ng-click="submitMessage(currentMessage)" ng-class="{
