@@ -52,6 +52,9 @@
 
     function Auth() {
         return {
+            clear: function() {
+                localStorage.clear();
+            },
             appendToken: function(url) {
                 var token = localStorage.getItem('auth_token');
                 return url + '?token=' + token;

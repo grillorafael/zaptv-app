@@ -3,11 +3,17 @@
     angular.module('zaptv').controller('ChannelsCtrl', ChannelsCtrl);
 
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
-        State, ReverseGeolocation, GeoInfo, Channel, Socket) {
+        $ionicPopover, $ionicHistory, Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket) {
         $ionicPlatform.ready(function() {
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
+        });
+
+        $ionicPopover.fromTemplateUrl('channels_popover', {
+            scope: $scope
+        }).then(function(popover) {
+            $scope.popover = popover;
         });
 
         Socket.connect();
@@ -49,6 +55,20 @@
                 // TODO Handle
             });
         }
+
+        $scope.logout = function() {
+            Auth.clear();
+            $ionicHistory.nextViewOptions({
+                disableBack: true,
+                historyRoot: true
+            });
+            $scope.popover.hide();
+            $state.go('login');
+        };
+
+        $scope.openPopover = function($event) {
+            $scope.popover.show($event);
+        };
 
         $scope.joinChannel = function(channel) {
             Socket.joinChannel(channel.id);
