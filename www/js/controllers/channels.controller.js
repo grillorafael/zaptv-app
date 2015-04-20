@@ -61,11 +61,6 @@
                 $scope.oddChannels = channels.filter(function(c, i) {
                     return i % 2 !== 0;
                 });
-
-                console.log($scope.evenChannels);
-                console.log($scope.oddChannels);
-
-                $scope.channels = channels;
             }, function() {
                 // TODO Handle
             }).finally(function() {
