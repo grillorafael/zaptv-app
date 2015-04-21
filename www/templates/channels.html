@@ -11,7 +11,8 @@
             <input type="text" placeholder="Buscar canais" ng-model="filter.name">
         </label>
     </div>
-    <ion-content class="has-subheader">
+    <ion-content class="has-header has-subheader">
+        <ion-refresher pulling-text="Carregando programação..." on-refresh="refresh()"></ion-refresher>
         <div class="padding" id="channels-list">
             <div class="row">
                 <div class="col col-50">

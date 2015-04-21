@@ -64,6 +64,7 @@
             }, function() {
                 // TODO Handle
             }).finally(function() {
+                $scope.$broadcast('scroll.refreshComplete');
                 $scope.isLoading = false;
             });
         }
