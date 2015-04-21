@@ -7502,12 +7502,10 @@ label.success i {
 
 .login-view {
   background: #ede1b5;
-  background: url('../img/bg-login.jpg');
+  background: url("../img/bg-login.jpg");
   background-size: cover; }
   .login-view .padding {
-    padding: 25px;
-    padding-top: 10px;
-    padding-bottom: 10px; }
+    padding: 10px 25px; }
   .login-view h1 {
     margin-bottom: 0; }
   .login-view .list-inset {
@@ -7599,12 +7597,13 @@ label.success i {
     margin: 0;
     float: left;
     margin-left: 5px; }
+  .chat-view .chat-message {
+    margin-bottom: 10px; }
+    .chat-view .chat-message:last-child {
+      margin-bottom: 0; }
   .chat-view .chat-bubble {
     margin-left: 13%;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 0.1px;
-    padding-top: 5px;
+    padding: 5px 10px 0.1px;
     -webkit-transform: translate3d(0px, 0px, 0px);
     background: white;
     border-radius: 5px; }
@@ -7613,7 +7612,7 @@ label.success i {
       position: absolute;
       border-style: solid;
       border-width: 8px 10px 8px 0;
-      border-color: transparent #FFFFFF;
+      border-color: transparent #fff;
       display: block;
       width: 0;
       z-index: 1;

@@ -28,7 +28,6 @@
         });
 
         $scope.openLink = function(url) {
-            console.log(url);
             $cordovaInAppBrowser.open(url, '_blank', {
                     location: 'yes',
                     clearcache: 'yes',

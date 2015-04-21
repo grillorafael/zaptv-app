@@ -2,9 +2,9 @@
     <ion-nav-title>
         {{schedule.name || "Carregando.."}}
     </ion-nav-title>
-    <ion-content class="has-header has-footer">
+    <ion-content class="has-header has-footer padding">
         <ion-list>
-            <div class="item-text-wrap" ng-repeat="message in messages" on-hold="messageOptions(message)">
+            <div class="item-text-wrap chat-message" ng-repeat="message in messages" on-hold="messageOptions(message)">
                 <img src="img/globo.png" alt="" width="25">
                 <div class="chat-bubble">
                     <h2 class="c-username">{{message.user.name}}
