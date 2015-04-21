@@ -3,7 +3,7 @@
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
     function ChannelCtrl($scope, $stateParams, $ionicScrollDelegate, $ionicActionSheet,
-        $cordovaInAppBrowser, State, Socket, Channel, Auth) {
+        $cordovaInAppBrowser, $timeout, State, Socket, Channel, Auth) {
         var token = Auth.getToken();
         $scope.currentMessage = '';
         $scope.messages = [];
@@ -24,7 +24,9 @@
 
         Socket.onMessage(function(msg) {
             $scope.messages.push(msg);
-            $ionicScrollDelegate.scrollBottom(true);
+            $timeout(function() {
+                $ionicScrollDelegate.scrollBottom(true);
+            });
         });
 
         $scope.openLink = function(url) {

@@ -9,7 +9,9 @@
                         match = "http://" + match;
                     }
 
-                    return "<a ng-click='openLink(\"" + match + "\")' href>" + match + "</a>";
+                    var displayText = match.substring(0, match.length / 1.3) + '...';
+
+                    return "<a ng-click='openLink(\"" + match + "\")' href>" + displayText + "</a>";
                 });
                 return "<p>" + text + "</p>";
             };
