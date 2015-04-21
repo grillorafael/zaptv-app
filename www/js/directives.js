@@ -2,7 +2,19 @@
     'use strict';
     angular.module('zaptv.directives', [])
         .directive('animationHandle', animationHandle)
-        .directive('compile', compile);
+        .directive('compile', compile)
+        .directive('focus', focus);
+
+    function focus($timeout) {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                $timeout(function() {
+                    element[0].focus();
+                }, 200);
+            }
+        };
+    }
 
     function animationHandle() {
         return {
