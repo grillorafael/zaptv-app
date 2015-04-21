@@ -2,6 +2,9 @@
     <ion-nav-title>
         {{schedule.name || "Carregando.."}}
     </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear ion-information-circled" ng-click="openPopover($event)"></button>
+    </ion-nav-buttons>
     <ion-content class="has-header has-footer padding">
         <ion-list>
             <div class="item-text-wrap chat-message" ng-repeat="message in messages">
@@ -29,3 +32,27 @@
         </button>
     </ion-footer-bar>
 </ion-view>
+
+<script id="channel_popover" type="text/ng-template">
+    <ion-popover-view>
+        <ion-header-bar>
+            <h1 class="title">Informações</h1>
+            <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closePopover()'></button>
+        </ion-header-bar>
+        <ion-content>
+            <ion-list>
+                <ion-item class="text-center">
+                    Faltam {{minutesRemain}} minutos
+                </ion-item>
+                <ion-item class="item-divider">
+                    A seguir
+                </ion-item>
+                <ion-item class="item item-thumbnail-left">
+                    <img ng-src="{{nextSchedule.image_url}}">
+                    <h2>{{nextSchedule.name}}</h2>
+                    <p>{{nextSchedule.description}}</p>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-popover-view>
+</script>

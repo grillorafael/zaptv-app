@@ -3,13 +3,25 @@
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
     function ChannelCtrl($scope, $stateParams, $ionicScrollDelegate, $ionicActionSheet,
-        $cordovaInAppBrowser, $timeout, $ionicPopup, moment, State, Socket, Channel, Auth) {
+        $cordovaInAppBrowser, $timeout, $ionicPopup, $interval, $ionicPopover, moment,
+        State, Socket, Channel, Auth) {
+
+        $ionicPopover.fromTemplateUrl('channel_popover', {
+            scope: $scope
+        }).then(function(popover) {
+            $scope.popover = popover;
+        });
 
         $scope.currentScore = 0;
+        $scope.minutesRemain = null;
 
         $scope.$on('$ionicView.leave', function() {
             if ($scope.timeout) {
                 $timeout.cancel($scope.timeout);
+            }
+
+            if($scope.interval) {
+                $interval.cancel($scope.interval);
             }
         });
 
@@ -31,8 +43,12 @@
                 $scope.nextSchedule = nextSchedule;
                 var now = moment().toDate();
                 var nextScheduleStart = moment(nextSchedule.start_time).toDate();
-
                 var diff = nextScheduleStart.getTime() - now.getTime();
+
+                $scope.minutesRemain = Math.ceil((diff / (1000 * 60)));
+                $scope.interval = $interval(function() {
+                    $scope.minutesRemain -=1;
+                }, 1000 * 60);
                 $scope.timeout = $timeout(changeSchedule, diff);
             });
         }
@@ -102,6 +118,14 @@
 
         $scope.setScore =  function(val) {
             $scope.currentScore = val;
+        };
+
+        $scope.openPopover = function($event) {
+            $scope.popover.show($event);
+        };
+
+        $scope.closePopover = function() {
+            $scope.popover.hide();
         };
     }
 })();
