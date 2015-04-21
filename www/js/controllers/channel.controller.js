@@ -32,7 +32,8 @@
             $cordovaInAppBrowser.open(url, '_blank', {
                     location: 'yes',
                     clearcache: 'yes',
-                    toolbar: 'yes'
+                    toolbar: 'yes',
+                    closebuttoncaption: 'Fechar'
                 })
                 .then(function(event) {
                     // success
