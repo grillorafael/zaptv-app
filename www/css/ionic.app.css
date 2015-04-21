@@ -7407,6 +7407,11 @@ a.button {
   -webkit-animation: rotate-360 1s infinite;
   animation: rotate-360 1s infinite; }
 
+label.error i {
+  color: #ef473a; }
+label.success i {
+  color: #4fc6b3; }
+
 .white-spinner {
   stroke: white;
   fill: white; }

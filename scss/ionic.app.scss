@@ -20,6 +20,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "chat";
 @import "login";
 
+label {
+    &.error i {
+        color: $assertive;
+    }
+    &.success i {
+        color: $royal;
+    }
+}
+
 .white-spinner {
     stroke: white;
     fill: white;

@@ -5,22 +5,34 @@
         </h1>
 
         <div class="padding form-login">
-            <form ng-submit="register(user)" class="list list-inset">
-                <label class="item item-input bg-transparent">
+            <form name="registerForm" ng-init="setForm(this)" ng-submit="register(user)" class="list list-inset" novalidate>
+                <label class="item item-input bg-transparent" ng-class="{
+                    'error': registerForm.name.$dirty && !registerForm.name.$valid,
+                    'success': registerForm.name.$dirty && registerForm.name.$valid
+                }">
                     <i class="icon ion-ios-person-outline placeholder-icon"></i>
-                    <input type="text" placeholder="Nome" ng-model="user.name">
+                    <input type="text" placeholder="Nome" name="name" ng-model="user.name" required>
                 </label>
-                <label class="item item-input bg-transparent">
+                <label class="item item-input bg-transparent"ng-class="{
+                    'error': registerForm.email.$dirty && !registerForm.email.$valid,
+                    'success': registerForm.email.$dirty && registerForm.email.$valid
+                }">
                     <i class="icon ion-ios-person-outline placeholder-icon"></i>
-                    <input type="email" placeholder="Email" ng-model="user.email">
+                    <input type="email" placeholder="Email" name="email" ng-model="user.email" required>
                 </label>
-                <label class="item item-input bradius-bottom bg-transparent">
+                <label class="item item-input bradius-bottom bg-transparent" ng-class="{
+                    'error': registerForm.password.$dirty && !registerForm.password.$valid,
+                    'success': registerForm.password.$dirty && registerForm.password.$valid
+                }">
                     <i class="icon ion-ios-locked-outline placeholder-icon"></i>
-                    <input type="password" placeholder="Senha" ng-model="user.password">
+                    <input type="password" placeholder="Senha" name="password" ng-model="user.password" required>
                 </label>
-                <label class="item item-input bradius-bottom bg-transparent">
+                <label class="item item-input bradius-bottom bg-transparent" ng-class="{
+                    'error': registerForm.password.$dirty && registerForm.password.$valid && (user.password !== user.confirm_password),
+                    'success': registerForm.password.$dirty && registerForm.password.$valid && (user.password === user.confirm_password)
+                }">
                     <i class="icon ion-ios-locked-outline placeholder-icon"></i>
-                    <input type="password" placeholder="Confirmar senha" ng-model="user.confirm_password">
+                    <input type="password" placeholder="Confirmar senha" name="confirm_password" ng-model="user.confirm_password" required>
                 </label>
                 <button class="button button-block button-balanced button-login">
                     Registrar
