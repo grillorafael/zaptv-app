@@ -88,6 +88,10 @@
             $scope.popover.show($event);
         };
 
+        $scope.closePopover = function() {
+            $scope.popover.hide();
+        };
+
         $scope.joinChannel = function(channel) {
             Socket.joinChannel(channel.id);
             $state.go('channel', {
