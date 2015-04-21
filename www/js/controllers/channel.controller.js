@@ -3,7 +3,16 @@
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
     function ChannelCtrl($scope, $stateParams, $ionicScrollDelegate, $ionicActionSheet,
-        $cordovaInAppBrowser, $timeout, State, Socket, Channel, Auth) {
+        $cordovaInAppBrowser, $timeout, $ionicPopup, moment, State, Socket, Channel, Auth) {
+
+        $scope.currentScore = 0;
+
+        $scope.$on('$ionicView.leave', function() {
+            if ($scope.timeout) {
+                $timeout.cancel($scope.timeout);
+            }
+        });
+
         var token = Auth.getToken();
         $scope.currentMessage = '';
         $scope.messages = [];
@@ -13,11 +22,23 @@
 
         State.set('last_channel', $stateParams.id);
 
-        Channel.getInfo($stateParams.id).then(function(schedule) {
-            $scope.schedule = schedule;
-        });
+        function updateChat() {
+            Channel.getInfo($stateParams.id, State.get('geo_state')).then(function(schedule) {
+                $scope.schedule = schedule;
+            });
 
-        Channel.lastMessages($stateParams.id, State.get('geo_state')).then(function(messages) {
+            Channel.getNextSchedule($stateParams.id, State.get('geo_state')).then(function(nextSchedule) {
+                $scope.nextSchedule = nextSchedule;
+                var now = moment().toDate();
+                var nextScheduleStart = moment(nextSchedule.start_time).toDate();
+
+                var diff = nextScheduleStart.getTime() - now.getTime();
+                $scope.timeout = $timeout(changeSchedule, diff);
+            });
+        }
+        updateChat();
+
+        Channel.lastMessages($stateParams.id).then(function(messages) {
             $scope.messages = messages.reverse();
             $ionicScrollDelegate.scrollBottom(true);
         });
@@ -28,6 +49,30 @@
                 $ionicScrollDelegate.scrollBottom(true);
             });
         });
+
+        function changeSchedule() {
+            $scope.currentScore = 0;
+            $ionicPopup.show({
+                template: '<score ng-model="currentScore"></score>',
+                title: 'Dê sua nota para o programa',
+                subTitle: $scope.schedule.name,
+                scope: $scope,
+                buttons: [{
+                    text: '<b>Fechar</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        if($scope.currentScore > 0) {
+                            Socket.emitScore({
+                                token: token,
+                                score: $scope.currentScore,
+                                schedule_id: $scope.schedule.id
+                            });
+                        }
+                        updateChat();
+                    }
+                }]
+            }).then(function() {});
+        }
 
         $scope.openLink = function(url) {
             $cordovaInAppBrowser.open(url, '_blank', {
@@ -55,24 +100,8 @@
             $scope.currentMessage = '';
         };
 
-        $scope.messageOptions = function(message) {
-            console.log(message);
-            $ionicActionSheet.show({
-                buttons: [{
-                    text: '<b>Share</b> This'
-                }, {
-                    text: 'Move'
-                }],
-                destructiveText: 'Delete',
-                titleText: 'Modify your album',
-                cancelText: 'Cancel',
-                cancel: function() {
-                    // add cancel code..
-                },
-                buttonClicked: function(index) {
-                    return true;
-                }
-            });
+        $scope.setScore =  function(val) {
+            $scope.currentScore = val;
         };
     }
 })();

@@ -116,6 +116,17 @@
             return deferred.promise;
         }
 
+        function getNextSchedule(id, geoState) {
+            var deferred = $q.defer();
+
+            var stateInfo = geoState === undefined ? "" : geoState;
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/next/' + stateInfo))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         function lastMessages(id) {
             var deferred = $q.defer();
 
@@ -130,7 +141,8 @@
         return {
             list: list,
             getInfo: getInfo,
-            lastMessages: lastMessages
+            lastMessages: lastMessages,
+            getNextSchedule: getNextSchedule
         };
     }
 
@@ -160,6 +172,10 @@
             socket.emit('device sent message', info);
         }
 
+        function emitScore(info) {
+            socket.emit('give schedule score', info);
+        }
+
         function onMessage(fc) {
             socket.on('message to device', fc);
         }
@@ -169,7 +185,8 @@
             joinChannel: joinChannel,
             leaveChannel: leaveChannel,
             onMessage: onMessage,
-            sendMessage: sendMessage
+            sendMessage: sendMessage,
+            emitScore: emitScore
         };
     }
 })();

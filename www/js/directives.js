@@ -3,7 +3,15 @@
     angular.module('zaptv.directives', [])
         .directive('animationHandle', animationHandle)
         .directive('compile', compile)
-        .directive('focus', focus);
+        .directive('focus', focus)
+        .directive('score', score);
+
+    function score() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/directives/score.html'
+        };
+    }
 
     function focus($timeout) {
         return {

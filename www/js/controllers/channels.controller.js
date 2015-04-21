@@ -26,6 +26,8 @@
             if (lastChannel !== undefined) {
                 Socket.leaveChannel(lastChannel);
             }
+
+            listChannels(geoState);
         });
 
         $cordovaGeolocation
