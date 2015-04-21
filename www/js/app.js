@@ -32,6 +32,15 @@
                         }
                     }
                 })
+                .state('register', {
+                    url: '/register',
+                    views: {
+                        'mainContent': {
+                            templateUrl: 'templates/register.html',
+                            controller: 'RegisterCtrl'
+                        }
+                    }
+                })
                 .state('channels', {
                     url: '/channels',
                     views: {

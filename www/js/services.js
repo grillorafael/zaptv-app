@@ -66,8 +66,14 @@
     }
 
     function User($http, $q, Config) {
-        function register() {
+        function register(info) {
+            var deferred = $q.defer();
 
+            $http.post(Config.ENDPOINT + '/register', info)
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
         }
 
         function login(info) {
