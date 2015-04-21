@@ -5,7 +5,7 @@
         </h1>
 
         <div class="padding form-login">
-            <form name="registerForm" ng-init="setForm(this)" ng-submit="register(user)" class="list list-inset" novalidate>
+            <form name="registerForm" ng-init="setForm(this)" ng-submit="register(user)" class="list list-inset med-quick-anim" novalidate animation-handle="register-form">
                 <label class="item item-input bg-transparent" ng-class="{
                     'error': registerForm.name.$dirty && !registerForm.name.$valid,
                     'success': registerForm.name.$dirty && registerForm.name.$valid

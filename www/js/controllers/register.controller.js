@@ -2,7 +2,7 @@
     'use strict';
     angular.module('zaptv').controller('RegisterCtrl', RegisterCtrl);
 
-    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicHistory, User, Auth) {
+    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicHistory, $animationTrigger, User, Auth) {
         $scope.setForm = function(f) {
             $scope.form = f;
         };
@@ -19,6 +19,9 @@
                 }, function() {
                     // TODO Handle error
                 });
+            }
+            else {
+                $animationTrigger.trigger('register-form', 'bounce-finite', $animationTrigger.FROM_START);
             }
         };
     }

@@ -16,7 +16,7 @@
         };
     }
 
-    function animationHandle() {
+    function animationHandle($animationTrigger, $timeout) {
         return {
             restrict: 'A',
             link: function(scope, element, attrs) {
@@ -25,7 +25,13 @@
                         element.addClass(animation);
                     } else if (mode === $animationTrigger.STOP) {
                         element.removeClass(animation);
-                    } else {
+                    } else if(mode === $animationTrigger.FROM_START) {
+                        element.removeClass(animation);
+                        $timeout(function() {
+                            element.addClass(animation);
+                        }, 100);
+                    }
+                    else {
                         element.toggleClass(animation);
                     }
                 });

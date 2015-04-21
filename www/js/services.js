@@ -42,6 +42,7 @@
         return {
             START: 1,
             STOP: 0,
+            FROM_START: -1,
             trigger: function(handler, animation, mode) {
                 $timeout(function() {
                     $rootScope.$broadcast('animation:trigger:' + handler, handler, animation, mode);
