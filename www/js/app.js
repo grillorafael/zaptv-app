@@ -5,6 +5,7 @@
         'zaptv.services',
         'zaptv.directives',
         'zaptv.values',
+        'zaptv.filters',
         'angularMoment',
         'ngCordova'
         ])

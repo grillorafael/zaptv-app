@@ -191,8 +191,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         }
     }
 
-    #channels-box {
-        .column:nth-child(2) {
+    #channels-list {
+        .col:nth-child(2) {
             .a-card {
                 margin-right: 0;
             }
