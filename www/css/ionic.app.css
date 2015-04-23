@@ -7540,6 +7540,10 @@ label.success i {
   background: #ede1b5; }
   .channels-view .title {
     color: white; }
+  .channels-view .rate {
+    font-size: 1.3em; }
+  .channels-view .rate-icon {
+    color: gold; }
   .channels-view .list-inset {
     margin: 0; }
   .channels-view .button-clear.button-clear {
@@ -7553,10 +7557,20 @@ label.success i {
     border: 1px solid rgba(0, 0, 0, 0.15);
     margin: 0 10px 10px 0;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }
-    .channels-view .a-card img {
-      width: 100%;
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px; }
+    .channels-view .a-card .img-box {
+      position: relative; }
+      .channels-view .a-card .img-box img {
+        width: 100%;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px; }
+      .channels-view .a-card .img-box p {
+        position: absolute;
+        bottom: 0;
+        background: rgba(79, 198, 179, 0.5);
+        width: 100%;
+        margin-bottom: 0;
+        padding-bottom: 10px;
+        text-align: center; }
     .channels-view .a-card .card-info {
       background: white;
       padding: 0.5em 1em;

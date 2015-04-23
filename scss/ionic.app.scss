@@ -121,6 +121,12 @@ label {
     .title {
         color: white;
     }
+    .rate {
+        font-size: 1.3em;
+    }
+    .rate-icon {
+        color: gold;
+    }
     .list-inset {
         margin: 0;
     }
@@ -140,10 +146,22 @@ label {
         border: 1px solid rgba(0, 0, 0, .15);
         margin: 0 10px 10px 0;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-        img {
-            width: 100%;
-            border-top-right-radius: 5px;
-            border-top-left-radius: 5px;
+        .img-box  {
+            position: relative;
+            img {
+                width: 100%;
+                border-top-right-radius: 5px;
+                border-top-left-radius: 5px;
+            }
+            p {
+                position: absolute;
+                bottom: 0;
+                background: rgba(79,198,179,0.5);
+                width: 100%;
+                margin-bottom: 0;
+                padding-bottom: 10px;
+                text-align: center;
+            }
         }
         .card-info {
             background: white;
@@ -171,6 +189,7 @@ label {
                 margin-bottom: 0;
                 line-height: 1.7;
             }
+
             img {
                 position: absolute;
                 top: 7px;
