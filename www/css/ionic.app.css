@@ -7672,6 +7672,9 @@ label.success i {
       right: -8px;
       top: 6px; }
 
+.bar-salmon .button-clear.button-clear.ion-videocamera {
+  font-size: 27px; }
+
 .channel-popover.popover {
   height: 370px; }
   .channel-popover.popover p {
@@ -7686,7 +7689,6 @@ label.success i {
   .channel-popover.popover .item p {
     white-space: initial; }
   .channel-popover.popover i {
-    color: black;
     font-weight: bold; }
 
 .score i {

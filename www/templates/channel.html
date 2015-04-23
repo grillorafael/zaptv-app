@@ -3,7 +3,7 @@
         {{schedule.name || "Carregando.."}}
     </ion-nav-title>
     <ion-nav-buttons side="right">
-        <button class="button button-clear ion-information-circled" ng-click="openPopover($event)"></button>
+        <button class="button button-clear ion-videocamera" ng-click="openPopover($event)"></button>
     </ion-nav-buttons>
     <ion-content class="has-header has-footer padding">
         <ion-list>
@@ -42,26 +42,32 @@
 <script id="channel_popover" type="text/ng-template">
     <ion-popover-view class="channel-popover">
         <ion-header-bar>
-            <h2 class="title">Informações</h2>
+            <h2 class="title">Globo</h2>
             <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closePopover()'></button>
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                
                 <ion-item>
                     <p> Avalie o programa: </p>
                     <score ng-model="currentScore"></score> 
                 </ion-item>
                 <ion-item class="item-divider">
                     <p>
-                     <i class="icon ion-ios-time-outline"></i> Em {{minutesRemain}} minutos começa:
+                        Próxima programa:
                     </p>
                 </ion-item>
-                <ion-item class="item ">
+                <ion-item class="item-divider">
+                    <p>
+                        <i class="icon ion-ios-time-outline"></i> Em {{minutesRemain}} minutos começa:
+                    </p>
+                </ion-item>
+                <ion-item class="item">
                     <img src="img/placeholder.jpg" data-ng-src="{{nextSchedule.image_url}}" width="200">
                     <h2>{{nextSchedule.name}}</h2>
                     <p>{{nextSchedule.description}}</p>
                 </ion-item>
+                
+                
 
             </ion-list>
         </ion-content>

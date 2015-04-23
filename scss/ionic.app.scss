@@ -293,7 +293,9 @@ label {
     }
     
 }
-
+.bar-salmon .button-clear.button-clear.ion-videocamera {
+    font-size: 27px;
+}
 
 .channel-popover.popover {
         height: 370px;
@@ -314,7 +316,6 @@ label {
             white-space: initial;
         }
         i {
-            color: black;
             font-weight: bold;
         }
     }
