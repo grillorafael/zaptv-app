@@ -141,11 +141,22 @@
             return deferred.promise;
         }
 
+        function getMyLastScore(channelId, scheduleId) {
+            var deferred = $q.defer();
+
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + channelId + '/schedule/' + scheduleId + '/me/score'))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             list: list,
             getInfo: getInfo,
             lastMessages: lastMessages,
-            getNextSchedule: getNextSchedule
+            getNextSchedule: getNextSchedule,
+            getMyLastScore: getMyLastScore
         };
     }
 
