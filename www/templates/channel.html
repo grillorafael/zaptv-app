@@ -5,7 +5,7 @@
     <ion-nav-buttons side="right">
         <button class="button button-clear ion-videocamera" ng-click="openPopover($event)"></button>
     </ion-nav-buttons>
-    <ion-content class="has-header has-footer padding">
+    <ion-content class="has-header has-footer padding" delegate-handle="chat-scroll">
         <ion-list>
             <div class="item-text-wrap" ng-class="{
                 'chat-message': message.user.id != userId,

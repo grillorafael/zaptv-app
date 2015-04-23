@@ -56,6 +56,10 @@
         function listChannels(gs) {
             $scope.isLoading = true;
             Channel.list(gs).then(function(channels) {
+                channels.sort(function(c1, c2) {
+                    return c2.current_schedule.current_score - c1.current_schedule.current_score;
+                });
+
                 $scope.evenChannels = channels.filter(function(c, i) {
                     return i % 2 === 0;
                 });

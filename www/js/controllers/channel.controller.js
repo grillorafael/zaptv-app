@@ -60,13 +60,13 @@
 
         Channel.lastMessages($scope.channel.id).then(function(messages) {
             $scope.messages = messages.reverse();
-            $ionicScrollDelegate.scrollBottom(true);
+            $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
         });
 
         Socket.onMessage(function(msg) {
             $scope.messages.push(msg);
             $timeout(function() {
-                $ionicScrollDelegate.scrollBottom(true);
+                $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
             });
         });
 
