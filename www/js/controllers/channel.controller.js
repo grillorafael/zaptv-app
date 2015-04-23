@@ -3,7 +3,7 @@
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaInAppBrowser,
-        $timeout, $ionicPopup, $interval, $ionicPopover, moment, State, Socket, Channel, Auth) {
+        $timeout, $interval, $ionicPopover, moment, State, Socket, Channel, Auth) {
 
         $ionicPopover.fromTemplateUrl('channel_popover', {
             scope: $scope
@@ -53,7 +53,7 @@
                 $scope.interval = $interval(function() {
                     $scope.minutesRemain -=1;
                 }, 1000 * 60);
-                $scope.timeout = $timeout(changeSchedule, diff);
+                $scope.timeout = $timeout(updateChat, diff);
             });
         }
         updateChat();
@@ -69,23 +69,6 @@
                 $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
             });
         });
-
-        function changeSchedule() {
-            $scope.currentScore = 0;
-            $ionicPopup.show({
-                template: '<score ng-model="currentScore"></score>',
-                title: 'Dê sua nota para o programa',
-                subTitle: $scope.schedule.name,
-                scope: $scope,
-                buttons: [{
-                    text: '<b>Fechar</b>',
-                    type: 'button-positive',
-                    onTap: function(e) {
-                        updateChat();
-                    }
-                }]
-            }).then(function() {});
-        }
 
         $scope.openLink = function(url) {
             $cordovaInAppBrowser.open(url, '_blank', {
