@@ -5,7 +5,6 @@
     function ChannelCtrl($scope, $stateParams, $ionicScrollDelegate, $ionicActionSheet,
         $cordovaInAppBrowser, $timeout, $ionicPopup, $interval, $ionicPopover, moment,
         State, Socket, Channel, Auth) {
-
         $ionicPopover.fromTemplateUrl('channel_popover', {
             scope: $scope
         }).then(function(popover) {
@@ -14,7 +13,7 @@
 
         $scope.currentScore = 0;
         $scope.minutesRemain = null;
-
+        $scope.userId = Auth.getUserId();
         $scope.$on('$ionicView.leave', function() {
             if ($scope.timeout) {
                 $timeout.cancel($scope.timeout);

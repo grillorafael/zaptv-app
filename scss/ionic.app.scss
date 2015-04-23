@@ -191,12 +191,8 @@ label {
     }
 }
 .chat-view {
-    background: #ede1b5;
-    img {
-        margin: 0;
-        float: left;
-        margin-left: 5px;
-    }
+    background: #e7e4da;
+    
     .chat-message {
         margin-bottom: 10px;
         &:last-child {
@@ -206,9 +202,14 @@ label {
             color: $positive;
             text-decoration: none;
         }
+        img {
+            margin: 0;
+            float: left;
+            border-radius: 5%;
+        }
     }
     .chat-bubble {
-        margin-left: 13%;
+        margin-left: 20%;
         padding: 5px 10px 0.1px;
         -webkit-transform: translate3d(0px, 0px, 0px);
         background: white;
@@ -230,15 +231,78 @@ label {
         font-size: 0.8em;
         float: right;
         color: #d8d8d8;
+        font-weight: 300;
     }
     .c-username {
         font-size: 1em;
+        color: #f75f51;
     }
+    .chat-message-self {
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        a {
+            color: $positive;
+            text-decoration: none;
+        }
+        img {
+            margin: 0;
+            float: right;
+            border-radius: 5%;
+        }
+
+    }
+    .chat-bubble-self {
+        margin-right: 20%;
+        padding: 5px 10px 0.1px;
+        -webkit-transform: translate3d(0px, 0px, 0px);
+        background: white;
+        border-radius: 5px;
+        &:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 8px 0 8px 10px;
+            border-color: transparent white;
+            display: block;
+            width: 0;
+            z-index: 1;
+            right: -8px;
+            top: 6px;
+        }
+    }
+    
 }
 
+
+.channel-popover.popover {
+        height: 370px;
+        p {
+            font-size: 0.8em;
+            margin-bottom: 2%;
+        }
+        h2 {
+            font-size: 1em;
+        }
+        img {
+            width: 100%;
+        }
+        .item {
+            padding: 10px;
+        }
+        .item p {
+            white-space: initial;
+        }
+        i {
+            color: black;
+            font-weight: bold;
+        }
+    }
 
 .score {
     i {
         font-size: 2em;
+        color: gold;
     }
 }

@@ -7,9 +7,15 @@
     </ion-nav-buttons>
     <ion-content class="has-header has-footer padding">
         <ion-list>
-            <div class="item-text-wrap chat-message" ng-repeat="message in messages">
-                <img src="img/globo.png" alt="" width="25">
-                <div class="chat-bubble">
+            <div class="item-text-wrap" ng-class="{
+                'chat-message': message.user.id != userId,
+                'chat-message-self': message.user.id == userId
+            }" ng-repeat="message in messages">
+                <img src="img/fernando.jpg" alt="" width="45">
+                <div ng-class="{
+                    'chat-bubble': message.user.id != userId,
+                    'chat-bubble-self': message.user.id == userId
+                }" >
                     <h2 class="c-username">{{message.user.name}}
                         <span class="timestamp" am-time-ago="message.created_at"></span>
                     </h2>
@@ -34,24 +40,29 @@
 </ion-view>
 
 <script id="channel_popover" type="text/ng-template">
-    <ion-popover-view>
+    <ion-popover-view class="channel-popover">
         <ion-header-bar>
-            <h1 class="title">Informações</h1>
+            <h2 class="title">Informações</h2>
             <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closePopover()'></button>
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item class="text-center">
-                    Faltam {{minutesRemain}} minutos
+                
+                <ion-item>
+                    <p> Avalie o programa: </p>
+                    <score ng-model="currentScore"></score> 
                 </ion-item>
                 <ion-item class="item-divider">
-                    A seguir
+                    <p>
+                     <i class="icon ion-ios-time-outline"></i> Em {{minutesRemain}} minutos começa:
+                    </p>
                 </ion-item>
-                <ion-item class="item item-thumbnail-left">
-                    <img src="img/placeholder.jpg" data-ng-src="{{nextSchedule.image_url}}">
+                <ion-item class="item ">
+                    <img src="img/placeholder.jpg" data-ng-src="{{nextSchedule.image_url}}" width="200">
                     <h2>{{nextSchedule.name}}</h2>
                     <p>{{nextSchedule.description}}</p>
                 </ion-item>
+
             </ion-list>
         </ion-content>
     </ion-popover-view>

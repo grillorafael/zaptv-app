@@ -6,6 +6,7 @@
             response: function(response) {
                 if (response.data.token) {
                     localStorage.setItem('auth_token', response.data.token);
+                    localStorage.setItem('user_id', response.data.user.id);
                 }
 
                 return response;

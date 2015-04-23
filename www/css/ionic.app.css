@@ -7592,11 +7592,7 @@ label.success i {
     margin-right: 0; }
 
 .chat-view {
-  background: #ede1b5; }
-  .chat-view img {
-    margin: 0;
-    float: left;
-    margin-left: 5px; }
+  background: #e7e4da; }
   .chat-view .chat-message {
     margin-bottom: 10px; }
     .chat-view .chat-message:last-child {
@@ -7604,8 +7600,12 @@ label.success i {
     .chat-view .chat-message a {
       color: #387ef5;
       text-decoration: none; }
+    .chat-view .chat-message img {
+      margin: 0;
+      float: left;
+      border-radius: 5%; }
   .chat-view .chat-bubble {
-    margin-left: 13%;
+    margin-left: 20%;
     padding: 5px 10px 0.1px;
     -webkit-transform: translate3d(0px, 0px, 0px);
     background: white;
@@ -7624,9 +7624,57 @@ label.success i {
   .chat-view .timestamp {
     font-size: 0.8em;
     float: right;
-    color: #d8d8d8; }
+    color: #d8d8d8;
+    font-weight: 300; }
   .chat-view .c-username {
+    font-size: 1em;
+    color: #f75f51; }
+  .chat-view .chat-message-self {
+    margin-bottom: 10px; }
+    .chat-view .chat-message-self:last-child {
+      margin-bottom: 0; }
+    .chat-view .chat-message-self a {
+      color: #387ef5;
+      text-decoration: none; }
+    .chat-view .chat-message-self img {
+      margin: 0;
+      float: right;
+      border-radius: 5%; }
+  .chat-view .chat-bubble-self {
+    margin-right: 20%;
+    padding: 5px 10px 0.1px;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    background: white;
+    border-radius: 5px; }
+    .chat-view .chat-bubble-self:after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 8px 0 8px 10px;
+      border-color: transparent white;
+      display: block;
+      width: 0;
+      z-index: 1;
+      right: -8px;
+      top: 6px; }
+
+.channel-popover.popover {
+  height: 370px; }
+  .channel-popover.popover p {
+    font-size: 0.8em;
+    margin-bottom: 2%; }
+  .channel-popover.popover h2 {
     font-size: 1em; }
+  .channel-popover.popover img {
+    width: 100%; }
+  .channel-popover.popover .item {
+    padding: 10px; }
+  .channel-popover.popover .item p {
+    white-space: initial; }
+  .channel-popover.popover i {
+    color: black;
+    font-weight: bold; }
 
 .score i {
-  font-size: 2em; }
+  font-size: 2em;
+  color: gold; }
