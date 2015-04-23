@@ -36,6 +36,9 @@
         function updateChat() {
             Channel.getInfo($stateParams.id, State.get('geo_state')).then(function(schedule) {
                 $scope.schedule = schedule;
+                Channel.getMyLastScore($stateParams.id, schedule.id).then(function(scoreResult) {
+                    $scope.currentScore = scoreResult.score;
+                });
             });
 
             Channel.getNextSchedule($stateParams.id, State.get('geo_state')).then(function(nextSchedule) {
@@ -76,13 +79,6 @@
                     text: '<b>Fechar</b>',
                     type: 'button-positive',
                     onTap: function(e) {
-                        if($scope.currentScore > 0) {
-                            Socket.emitScore({
-                                token: token,
-                                score: $scope.currentScore,
-                                schedule_id: $scope.schedule.id
-                            });
-                        }
                         updateChat();
                     }
                 }]
@@ -117,6 +113,13 @@
 
         $scope.setScore =  function(val) {
             $scope.currentScore = val;
+            if($scope.currentScore > 0) {
+                Socket.emitScore({
+                    token: token,
+                    score: $scope.currentScore,
+                    schedule_id: $scope.schedule.id
+                });
+            }
         };
 
         $scope.openPopover = function($event) {
