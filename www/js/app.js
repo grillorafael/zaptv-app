@@ -60,7 +60,7 @@
                     }
                 })
                 .state('channel', {
-                    url: '/channel/:id',
+                    url: '/channel',
                     views: {
                         'mainContent': {
                             templateUrl: 'templates/channel.html',

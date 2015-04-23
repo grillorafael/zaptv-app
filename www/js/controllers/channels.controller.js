@@ -24,7 +24,7 @@
         $scope.$on('$ionicView.enter', function() {
             var lastChannel = State.get('last_channel');
             if (lastChannel !== undefined) {
-                Socket.leaveChannel(lastChannel);
+                Socket.leaveChannel(lastChannel.id);
             }
 
             listChannels(geoState);
@@ -95,10 +95,9 @@
         };
 
         $scope.joinChannel = function(channel) {
+            State.set('last_channel', channel);
             Socket.joinChannel(channel.id);
-            $state.go('channel', {
-                id: channel.id
-            });
+            $state.go('channel');
         };
     }
 })();

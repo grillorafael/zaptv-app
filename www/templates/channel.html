@@ -42,14 +42,14 @@
 <script id="channel_popover" type="text/ng-template">
     <ion-popover-view class="channel-popover">
         <ion-header-bar>
-            <h2 class="title">Globo</h2>
+            <h2 class="title">{{channel.name}}</h2>
             <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closePopover()'></button>
         </ion-header-bar>
         <ion-content>
             <ion-list>
                 <ion-item>
                     <p> Avalie o programa: </p>
-                    <score ng-model="currentScore"></score> 
+                    <score ng-model="currentScore"></score>
                 </ion-item>
                 <ion-item class="item-divider">
                     <p>
@@ -66,9 +66,6 @@
                     <h2>{{nextSchedule.name}}</h2>
                     <p>{{nextSchedule.description}}</p>
                 </ion-item>
-                
-                
-
             </ion-list>
         </ion-content>
     </ion-popover-view>

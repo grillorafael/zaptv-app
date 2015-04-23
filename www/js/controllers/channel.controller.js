@@ -2,9 +2,9 @@
     'use strict';
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
-    function ChannelCtrl($scope, $stateParams, $ionicScrollDelegate, $ionicActionSheet,
-        $cordovaInAppBrowser, $timeout, $ionicPopup, $interval, $ionicPopover, moment,
-        State, Socket, Channel, Auth) {
+    function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaInAppBrowser,
+        $timeout, $ionicPopup, $interval, $ionicPopover, moment, State, Socket, Channel, Auth) {
+
         $ionicPopover.fromTemplateUrl('channel_popover', {
             scope: $scope
         }).then(function(popover) {
@@ -14,6 +14,8 @@
         $scope.currentScore = 0;
         $scope.minutesRemain = null;
         $scope.userId = Auth.getUserId();
+        $scope.channel = State.get('last_channel');
+
         $scope.$on('$ionicView.leave', function() {
             if ($scope.timeout) {
                 $timeout.cancel($scope.timeout);
@@ -29,19 +31,19 @@
         $scope.messages = [];
 
         Socket.connect();
-        Socket.joinChannel($stateParams.id);
+        Socket.joinChannel($scope.channel.id);
 
-        State.set('last_channel', $stateParams.id);
+        State.set('last_channel', $scope.channel.id);
 
         function updateChat() {
-            Channel.getInfo($stateParams.id, State.get('geo_state')).then(function(schedule) {
+            Channel.getInfo($scope.channel.id, State.get('geo_state')).then(function(schedule) {
                 $scope.schedule = schedule;
-                Channel.getMyLastScore($stateParams.id, schedule.id).then(function(scoreResult) {
+                Channel.getMyLastScore($scope.channel.id, schedule.id).then(function(scoreResult) {
                     $scope.currentScore = scoreResult.score;
                 });
             });
 
-            Channel.getNextSchedule($stateParams.id, State.get('geo_state')).then(function(nextSchedule) {
+            Channel.getNextSchedule($scope.channel.id, State.get('geo_state')).then(function(nextSchedule) {
                 $scope.nextSchedule = nextSchedule;
                 var now = moment().toDate();
                 var nextScheduleStart = moment(nextSchedule.start_time).toDate();
@@ -56,7 +58,7 @@
         }
         updateChat();
 
-        Channel.lastMessages($stateParams.id).then(function(messages) {
+        Channel.lastMessages($scope.channel.id).then(function(messages) {
             $scope.messages = messages.reverse();
             $ionicScrollDelegate.scrollBottom(true);
         });
@@ -104,7 +106,7 @@
             var info = {
                 message: currentMessage,
                 token: token,
-                channel_id: $stateParams.id
+                channel_id: $scope.channel.id
             };
 
             Socket.sendMessage(info);
