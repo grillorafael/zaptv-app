@@ -16,7 +16,7 @@
                     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
                 }
                 if (window.StatusBar) {
-                    StatusBar.style(1);
+                    StatusBar.styleLightContent();
                 }
             });
         })
