@@ -16,6 +16,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "animations";
 @import "chat";
 @import "login";
+
 label {
     &.error i {
         color: $assertive;
@@ -211,7 +212,7 @@ label {
 }
 .chat-view {
     background: #e7e4da;
-    
+
     .chat-message {
         margin-bottom: 10px;
         &:last-child {
@@ -291,9 +292,9 @@ label {
             top: 6px;
         }
     }
-    
+
 }
-.bar-salmon .button-clear.button-clear.ion-videocamera {
+.bar-salmon .button-clear.button-clear.ion-information-circled {
     font-size: 27px;
 }
 
