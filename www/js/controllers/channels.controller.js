@@ -5,7 +5,10 @@
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
         $ionicPopover, $ionicHistory, Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket) {
         var geoState = null;
+        
         $scope.isLoading = true;
+        $scope.evenChannels = [];
+        $scope.oddChannels = [];
 
         $ionicPlatform.ready(function() {
             if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -56,10 +59,6 @@
         function listChannels(gs) {
             $scope.isLoading = true;
             Channel.list(gs).then(function(channels) {
-                channels.sort(function(c1, c2) {
-                    return c2.current_schedule.current_score - c1.current_schedule.current_score;
-                });
-
                 $scope.evenChannels = channels.filter(function(c, i) {
                     return i % 2 === 0;
                 });
