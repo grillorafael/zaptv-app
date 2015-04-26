@@ -7507,7 +7507,8 @@ label.success i {
   .login-view .padding {
     padding: 10px 25px; }
   .login-view h1 {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    margin-top: 1em; }
   .login-view .list-inset {
     background-color: transparent; }
   .login-view label.item {
