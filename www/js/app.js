@@ -41,6 +41,15 @@
                         }
                     }
                 })
+                .state('profile', {
+                    url: '/profile',
+                    views: {
+                        'mainContent': {
+                            templateUrl: 'templates/profile.html',
+                            controller: 'ProfileCtrl'
+                        }
+                    }
+                })
                 .state('channels', {
                     url: '/channels',
                     views: {

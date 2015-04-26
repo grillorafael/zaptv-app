@@ -5,7 +5,7 @@
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
         $ionicPopover, $ionicHistory, Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket) {
         var geoState = null;
-        
+
         $scope.isLoading = true;
         $scope.evenChannels = [];
         $scope.oddChannels = [];
@@ -73,6 +73,11 @@
                 $scope.isLoading = false;
             });
         }
+
+        $scope.goToProfile = function() {
+            $scope.popover.hide();
+            $state.go('profile');
+        };
 
         $scope.refresh = function() {
             listChannels(geoState);

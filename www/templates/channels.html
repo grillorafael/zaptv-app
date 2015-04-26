@@ -1,4 +1,4 @@
-<ion-view hide-back-button="true" class="channels-view" view-title="Canais" enable-menu-with-back-views="false">
+<ion-view hide-back-button="true" class="channels-view" view-title="Agora na TV" enable-menu-with-back-views="false">
     <ion-nav-buttons side="right">
         <button class="button button-clear" ng-click="openPopover($event)" ng-cloak>
             <ion-spinner icon="dots" ng-if="isLoading" class="white-spinner"></ion-spinner>
@@ -35,7 +35,7 @@
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item class="item-icon-left">
+                <ion-item class="item-icon-left" ng-click="goToProfile()">
                     <i class="icon ion-person"></i> Meu Perfil
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="refresh()">
