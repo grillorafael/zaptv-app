@@ -2,7 +2,7 @@
     'use strict';
     angular.module('zaptv').controller('LoginCtrl', LoginCtrl);
 
-    function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, User, Auth) {
+    function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $animationTrigger, User, Auth) {
         if(Auth.getToken() !== null) {
             $state.go('channels');
         }
@@ -24,6 +24,7 @@
                 $state.go('channels');
             }, function() {
                 // TODO Handle error
+                $animationTrigger.trigger('login-form', 'bounce-finite', $animationTrigger.FROM_START);
             });
         };
     }

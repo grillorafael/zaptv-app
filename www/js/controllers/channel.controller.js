@@ -2,8 +2,20 @@
     'use strict';
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
-    function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaInAppBrowser,
-        $timeout, $interval, $ionicPopover, moment, State, Socket, Channel, Auth) {
+    function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet,
+        $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $cordovaDevice,
+        $ionicPlatform, moment, State, Socket, Channel, Auth) {
+
+        $ionicPlatform.ready(function() {
+            if(!window.cordova) {
+                return;
+            }
+
+            var platform = $cordovaDevice.getPlatform();
+            if(platform === 'iOS') {
+                cordova.plugins.Keyboard.disableScroll(true);
+            }
+        });
 
         $ionicPopover.fromTemplateUrl('channel_popover', {
             scope: $scope
@@ -86,6 +98,10 @@
         };
 
         $scope.submitMessage = function(currentMessage) {
+            if(currentMessage === undefined || currentMessage.length === 0) {
+                return;
+            }
+
             var info = {
                 message: currentMessage,
                 token: token,
