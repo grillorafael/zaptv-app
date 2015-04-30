@@ -7562,6 +7562,11 @@ a.button {
       z-index: 1;
       left: -8px;
       top: 6px; }
+  .chat-view .button-clear.button-send {
+    font-weight: 400;
+    color: #dd5e6a; }
+    .chat-view .button-clear.button-send.disabled {
+      color: #b2b2b2; }
   .chat-view .timestamp {
     font-size: 0.8em;
     float: right;

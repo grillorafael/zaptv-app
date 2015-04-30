@@ -36,6 +36,13 @@
             top: 6px;
         }
     }
+    .button-clear.button-send {
+        &.disabled {
+            color: #b2b2b2;
+        }
+        font-weight: 400;
+        color: $salmon;
+    }
     .timestamp {
         font-size: 0.8em;
         float: right;

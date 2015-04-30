@@ -20,7 +20,7 @@
                         {{::message.user.name}}
                         <span class="timestamp" am-time-ago="message.created_at"></span>
                     </h2>
-                    <div compile="message.content | smartchat"></div>
+                    <div compile="::message.content | smartchat"></div>
                 </div>
             </div>
         </ion-list>
@@ -31,8 +31,8 @@
                 <i class="icon ion-ios7-search placeholder-icon"></i>
                 <input type="text" placeholder="Digite sua mensagem.." ng-model="currentMessage" required>
             </label>
-            <button class="button button-clear button-enviar" ng-click="submitMessage(currentMessage)" ng-class="{
-                disabled: currentMessage.length == 0
+            <button class="button button-clear button-send" ng-click="submitMessage(currentMessage)" ng-class="{
+                disabled: !currentMessage || currentMessage.trim().length == 0
             }">
                 Enviar
             </button>

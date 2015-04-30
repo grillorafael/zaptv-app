@@ -10,10 +10,10 @@
         <div class="padding" id="channels-list">
             <div class="row">
                 <div class="col col-50">
-                    <channel-tile ng-repeat="channel in evenChannels track by channel.id"></channel-tile>
+                    <channel-tile ng-repeat="channel in ::evenChannels track by channel.id"></channel-tile>
                 </div>
                 <div class="col col-50">
-                    <channel-tile ng-repeat="channel in oddChannels track by channel.id"></channel-tile>
+                    <channel-tile ng-repeat="channel in ::oddChannels track by channel.id"></channel-tile>
                 </div>
             </div>
         </div>
