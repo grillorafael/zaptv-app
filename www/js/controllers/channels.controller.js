@@ -58,13 +58,6 @@
             $scope.isLoading = true;
             Channel.list(gs).then(function(channels) {
                 $scope.channels = channels;
-                $scope.evenChannels = channels.filter(function(c, i) {
-                    return i % 2 === 0;
-                });
-
-                $scope.oddChannels = channels.filter(function(c, i) {
-                    return i % 2 !== 0;
-                });
             }, function() {
                 // TODO Handle
             }).finally(function() {

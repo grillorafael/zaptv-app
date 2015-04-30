@@ -7601,7 +7601,9 @@ a.button {
       top: 6px; }
 
 .channels-view {
-  background: url("../img/bg-login.jpg"); }
+  background: url("../img/bg-login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
   .channels-view .button-clear.button-clear {
     color: white; }
   .channels-view #channels-list {
