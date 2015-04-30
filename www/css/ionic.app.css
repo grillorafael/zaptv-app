@@ -7725,6 +7725,14 @@ a.button {
   .login-view .placeholder-icon {
     color: black; }
 
+.profile-view {
+  background: url("../img/bg-login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .profile-view .profile-image {
+    border: 1px solid #bababa;
+    border-radius: 5px; }
+
 @font-face {
   font-family: 'MyWebFont';
   src: url('webfont.eot');

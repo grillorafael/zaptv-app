@@ -69,7 +69,7 @@
         };
     }
 
-    function User($http, $q, Config) {
+    function User($http, $q, Config, Auth) {
         function register(info) {
             var deferred = $q.defer();
 
@@ -90,9 +90,31 @@
             return deferred.promise;
         }
 
+        function changePicture(pictureData) {
+            var deferred = $q.defer();
+
+            $http.post(Auth.appendToken(Config.ENDPOINT + '/profile/me/avatar'), pictureData)
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
+        function me() {
+            var deferred = $q.defer();
+
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/profile/me'))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             register: register,
-            login: login
+            login: login,
+            changePicture: changePicture,
+            me: me
         };
     }
 

@@ -17,9 +17,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "chat";
 @import "channels";
 @import "login";
-
-
-
+@import "profile";
 
 @font-face {
   font-family: 'MyWebFont';
@@ -30,10 +28,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
        url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
        url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
-
-
-
-
 
 label {
     &.error i {
@@ -68,11 +62,9 @@ label {
     border-radius: 5px;
 }
 
-
 .bar-salmon .button-clear.button-clear.ion-information-circled {
     font-size: 27px;
 }
-
 
 .bootstrap-loader {
     border-radius: 100%;

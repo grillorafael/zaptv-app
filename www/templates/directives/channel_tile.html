@@ -8,13 +8,36 @@
         <h2 class="channel-name">{{channel.name}}</h2>
 
         <p class="channel-info">{{channel.current_schedule.name}}</p>
-        <p class="channel-info">100 participantes</p>
+        <p class="channel-info">100 participantes ({{channel.current_schedule.current_score}})</p>
         <p class="rate channel-info">
-            <i class="rate-icon ion-ios-star"></i>
-            <i class="rate-icon ion-ios-star"></i>
-            <i class="rate-icon ion-ios-star"></i>
-            <i class="rate-icon ion-ios-star-half"></i>
-            <i class="rate-icon ion-ios-star-outline"></i>
+
+            <i class="rate-icon" ng-class="{
+                'ion-ios-star': channel.current_schedule.current_score >= 1,
+                'ion-ios-star-half': (channel.current_schedule.current_score < 1 && channel.current_schedule.current_score > 0),
+                'ion-ios-star-outline': channel.current_schedule.current_score == null
+            }"></i>
+            <i class="rate-icon" ng-class="{
+                'ion-ios-star': channel.current_schedule.current_score >= 2,
+                'ion-ios-star-half': (channel.current_schedule.current_score < 2 && channel.current_schedule.current_score > 1),
+                'ion-ios-star-outline': channel.current_schedule.current_score <= 1
+            }"></i>
+            <i class="rate-icon" ng-class="{
+                'ion-ios-star': channel.current_schedule.current_score >= 3,
+                'ion-ios-star-half': (channel.current_schedule.current_score < 3 && channel.current_schedule.current_score > 2),
+                'ion-ios-star-outline': channel.current_schedule.current_score <= 2
+            }"></i>
+            <i class="rate-icon" ng-class="{
+                'ion-ios-star': channel.current_schedule.current_score >= 4,
+                'ion-ios-star-half': (channel.current_schedule.current_score < 4 && channel.current_schedule.current_score > 3),
+                'ion-ios-star-outline': channel.current_schedule.current_score <= 3
+            }"></i>
+            <i class="rate-icon" ng-class="{
+                'ion-ios-star': channel.current_schedule.current_score >= 5,
+                'ion-ios-star-half': (channel.current_schedule.current_score < 5 && channel.current_schedule.current_score > 4),
+                'ion-ios-star-outline': channel.current_schedule.current_score <= 4
+            }"></i>
+
+
             <!-- {{channel.current_schedule.current_score || "-.-"}} -->
         </p>
         <button class="btn button-salmon">Entrar no chat</button>
