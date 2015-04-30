@@ -10,7 +10,7 @@
         .factory('State', State)
         .value('Config', {
             'ENDPOINT': 'http://104.236.227.193/api',
-            'SOCKET_ADDR': 'http://104.236.227.193'
+            'SOCKET_ADDR': 'http://104.236.227.193:8080'
         });
 
     function State() {
