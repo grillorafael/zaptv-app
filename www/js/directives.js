@@ -10,6 +10,7 @@
     function channelTile() {
         return {
             restrict: 'E',
+            replace: true,
             templateUrl: 'templates/directives/channel_tile.html'
         };
     }

@@ -1,17 +1,17 @@
 <div class="a-card" ng-click="joinChannel(channel)">
     <div class="img-box">
-        <img src="img/placeholder.jpg" class="channel-image" data-ng-src="{{::channel.current_schedule.image_url}}">
+        <img src="img/placeholder.jpg" class="channel-image" data-ng-src="{{channel.current_schedule.image_url}}">
     </div>
     <div class="card-info">
-        <img ng-src="{{::channel.image_url}}" class="channel-logo" alt="logo da emissora">
+        <img ng-src="{{channel.image_url}}" class="channel-logo" alt="logo da emissora">
 
-        <h2 class="channel-name">{{::channel.name}}</h2>
+        <h2 class="channel-name">{{channel.name}}</h2>
 
-        <p class="channel-info">{{::channel.current_schedule.name}}</p>
+        <p class="channel-info">{{channel.current_schedule.name}}</p>
         <p class="channel-info">100 participantes</p>
         <p class="rate channel-info">
             <i class="rate-icon ion-ios-star"></i>
-            {{::channel.current_schedule.current_score || "-.-"}}
+            {{channel.current_schedule.current_score || "-.-"}}
         </p>
         <button class="btn button-salmon">Entrar no chat</button>
     </div>
