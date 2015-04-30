@@ -7457,85 +7457,72 @@ a.button {
   -webkit-animation-duration: 2s;
   animation-duration: 2s; }
 
-label.error i {
-  color: #ef473a; }
-label.success i {
-  color: #4fc6b3; }
-
-.white-spinner {
-  stroke: white;
-  fill: white; }
-
-.button.button-login {
-  border-radius: 6px;
-  border: 0; }
-
-.button-salmon, .bar-salmon {
-  background: #f75f51;
-  color: white;
-  border: 0; }
-
-.bar-salmon .button-clear.button-clear {
-  color: white; }
-
-.btn {
-  padding: 0.3em;
-  width: 100%;
-  margin-top: 10%;
-  border-radius: 5px; }
-
-.bootstrap-loader {
-  border-radius: 100%;
-  width: 25vw;
-  height: 25vw;
-  margin: 70% auto auto;
-  border: 1px solid black; }
-  .bootstrap-loader .inner-circle {
-    width: 20vw;
-    height: 20vw;
-    margin: 2.5vw auto auto;
-    border-top-left-radius: 20vw;
-    border-top-right-radius: 20vw;
-    border: 1px solid red;
-    border-bottom: 0;
-    box-sizing: border-box; }
-
-.login-view {
-  background: #ede1b5;
-  background: url("../img/bg-login.jpg");
-  background-size: cover; }
-  .login-view .padding {
-    padding: 10px 25px; }
-  .login-view h1 {
-    margin-bottom: 0;
-    margin-top: 1em; }
-  .login-view .list-inset {
-    background-color: transparent; }
-  .login-view label.item {
-    border: 2px solid rgba(255, 255, 255, 0.4); }
-  .login-view .card .item:first-child, .login-view .list-inset .item:first-child, .login-view .padding > .list .item:first-child {
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px; }
-  .login-view .bradius-bottom {
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px; }
-  .login-view .item.bg-transparent {
-    background: rgba(255, 255, 255, 0.8); }
-  .login-view .placeholder-icon:first-child {
-    font-size: 1.6em; }
-  .login-view .item-icon-left .icon {
-    font-size: 1.7em; }
-  .login-view a.item {
-    font-size: 1em; }
-  .login-view .item {
-    background: rgba(255, 255, 255, 0.8);
-    border: 0; }
-  .login-view .button-facebook {
-    background-color: rgba(59, 89, 152, 0.7); }
-  .login-view a.button-facebook {
-    color: white; }
-  .login-view .placeholder-icon {
-    color: black; }
+.chat-view {
+  background: #e7e4da; }
+  .chat-view .chat-message {
+    margin-bottom: 10px; }
+    .chat-view .chat-message:last-child {
+      margin-bottom: 0; }
+    .chat-view .chat-message a {
+      color: #387ef5;
+      text-decoration: none; }
+    .chat-view .chat-message img {
+      margin: 0;
+      float: left;
+      border-radius: 5%; }
+  .chat-view .chat-bubble {
+    margin-left: 20%;
+    padding: 5px 10px 0.1px;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    background: white;
+    border-radius: 5px; }
+    .chat-view .chat-bubble:after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 8px 10px 8px 0;
+      border-color: transparent #fff;
+      display: block;
+      width: 0;
+      z-index: 1;
+      left: -8px;
+      top: 6px; }
+  .chat-view .timestamp {
+    font-size: 0.8em;
+    float: right;
+    color: #d8d8d8;
+    font-weight: 300; }
+  .chat-view .c-username {
+    font-size: 1em;
+    color: #f75f51; }
+  .chat-view .chat-message-self {
+    margin-bottom: 10px; }
+    .chat-view .chat-message-self:last-child {
+      margin-bottom: 0; }
+    .chat-view .chat-message-self a {
+      color: #387ef5;
+      text-decoration: none; }
+    .chat-view .chat-message-self img {
+      margin: 0;
+      float: right;
+      border-radius: 5%; }
+  .chat-view .chat-bubble-self {
+    margin-right: 20%;
+    padding: 5px 10px 0.1px;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    background: white;
+    border-radius: 5px; }
+    .chat-view .chat-bubble-self:after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 8px 0 8px 10px;
+      border-color: transparent white;
+      display: block;
+      width: 0;
+      z-index: 1;
+      right: -8px;
+      top: 6px; }
 
 .channels-view {
   background: #ede1b5; }
@@ -7606,76 +7593,6 @@ label.success i {
   .channels-view #channels-list .col:nth-child(2) .a-card {
     margin-right: 0; }
 
-.chat-view {
-  background: #e7e4da; }
-  .chat-view .chat-message {
-    margin-bottom: 10px; }
-    .chat-view .chat-message:last-child {
-      margin-bottom: 0; }
-    .chat-view .chat-message a {
-      color: #387ef5;
-      text-decoration: none; }
-    .chat-view .chat-message img {
-      margin: 0;
-      float: left;
-      border-radius: 5%; }
-  .chat-view .chat-bubble {
-    margin-left: 20%;
-    padding: 5px 10px 0.1px;
-    -webkit-transform: translate3d(0px, 0px, 0px);
-    background: white;
-    border-radius: 5px; }
-    .chat-view .chat-bubble:after {
-      content: '';
-      position: absolute;
-      border-style: solid;
-      border-width: 8px 10px 8px 0;
-      border-color: transparent #fff;
-      display: block;
-      width: 0;
-      z-index: 1;
-      left: -8px;
-      top: 6px; }
-  .chat-view .timestamp {
-    font-size: 0.8em;
-    float: right;
-    color: #d8d8d8;
-    font-weight: 300; }
-  .chat-view .c-username {
-    font-size: 1em;
-    color: #f75f51; }
-  .chat-view .chat-message-self {
-    margin-bottom: 10px; }
-    .chat-view .chat-message-self:last-child {
-      margin-bottom: 0; }
-    .chat-view .chat-message-self a {
-      color: #387ef5;
-      text-decoration: none; }
-    .chat-view .chat-message-self img {
-      margin: 0;
-      float: right;
-      border-radius: 5%; }
-  .chat-view .chat-bubble-self {
-    margin-right: 20%;
-    padding: 5px 10px 0.1px;
-    -webkit-transform: translate3d(0px, 0px, 0px);
-    background: white;
-    border-radius: 5px; }
-    .chat-view .chat-bubble-self:after {
-      content: '';
-      position: absolute;
-      border-style: solid;
-      border-width: 8px 0 8px 10px;
-      border-color: transparent white;
-      display: block;
-      width: 0;
-      z-index: 1;
-      right: -8px;
-      top: 6px; }
-
-.bar-salmon .button-clear.button-clear.ion-information-circled {
-  font-size: 27px; }
-
 .channel-popover.popover {
   height: 370px; }
   .channel-popover.popover p {
@@ -7695,3 +7612,87 @@ label.success i {
 .score i {
   font-size: 2em;
   color: gold; }
+
+.login-view {
+  background: #ede1b5;
+  background: url("../img/bg-login.jpg");
+  background-size: cover; }
+  .login-view .padding {
+    padding: 10px; }
+  .login-view h1 {
+    margin-bottom: 0;
+    margin-top: 1em; }
+  .login-view .list-inset {
+    background-color: transparent; }
+  .login-view label.item {
+    border: 2px solid rgba(255, 255, 255, 0.4); }
+  .login-view .card .item:first-child, .login-view .list-inset .item:first-child, .login-view .padding > .list .item:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px; }
+  .login-view .bradius-bottom {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px; }
+  .login-view .item.bg-transparent {
+    background: rgba(255, 255, 255, 0.8); }
+  .login-view .placeholder-icon:first-child {
+    font-size: 1.6em; }
+  .login-view .item-icon-left .icon {
+    font-size: 1.7em; }
+  .login-view a.item {
+    font-size: 1em; }
+  .login-view .item {
+    background: rgba(255, 255, 255, 0.8);
+    border: 0; }
+  .login-view .button-facebook {
+    background-color: rgba(59, 89, 152, 0.7); }
+  .login-view a.button-facebook {
+    color: white; }
+  .login-view .placeholder-icon {
+    color: black; }
+
+label.error i {
+  color: #ef473a; }
+label.success i {
+  color: #4fc6b3; }
+
+.white-spinner {
+  stroke: white;
+  fill: white; }
+
+.button.button-login {
+  border-radius: 6px;
+  border: 0;
+  color: white; }
+
+.button-salmon, .bar-salmon {
+  background: #dd5e6a;
+  color: white;
+  border: 0; }
+
+.bar-salmon .button-clear.button-clear {
+  color: white; }
+
+.btn {
+  padding: 0.3em;
+  width: 100%;
+  margin-top: 10%;
+  border-radius: 5px; }
+
+.bar-salmon .button-clear.button-clear.ion-information-circled {
+  font-size: 27px; }
+
+.bootstrap-loader {
+  border-radius: 100%;
+  width: 25vw;
+  height: 25vw;
+  margin: 70% auto auto;
+  border: 1px solid black; }
+  .bootstrap-loader .inner-circle {
+    width: 20vw;
+    height: 20vw;
+    margin: 2.5vw auto auto;
+    border-top-left-radius: 20vw;
+    border-top-right-radius: 20vw;
+    border: 1px solid red;
+    border-bottom: 0;
+    box-sizing: border-box; }

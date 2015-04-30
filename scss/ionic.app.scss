@@ -7,7 +7,7 @@ $energized: #ffc900 !default;
 $assertive: #ef473a !default;
 $royal: #4fc6b3 !default;
 $dark: #444 !default;
-$salmon: #f75f51;
+$salmon: #dd5e6a;
 $facebook: #3b5998;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -15,6 +15,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 @import "animations";
 @import "chat";
+@import "channels";
 @import "login";
 
 label {
@@ -32,6 +33,7 @@ label {
 .button.button-login {
     border-radius: 6px;
     border: 0;
+    color: white;
 }
 .button-salmon,
 .bar-salmon {
@@ -48,6 +50,13 @@ label {
     margin-top: 10%;
     border-radius: 5px;
 }
+
+
+.bar-salmon .button-clear.button-clear.ion-information-circled {
+    font-size: 27px;
+}
+
+
 .bootstrap-loader {
     border-radius: 100%;
     width: 25vw;
@@ -63,268 +72,5 @@ label {
         border: 1px solid red;
         border-bottom: 0;
         box-sizing: border-box;
-    }
-}
-.login-view {
-    background: #ede1b5;
-    background: url("../img/bg-login.jpg");
-    background-size: cover;
-    .padding {
-        padding: 10px 25px;
-    }
-    h1 {
-        margin-bottom: 0;
-        margin-top: 1em;
-    }
-    .list-inset {
-        background-color: transparent;
-    }
-    label.item {
-        border: 2px solid rgba(255,255,255,0.4);
-    }
-    .card .item:first-child,
-    .list-inset .item:first-child,
-    .padding > .list .item:first-child {
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
-    }
-    .bradius-bottom {
-        border-bottom-left-radius: 6px;
-        border-bottom-right-radius: 6px;
-    }
-    .item.bg-transparent {
-        background: rgba(255,255,255,0.8);
-    }
-    .placeholder-icon:first-child {
-        font-size: 1.6em;
-    }
-    .item-icon-left .icon {
-        font-size: 1.7em;
-    }
-    a.item {
-        font-size: 1em;
-    }
-    .item {
-        background: rgba(255,255,255,0.8);
-        border: 0;
-    }
-    .button-facebook {
-        background-color: rgba(59, 89, 152, 0.7);
-    }
-    a.button-facebook {
-        color: white;
-    }
-    .placeholder-icon {
-        color: black;
-    }
-}
-.channels-view {
-    background: #ede1b5;
-    .title {
-        color: white;
-    }
-    .rate {
-        font-size: 1.3em;
-    }
-    .rate-icon {
-        color: gold;
-    }
-    .list-inset {
-        margin: 0;
-    }
-    .button-clear.button-clear {
-        color: white;
-    }
-    #channels-list {
-        .col {
-            padding: 0;
-        }
-        .row {
-            padding: 0;
-        }
-    }
-    .a-card {
-        border-radius: 5px;
-        border: 1px solid rgba(0, 0, 0, .15);
-        margin: 0 10px 10px 0;
-        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-        .img-box  {
-            position: relative;
-            img {
-                width: 100%;
-                border-top-right-radius: 5px;
-                border-top-left-radius: 5px;
-            }
-            p {
-                position: absolute;
-                bottom: 0;
-                background: rgba(79,198,179,0.5);
-                width: 100%;
-                margin-bottom: 0;
-                padding-bottom: 10px;
-                text-align: center;
-            }
-        }
-        .card-info {
-            background: white;
-            padding: 0.5em 1em;
-            position: relative;
-            display: block;
-            margin-top: -5px;
-            .button-salmon {
-                margin-bottom: 10px;
-            }
-            h2 {
-                font-size: 1.1em;
-                margin-top: 3px;
-                margin-bottom: 15px;
-                padding-left: 30px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }
-            p {
-                font-size: 0.8em;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                margin-bottom: 0;
-                line-height: 1.7;
-            }
-
-            img {
-                position: absolute;
-                top: 7px;
-                left: 13px;
-                max-width: 25px;
-                max-height: 25px;
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
-    #channels-list {
-        .col:nth-child(2) {
-            .a-card {
-                margin-right: 0;
-            }
-        }
-    }
-}
-.chat-view {
-    background: #e7e4da;
-
-    .chat-message {
-        margin-bottom: 10px;
-        &:last-child {
-            margin-bottom: 0;
-        }
-        a {
-            color: $positive;
-            text-decoration: none;
-        }
-        img {
-            margin: 0;
-            float: left;
-            border-radius: 5%;
-        }
-    }
-    .chat-bubble {
-        margin-left: 20%;
-        padding: 5px 10px 0.1px;
-        -webkit-transform: translate3d(0px, 0px, 0px);
-        background: white;
-        border-radius: 5px;
-        &:after {
-            content: '';
-            position: absolute;
-            border-style: solid;
-            border-width: 8px 10px 8px 0;
-            border-color: transparent #fff;
-            display: block;
-            width: 0;
-            z-index: 1;
-            left: -8px;
-            top: 6px;
-        }
-    }
-    .timestamp {
-        font-size: 0.8em;
-        float: right;
-        color: #d8d8d8;
-        font-weight: 300;
-    }
-    .c-username {
-        font-size: 1em;
-        color: #f75f51;
-    }
-    .chat-message-self {
-        margin-bottom: 10px;
-        &:last-child {
-            margin-bottom: 0;
-        }
-        a {
-            color: $positive;
-            text-decoration: none;
-        }
-        img {
-            margin: 0;
-            float: right;
-            border-radius: 5%;
-        }
-
-    }
-    .chat-bubble-self {
-        margin-right: 20%;
-        padding: 5px 10px 0.1px;
-        -webkit-transform: translate3d(0px, 0px, 0px);
-        background: white;
-        border-radius: 5px;
-        &:after {
-            content: '';
-            position: absolute;
-            border-style: solid;
-            border-width: 8px 0 8px 10px;
-            border-color: transparent white;
-            display: block;
-            width: 0;
-            z-index: 1;
-            right: -8px;
-            top: 6px;
-        }
-    }
-
-}
-.bar-salmon .button-clear.button-clear.ion-information-circled {
-    font-size: 27px;
-}
-
-.channel-popover.popover {
-        height: 370px;
-        p {
-            font-size: 0.8em;
-            margin-bottom: 2%;
-        }
-        h2 {
-            font-size: 1em;
-        }
-        img {
-            width: 100%;
-        }
-        .item {
-            padding: 10px;
-        }
-        .item p {
-            white-space: initial;
-        }
-        i {
-            font-weight: bold;
-        }
-    }
-
-.score {
-    i {
-        font-size: 2em;
-        color: gold;
     }
 }

@@ -1,0 +1,53 @@
+.login-view {
+    background: #ede1b5;
+    background: url("../img/bg-login.jpg");
+    background-size: cover;
+    .padding {
+        padding: 10px;
+    }
+    h1 {
+        margin-bottom: 0;
+        margin-top: 1em;
+    }
+    .list-inset {
+        background-color: transparent;
+    }
+    label.item {
+        border: 2px solid rgba(255,255,255,0.4);
+    }
+    .card .item:first-child,
+    .list-inset .item:first-child,
+    .padding > .list .item:first-child {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    .bradius-bottom {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    .item.bg-transparent {
+        background: rgba(255,255,255,0.8);
+    }
+    .placeholder-icon:first-child {
+        font-size: 1.6em;
+    }
+    .item-icon-left .icon {
+        font-size: 1.7em;
+    }
+    a.item {
+        font-size: 1em;
+    }
+    .item {
+        background: rgba(255,255,255,0.8);
+        border: 0;
+    }
+    .button-facebook {
+        background-color: rgba(59, 89, 152, 0.7);
+    }
+    a.button-facebook {
+        color: white;
+    }
+    .placeholder-icon {
+        color: black;
+    }
+}

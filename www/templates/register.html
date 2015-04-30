@@ -17,7 +17,7 @@
                     'error': registerForm.email.$dirty && !registerForm.email.$valid,
                     'success': registerForm.email.$dirty && registerForm.email.$valid
                 }">
-                    <i class="icon ion-ios-person-outline placeholder-icon"></i>
+                    <i class="icon ion-ios-email-outline placeholder-icon"></i>
                     <input type="email" placeholder="Email" name="email" ng-model="user.email" required>
                 </label>
                 <label class="item item-input bradius-bottom bg-transparent" ng-class="{
@@ -34,7 +34,7 @@
                     <i class="icon ion-ios-locked-outline placeholder-icon"></i>
                     <input type="password" placeholder="Confirmar senha" name="confirm_password" ng-model="user.confirm_password" required>
                 </label>
-                <button class="button button-block button-balanced button-login">
+                <button class="button button-block button-salmon button-login">
                     Registrar
                 </button>
             </form>
