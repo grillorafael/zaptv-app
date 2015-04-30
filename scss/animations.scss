@@ -21,31 +21,24 @@
         transform: translateX(-15px);
     }
 }
-
 .rotate-360-continuous {
     animation: rotate-360 1s infinite;
 }
-
 .bounce-finite {
     animation: bounce 1s;
 }
-
 .quick-anim {
     animation-duration: 0.2s;
 }
-
 .med-quick-anim {
     animation-duration: 0.6s;
 }
-
 .med-anim {
     animation-duration: 1s;
 }
-
 .med-slow-anim {
     animation-duration: 1.5s;
 }
-
 .slow-anim {
     animation-duration: 2s;
 }

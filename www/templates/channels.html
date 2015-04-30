@@ -5,27 +5,20 @@
             <i class="icon ion-android-more-horizontal" ng-if="!isLoading"></i>
         </button>
     </ion-nav-buttons>
-    <div class="bar bar-subheader item-input-inset">
-        <label class="item-input-wrapper">
-            <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Buscar canais" ng-model="filter.name">
-        </label>
-    </div>
-    <ion-content class="has-header has-subheader">
+    <ion-content class="has-header">
         <ion-refresher pulling-text="Carregando programação..." on-refresh="refresh()"></ion-refresher>
         <div class="padding" id="channels-list">
             <div class="row">
                 <div class="col col-50">
-                    <ng-include ng-repeat="channel in evenChannels | filter:filter" src="'templates/channel_tile.html'"></ng-include>
+                    <channel-tile ng-repeat="channel in evenChannels track by channel.id"></channel-tile>
                 </div>
                 <div class="col col-50">
-                    <ng-include ng-repeat="channel in oddChannels | filter:filter" src="'templates/channel_tile.html'"></ng-include>
+                    <channel-tile ng-repeat="channel in oddChannels track by channel.id"></channel-tile>
                 </div>
             </div>
         </div>
     </ion-content>
 </ion-view>
-
 
 <script id="channels_popover" type="text/ng-template">
     <ion-popover-view>

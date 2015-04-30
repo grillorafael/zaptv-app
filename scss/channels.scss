@@ -1,18 +1,5 @@
 .channels-view {
-    background: #ede1b5;
     background: url("../img/bg-login.jpg");
-    .title {
-        color: white;
-    }
-    .rate {
-        font-size: 1.3em;
-    }
-    .rate-icon {
-        color: gold;
-    }
-    .list-inset {
-        margin: 0;
-    }
     .button-clear.button-clear {
         color: white;
     }
@@ -28,22 +15,13 @@
         border-radius: 5px;
         border: 1px solid rgba(0, 0, 0, .15);
         margin: 0 10px 10px 0;
-        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-        .img-box  {
+        box-shadow: none;
+        .img-box {
             position: relative;
-            img {
+            .channel-image {
                 width: 100%;
                 border-top-right-radius: 5px;
                 border-top-left-radius: 5px;
-            }
-            p {
-                position: absolute;
-                bottom: 0;
-                background: rgba(79,198,179,0.5);
-                width: 100%;
-                margin-bottom: 0;
-                padding-bottom: 10px;
-                text-align: center;
             }
         }
         .card-info {
@@ -55,7 +33,7 @@
             .button-salmon {
                 margin-bottom: 10px;
             }
-            h2 {
+            .channel-name {
                 font-size: 1.1em;
                 margin-top: 3px;
                 margin-bottom: 15px;
@@ -64,7 +42,7 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
-            p {
+            .channel-info {
                 font-size: 0.8em;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -72,8 +50,13 @@
                 margin-bottom: 0;
                 line-height: 1.7;
             }
-
-            img {
+            .rate {
+                font-size: 1.3em;
+                .rate-icon {
+                    color: gold;
+                }
+            }
+            .channel-logo {
                 position: absolute;
                 top: 7px;
                 left: 13px;
@@ -92,35 +75,30 @@
         }
     }
 }
-
-
 .channel-popover.popover {
-        height: 370px;
-        p {
-            font-size: 0.8em;
-            margin-bottom: 2%;
-        }
-        h2 {
-            font-size: 1em;
-        }
-        img {
-            width: 100%;
-        }
-        .item {
-            padding: 10px;
-        }
-        .item p {
-            white-space: initial;
-        }
-        i {
-            font-weight: bold;
-        }
+    height: 370px;
+    .popover-info {
+        font-size: 0.8em;
+        margin-bottom: 2%;
     }
-
-
-
+    .next-schedule-name {
+        font-size: 1em;
+    }
+    .next-schedule-image {
+        width: 100%;
+    }
+    .item {
+        padding: 10px;
+    }
+    .item .next-schedule-description {
+        white-space: initial;
+    }
+    .icon {
+        font-weight: bold;
+    }
+}
 .score {
-    i {
+    .icon {
         font-size: 2em;
         color: gold;
     }

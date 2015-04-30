@@ -1,29 +1,28 @@
-
-
 .chat-view {
     background: #e7e4da;
-
-    .chat-message {
-        margin-bottom: 10px;
-        &:last-child {
-            margin-bottom: 0;
-        }
-        a {
+    .chat-message, .chat-message-self {
+        .chat-link {
             color: $positive;
             text-decoration: none;
         }
-        img {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .chat-message {
+        margin-bottom: 10px;
+        .profile-image {
             margin: 0;
             float: left;
-            border-radius: 5%;
+            /* border-radius: 5%; */
         }
     }
     .chat-bubble {
         margin-left: 20%;
         padding: 5px 10px 0.1px;
-        -webkit-transform: translate3d(0px, 0px, 0px);
+        transform: translate3d(0px, 0px, 0px);
         background: white;
-        border-radius: 5px;
+        /* border-radius: 5px; */
         &:after {
             content: '';
             position: absolute;
@@ -49,26 +48,18 @@
     }
     .chat-message-self {
         margin-bottom: 10px;
-        &:last-child {
-            margin-bottom: 0;
-        }
-        a {
-            color: $positive;
-            text-decoration: none;
-        }
-        img {
+        .profile-image {
             margin: 0;
             float: right;
-            border-radius: 5%;
+            /* border-radius: 5%; */
         }
-
     }
     .chat-bubble-self {
         margin-right: 20%;
         padding: 5px 10px 0.1px;
-        -webkit-transform: translate3d(0px, 0px, 0px);
+        transform: translate3d(0px, 0px, 0px);
         background: white;
-        border-radius: 5px;
+        /* border-radius: 5px; */
         &:after {
             content: '';
             position: absolute;
@@ -82,5 +73,4 @@
             top: 6px;
         }
     }
-
 }

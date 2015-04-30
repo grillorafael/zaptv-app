@@ -11,7 +11,7 @@
 
                     var displayText = match;
 
-                    return "<a ng-click='openLink(\"" + match + "\")' href>" + displayText + "</a>";
+                    return "<a class='chat-link' ng-click='openLink(\"" + match + "\")' href>" + displayText + "</a>";
                 });
                 return "<p>" + text + "</p>";
             };

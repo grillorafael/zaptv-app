@@ -4,7 +4,15 @@
         .directive('animationHandle', animationHandle)
         .directive('compile', compile)
         .directive('focus', focus)
-        .directive('score', score);
+        .directive('score', score)
+        .directive('channelTile', channelTile);
+
+    function channelTile() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/directives/channel_tile.html'
+        };
+    }
 
     function score() {
         return {
