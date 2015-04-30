@@ -7569,8 +7569,8 @@ a.button {
       color: #b2b2b2; }
   .chat-view .timestamp {
     font-size: 0.8em;
-    float: right;
     color: #d8d8d8;
+    padding-left: 3%;
     font-weight: 300; }
   .chat-view .c-username {
     font-size: 1em;
@@ -7607,9 +7607,9 @@ a.button {
   .channels-view .button-clear.button-clear {
     color: white; }
   .channels-view #channels-list {
-    -webkit-column-gap: 15px;
-    -moz-column-gap: 15px;
-    column-gap: 15px;
+    -webkit-column-gap: 10px;
+    -moz-column-gap: 10px;
+    column-gap: 10px;
     -webkit-column-fill: auto;
     -moz-column-fill: auto;
     column-fill: auto;
@@ -7656,7 +7656,7 @@ a.button {
         margin-bottom: 0;
         line-height: 1.7; }
       .channels-view .a-card .card-info .rate {
-        font-size: 1.3em; }
+        font-size: 1em; }
         .channels-view .a-card .card-info .rate .rate-icon {
           color: gold; }
       .channels-view .a-card .card-info .channel-logo {

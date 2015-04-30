@@ -6,7 +6,7 @@
         color: white;
     }
     #channels-list {
-        column-gap: 15px;
+        column-gap: 10px;
         column-fill: auto;
         column-width: 45%;
         column-count: 2;
@@ -54,7 +54,7 @@
                 line-height: 1.7;
             }
             .rate {
-                font-size: 1.3em;
+                font-size: 1em;
                 .rate-icon {
                     color: gold;
                 }
