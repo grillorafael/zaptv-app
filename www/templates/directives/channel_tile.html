@@ -8,7 +8,7 @@
         <h2 class="channel-name">{{channel.name}}</h2>
 
         <p class="channel-info">{{channel.current_schedule.name}}</p>
-        <p class="channel-info">100 participantes ({{channel.current_schedule.current_score}})</p>
+        <p class="channel-info">100 participantes</p>
         <p class="rate channel-info">
 
             <i class="rate-icon" ng-class="{
@@ -36,9 +36,6 @@
                 'ion-ios-star-half': (channel.current_schedule.current_score < 5 && channel.current_schedule.current_score > 4),
                 'ion-ios-star-outline': channel.current_schedule.current_score <= 4
             }"></i>
-
-
-            <!-- {{channel.current_schedule.current_score || "-.-"}} -->
         </p>
         <button class="btn button-salmon">Entrar no chat</button>
     </div>
