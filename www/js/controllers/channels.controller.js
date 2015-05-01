@@ -3,8 +3,11 @@
     angular.module('zaptv').controller('ChannelsCtrl', ChannelsCtrl);
 
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
-        $ionicPopover, $ionicHistory, Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket) {
+        $ionicPopover, $ionicHistory, Analytics, Auth, State, ReverseGeolocation,
+        GeoInfo, Channel, Socket) {
         var geoState = null;
+
+        var userId = Auth.getUserId();
 
         $scope.isLoading = true;
         $scope.evenChannels = [];
@@ -25,6 +28,8 @@
         Socket.connect();
 
         $scope.$on('$ionicView.enter', function() {
+            Analytics.init(userId);
+            Analytics.trackView('channels');
             var lastChannel = State.get('last_channel');
             if (lastChannel !== undefined) {
                 Socket.leaveChannel(lastChannel.id);

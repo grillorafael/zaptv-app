@@ -8,10 +8,39 @@
         .factory('$animationTrigger', $animationTrigger)
         .factory('ReverseGeolocation', ReverseGeolocation)
         .factory('State', State)
+        .factory('Analytics', Analytics)
         .value('Config', {
             'ENDPOINT': 'http://104.236.227.193/api',
-            'SOCKET_ADDR': 'http://104.236.227.193:8080'
+            'SOCKET_ADDR': 'http://104.236.227.193:8080',
+            'ANALYTICS_UA': 'UA-62526664-1'
         });
+
+    function Analytics($cordovaGoogleAnalytics, Config) {
+        return {
+            init: function(userId) {
+                if(!window.cordova) {
+                    return;
+                }
+                // $cordovaGoogleAnalytics.debugMode();
+                $cordovaGoogleAnalytics.startTrackerWithId(Config.ANALYTICS_UA);
+                if(userId) {
+                    $cordovaGoogleAnalytics.setUserId(userId);
+                }
+            },
+            trackView: function(name) {
+                if(!window.cordova) {
+                    return;
+                }
+                $cordovaGoogleAnalytics.trackView(name);
+            },
+            trackEvent: function(category, action, label, value) {
+                if(!window.cordova) {
+                    return;
+                }
+                $cordovaGoogleAnalytics.trackEvent(category, action, label, value);
+            }
+        };
+    }
 
     function State() {
         var states = {};
@@ -63,7 +92,7 @@
             getToken: function() {
                 return localStorage.getItem('auth_token');
             },
-            getUserId: function () {
+            getUserId: function() {
                 return localStorage.getItem('user_id');
             }
         };
@@ -196,10 +225,9 @@
         }
 
         function leaveChannel(id) {
-            if(id === undefined && currentChannel === null) {
+            if (id === undefined && currentChannel === null) {
                 return;
-            }
-            else {
+            } else {
                 socket.emit('leave channel', id || currentChannel);
             }
         }

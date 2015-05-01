@@ -2,7 +2,10 @@
     'use strict';
     angular.module('zaptv').controller('ProfileCtrl', ProfileCtrl);
 
-    function ProfileCtrl($scope, User) {
+    function ProfileCtrl($scope, User, Analytics) {
+        Analytics.init();
+        Analytics.trackView('profile');
+
         User.me().then(function(user) {
             $scope.user = user;
         }, function(e) {

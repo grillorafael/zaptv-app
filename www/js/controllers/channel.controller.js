@@ -4,7 +4,7 @@
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $cordovaDevice,
-        $ionicPlatform, moment, State, Socket, Channel, Auth) {
+        $ionicPlatform, Analytics, moment, State, Socket, Channel, Auth) {
 
         $ionicPlatform.ready(function() {
             if (!window.cordova) {
@@ -23,10 +23,14 @@
             $scope.popover = popover;
         });
 
+        $scope.userId = Auth.getUserId();
+
+        Analytics.init($scope.userId);
+        $scope.channel = State.get('last_channel');
+        Analytics.trackView('channel_chat_' + $scope.channel.id);
+
         $scope.currentScore = 0;
         $scope.minutesRemain = null;
-        $scope.userId = Auth.getUserId();
-        $scope.channel = State.get('last_channel');
 
         $scope.$on('$ionicView.leave', function() {
             if ($scope.timeout) {

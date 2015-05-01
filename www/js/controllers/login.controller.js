@@ -2,20 +2,19 @@
     'use strict';
     angular.module('zaptv').controller('LoginCtrl', LoginCtrl);
 
-    function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $animationTrigger, User, Auth) {
-        if(Auth.getToken() !== null) {
-            $state.go('channels');
-        }
-        else {
-            $ionicPlatform.ready(function() {
-                if (window.cordova && window.cordova.plugins.Keyboard) {
-                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
-                }
-            });
-        }
+    function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $animationTrigger, Analytics, User, Auth) {
+        Analytics.init();
+        Analytics.trackView('login');
+
+        $ionicPlatform.ready(function() {
+            if (window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+            }
+        });
 
         $scope.localLogin = function(ll) {
             User.login(ll).then(function() {
+                Analytics.trackEvent('Auth', 'login');
                 $ionicHistory.nextViewOptions({
                     disableBack: true,
                     historyRoot: true

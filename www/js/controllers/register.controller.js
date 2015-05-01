@@ -2,14 +2,18 @@
     'use strict';
     angular.module('zaptv').controller('RegisterCtrl', RegisterCtrl);
 
-    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicHistory, $animationTrigger, User, Auth) {
+    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicHistory, $animationTrigger, User, Auth, Analytics) {
+        Analytics.init();
+        Analytics.trackView('register');
+
         $scope.setForm = function(f) {
             $scope.form = f;
         };
 
         $scope.register = function(user) {
             if($scope.form.registerForm.$valid) {
-                User.register(user).then(function() {
+                User.register(user).then(function(tokenData) {
+                    Analytics.trackEvent('Auth', 'register');
                     $ionicHistory.nextViewOptions({
                         disableBack: true,
                         historyRoot: true
