@@ -7740,6 +7740,9 @@ a.button {
   src: url('webfont.eot?#iefix') format('embedded-opentype'), url('webfont.woff2') format('woff2'), url('webfont.woff') format('woff'), url('webfont.ttf') format('truetype'), url('webfont.svg#svgFontName') format('svg');
   /* Legacy iOS */ }
 
+body {
+  font-weight: 300; }
+
 label.error i {
   color: #ef473a; }
 label.success i {
@@ -7763,13 +7766,13 @@ label.success i {
   color: white; }
 
 .btn {
-  padding: 0.3em;
+  padding: 0.8em;
   width: 100%;
   margin-top: 10%;
   border-radius: 5px; }
 
 .bar-salmon .button-clear.button-clear.ion-information-circled {
-  font-size: 27px; }
+  font-size: 1.2em; }
 
 .bootstrap-loader {
   border-radius: 100%;

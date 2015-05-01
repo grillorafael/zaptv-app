@@ -29,6 +29,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
        url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
 
+body {
+    font-weight: 300;
+}
 label {
     &.error i {
         color: $assertive;
@@ -56,14 +59,14 @@ label {
     color: white;
 }
 .btn {
-    padding: 0.3em;
+    padding: 0.8em;
     width: 100%;
     margin-top: 10%;
     border-radius: 5px;
 }
 
 .bar-salmon .button-clear.button-clear.ion-information-circled {
-    font-size: 27px;
+    font-size: 1.2em;
 }
 
 .bootstrap-loader {
