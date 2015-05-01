@@ -7,12 +7,12 @@
         $ionicPlatform, moment, State, Socket, Channel, Auth) {
 
         $ionicPlatform.ready(function() {
-            if(!window.cordova) {
+            if (!window.cordova) {
                 return;
             }
 
             var platform = $cordovaDevice.getPlatform();
-            if(platform === 'iOS') {
+            if (platform === 'iOS') {
                 cordova.plugins.Keyboard.disableScroll(true);
             }
         });
@@ -33,7 +33,7 @@
                 $timeout.cancel($scope.timeout);
             }
 
-            if($scope.interval) {
+            if ($scope.interval) {
                 $interval.cancel($scope.interval);
             }
         });
@@ -63,7 +63,7 @@
 
                 $scope.minutesRemain = Math.ceil((diff / (1000 * 60)));
                 $scope.interval = $interval(function() {
-                    $scope.minutesRemain -=1;
+                    $scope.minutesRemain -= 1;
                 }, 1000 * 60);
                 $scope.timeout = $timeout(updateChat, diff);
             });
@@ -98,7 +98,7 @@
         };
 
         $scope.submitMessage = function(currentMessage) {
-            if(currentMessage === undefined || currentMessage.length === 0) {
+            if (currentMessage === undefined || currentMessage.length === 0) {
                 return;
             }
 
@@ -112,15 +112,33 @@
             $scope.currentMessage = '';
         };
 
-        $scope.setScore =  function(val) {
+        $scope.setScore = function(val) {
             $scope.currentScore = val;
-            if($scope.currentScore > 0) {
+            if ($scope.currentScore > 0) {
                 Socket.emitScore({
                     token: token,
                     score: $scope.currentScore,
                     schedule_id: $scope.schedule.id
                 });
             }
+        };
+
+        $scope.messageOptions = function(message) {
+            $ionicActionSheet.show({
+                buttons: [],
+                destructiveText: 'Denunciar',
+                titleText: '',
+                cancelText: 'Voltar',
+                destructiveButtonClicked: function() {
+                    // TODO
+                },
+                cancel: function() {
+
+                },
+                buttonClicked: function(index) {
+                    return true;
+                }
+            });
         };
 
         $scope.openPopover = function($event) {

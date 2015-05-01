@@ -12,7 +12,7 @@
                 'chat-message-self': message.user.id == userId
             }" ng-repeat="message in messages">
                 <img class="profile-image" src="img/fernando.jpg" ng-src="{{message.user.image_url}}" alt="" width="45">
-                <div ng-class="{
+                <div on-hold='messageOptions(message)'  ng-class="{
                     'chat-bubble': message.user.id != userId,
                     'chat-bubble-self': message.user.id == userId
                 }" >
