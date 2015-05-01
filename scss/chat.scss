@@ -1,5 +1,8 @@
 .chat-view {
     background: #e7e4da;
+    background: url("../img/bg-login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     .chat-message, .chat-message-self {
         .chat-link {
             color: $positive;
@@ -14,15 +17,19 @@
         .profile-image {
             margin: 0;
             float: left;
-            /* border-radius: 5%; */
+            width: 40px;
+            height: 40px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
         }
     }
     .chat-bubble {
-        margin-left: 20%;
+        margin-left: 13%;
         padding: 5px 10px 0.1px;
         transform: translate3d(0px, 0px, 0px);
         background: white;
-        /* border-radius: 5px; */
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
         &:after {
             content: '';
             position: absolute;
@@ -58,15 +65,19 @@
         .profile-image {
             margin: 0;
             float: right;
-            /* border-radius: 5%; */
+            width: 40px;
+            height: 40px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
         }
     }
     .chat-bubble-self {
-        margin-right: 20%;
+        margin-right: 13%;
         padding: 5px 10px 0.1px;
         transform: translate3d(0px, 0px, 0px);
         background: white;
-        /* border-radius: 5px; */
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
         &:after {
             content: '';
             position: absolute;

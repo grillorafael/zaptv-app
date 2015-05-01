@@ -7532,7 +7532,10 @@ a.button {
   animation-duration: 2s; }
 
 .chat-view {
-  background: #e7e4da; }
+  background: #e7e4da;
+  background: url("../img/bg-login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
   .chat-view .chat-message .chat-link, .chat-view .chat-message-self .chat-link {
     color: #387ef5;
     text-decoration: none; }
@@ -7543,14 +7546,18 @@ a.button {
     .chat-view .chat-message .profile-image {
       margin: 0;
       float: left;
-      /* border-radius: 5%; */ }
+      width: 40px;
+      height: 40px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px; }
   .chat-view .chat-bubble {
-    margin-left: 20%;
+    margin-left: 13%;
     padding: 5px 10px 0.1px;
     -webkit-transform: translate3d(0px, 0px, 0px);
     transform: translate3d(0px, 0px, 0px);
     background: white;
-    /* border-radius: 5px; */ }
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px; }
     .chat-view .chat-bubble:after {
       content: '';
       position: absolute;
@@ -7580,14 +7587,18 @@ a.button {
     .chat-view .chat-message-self .profile-image {
       margin: 0;
       float: right;
-      /* border-radius: 5%; */ }
+      width: 40px;
+      height: 40px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px; }
   .chat-view .chat-bubble-self {
-    margin-right: 20%;
+    margin-right: 13%;
     padding: 5px 10px 0.1px;
     -webkit-transform: translate3d(0px, 0px, 0px);
     transform: translate3d(0px, 0px, 0px);
     background: white;
-    /* border-radius: 5px; */ }
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; }
     .chat-view .chat-bubble-self:after {
       content: '';
       position: absolute;
