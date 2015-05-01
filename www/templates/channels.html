@@ -6,7 +6,7 @@
         </button>
     </ion-nav-buttons>
     <ion-tabs class="tabs-striped tabs-color-assertive">
-        <ion-tab title="Aberto">
+        <ion-tab title="TV Aberta">
             <ion-view on-swipe-left="goToTab(1)">
                 <ion-content>
                     <ion-refresher pulling-text="Carregando programação..." on-refresh="refresh()"></ion-refresher>
@@ -17,7 +17,7 @@
             </ion-view>
         </ion-tab>
 
-        <ion-tab title="Fechado">
+        <ion-tab title="TV por assinatura">
             <ion-view on-swipe-right="goToTab(0)">
                 <ion-content>
                     <ion-refresher pulling-text="Carregando programação..." on-refresh="refresh()"></ion-refresher>
