@@ -7600,73 +7600,76 @@ a.button {
       right: -8px;
       top: 6px; }
 
-.channels-view {
+.channels-view ion-view {
   background: url("../img/bg-login.jpg");
   background-repeat: no-repeat;
   background-size: cover; }
-  .channels-view .button-clear.button-clear {
-    color: white; }
-  .channels-view #channels-list {
-    -webkit-column-gap: 10px;
-    -moz-column-gap: 10px;
-    column-gap: 10px;
-    -webkit-column-fill: auto;
-    -moz-column-fill: auto;
-    column-fill: auto;
-    -webkit-column-width: 45%;
-    -moz-column-width: 45%;
-    column-width: 45%;
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2; }
-  .channels-view .a-card {
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    box-shadow: none; }
-    .channels-view .a-card:first-child {
-      margin-top: 0; }
-    .channels-view .a-card .img-box {
-      position: relative; }
-      .channels-view .a-card .img-box .channel-image {
-        width: 100%;
-        border-top-right-radius: 5px;
-        border-top-left-radius: 5px; }
-    .channels-view .a-card .card-info {
-      background: white;
-      padding: 0.5em 1em;
-      position: relative;
-      display: block;
-      margin-top: -5px; }
-      .channels-view .a-card .card-info .button-salmon {
-        margin-bottom: 10px; }
-      .channels-view .a-card .card-info .channel-name {
-        font-size: 1.1em;
-        margin-top: 3px;
-        margin-bottom: 15px;
-        padding-left: 30px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap; }
-      .channels-view .a-card .card-info .channel-info {
-        font-size: 0.8em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        margin-bottom: 0;
-        line-height: 1.7; }
-      .channels-view .a-card .card-info .rate {
-        font-size: 1em; }
-        .channels-view .a-card .card-info .rate .rate-icon {
-          color: gold; }
-      .channels-view .a-card .card-info .channel-logo {
-        position: absolute;
-        top: 7px;
-        left: 13px;
-        max-width: 25px;
-        max-height: 25px;
-        width: 100%;
-        height: 100%; }
+.channels-view .button-clear.button-clear {
+  color: white; }
+.channels-view .channels-list {
+  -webkit-column-gap: 10px;
+  -moz-column-gap: 10px;
+  column-gap: 10px;
+  -webkit-column-fill: auto;
+  -moz-column-fill: auto;
+  column-fill: auto;
+  -webkit-column-width: 45%;
+  -moz-column-width: 45%;
+  column-width: 45%;
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2; }
+.channels-view .a-card {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid-column;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: none; }
+  .channels-view .a-card:first-child {
+    margin-top: 0; }
+  .channels-view .a-card .img-box {
+    position: relative; }
+    .channels-view .a-card .img-box .channel-image {
+      width: 100%;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px; }
+  .channels-view .a-card .card-info {
+    background: white;
+    padding: 0.5em 1em;
+    position: relative;
+    display: block;
+    margin-top: -5px; }
+    .channels-view .a-card .card-info .button-salmon {
+      margin-bottom: 10px; }
+    .channels-view .a-card .card-info .channel-name {
+      font-size: 1.1em;
+      margin-top: 3px;
+      margin-bottom: 15px;
+      padding-left: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+    .channels-view .a-card .card-info .channel-info {
+      font-size: 0.8em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: 0;
+      line-height: 1.7; }
+    .channels-view .a-card .card-info .rate {
+      font-size: 1em; }
+      .channels-view .a-card .card-info .rate .rate-icon {
+        color: gold; }
+    .channels-view .a-card .card-info .channel-logo {
+      position: absolute;
+      top: 7px;
+      left: 13px;
+      max-width: 25px;
+      max-height: 25px;
+      width: 100%;
+      height: 100%; }
 
 .channel-popover.popover {
   height: 370px; }

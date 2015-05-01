@@ -1,17 +1,20 @@
 .channels-view {
-    background: url("../img/bg-login.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    ion-view {
+        background: url("../img/bg-login.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     .button-clear.button-clear {
         color: white;
     }
-    #channels-list {
+    .channels-list {
         column-gap: 10px;
         column-fill: auto;
         column-width: 45%;
         column-count: 2;
     }
     .a-card {
+        break-inside: avoid-column;
         &:first-child {
             margin-top: 0;
         }

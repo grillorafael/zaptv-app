@@ -21,6 +21,7 @@
             });
         })
         .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider) {
+            $ionicConfigProvider.tabs.position('top');
             $httpProvider.interceptors.push('AuthInterceptor');
             $stateProvider
                 .state('login', {
