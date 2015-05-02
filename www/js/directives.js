@@ -6,7 +6,19 @@
         .directive('focus', focus)
         .directive('score', score)
         .directive('channelTile', channelTile)
-        .directive('loader', loader);
+        .directive('loader', loader)
+        .directive('handleLoadError', handleLoadError);
+
+    function handleLoadError() {
+        return {
+            restrict: 'A',
+            link: function(scope, el) {
+                el.bind('error', function() {
+                    angular.element(this).attr("src", 'img/placeholder.jpg');
+                });
+            }
+        };
+    }
 
     function loader() {
         return {
@@ -50,13 +62,12 @@
                         element.addClass(animation);
                     } else if (mode === $animationTrigger.STOP) {
                         element.removeClass(animation);
-                    } else if(mode === $animationTrigger.FROM_START) {
+                    } else if (mode === $animationTrigger.FROM_START) {
                         element.removeClass(animation);
                         $timeout(function() {
                             element.addClass(animation);
                         }, 100);
-                    }
-                    else {
+                    } else {
                         element.toggleClass(animation);
                     }
                 });

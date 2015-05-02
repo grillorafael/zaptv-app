@@ -104,6 +104,14 @@
                 display: inline-block;
             }
         }
+        &.same-last-user {
+            .chat-bubble-self:after {
+                display: none;
+            }
+            .profile-image {
+                display: none;
+            }
+        }
     }
     .chat-bubble-self {
         padding: 5px 10px 0.1px;

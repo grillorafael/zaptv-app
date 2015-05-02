@@ -4,7 +4,7 @@
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $cordovaDevice,
-        $ionicPlatform, Analytics, moment, State, Socket, Channel, Auth) {
+        $ionicPlatform, Utils, Analytics, moment, State, Socket, Channel, Auth) {
 
         $ionicPlatform.ready(function() {
             if (!window.cordova) {
@@ -16,6 +16,8 @@
                 cordova.plugins.Keyboard.disableScroll(true);
             }
         });
+
+        var userColors = {};
 
         $ionicPopover.fromTemplateUrl('channel_popover', {
             scope: $scope
@@ -97,6 +99,29 @@
                 $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
             });
         });
+
+        $scope.loadBefore = function() {
+            var beforeId = $scope.messages[0].id;
+            Channel.fetchMore($scope.channel.id, beforeId).then(function(messages) {
+                messages = messages.reverse();
+                $scope.messages = messages.concat($scope.messages);
+            }, function() {
+                // TODO handle this shiet
+            })
+            .finally(function() {
+                $scope.$broadcast('scroll.refreshComplete');
+            });
+        };
+
+        $scope.getUserColor = function(id) {
+            if(userColors[id]) {
+                return userColors[id];
+            }
+            else {
+                userColors[id] = Utils.rndColor();
+                return userColors[id];
+            }
+        };
 
         $scope.openLink = function(url) {
             $cordovaInAppBrowser.open(url, '_blank', {

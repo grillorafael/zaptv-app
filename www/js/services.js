@@ -9,11 +9,20 @@
         .factory('ReverseGeolocation', ReverseGeolocation)
         .factory('State', State)
         .factory('Analytics', Analytics)
+        .factory('Utils', Utils)
         .value('Config', {
             'ENDPOINT': 'http://104.236.227.193/api',
             'SOCKET_ADDR': 'http://104.236.227.193:8080',
             'ANALYTICS_UA': 'UA-62526664-1'
         });
+
+    function Utils() {
+        return {
+            rndColor: function() {
+                return '#' + Math.floor(Math.random() * 16777215).toString(16);
+            }
+        };
+    }
 
     function Analytics($cordovaGoogleAnalytics, Config) {
         return {
@@ -217,13 +226,24 @@
             return deferred.promise;
         }
 
+        function fetchMore(channelId, lastMessageId) {
+            var deferred = $q.defer();
+
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + channelId + '/more/' + lastMessageId))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             list: list,
             getInfo: getInfo,
             lastMessages: lastMessages,
             getNextSchedule: getNextSchedule,
             getMyLastScore: getMyLastScore,
-            messageComplaint: messageComplaint
+            messageComplaint: messageComplaint,
+            fetchMore: fetchMore
         };
     }
 

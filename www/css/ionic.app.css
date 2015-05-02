@@ -7620,6 +7620,10 @@ a.button {
         height: 100%;
         border-radius: 20%;
         display: inline-block; }
+    .chat-view .chat-message-self.same-last-user .chat-bubble-self:after {
+      display: none; }
+    .chat-view .chat-message-self.same-last-user .profile-image {
+      display: none; }
   .chat-view .chat-bubble-self {
     padding: 5px 10px 0.1px;
     -webkit-transform: translate3d(0px, 0px, 0px);

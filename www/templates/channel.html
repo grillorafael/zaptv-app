@@ -6,6 +6,7 @@
         <button class="button button-clear ion-information-circled" ng-click="openPopover($event)"></button>
     </ion-nav-buttons>
     <ion-content class="has-header has-footer padding" delegate-handle="chat-scroll">
+        <ion-refresher pulling-text="Carregando mais mensagems.." on-refresh="loadBefore()"></ion-refresher>
         <ion-list>
             <div class="item-text-wrap" ng-class="{
                 'chat-message': message.user.id != user.id,
@@ -14,13 +15,15 @@
                 'pending': message.id == undefined
             }" ng-repeat="message in messages">
                 <div class="avatar">
-                    <img class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url}}" alt="foto perfil do usuario" >
+                    <img handle-load-error class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url}}" alt="foto perfil do usuario" >
                 </div>
                 <div on-hold='messageOptions(message)'  ng-class="{
                     'chat-bubble': message.user.id != user.id,
                     'chat-bubble-self': message.user.id == user.id
                 }" >
-                    <h2 class="c-username">
+                    <h2 class="c-username" ng-style="{
+                        'color': getUserColor(message.user.id)
+                    }">
                         {{::message.user.name}} <span class="timestamp" am-time-ago="message.created_at"></span>
                     </h2>
                     <p compile="::message.content | smartchat"></p>
