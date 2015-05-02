@@ -14,22 +14,26 @@
     }
     .chat-message {
         margin-bottom: 10px;
-        .profile-image {
-            margin: 0;
-            float: left;
+        .avatar {
             width: 40px;
             height: 40px;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
+            float: left;
+            margin-right: 5%;
+        }
+        .profile-image {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
         }
     }
     .chat-bubble {
-        margin-left: 13%;
         padding: 5px 10px 0.1px;
         transform: translate3d(0px, 0px, 0px);
         background: white;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
+        width: 80%;
+        float: left;
+        margin-bottom: 3%;
         &:after {
             content: '';
             position: absolute;
@@ -52,7 +56,7 @@
     }
     .timestamp {
         font-size: 0.8em;
-        color: #d8d8d8;
+        color: grey;
         padding-left: 3%;
         font-weight: 300;
     }
@@ -62,22 +66,27 @@
     }
     .chat-message-self {
         margin-bottom: 10px;
-        .profile-image {
-            margin: 0;
-            float: right;
+        .avatar {
             width: 40px;
             height: 40px;
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
+            margin-left: 5%;
+            display: inline-block;
+            float: right;
+            .profile-image {
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                display: inline-block;
+            }
         }
     }
     .chat-bubble-self {
-        margin-right: 13%;
         padding: 5px 10px 0.1px;
         transform: translate3d(0px, 0px, 0px);
         background: white;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+        width: 80%;
+        float: right;
         &:after {
             content: '';
             position: absolute;

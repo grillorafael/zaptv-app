@@ -7543,21 +7543,24 @@ a.button {
     margin-bottom: 0; }
   .chat-view .chat-message {
     margin-bottom: 10px; }
-    .chat-view .chat-message .profile-image {
-      margin: 0;
-      float: left;
+    .chat-view .chat-message .avatar {
       width: 40px;
       height: 40px;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px; }
+      float: left;
+      margin-right: 5%; }
+    .chat-view .chat-message .profile-image {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%; }
   .chat-view .chat-bubble {
-    margin-left: 13%;
     padding: 5px 10px 0.1px;
     -webkit-transform: translate3d(0px, 0px, 0px);
     transform: translate3d(0px, 0px, 0px);
     background: white;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px; }
+    width: 80%;
+    float: left;
+    margin-bottom: 3%; }
     .chat-view .chat-bubble:after {
       content: '';
       position: absolute;
@@ -7576,7 +7579,7 @@ a.button {
       color: #b2b2b2; }
   .chat-view .timestamp {
     font-size: 0.8em;
-    color: #d8d8d8;
+    color: grey;
     padding-left: 3%;
     font-weight: 300; }
   .chat-view .c-username {
@@ -7584,21 +7587,25 @@ a.button {
     color: #f75f51; }
   .chat-view .chat-message-self {
     margin-bottom: 10px; }
-    .chat-view .chat-message-self .profile-image {
-      margin: 0;
-      float: right;
+    .chat-view .chat-message-self .avatar {
       width: 40px;
       height: 40px;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px; }
+      margin-left: 5%;
+      display: inline-block;
+      float: right; }
+      .chat-view .chat-message-self .avatar .profile-image {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        display: inline-block; }
   .chat-view .chat-bubble-self {
-    margin-right: 13%;
     padding: 5px 10px 0.1px;
     -webkit-transform: translate3d(0px, 0px, 0px);
     transform: translate3d(0px, 0px, 0px);
     background: white;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px; }
+    width: 80%;
+    float: right; }
     .chat-view .chat-bubble-self:after {
       content: '';
       position: absolute;
