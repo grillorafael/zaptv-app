@@ -3,6 +3,9 @@
     background: url("../img/bg-login.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    p {
+        margin: 0 0 7px;
+    }
     .chat-message, .chat-message-self {
         .chat-link {
             color: $positive;
@@ -33,7 +36,7 @@
         transform: translate3d(0px, 0px, 0px);
         background: white;
         float: left;
-        width: 80%;
+        max-width: 80%;
         margin-bottom: 5px;
         border-radius: 5px;
         &:after {
@@ -66,7 +69,7 @@
     .c-username {
         font-size: 1em;
         color: #f75f51;
-
+        margin-bottom: 0;
     }
     .chat-message-self {
         margin-bottom: 10px;
@@ -94,7 +97,7 @@
         background: white;
         float: right;
         margin-bottom: 5px;
-        width: 80%;
+        max-width: 80%;
         border-radius: 5px;
         &:after {
             content: '';

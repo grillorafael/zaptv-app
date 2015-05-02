@@ -7536,6 +7536,8 @@ a.button {
   background: url("../img/bg-login.jpg");
   background-repeat: no-repeat;
   background-size: cover; }
+  .chat-view p {
+    margin: 0 0 7px; }
   .chat-view .chat-message .chat-link, .chat-view .chat-message-self .chat-link {
     color: #387ef5;
     text-decoration: none; }
@@ -7560,7 +7562,7 @@ a.button {
     transform: translate3d(0px, 0px, 0px);
     background: white;
     float: left;
-    width: 80%;
+    max-width: 80%;
     margin-bottom: 5px;
     border-radius: 5px; }
     .chat-view .chat-bubble:after {
@@ -7587,7 +7589,8 @@ a.button {
     display: inline-block; }
   .chat-view .c-username {
     font-size: 1em;
-    color: #f75f51; }
+    color: #f75f51;
+    margin-bottom: 0; }
   .chat-view .chat-message-self {
     margin-bottom: 10px;
     position: relative;
@@ -7612,7 +7615,7 @@ a.button {
     background: white;
     float: right;
     margin-bottom: 5px;
-    width: 80%;
+    max-width: 80%;
     border-radius: 5px; }
     .chat-view .chat-bubble-self:after {
       content: '';
