@@ -5,7 +5,15 @@
         .directive('compile', compile)
         .directive('focus', focus)
         .directive('score', score)
-        .directive('channelTile', channelTile);
+        .directive('channelTile', channelTile)
+        .directive('loader', loader);
+
+    function loader() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/directives/loader.html'
+        };
+    }
 
     function channelTile() {
         return {

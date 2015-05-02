@@ -7747,6 +7747,66 @@ a.button {
     border: 1px solid #bababa;
     border-radius: 5px; }
 
+loader svg {
+  width: 100%; }
+
+.bar-1, .bar-2, .bar-3, .bar-4, .bar-5, .bar-6 {
+  width: 80px;
+  height: 200px;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+  -webkit-animation: popIn 1s alternate-reverse infinite;
+  animation: popIn 1s alternate-reverse infinite; }
+
+.bar-1 {
+  fill: #f4cf67;
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s; }
+
+.bar-2 {
+  fill: #badef4;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s; }
+
+.bar-3 {
+  fill: #acce8e;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s; }
+
+.bar-4 {
+  fill: #ddacd3;
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s; }
+
+.bar-5 {
+  fill: #dd5e6a;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s; }
+
+.bar-6 {
+  fill: #949dd3;
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s; }
+
+@-webkit-keyframes popIn {
+  0% {
+    -webkit-transform: translateY(-500px);
+    transform: translateY(-500px); }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
+
+@keyframes popIn {
+  0% {
+    -webkit-transform: translateY(-500px);
+    transform: translateY(-500px); }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
+
 @font-face {
   font-family: 'MyWebFont';
   src: url('webfont.eot');
