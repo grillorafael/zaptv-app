@@ -7,6 +7,7 @@
                 if (response.data.token) {
                     localStorage.setItem('auth_token', response.data.token);
                     localStorage.setItem('user_id', response.data.user.id);
+                    localStorage.setItem('user', JSON.stringify(response.data.user));
                 }
 
                 return response;

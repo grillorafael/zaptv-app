@@ -8,23 +8,23 @@
     <ion-content class="has-header has-footer padding" delegate-handle="chat-scroll">
         <ion-list>
             <div class="item-text-wrap" ng-class="{
-                'chat-message': message.user.id != userId,
-                'chat-message-self': message.user.id == userId
+                'chat-message': message.user.id != user.id,
+                'chat-message-self': message.user.id == user.id,
+                'same-last-user': message.user.id == messages[$index - 1].user.id,
+                'pending': message.id == undefined
             }" ng-repeat="message in messages">
                 <div class="avatar">
                     <img class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url}}" alt="foto perfil do usuario" >
                 </div>
                 <div on-hold='messageOptions(message)'  ng-class="{
-                    'chat-bubble': message.user.id != userId,
-                    'chat-bubble-self': message.user.id == userId
+                    'chat-bubble': message.user.id != user.id,
+                    'chat-bubble-self': message.user.id == user.id
                 }" >
                     <h2 class="c-username">
                         {{::message.user.name}} <span class="timestamp" am-time-ago="message.created_at"></span>
                     </h2>
                     <p compile="::message.content | smartchat"></p>
-
                 </div>
-
             </div>
             <div class="clearfix"></div>
         </ion-list>

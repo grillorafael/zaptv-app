@@ -23,10 +23,10 @@
             $scope.popover = popover;
         });
 
-        $scope.userId = Auth.getUserId();
-
-        Analytics.init($scope.userId);
+        $scope.user = Auth.getUser();
         $scope.channel = State.get('last_channel');
+
+        Analytics.init($scope.user.id);
         Analytics.trackView('channel_chat_' + $scope.channel.id);
 
         $scope.currentScore = 0;
@@ -80,7 +80,19 @@
         });
 
         Socket.onMessage(function(msg) {
-            $scope.messages.push(msg);
+            if(msg.user.id === $scope.user.id) {
+                var msgIdx = null;
+                $scope.messages.forEach(function(m, i) {
+                    if(m.user.id === $scope.user.id && m.id === undefined) {
+                        msgIdx = i;
+                    }
+                });
+                $scope.messages[msgIdx] = msg;
+            }
+            else {
+                $scope.messages.push(msg);
+            }
+
             $timeout(function() {
                 $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
             });
@@ -112,6 +124,12 @@
                 channel_id: $scope.channel.id
             };
 
+            $scope.messages.push({
+                user: $scope.user,
+                content: currentMessage,
+                created_at: new Date()
+            });
+
             Socket.sendMessage(info);
             $scope.currentMessage = '';
         };
@@ -134,7 +152,10 @@
                 titleText: '',
                 cancelText: 'Voltar',
                 destructiveButtonClicked: function() {
-                    // TODO
+                    Channel.messageComplaint(message.id).then(function() {
+
+                    }, function() {});
+                    return true;
                 },
                 cancel: function() {
 

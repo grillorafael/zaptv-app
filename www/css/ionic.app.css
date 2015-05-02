@@ -7541,6 +7541,8 @@ a.button {
     font-size: 0.9em; }
   .chat-view .clearfix {
     clear: both; }
+  .chat-view .chat-message.pending, .chat-view .chat-message-self.pending {
+    opacity: 0.3; }
   .chat-view .chat-message .chat-link, .chat-view .chat-message-self .chat-link {
     color: #387ef5;
     text-decoration: none; }

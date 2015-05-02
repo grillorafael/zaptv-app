@@ -11,6 +11,9 @@
         clear: both;
     }
     .chat-message, .chat-message-self {
+        &.pending {
+            opacity: 0.3;
+        }
         .chat-link {
             color: $positive;
             text-decoration: none;

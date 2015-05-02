@@ -94,6 +94,12 @@
             },
             getUserId: function() {
                 return localStorage.getItem('user_id');
+            },
+            setUser: function(user) {
+                localStorage.setItem('user', user);
+            },
+            getUser: function() {
+                return JSON.parse(localStorage.getItem('user'));
             }
         };
     }
@@ -184,7 +190,6 @@
         function lastMessages(id) {
             var deferred = $q.defer();
 
-
             $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/last'))
                 .success(deferred.resolve)
                 .error(deferred.reject);
@@ -202,12 +207,23 @@
             return deferred.promise;
         }
 
+        function messageComplaint(messageId) {
+            var deferred = $q.defer();
+
+            $http.post(Auth.appendToken(Config.ENDPOINT + '/message/' + messageId + '/complaint'))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             list: list,
             getInfo: getInfo,
             lastMessages: lastMessages,
             getNextSchedule: getNextSchedule,
-            getMyLastScore: getMyLastScore
+            getMyLastScore: getMyLastScore,
+            messageComplaint: messageComplaint
         };
     }
 
