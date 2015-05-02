@@ -7542,12 +7542,13 @@ a.button {
   .chat-view .chat-message:last-child, .chat-view .chat-message-self:last-child {
     margin-bottom: 0; }
   .chat-view .chat-message {
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    clear: both; }
     .chat-view .chat-message .avatar {
       width: 40px;
       height: 40px;
-      float: left;
-      margin-right: 5%; }
+      margin-right: 5%;
+      float: left; }
     .chat-view .chat-message .profile-image {
       margin: 0;
       width: 100%;
@@ -7558,9 +7559,9 @@ a.button {
     -webkit-transform: translate3d(0px, 0px, 0px);
     transform: translate3d(0px, 0px, 0px);
     background: white;
-    width: 80%;
     float: left;
-    margin-bottom: 3%; }
+    width: 80%;
+    margin-bottom: 10px; }
     .chat-view .chat-bubble:after {
       content: '';
       position: absolute;
@@ -7581,16 +7582,19 @@ a.button {
     font-size: 0.8em;
     color: grey;
     padding-left: 3%;
-    font-weight: 300; }
+    font-weight: 300;
+    display: inline-block; }
   .chat-view .c-username {
     font-size: 1em;
     color: #f75f51; }
   .chat-view .chat-message-self {
+    margin-bottom: 10px;
+    position: relative;
+    clear: both;
     margin-bottom: 10px; }
     .chat-view .chat-message-self .avatar {
       width: 40px;
       height: 40px;
-      margin-left: 5%;
       display: inline-block;
       float: right; }
       .chat-view .chat-message-self .avatar .profile-image {
@@ -7604,8 +7608,9 @@ a.button {
     -webkit-transform: translate3d(0px, 0px, 0px);
     transform: translate3d(0px, 0px, 0px);
     background: white;
-    width: 80%;
-    float: right; }
+    float: right;
+    margin-bottom: 10px;
+    width: 80%; }
     .chat-view .chat-bubble-self:after {
       content: '';
       position: absolute;

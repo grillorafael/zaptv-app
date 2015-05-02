@@ -14,11 +14,12 @@
     }
     .chat-message {
         margin-bottom: 10px;
+        clear:both;
         .avatar {
             width: 40px;
             height: 40px;
-            float: left;
             margin-right: 5%;
+            float: left;
         }
         .profile-image {
             margin: 0;
@@ -31,9 +32,9 @@
         padding: 5px 10px 0.1px;
         transform: translate3d(0px, 0px, 0px);
         background: white;
-        width: 80%;
         float: left;
-        margin-bottom: 3%;
+        width: 80%;
+        margin-bottom: 10px;
         &:after {
             content: '';
             position: absolute;
@@ -59,17 +60,21 @@
         color: grey;
         padding-left: 3%;
         font-weight: 300;
+        display: inline-block;
     }
     .c-username {
         font-size: 1em;
         color: #f75f51;
+
     }
     .chat-message-self {
+        margin-bottom: 10px;
+        position: relative;
+        clear: both;
         margin-bottom: 10px;
         .avatar {
             width: 40px;
             height: 40px;
-            margin-left: 5%;
             display: inline-block;
             float: right;
             .profile-image {
@@ -85,8 +90,9 @@
         padding: 5px 10px 0.1px;
         transform: translate3d(0px, 0px, 0px);
         background: white;
-        width: 80%;
         float: right;
+        margin-bottom: 10px;
+        width: 80%;
         &:after {
             content: '';
             position: absolute;

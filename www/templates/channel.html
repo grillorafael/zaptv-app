@@ -20,7 +20,7 @@
                 }" >
                     <h2 class="c-username">
                         {{::message.user.name}}
-                        <span class="timestamp" am-time-ago="message.created_at"></span>
+                        <p class="timestamp" am-time-ago="message.created_at"></p>
                     </h2>
                     <div compile="::message.content | smartchat"></div>
                 </div>
