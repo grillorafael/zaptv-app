@@ -7561,7 +7561,8 @@ a.button {
     background: white;
     float: left;
     width: 80%;
-    margin-bottom: 10px; }
+    margin-bottom: 5px;
+    border-radius: 5px; }
     .chat-view .chat-bubble:after {
       content: '';
       position: absolute;
@@ -7591,12 +7592,13 @@ a.button {
     margin-bottom: 10px;
     position: relative;
     clear: both;
-    margin-bottom: 10px; }
+    margin-bottom: 5px; }
     .chat-view .chat-message-self .avatar {
       width: 40px;
       height: 40px;
       display: inline-block;
-      float: right; }
+      float: right;
+      margin-left: 5%; }
       .chat-view .chat-message-self .avatar .profile-image {
         margin: 0;
         width: 100%;
@@ -7609,8 +7611,9 @@ a.button {
     transform: translate3d(0px, 0px, 0px);
     background: white;
     float: right;
-    margin-bottom: 10px;
-    width: 80%; }
+    margin-bottom: 5px;
+    width: 80%;
+    border-radius: 5px; }
     .chat-view .chat-bubble-self:after {
       content: '';
       position: absolute;
