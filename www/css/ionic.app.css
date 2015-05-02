@@ -7538,6 +7538,8 @@ a.button {
   background-size: cover; }
   .chat-view p {
     margin: 0 0 7px; }
+  .chat-view .clearfix {
+    clear: both; }
   .chat-view .chat-message .chat-link, .chat-view .chat-message-self .chat-link {
     color: #387ef5;
     text-decoration: none; }

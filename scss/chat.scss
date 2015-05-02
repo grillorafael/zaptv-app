@@ -6,6 +6,9 @@
     p {
         margin: 0 0 7px;
     }
+    .clearfix {
+        clear: both;
+    }
     .chat-message, .chat-message-self {
         .chat-link {
             color: $positive;
