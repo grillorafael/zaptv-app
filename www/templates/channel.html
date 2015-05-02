@@ -19,10 +19,10 @@
                     'chat-bubble-self': message.user.id == userId
                 }" >
                     <h2 class="c-username">
-                        {{::message.user.name}}
-                        <p class="timestamp" am-time-ago="message.created_at"></p>
+                        {{::message.user.name}} <span class="timestamp" am-time-ago="message.created_at"></span>
                     </h2>
-                    <div compile="::message.content | smartchat"></div>
+                    <p compile="::message.content | smartchat"></p>
+
                 </div>
 
             </div>

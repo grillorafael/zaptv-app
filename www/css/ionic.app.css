@@ -7537,7 +7537,8 @@ a.button {
   background-repeat: no-repeat;
   background-size: cover; }
   .chat-view p {
-    margin: 0 0 7px; }
+    margin: 0 0 7px;
+    font-size: 0.9em; }
   .chat-view .clearfix {
     clear: both; }
   .chat-view .chat-message .chat-link, .chat-view .chat-message-self .chat-link {
@@ -7551,13 +7552,13 @@ a.button {
     .chat-view .chat-message .avatar {
       width: 40px;
       height: 40px;
-      margin-right: 5%;
+      margin-right: 4%;
       float: left; }
     .chat-view .chat-message .profile-image {
       margin: 0;
       width: 100%;
       height: 100%;
-      border-radius: 50%; }
+      border-radius: 20%; }
   .chat-view .chat-bubble {
     padding: 5px 10px 0.1px;
     -webkit-transform: translate3d(0px, 0px, 0px);
@@ -7571,28 +7572,35 @@ a.button {
       content: '';
       position: absolute;
       border-style: solid;
-      border-width: 8px 10px 8px 0;
+      border-width: 5px 10px 9px 0;
       border-color: transparent #fff;
       display: block;
       width: 0;
       z-index: 1;
       left: -8px;
-      top: 6px; }
+      top: 1px; }
   .chat-view .button-clear.button-send {
     font-weight: 400;
     color: #dd5e6a; }
     .chat-view .button-clear.button-send.disabled {
       color: #b2b2b2; }
   .chat-view .timestamp {
-    font-size: 0.8em;
+    font-size: 0.6em;
     color: grey;
-    padding-left: 3%;
     font-weight: 300;
-    display: inline-block; }
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left: 2px;
+    width: 100%; }
   .chat-view .c-username {
     font-size: 1em;
     color: #f75f51;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%; }
   .chat-view .chat-message-self {
     margin-bottom: 10px;
     position: relative;
@@ -7603,12 +7611,12 @@ a.button {
       height: 40px;
       display: inline-block;
       float: right;
-      margin-left: 5%; }
+      margin-left: 4%; }
       .chat-view .chat-message-self .avatar .profile-image {
         margin: 0;
         width: 100%;
         height: 100%;
-        border-radius: 50%;
+        border-radius: 20%;
         display: inline-block; }
   .chat-view .chat-bubble-self {
     padding: 5px 10px 0.1px;
@@ -7623,13 +7631,13 @@ a.button {
       content: '';
       position: absolute;
       border-style: solid;
-      border-width: 8px 0 8px 10px;
+      border-width: 5px 0 9px 10px;
       border-color: transparent white;
       display: block;
       width: 0;
       z-index: 1;
       right: -8px;
-      top: 6px; }
+      top: 1px; }
 
 .channels-view ion-view {
   background: url("../img/bg-login.jpg");
