@@ -1,0 +1,25 @@
+<ion-view class="login-view">
+    <ion-content>
+        <h1 class="text-center main-logo">
+            <img src="img/logo.png" alt="logo zaper" width="180">
+        </h1>
+        <div class="padding form-login">
+            <form ng-submit="localLogin(ll)" class="list list-inset med-quick-anim" animation-handle="login-form" novalidate>
+                <label class="item item-input bg-transparent">
+                    <i class="icon ion-ios-person-outline placeholder-icon"></i>
+                    <input type="text" placeholder="Email ou Usuário" ng-model="ll.login_key">
+                </label>
+                <label class="item item-input bradius-bottom bg-transparent">
+                    <i class="icon ion-ios-locked-outline placeholder-icon"></i>
+                    <input type="password" placeholder="Senha" ng-model="ll.password">
+                </label>
+                <button class="button button-block button-salmon button-login">
+                    Entrar
+                </button>
+            </form>
+
+        </div>
+
+
+    </ion-content>
+</ion-view>

@@ -7749,13 +7749,18 @@ a.button {
 
 .login-view {
   background: #ede1b5;
-  background: url("../img/bg-login.jpg");
+  background: url("../img/bg-login-2.jpg");
   background-size: cover; }
   .login-view .padding {
-    padding: 10px; }
+    padding: 10px 30px; }
+  .login-view .list.padding {
+    padding: 15px; }
   .login-view .main-logo {
-    margin-bottom: 0;
+    margin-bottom: 0.5em;
     margin-top: 1em; }
+  .login-view .call-text {
+    font-size: 1.2em;
+    color: white; }
   .login-view .list-inset {
     background-color: transparent; }
   .login-view label.item {
@@ -7776,13 +7781,33 @@ a.button {
     font-size: 1em; }
   .login-view .item {
     background: rgba(255, 255, 255, 0.8);
-    border: 0; }
+    border: 0;
+    border-radius: 5px; }
   .login-view .button-facebook {
-    background-color: rgba(59, 89, 152, 0.7); }
+    background-color: #3b5998;
+    box-shadow: -1px 10px 4px -8px rgba(0, 0, 0, 0.27); }
+  .login-view .list-button-salmon {
+    background: #dd5e6a;
+    color: white;
+    box-shadow: -1px 10px 4px -8px rgba(0, 0, 0, 0.27); }
   .login-view a.button-facebook {
     color: white; }
   .login-view .placeholder-icon {
     color: black; }
+  .login-view .list a {
+    margin-top: 10px; }
+  .login-view .bar-footer {
+    background: rgba(255, 255, 255, 0.8); }
+  .login-view .register-button {
+    left: 0;
+    right: 0;
+    z-index: 0;
+    overflow: hidden;
+    text-align: center;
+    line-height: 3px;
+    background: none; }
+  .login-view .underline {
+    border-bottom: 1px solid black; }
 
 .profile-view {
   background: url("../img/bg-login.jpg");
@@ -7851,6 +7876,15 @@ loader svg {
   100% {
     -webkit-transform: translateY(0);
     transform: translateY(0); } }
+
+.register-view {
+  background: #ede1b5;
+  background: url("../img/bg-login.jpg");
+  background-size: cover; }
+  .register-view h1 {
+    margin-top: 8%; }
+  .register-view .list-inset {
+    background-color: transparent; }
 
 @font-face {
   font-family: 'MyWebFont';

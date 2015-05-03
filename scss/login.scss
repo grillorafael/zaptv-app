@@ -1,13 +1,20 @@
 .login-view {
     background: #ede1b5;
-    background: url("../img/bg-login.jpg");
+    background: url("../img/bg-login-2.jpg");
     background-size: cover;
     .padding {
-        padding: 10px;
+        padding: 10px 30px;
+    }
+    .list.padding {
+        padding: 15px;
     }
     .main-logo {
-        margin-bottom: 0;
+        margin-bottom: 0.5em;
         margin-top: 1em;
+    }
+    .call-text {
+        font-size: 1.2em;
+        color: white;
     }
     .list-inset {
         background-color: transparent;
@@ -40,14 +47,39 @@
     .item {
         background: rgba(255,255,255,0.8);
         border: 0;
+        border-radius: 5px;
     }
     .button-facebook {
-        background-color: rgba(59, 89, 152, 0.7);
+        background-color: rgba(59, 89, 152, 1);
+        box-shadow: -1px 10px 4px -8px rgba(0,0,0,0.27);
+    }
+    .list-button-salmon {
+        background: rgba(221,94,106,1);
+        color: white;
+        box-shadow: -1px 10px 4px -8px rgba(0,0,0,0.27);
     }
     a.button-facebook {
         color: white;
     }
     .placeholder-icon {
         color: black;
+    }
+    .list a {
+        margin-top: 10px;
+    }
+    .bar-footer {
+        background: rgba(255,255,255,0.8);
+    }
+    .register-button {
+        left:0;
+        right:0;
+        z-index: 0;
+        overflow: hidden;
+        text-align: center;
+        line-height: 3px;
+        background: none;
+    }
+    .underline {
+        border-bottom: 1px solid black;
     }
 }

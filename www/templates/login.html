@@ -4,34 +4,24 @@
             <img src="img/logo.png" alt="logo zaper" width="180">
         </h1>
         <div class="text-center padding">
-            <p>Acompanhe o que está passando na TV e converse com seus amigos :)</p>
+            <p class="call-text">Converse com seus amigos enquanto assiste TV!</p>
         </div>
-        <div class="padding form-login">
-            <form ng-submit="localLogin(ll)" class="list list-inset med-quick-anim" animation-handle="login-form" novalidate>
-                <label class="item item-input bg-transparent">
-                    <i class="icon ion-ios-person-outline placeholder-icon"></i>
-                    <input type="text" placeholder="Email ou Usuário" ng-model="ll.login_key">
-                </label>
-                <label class="item item-input bradius-bottom bg-transparent">
-                    <i class="icon ion-ios-locked-outline placeholder-icon"></i>
-                    <input type="password" placeholder="Senha" ng-model="ll.password">
-                </label>
-                <button class="button button-block button-salmon button-login">
-                    Entrar
-                </button>
-            </form>
-
-        </div>
-
-        <div class="list">
+        <div class="list padding">
             <a class="item item-icon-left item-icon-right button-facebook" ng-click='facebookLogin()'>
                 <i class="icon ion-social-facebook "></i> Entre com o Facebook
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
-            <a class="item item-icon-left item-icon-right" href="#/register">
-                <i class="icon ion-ios-monitor-outline"></i> Quero me cadastrar!
+            <a class="item item-icon-left item-icon-right list-button-salmon" href="#/login-form">
+                <i class="icon ion-ios-home"></i> Já possui cadastro? Entre aqui!
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
         </div>
+
     </ion-content>
+    <div class="bar bar-footer">
+        <a class="item item-icon-left register-button" href="#/register">
+            Não possui conta? Cadastre <span class="underline">aqui!</span>
+        </a>
+    </div>
+
 </ion-view>

@@ -33,6 +33,15 @@
                         }
                     }
                 })
+                .state('login-form', {
+                    url: '/login-form',
+                    views: {
+                        'mainContent': {
+                            templateUrl: 'templates/login-form.html',
+                            controller: 'LoginCtrl'
+                        }
+                    }
+                })
                 .state('register', {
                     url: '/register',
                     views: {
