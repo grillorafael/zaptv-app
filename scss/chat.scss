@@ -25,6 +25,17 @@
     .chat-message {
         margin-bottom: 10px;
         clear:both;
+        &.same-last-user {
+            .chat-bubble::after {
+                display: none;
+            }
+            .profile-image {
+                display: none;
+            }
+            .username {
+                display: none;
+            }
+        }
         .avatar {
             width: 40px;
             height: 40px;
@@ -37,6 +48,7 @@
             height: 100%;
             border-radius: 20%;
         }
+
     }
     .chat-bubble {
         padding: 5px 10px 0.1px;
@@ -105,10 +117,13 @@
             }
         }
         &.same-last-user {
-            .chat-bubble-self:after {
+            .chat-bubble-self::after {
                 display: none;
             }
             .profile-image {
+                display: none;
+            }
+            .username {
                 display: none;
             }
         }

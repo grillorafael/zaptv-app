@@ -24,7 +24,7 @@
                     <h2 class="c-username" ng-style="{
                         'color': getUserColor(message.user.id)
                     }">
-                        {{::message.user.name}} <span class="timestamp" am-time-ago="message.created_at"></span>
+                        <span class="username">{{::message.user.name}}</span> <span class="timestamp" am-time-ago="message.created_at"></span>
                     </h2>
                     <p compile="::message.content | smartchat"></p>
                 </div>

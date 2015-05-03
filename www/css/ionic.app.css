@@ -7551,6 +7551,12 @@ a.button {
   .chat-view .chat-message {
     margin-bottom: 10px;
     clear: both; }
+    .chat-view .chat-message.same-last-user .chat-bubble::after {
+      display: none; }
+    .chat-view .chat-message.same-last-user .profile-image {
+      display: none; }
+    .chat-view .chat-message.same-last-user .username {
+      display: none; }
     .chat-view .chat-message .avatar {
       width: 40px;
       height: 40px;
@@ -7620,9 +7626,11 @@ a.button {
         height: 100%;
         border-radius: 20%;
         display: inline-block; }
-    .chat-view .chat-message-self.same-last-user .chat-bubble-self:after {
+    .chat-view .chat-message-self.same-last-user .chat-bubble-self::after {
       display: none; }
     .chat-view .chat-message-self.same-last-user .profile-image {
+      display: none; }
+    .chat-view .chat-message-self.same-last-user .username {
       display: none; }
   .chat-view .chat-bubble-self {
     padding: 5px 10px 0.1px;
