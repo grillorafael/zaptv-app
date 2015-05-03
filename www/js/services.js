@@ -13,8 +13,10 @@
         .factory('Analytics', Analytics)
         .factory('Utils', Utils)
         .value('Config', {
-            'ENDPOINT': 'http://104.236.227.193/api',
-            'SOCKET_ADDR': 'http://104.236.227.193:8080',
+            'ENDPOINT': 'http://localhost:3000/api',
+            'SOCKET_ADDR': 'http://localhost:8080',
+            //'ENDPOINT': 'http://104.236.227.193/api',
+            //'SOCKET_ADDR': 'http://104.236.227.193:8080',
             'ANALYTICS_UA': 'UA-62526664-1'
         });
 
@@ -164,11 +166,22 @@
             return deferred.promise;
         }
 
+        function checkUsername(v) {
+            var deferred = $q.defer();
+
+            $http.get(Config.ENDPOINT + '/username/check/' + v)
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             register: register,
             login: login,
             changePicture: changePicture,
-            me: me
+            me: me,
+            checkUsername: checkUsername
         };
     }
 

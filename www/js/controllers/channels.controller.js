@@ -13,12 +13,6 @@
         $scope.evenChannels = [];
         $scope.oddChannels = [];
 
-        $ionicPlatform.ready(function() {
-            if (window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            }
-        });
-
         $ionicPopover.fromTemplateUrl('channels_popover', {
             scope: $scope
         }).then(function(popover) {

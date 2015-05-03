@@ -1,19 +1,22 @@
 (function() {
     'use strict';
-    angular.module('zaptv').controller('RegisterCtrl', RegisterCtrl);
+    angular.module('zaptv').controller('SetUsernameCtrl', SetUsernameCtrl);
 
-    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicHistory, $animationTrigger, User, Auth, Analytics) {
+    function SetUsernameCtrl($scope, $state, $animationTrigger, $ionicHistory, User, Analytics, State) {
         Analytics.init();
-        Analytics.trackView('register');
+        Analytics.trackView('set_username');
+
+        var user = State.get('fb_response');
 
         $scope.setForm = function(f) {
             $scope.form = f;
         };
 
-        $scope.register = function(user) {
+        $scope.register = function(u) {
             if($scope.form.registerForm.$valid) {
-                User.register(user).then(function(tokenData) {
-                    Analytics.trackEvent('Auth', 'register');
+                user.username = u.username;
+                User.login(user).then(function(tokenData) {
+                    Analytics.trackEvent('Auth', 'facebook_login');
                     $ionicHistory.nextViewOptions({
                         disableBack: true,
                         historyRoot: true

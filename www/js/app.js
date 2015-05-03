@@ -13,7 +13,7 @@
             amMoment.changeLocale('pt-br');
             $ionicPlatform.ready(function() {
                 if (window.cordova && window.cordova.plugins.Keyboard) {
-                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 }
                 if (window.StatusBar) {
                     StatusBar.styleLightContent();
@@ -75,6 +75,15 @@
                         'mainContent': {
                             templateUrl: 'templates/channel.html',
                             controller: 'ChannelCtrl'
+                        }
+                    }
+                })
+                .state('set_username', {
+                    url: '/set-username',
+                    views: {
+                        'mainContent': {
+                            templateUrl: 'templates/set_username.html',
+                            controller: 'SetUsernameCtrl'
                         }
                     }
                 });

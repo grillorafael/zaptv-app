@@ -7,11 +7,11 @@
         <div class="padding form-login">
             <form name="registerForm" ng-init="setForm(this)" ng-submit="register(user)" class="list list-inset med-quick-anim" novalidate animation-handle="register-form">
                 <label class="item item-input bg-transparent" ng-class="{
-                    'error': registerForm.name.$dirty && !registerForm.name.$valid,
-                    'success': registerForm.name.$dirty && registerForm.name.$valid
+                    'error': registerForm.username.$dirty && !registerForm.username.$valid,
+                    'success': registerForm.username.$dirty && registerForm.username.$valid
                 }">
                     <i class="icon ion-ios-person-outline placeholder-icon"></i>
-                    <input type="text" placeholder="Nome" name="name" ng-model="user.name" required>
+                    <input type="text" placeholder="Usuário" name="username" ng-model="user.username" username>
                 </label>
                 <label class="item item-input bg-transparent"ng-class="{
                     'error': registerForm.email.$dirty && !registerForm.email.$valid,

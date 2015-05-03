@@ -2,15 +2,32 @@
     'use strict';
     angular.module('zaptv').controller('LoginCtrl', LoginCtrl);
 
-    function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $animationTrigger, Analytics, User, Auth) {
+    function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory,
+        $animationTrigger, $cordovaFacebook, Analytics, User, Auth, State) {
         Analytics.init();
         Analytics.trackView('login');
 
-        $ionicPlatform.ready(function() {
-            if (window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
-            }
-        });
+        $scope.facebookLogin = function() {
+            var userInfo = {};
+            $cordovaFacebook.login(["public_profile", "email", "user_friends"])
+                .then(function(loginResponse) {
+                    userInfo.fb_token = loginResponse.authResponse.accessToken;
+                    userInfo.fb_id = loginResponse.authResponse.userID;
+
+                    $cordovaFacebook.api("me", ["public_profile"])
+                        .then(function(meResponse) {
+                            userInfo.email = meResponse.email;
+                            userInfo.name = meResponse.name;
+                            userInfo.gender = meResponse.gender ? meResponse.gender[0] : null;
+                            State.set('fb_response', userInfo);
+                            $state.go('set_username');
+                        }, function(error) {
+                            // TODO Handle error
+                        });
+                }, function(error) {
+                    // TODO Handle error
+                });
+        };
 
         $scope.localLogin = function(ll) {
             User.login(ll).then(function() {

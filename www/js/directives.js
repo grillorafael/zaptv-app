@@ -1,13 +1,44 @@
 (function() {
     'use strict';
-    angular.module('zaptv.directives', [])
+    angular.module('zaptv.directives', [
+        'zaptv.services'
+    ])
         .directive('animationHandle', animationHandle)
         .directive('compile', compile)
         .directive('focus', focus)
         .directive('score', score)
         .directive('channelTile', channelTile)
         .directive('loader', loader)
-        .directive('handleLoadError', handleLoadError);
+        .directive('handleLoadError', handleLoadError)
+        .directive('username', username);
+
+    function username($q, User) {
+        return {
+            require: 'ngModel',
+            link: function(scope, elm, attrs, ctrl) {
+                ctrl.$asyncValidators.username = function(modelValue, viewValue) {
+                    if (ctrl.$isEmpty(modelValue) || !/^[a-zA-Z0-9_]{6,16}$/.test(modelValue)) {
+                        return $q.reject();
+                    }
+
+                    var def = $q.defer();
+
+                    User.checkUsername(modelValue).then(function(res) {
+                        if(res.has_username) {
+                            def.reject();
+                        }
+                        else {
+                            def.resolve();
+                        }
+                    }, function(e) {
+                        def.reject();
+                    });
+
+                    return def.promise;
+                };
+            }
+        };
+    }
 
     function handleLoadError() {
         return {
