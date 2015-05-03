@@ -7533,7 +7533,7 @@ a.button {
 
 .chat-view {
   background: #fcebca;
-  background: url("../img/bg-login.jpg");
+  background: url("../img/bg-login-2.jpg");
   background-repeat: no-repeat;
   background-size: cover; }
   .chat-view p {
@@ -7626,8 +7626,6 @@ a.button {
         height: 100%;
         border-radius: 20%;
         display: inline-block; }
-    .chat-view .chat-message-self .timestamp {
-      color: white; }
     .chat-view .chat-message-self.same-last-user .chat-bubble-self::after {
       display: none; }
     .chat-view .chat-message-self.same-last-user .profile-image {
@@ -7638,18 +7636,17 @@ a.button {
     padding: 5px 10px 0.1px;
     -webkit-transform: translate3d(0px, 0px, 0px);
     transform: translate3d(0px, 0px, 0px);
-    background: #e1737d;
+    background: white;
     float: right;
     margin-bottom: 5px;
     max-width: 80%;
-    border-radius: 5px;
-    color: white; }
+    border-radius: 5px; }
     .chat-view .chat-bubble-self:after {
       content: '';
       position: absolute;
       border-style: solid;
       border-width: 5px 0 9px 10px;
-      border-color: transparent #e1737d;
+      border-color: transparent white;
       display: block;
       width: 0;
       z-index: 1;
@@ -7764,7 +7761,8 @@ a.button {
   .login-view .list-inset {
     background-color: transparent; }
   .login-view label.item {
-    border: 2px solid rgba(255, 255, 255, 0.4); }
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: 5px; }
   .login-view .card .item:first-child, .login-view .list-inset .item:first-child, .login-view .padding > .list .item:first-child {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px; }
@@ -7885,6 +7883,16 @@ loader svg {
     margin-top: 8%; }
   .register-view .list-inset {
     background-color: transparent; }
+  .register-view .item.bg-transparent {
+    background: rgba(255, 255, 255, 0.8); }
+  .register-view .card .item:first-child, .register-view .list-inset .item:first-child, .register-view .padding > .list .item:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px; }
+  .register-view .bradius-bottom {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px; }
+  .register-view .placeholder-icon:first-child {
+    font-size: 1.6em; }
 
 @font-face {
   font-family: 'MyWebFont';

@@ -8,4 +8,21 @@
     .list-inset {
         background-color: transparent;
     }
+    .item.bg-transparent {
+        background: rgba(255,255,255,0.8);
+    }
+    .card .item:first-child,
+    .list-inset .item:first-child,
+    .padding > .list .item:first-child {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    .bradius-bottom {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    .placeholder-icon:first-child {
+        font-size: 1.6em;
+    }
+
 }

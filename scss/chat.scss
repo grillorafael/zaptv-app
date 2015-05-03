@@ -1,6 +1,6 @@
 .chat-view {
     background: #fcebca;
-    background: url("../img/bg-login.jpg");
+    background: url("../img/bg-login-2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     p {
@@ -116,9 +116,9 @@
                 display: inline-block;
             }
         }
-        .timestamp {
-            color: white;
-        }
+        // .timestamp {
+        //     color: white;
+        // }
         &.same-last-user {
             .chat-bubble-self::after {
                 display: none;
@@ -134,18 +134,17 @@
     .chat-bubble-self {
         padding: 5px 10px 0.1px;
         transform: translate3d(0px, 0px, 0px);
-        background: lighten($salmon, 5%);
+        background: white;
         float: right;
         margin-bottom: 5px;
         max-width: 80%;
         border-radius: 5px;
-        color: white;
         &:after {
             content: '';
             position: absolute;
             border-style: solid;
             border-width: 5px 0 9px 10px;
-            border-color: transparent lighten($salmon, 5%);
+            border-color: transparent white;
             display: block;
             width: 0;
             z-index: 1;
