@@ -20,7 +20,18 @@
                             userInfo.name = meResponse.name;
                             userInfo.gender = meResponse.gender ? meResponse.gender[0] : null;
                             State.set('fb_response', userInfo);
-                            $state.go('set_username');
+                            User.login(userInfo).then(function() {
+                                Analytics.trackEvent('Auth', 'login');
+                                $ionicHistory.nextViewOptions({
+                                    disableBack: true,
+                                    historyRoot: true
+                                });
+
+                                $state.go('channels');
+                            }, function() {
+                                // TODO Fix this gambi
+                                $state.go('set_username');
+                            });
                         }, function(error) {
                             // TODO Handle error
                         });
