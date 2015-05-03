@@ -82,16 +82,15 @@
         });
 
         Socket.onMessage(function(msg) {
-            if(msg.user.id === $scope.user.id) {
+            if (msg.user.id === $scope.user.id) {
                 var msgIdx = null;
                 $scope.messages.forEach(function(m, i) {
-                    if(m.user.id === $scope.user.id && m.id === undefined) {
+                    if (m.user.id === $scope.user.id && m.id === undefined) {
                         msgIdx = i;
                     }
                 });
                 $scope.messages[msgIdx] = msg;
-            }
-            else {
+            } else {
                 $scope.messages.push(msg);
             }
 
@@ -103,21 +102,20 @@
         $scope.loadBefore = function() {
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId).then(function(messages) {
-                messages = messages.reverse();
-                $scope.messages = messages.concat($scope.messages);
-            }, function() {
-                // TODO handle this shiet
-            })
-            .finally(function() {
-                $scope.$broadcast('scroll.refreshComplete');
-            });
+                    messages = messages.reverse();
+                    $scope.messages = messages.concat($scope.messages);
+                }, function() {
+                    // TODO handle this shiet
+                })
+                .finally(function() {
+                    $scope.$broadcast('scroll.refreshComplete');
+                });
         };
 
         $scope.getUserColor = function(id) {
-            if(userColors[id]) {
+            if (userColors[id]) {
                 return userColors[id];
-            }
-            else {
+            } else {
                 userColors[id] = Utils.rndColor();
                 return userColors[id];
             }
@@ -172,7 +170,9 @@
 
         $scope.messageOptions = function(message) {
             $ionicActionSheet.show({
-                buttons: [],
+                buttons: [{
+                    text: 'Copiar mensagem'
+                }],
                 destructiveText: 'Denunciar',
                 titleText: '',
                 cancelText: 'Voltar',
@@ -186,6 +186,9 @@
 
                 },
                 buttonClicked: function(index) {
+                    if (index === 0) {
+                        Utils.copyToClipboard(message.content);
+                    }
                     return true;
                 }
             });

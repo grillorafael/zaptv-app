@@ -1,6 +1,8 @@
 (function() {
     'use strict';
-    angular.module('zaptv.services', [])
+    angular.module('zaptv.services', [
+        'ngCordova'
+    ])
         .factory('User', User)
         .factory('Channel', Channel)
         .factory('Socket', Socket)
@@ -16,10 +18,18 @@
             'ANALYTICS_UA': 'UA-62526664-1'
         });
 
-    function Utils() {
+    function Utils($cordovaClipboard) {
         return {
             rndColor: function() {
                 return '#' + Math.floor(Math.random() * 16777215).toString(16);
+            },
+            copyToClipboard: function(txt) {
+                if(!window.cordova) {
+                    return;
+                }
+
+                $cordovaClipboard.copy(txt)
+                    .then(function() {}, function() {});
             }
         };
     }
