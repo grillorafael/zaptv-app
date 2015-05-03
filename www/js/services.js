@@ -13,10 +13,8 @@
         .factory('Analytics', Analytics)
         .factory('Utils', Utils)
         .value('Config', {
-            'ENDPOINT': 'http://localhost:3000/api',
-            'SOCKET_ADDR': 'http://localhost:8080',
-            //'ENDPOINT': 'http://104.236.227.193/api',
-            //'SOCKET_ADDR': 'http://104.236.227.193:8080',
+            'ENDPOINT': 'http://104.236.227.193/api',
+            'SOCKET_ADDR': 'http://104.236.227.193:8080',
             'ANALYTICS_UA': 'UA-62526664-1'
         });
 
