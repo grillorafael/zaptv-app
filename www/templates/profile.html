@@ -1,16 +1,32 @@
 <ion-view view-title="Meu Perfil" class="profile-view">
     <ion-content class="has-header">
         <div class="top-container">
-            <img handle-load-error src="img/placeholder.jpg" ng-src="{{user.image_url}}" alt="" class="full-image profile-image">
-            <input type="file" id="file-input">
+            <div class="img-container">
+                <img handle-load-error src="img/placeholder.jpg" ng-src="{{user.image_url}}" alt="" class="full-image profile-image">
+                <input type="file" id="file-input">
+            </div>
             <!-- <button ng-click="saveImage()">Salvar Imagem</button> -->
             <div class="text-center">
                 <h4 class="username">goldsteinr</h4>
             </div>
         </div>
-
+        <div class="list">
+            <div class="item item-divider">
+                Nome:
+            </div>
+            <a class="item" href="#">
+                Ricardo Goldstein
+            </a>
+            <div class="item item-divider">
+                Idade:
+            </div>
+            <a class="item" href="#">
+                24 anos
+            </a>
+        </div>
     </ion-content>
     <div class="bar bar-footer bar-confirm">
-        <div class="title" ng-click="saveImage()">Salvar alterações</div> <!--TODO: SÓ APARECER QUANDO ALGUMA ALTERAÇÃO FOR FEITA-->
+        <div class="title" ng-click="saveImage()">Salvar alterações</div>
+        <!--TODO: SÓ APARECER QUANDO ALGUMA ALTERAÇÃO FOR FEITA-->
     </div>
 </ion-view>

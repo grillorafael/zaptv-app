@@ -7811,23 +7811,31 @@ a.button {
   padding-top: 5%;
   padding-bottom: 5%;
   background: #dd5e6a; }
-  .profile-view .top-container input[type="file"] {
-    position: absolute;
-    top: 10px;
-    left: 40%;
-    height: 150px;
-    opacity: 0; }
-  .profile-view .top-container .profile-image {
-    border-radius: 10%;
+  .profile-view .top-container .img-container {
+    width: 120px;
+    height: 120px;
     display: block;
     margin: 0 auto;
-    width: 150px;
-    height: 150px; }
+    position: relative; }
+    .profile-view .top-container .img-container input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 120px;
+      width: 120px;
+      opacity: 0; }
+    .profile-view .top-container .img-container .profile-image {
+      border-radius: 10%;
+      position: relative;
+      width: 100%;
+      height: 100%; }
   .profile-view .top-container .username {
     color: white; }
 .profile-view .bar-confirm {
-  background: #4CAF50;
+  background: rgba(76, 175, 80, 0.8);
   color: white; }
+  .profile-view .bar-confirm .title {
+    font-weight: 400; }
 
 loader svg {
   width: 100%; }
