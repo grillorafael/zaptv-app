@@ -34,6 +34,14 @@
         $scope.currentScore = 0;
         $scope.minutesRemain = null;
 
+        $scope.$on('$ionicView.enter', function() {
+            updateChat();
+            Channel.lastMessages($scope.channel.id).then(function(messages) {
+                $scope.messages = messages.reverse();
+                $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
+            });
+        });
+
         $scope.$on('$ionicView.leave', function() {
             if ($scope.timeout) {
                 $timeout.cancel($scope.timeout);
@@ -74,12 +82,6 @@
                 $scope.timeout = $timeout(updateChat, diff);
             });
         }
-        updateChat();
-
-        Channel.lastMessages($scope.channel.id).then(function(messages) {
-            $scope.messages = messages.reverse();
-            $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
-        });
 
         Socket.onMessage(function(msg) {
             if (msg.user.id === $scope.user.id) {

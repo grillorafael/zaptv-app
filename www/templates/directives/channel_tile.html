@@ -3,9 +3,9 @@
         <img src="img/placeholder.jpg" class="channel-image" data-ng-src="{{channel.current_schedule.image_url}}">
     </div>
     <div class="card-info">
-        <img ng-src="{{channel.image_url}}" class="channel-logo" alt="logo da emissora">
+        <img ng-src="{{::channel.image_url}}" class="channel-logo" alt="logo da emissora">
 
-        <h2 class="channel-name">{{channel.name}}</h2>
+        <h2 class="channel-name">{{::channel.name}}</h2>
 
         <p class="channel-info">{{channel.current_schedule.name}}</p>
         <p class="channel-info">100 participantes</p>

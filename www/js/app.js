@@ -96,6 +96,12 @@
                         }
                     }
                 });
-            $urlRouterProvider.otherwise('/bootstrap');
+
+            if(localStorage.getItem('auth_token')) {
+                $urlRouterProvider.otherwise('/channels');
+            }
+            else {
+                $urlRouterProvider.otherwise('/login');
+            }
         });
 }());

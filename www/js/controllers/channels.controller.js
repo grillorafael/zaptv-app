@@ -28,30 +28,33 @@
             if (lastChannel !== undefined) {
                 Socket.leaveChannel(lastChannel.id);
             }
+
+            initGeolocation();
         });
 
-        $cordovaGeolocation
-            .getCurrentPosition({
-                timeout: 10000,
-                enableHighAccuracy: false
-            })
-            .then(function(position) {
-                var lat = position.coords.latitude;
-                var lng = position.coords.longitude;
-                ReverseGeolocation.get(lat, lng).then(function(locationInfo) {
-                    geoState = GeoInfo[locationInfo.address.country_code][locationInfo.address.county];
-                    State.set('geo_state', geoState);
-                    listChannels(geoState);
-                }, function() {
-                    // TODO Better handle when can't get location info
+        function initGeolocation() {
+            $cordovaGeolocation
+                .getCurrentPosition({
+                    timeout: 10000,
+                    enableHighAccuracy: false
+                })
+                .then(function(position) {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    ReverseGeolocation.get(lat, lng).then(function(locationInfo) {
+                        geoState = GeoInfo[locationInfo.address.country_code][locationInfo.address.county];
+                        State.set('geo_state', geoState);
+                        listChannels(geoState);
+                    }, function() {
+                        // TODO Better handle when can't get location info
+                        listChannels();
+                    });
+
+                }, function(err) {
+                    // TODO Better handle when position is not available
                     listChannels();
                 });
-
-            }, function(err) {
-                // TODO Better handle when position is not available
-                listChannels();
-            });
-
+        }
 
         function listChannels(gs) {
             $scope.isLoading = true;
