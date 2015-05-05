@@ -4,8 +4,11 @@
 
     function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory,
         $animationTrigger, $cordovaFacebook, Analytics, User, Auth, State) {
-        Analytics.init();
-        Analytics.trackView('login');
+
+        $ionicPlatform.ready(function() {
+            Analytics.init();
+            Analytics.trackView('login');
+        });
 
         $scope.facebookLogin = function() {
             var userInfo = {};

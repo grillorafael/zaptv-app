@@ -22,8 +22,10 @@
         Socket.connect();
 
         $scope.$on('$ionicView.enter', function() {
-            Analytics.init(userId);
-            Analytics.trackView('channels');
+            $ionicPlatform.ready(function() {
+                Analytics.init(userId);
+                Analytics.trackView('channels');
+            });
             var lastChannel = State.get('last_channel');
             if (lastChannel !== undefined) {
                 Socket.leaveChannel(lastChannel.id);
