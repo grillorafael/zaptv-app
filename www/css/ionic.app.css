@@ -7835,7 +7835,8 @@ a.button {
   background: rgba(76, 175, 80, 0.8);
   color: white; }
   .profile-view .bar-confirm .title {
-    font-weight: 400; }
+    font-weight: 400;
+    font-size: 17px; }
 
 loader svg {
   width: 100%; }
