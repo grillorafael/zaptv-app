@@ -7797,10 +7797,9 @@ a.button {
   .login-view .bar-footer {
     background: rgba(255, 255, 255, 0.8); }
   .login-view .register-button {
-    left: 0;
-    right: 0;
     z-index: 0;
-    overflow: hidden;
+    display: block;
+    margin: 0 auto;
     text-align: center;
     line-height: 3px;
     background: none; }
