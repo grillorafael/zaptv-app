@@ -28,8 +28,13 @@
             if (lastChannel !== undefined) {
                 Socket.leaveChannel(lastChannel.id);
             }
+        });
 
-            initGeolocation();
+
+        $scope.$on('$ionicView.loaded', function() {
+            $ionicPlatform.ready(function() {
+                initGeolocation();
+            });
         });
 
         function initGeolocation() {

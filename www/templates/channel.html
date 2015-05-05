@@ -5,8 +5,8 @@
     <ion-nav-buttons side="right">
         <button class="button button-clear ion-information-circled" ng-click="openPopover($event)"></button>
     </ion-nav-buttons>
-    <ion-content class="has-header has-footer padding" delegate-handle="chat-scroll">
-        <ion-refresher pulling-text="Carregando mais mensagems.." on-refresh="loadBefore()"></ion-refresher>
+    <ion-content delegate-handle="chat-scroll">
+        <ion-refresher pulling-text="Carregando mais mensagens.." on-refresh="loadBefore()"></ion-refresher>
         <ion-list>
             <div class="item-text-wrap" ng-class="{
                 'chat-message': message.user.id != user.id,
