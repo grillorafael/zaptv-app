@@ -174,12 +174,23 @@
             return deferred.promise;
         }
 
+        function getUserInfo(id) {
+            var deferred = $q.defer();
+
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/profile/' + id))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             register: register,
             login: login,
             changePicture: changePicture,
             me: me,
-            checkUsername: checkUsername
+            checkUsername: checkUsername,
+            getUserInfo: getUserInfo
         };
     }
 
