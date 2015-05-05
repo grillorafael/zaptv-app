@@ -1,11 +1,16 @@
 <ion-view view-title="Meu Perfil" class="profile-view">
     <ion-content class="has-header">
-        <div class="row">
-            <div class="col col-50 col-offset-25">
-                <img handle-load-error src="img/placeholder.jpg" ng-src="{{user.image_url}}" alt="" class="full-image profile-image">
+        <div class="top-container">
+            <img handle-load-error src="img/placeholder.jpg" ng-src="{{user.image_url}}" alt="" class="full-image profile-image">
+            <input type="file" id="file-input">
+            <!-- <button ng-click="saveImage()">Salvar Imagem</button> -->
+            <div class="text-center">
+                <h4 class="username">goldsteinr</h4>
             </div>
         </div>
-        <input type="file" id="file-input">
-        <button ng-click="saveImage()">Salvar Imagem</button>
+
     </ion-content>
+    <div class="bar bar-footer bar-confirm">
+        <div class="title" ng-click="saveImage()">Salvar alterações</div> <!--TODO: SÓ APARECER QUANDO ALGUMA ALTERAÇÃO FOR FEITA-->
+    </div>
 </ion-view>

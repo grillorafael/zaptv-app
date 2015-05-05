@@ -1,9 +1,29 @@
 .profile-view {
-    background: url("../img/bg-login.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    .profile-image {
-        border: 1px solid #bababa;
-        border-radius: 5px;
+    .top-container {
+        position: relative;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        background: $salmon;
+        input[type="file"] {
+            position: absolute;
+            top: 10px;
+            left: 40%;
+            height: 150px;
+            opacity: 0;
+        }
+        .profile-image {
+            border-radius: 10%;
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
+        }
+        .username {
+            color: white;
+        }
+    }
+    .bar-confirm {
+        background: #4CAF50;
+        color: white;
     }
 }
