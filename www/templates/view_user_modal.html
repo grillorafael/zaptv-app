@@ -1,6 +1,5 @@
 <ion-modal-view class="profile-view">
     <ion-header-bar class="bar-salmon">
-        <!-- <h1 class="title">{{userToView.username}}</h1> -->
         <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closeModal()'></button>
     </ion-header-bar>
     <ion-content>
@@ -10,6 +9,18 @@
             </div>
             <div class="text-center">
                 <h4 class="username">{{userToView.username}}</h4>
+            </div>
+        </div>
+        <div class="bottom-container">
+            <div class="text-center">
+                <label class="item item-input">
+                    <i class="icon ion-ios-person-outline placeholder-icon"></i>
+                    <p>{{userToView.name}}</p>
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-ios-calendar-outline placeholder-icon"></i>
+                    <p>19/12/1990</p>
+                </label>
             </div>
         </div>
     </ion-content>

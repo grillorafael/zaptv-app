@@ -4,7 +4,12 @@
             <img src="img/logo.png" alt="" width="150">
         </h1>
 
+
         <div class="padding form-login">
+            <div class="text-center">
+                <p>Ao registrar, você estará aceitando nosso <a href="">Termo de Serviço</a>.</p>
+
+            </div>
             <form name="registerForm" ng-init="setForm(this)" ng-submit="register(user)" class="list list-inset med-quick-anim" novalidate animation-handle="register-form">
                 <label class="item item-input bg-transparent" ng-class="{
                     'error': registerForm.username.$dirty && !registerForm.username.$valid,

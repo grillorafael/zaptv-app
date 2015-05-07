@@ -7780,7 +7780,7 @@ a.button {
   .login-view .item {
     background: rgba(255, 255, 255, 0.8);
     border: 0;
-    border-radius: 5px; }
+    border-radius: 6px; }
   .login-view .button-facebook {
     background-color: #3b5998;
     box-shadow: -1px 10px 4px -8px rgba(0, 0, 0, 0.27); }
@@ -7809,37 +7809,57 @@ a.button {
   .login-view .underline {
     border-bottom: 1px solid black; }
 
-.profile-view .top-container {
-  position: relative;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  background: #dd5e6a; }
-  .profile-view .top-container .img-container {
-    width: 120px;
-    height: 120px;
-    display: block;
-    margin: 0 auto;
-    position: relative; }
-    .profile-view .top-container .img-container input[type="file"] {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 120px;
+.profile-view {
+  background: url("../img/bg-login-2.jpg");
+  background-size: cover; }
+  .profile-view .item {
+    background: rgba(255, 255, 255, 0.7);
+    border: 0; }
+  .profile-view .input-label {
+    font-size: 14px;
+    font-weight: bold;
+    width: 15%;
+    color: #dd5e6a; }
+  .profile-view .top-container {
+    position: relative;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background: #dd5e6a; }
+    .profile-view .top-container .img-container {
       width: 120px;
-      opacity: 0; }
-    .profile-view .top-container .img-container .profile-image {
-      border-radius: 10%;
-      position: relative;
-      width: 100%;
-      height: 100%; }
-  .profile-view .top-container .username {
+      height: 120px;
+      display: block;
+      margin: 0 auto;
+      position: relative; }
+      .profile-view .top-container .img-container input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 120px;
+        width: 120px;
+        opacity: 0; }
+      .profile-view .top-container .img-container .profile-image {
+        border-radius: 10%;
+        position: relative;
+        width: 100%;
+        height: 100%; }
+    .profile-view .top-container .username {
+      color: white; }
+  .profile-view .placeholder-icon:first-child {
+    font-size: 2.5em;
+    color: #dd5e6a;
+    padding-right: 20px; }
+  .profile-view .placeholder-icon:last-child {
+    padding-left: 0;
+    font-size: 2.1em; }
+  .profile-view .item p {
+    color: black; }
+  .profile-view .bar-confirm {
+    background: rgba(76, 175, 80, 0.8);
     color: white; }
-.profile-view .bar-confirm {
-  background: rgba(76, 175, 80, 0.8);
-  color: white; }
-  .profile-view .bar-confirm .title {
-    font-weight: 400;
-    font-size: 17px; }
+    .profile-view .bar-confirm .title {
+      font-weight: 400;
+      font-size: 17px; }
 
 loader svg {
   width: 100%; }
@@ -7905,8 +7925,16 @@ loader svg {
   background: #ede1b5;
   background: url("../img/bg-login.jpg");
   background-size: cover; }
+  .register-view .padding {
+    padding: 10px 30px; }
   .register-view h1 {
-    margin-top: 8%; }
+    margin-top: 2%;
+    margin-bottom: 0; }
+  .register-view label.item {
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: 5px; }
+  .register-view .placeholder-icon:first-child {
+    font-size: 1.6em; }
   .register-view .list-inset {
     background-color: transparent; }
   .register-view .item.bg-transparent {

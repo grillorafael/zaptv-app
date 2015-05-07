@@ -2,8 +2,19 @@
     background: #ede1b5;
     background: url("../img/bg-login.jpg");
     background-size: cover;
+    .padding {
+        padding: 10px 30px;
+    }
     h1 {
-        margin-top: 8%;
+        margin-top: 2%;
+        margin-bottom: 0;
+    }
+    label.item {
+        border: 2px solid rgba(255,255,255,0.4);
+        margin-bottom: 5px;
+    }
+    .placeholder-icon:first-child {
+        font-size: 1.6em;
     }
     .list-inset {
         background-color: transparent;
