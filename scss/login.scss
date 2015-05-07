@@ -78,6 +78,9 @@
         text-align: center;
         line-height: 3px;
         background: none;
+        overflow: hidden;
+        text-overflow: initial;
+        white-space: normal;
     }
     .underline {
         border-bottom: 1px solid black;

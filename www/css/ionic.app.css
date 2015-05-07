@@ -7802,7 +7802,10 @@ a.button {
     margin: 0 auto;
     text-align: center;
     line-height: 3px;
-    background: none; }
+    background: none;
+    overflow: hidden;
+    text-overflow: initial;
+    white-space: normal; }
   .login-view .underline {
     border-bottom: 1px solid black; }
 
