@@ -17,7 +17,7 @@
                     <i class="icon ion-ios-person-outline placeholder-icon"></i>
                     <p>{{userToView.name}}</p>
                 </label>
-                <label class="item item-input">
+                <label class="item item-input" ng-if="userToView.birthdate">
                     <i class="icon ion-ios-calendar-outline placeholder-icon"></i>
                     <p>{{userToView.birthdate | date:'dd/MM/yyyy'}}</p>
                 </label>
