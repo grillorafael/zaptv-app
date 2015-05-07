@@ -86,15 +86,6 @@
                             controller: 'ChannelCtrl'
                         }
                     }
-                })
-                .state('set_username', {
-                    url: '/set-username',
-                    views: {
-                        'mainContent': {
-                            templateUrl: 'templates/set_username.html',
-                            controller: 'SetUsernameCtrl'
-                        }
-                    }
                 });
 
             if(localStorage.getItem('auth_token')) {

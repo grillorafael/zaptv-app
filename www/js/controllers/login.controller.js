@@ -3,12 +3,23 @@
     angular.module('zaptv').controller('LoginCtrl', LoginCtrl);
 
     function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory,
-        $animationTrigger, $cordovaFacebook, Analytics, User, Auth, State) {
+        $animationTrigger, $cordovaFacebook, $ionicModal, Analytics, User, Auth, State) {
 
         $ionicPlatform.ready(function() {
             Analytics.init();
             Analytics.trackView('login');
         });
+        $ionicModal.fromTemplateUrl('templates/set_username_modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+            
+        });
+        $scope.closeModal = function() {
+            $scope.userToView = null;
+            $scope.modal.hide();
+        };
 
         $scope.facebookLogin = function() {
             var userInfo = {};
@@ -33,7 +44,7 @@
                                 $state.go('channels');
                             }, function() {
                                 // TODO Fix this gambi
-                                $state.go('set_username');
+                                $scope.modal.show();
                             });
                         }, function(error) {
                             // TODO Handle error

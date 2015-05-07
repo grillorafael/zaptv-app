@@ -1,0 +1,38 @@
+.username-view {
+    background: url("../img/bg-login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    .bar {
+        background: transparent;
+        .button.button-clear {
+            font-size: 20px;
+            color: black;
+        }
+    }
+    .list-inset {
+        background: none;
+    }
+    .item.bg-transparent {
+        background: rgba(255,255,255,0.8);
+    }
+    h1 {
+        margin-top: 15%;
+    }
+    p {
+        font-size: 1.2em;
+    }
+    .card .item:first-child,
+    .list-inset .item:first-child,
+    .padding > .list .item:first-child {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    .bradius-bottom {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    .placeholder-icon:first-child {
+        font-size: 1.6em;
+        color: black;
+    }
+}

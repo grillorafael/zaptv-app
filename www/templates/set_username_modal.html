@@ -1,0 +1,25 @@
+<ion-modal-view class="username-view">
+    <ion-header-bar class="bar">
+        <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closeModal()'></button>
+    </ion-header-bar>
+    <ion-content>
+        <h1 class="text-center">
+            <img src="img/logo.png" alt="" width="180">
+        </h1>
+        <div class="padding form-login">
+            <p class="text-center">Seu apelido será sua identidade!</p>
+            <form name="registerForm" ng-init="setForm(this)" ng-submit="register(user)" class="list list-inset med-quick-anim" novalidate animation-handle="register-form">
+                <label class="item item-input bg-transparent bradius-bottom" ng-class="{
+                    'error': registerForm.username.$dirty && !registerForm.username.$valid,
+                    'success': registerForm.username.$dirty && registerForm.username.$valid
+                }">
+                    <i class="icon ion-ios-at-outline placeholder-icon"></i>
+                    <input type="text" placeholder="apelido" name="username" ng-model="user.username" username>
+                </label>
+                <button class="button button-block button-salmon button-login">
+                    Continuar
+                </button>
+            </form>
+        </div>
+    </ion-content>
+</ion-modal-view>

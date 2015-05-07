@@ -7948,6 +7948,33 @@ loader svg {
   .register-view .placeholder-icon:first-child {
     font-size: 1.6em; }
 
+.username-view {
+  background: url("../img/bg-login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .username-view .bar {
+    background: transparent; }
+    .username-view .bar .button.button-clear {
+      font-size: 20px;
+      color: black; }
+  .username-view .list-inset {
+    background: none; }
+  .username-view .item.bg-transparent {
+    background: rgba(255, 255, 255, 0.8); }
+  .username-view h1 {
+    margin-top: 15%; }
+  .username-view p {
+    font-size: 1.2em; }
+  .username-view .card .item:first-child, .username-view .list-inset .item:first-child, .username-view .padding > .list .item:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px; }
+  .username-view .bradius-bottom {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px; }
+  .username-view .placeholder-icon:first-child {
+    font-size: 1.6em;
+    color: black; }
+
 @font-face {
   font-family: 'MyWebFont';
   src: url('webfont.eot');
