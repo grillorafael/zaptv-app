@@ -4,7 +4,15 @@
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $cordovaDevice,
-        $ionicPlatform, Utils, Analytics, moment, State, Socket, Channel, Auth) {
+        $ionicPlatform, $ionicModal, Utils, Analytics, moment, State, Socket,
+        Channel, Auth) {
+
+        $ionicModal.fromTemplateUrl('templates/view_user_modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
 
         $ionicPlatform.ready(function() {
             if (!window.cordova) {
@@ -100,6 +108,16 @@
                 $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
             });
         });
+
+        $scope.viewUser = function(u) {
+            $scope.userToView = u;
+            $scope.modal.show();
+        };
+
+        $scope.closeModal = function() {
+            $scope.userToView = null;
+            $scope.modal.hide();
+        };
 
         $scope.loadBefore = function() {
             var beforeId = $scope.messages[0].id;
