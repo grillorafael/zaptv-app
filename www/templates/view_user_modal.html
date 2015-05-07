@@ -11,7 +11,7 @@
                 <h4 class="username">{{userToView.username}}</h4>
             </div>
         </div>
-        <div class="bottom-container card">
+        <div class="bottom-container card" ng-if="userToView.name && userToView.birthdate">
             <div class="text-center">
                 <label class="item item-input" ng-if="userToView.name">
                     <i class="icon ion-ios-person-outline placeholder-icon"></i>
@@ -22,6 +22,9 @@
                     <p>{{userToView.birthdate | date:'dd/MM/yyyy'}}</p>
                 </label>
             </div>
+        </div>
+        <div class="padding card">
+            <p class="text-center"><strong>{{userToView.username}}</strong> não possui nenhuma informação adicionada em seu perfil.</p>
         </div>
     </ion-content>
 </ion-modal-view>

@@ -116,9 +116,6 @@
                 display: inline-block;
             }
         }
-        // .timestamp {
-        //     color: white;
-        // }
         &.same-last-user {
             .chat-bubble-self::after {
                 display: none;
@@ -152,4 +149,9 @@
             top: 1px;
         }
     }
+
+}
+
+.item .button-salmon{
+    color: white;
 }

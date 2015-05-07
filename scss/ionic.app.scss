@@ -72,20 +72,14 @@ label {
     font-size: 1.2em;
 }
 
-.bootstrap-loader {
-    border-radius: 100%;
-    width: 25vw;
-    height: 25vw;
-    margin: 70% auto auto;
-    border: 1px solid black;
-    .inner-circle {
-        width: 20vw;
-        height: 20vw;
-        margin: 2.5vw auto auto;
-        border-top-left-radius: 20vw;
-        border-top-right-radius: 20vw;
-        border: 1px solid red;
-        border-bottom: 0;
-        box-sizing: border-box;
-    }
+.platform-ios .popover-arrow:after {
+    left: -2px;
+}
+
+.platform-ios .popover .scroll-content.has-header {
+    margin-bottom: 0;
+}
+
+.channel-popover.popover .item {
+    padding: 5px 10px;
 }
