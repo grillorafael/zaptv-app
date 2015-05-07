@@ -15,7 +15,7 @@
                 'pending': message.id == undefined
             }" ng-repeat="message in messages">
                 <div class="avatar">
-                    <img handle-load-error class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url}}" alt="foto perfil do usuario" >
+                    <img ng-click='viewUser(message.user)' handle-load-error class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url}}" alt="foto perfil do usuario" >
                 </div>
                 <div on-hold='messageOptions(message)'  ng-class="{
                     'chat-bubble': message.user.id != user.id,
