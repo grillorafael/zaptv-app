@@ -8,10 +8,10 @@
         </h1>
         <div class="padding form-login">
             <p class="text-center">Seu apelido será sua identidade!</p>
-            <form name="registerForm" ng-init="setForm(this)" ng-submit="register(user)" class="list list-inset med-quick-anim" novalidate animation-handle="register-form">
+            <form name="usernameForm" ng-init="setForm(this)" ng-submit="setUsername(user)" class="list list-inset med-quick-anim" novalidate animation-handle="username-form">
                 <label class="item item-input bg-transparent bradius-bottom" ng-class="{
-                    'error': registerForm.username.$dirty && !registerForm.username.$valid,
-                    'success': registerForm.username.$dirty && registerForm.username.$valid
+                    'error': usernameForm.username.$dirty && !usernameForm.username.$valid,
+                    'success': usernameForm.username.$dirty && usernameForm.username.$valid
                 }">
                     <i class="icon ion-ios-at-outline placeholder-icon"></i>
                     <input type="text" placeholder="apelido" name="username" ng-model="user.username" username>

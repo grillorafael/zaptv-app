@@ -14,27 +14,52 @@
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.modal = modal;
-            
+
         });
+
+        $scope.setForm = function(f) {
+            $scope.form = f;
+        };
+
+        $scope.setUsername = function(u) {
+            if($scope.form.usernameForm.$valid) {
+                User.login(u).then(function(tokenData) {
+                    Analytics.trackEvent('Auth', 'facebook_login');
+                    $ionicHistory.nextViewOptions({
+                        disableBack: true,
+                        historyRoot: true
+                    });
+
+                    $scope.modal.hide();
+                    $state.go('channels');
+                }, function() {
+                    // TODO Display email or username already taken
+                    $animationTrigger.trigger('username-form', 'bounce-finite', $animationTrigger.FROM_START);
+                });
+            }
+            else {
+                $animationTrigger.trigger('username-form', 'bounce-finite', $animationTrigger.FROM_START);
+            }
+        };
+
         $scope.closeModal = function() {
             $scope.userToView = null;
             $scope.modal.hide();
         };
 
         $scope.facebookLogin = function() {
-            var userInfo = {};
+            $scope.user = {};
             $cordovaFacebook.login(["public_profile", "email", "user_friends"])
                 .then(function(loginResponse) {
-                    userInfo.fb_token = loginResponse.authResponse.accessToken;
-                    userInfo.fb_id = loginResponse.authResponse.userID;
+                    $scope.user.fb_token = loginResponse.authResponse.accessToken;
+                    $scope.user.fb_id = loginResponse.authResponse.userID;
 
                     $cordovaFacebook.api("me", ["public_profile"])
                         .then(function(meResponse) {
-                            userInfo.email = meResponse.email;
-                            userInfo.name = meResponse.name;
-                            userInfo.gender = meResponse.gender ? meResponse.gender[0] : null;
-                            State.set('fb_response', userInfo);
-                            User.login(userInfo).then(function() {
+                            $scope.user.email = meResponse.email;
+                            $scope.user.name = meResponse.name;
+                            $scope.user.gender = meResponse.gender ? meResponse.gender[0] : null;
+                            User.login($scope.user).then(function() {
                                 Analytics.trackEvent('Auth', 'login');
                                 $ionicHistory.nextViewOptions({
                                     disableBack: true,
