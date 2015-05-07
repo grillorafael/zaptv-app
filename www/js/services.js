@@ -1,7 +1,8 @@
 (function() {
     'use strict';
     angular.module('zaptv.services', [
-        'ngCordova'
+        'ngCordova',
+        'LocalForageModule'
     ])
         .factory('User', User)
         .factory('Channel', Channel)
@@ -194,7 +195,7 @@
         };
     }
 
-    function Channel($http, $q, Config, Auth) {
+    function Channel($http, $q, $localForage, Config, Auth) {
         function list(geoState) {
             var deferred = $q.defer();
 
@@ -268,6 +269,17 @@
             return deferred.promise;
         }
 
+        function saveChannelsCache(openChannels, privateChannels) {
+            return $localForage.setItem('channels', {
+                open_channels: openChannels,
+                private_channels: privateChannels
+            });
+        }
+
+        function getChannelsCache() {
+            return $localForage.getItem('channels');
+        }
+
         return {
             list: list,
             getInfo: getInfo,
@@ -275,7 +287,9 @@
             getNextSchedule: getNextSchedule,
             getMyLastScore: getMyLastScore,
             messageComplaint: messageComplaint,
-            fetchMore: fetchMore
+            fetchMore: fetchMore,
+            saveChannelsCache: saveChannelsCache,
+            getChannelsCache: getChannelsCache
         };
     }
 
