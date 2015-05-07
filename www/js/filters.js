@@ -28,5 +28,15 @@
 
                 return "<p>" + text + "</p>";
             };
-        });
+        })
+    .filter('timeramain', function() {
+        return function(time) {
+            if(time > 60) {
+                return ((time / 60).toFixed(1) + ' horas').replace('.', ',');
+            }
+            else {
+                return time + ' minutos';
+            }
+        };
+    });
 })();
