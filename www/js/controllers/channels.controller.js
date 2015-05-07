@@ -78,13 +78,22 @@
                     }
                 });
 
+                Channel.saveChannelsCache(openChannels, privateChannels);
                 $scope.openChannels = openChannels;
                 $scope.privateChannels = privateChannels;
-            }, function() {
-                // TODO Handle
-            }).finally(function() {
+
                 $scope.$broadcast('scroll.refreshComplete');
                 $scope.isLoading = false;
+            }, function() {
+                Channel.getChannelsCache().then(function(obj) {
+                    if(obj && obj.open_channels) {
+                        $scope.openChannels = obj.open_channels;
+                        $scope.privateChannels = obj.private_channels;
+                    }
+                }).finally(function() {
+                    $scope.$broadcast('scroll.refreshComplete');
+                    $scope.isLoading = false;
+                });
             });
         }
 
