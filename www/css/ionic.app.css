@@ -7805,7 +7805,7 @@ a.button {
     background: none;
     overflow: hidden;
     text-overflow: initial;
-    white-space: normal; }
+    white-space: nowrap; }
   .login-view .underline {
     border-bottom: 1px solid black; }
 
