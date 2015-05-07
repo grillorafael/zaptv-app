@@ -7653,6 +7653,12 @@ a.button {
       right: -8px;
       top: 1px; }
 
+.channel-popover .ng-animate .scroll-bar {
+  visibility: visible !important; }
+
+.channel-popover .scroll-bar-fade-out {
+  opacity: 1 !important; }
+
 .item .button-salmon {
   color: white; }
 
