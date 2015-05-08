@@ -185,13 +185,24 @@
             return deferred.promise;
         }
 
+        function update(info) {
+            var deferred = $q.defer();
+
+            $http.put(Auth.appendToken(Config.ENDPOINT + '/profile'), info)
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             register: register,
             login: login,
             changePicture: changePicture,
             me: me,
             checkUsername: checkUsername,
-            getUserInfo: getUserInfo
+            getUserInfo: getUserInfo,
+            update: update
         };
     }
 

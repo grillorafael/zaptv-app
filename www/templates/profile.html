@@ -3,7 +3,7 @@
         <div class="top-container">
             <div class="img-container">
                 <img handle-load-error id="current-image" src="img/placeholder.jpg" ng-src="{{user.image_url}}" alt="" class="full-image profile-image">
-                <input type="file" id="file-input" onchange="angular.element(this).scope().onImageChange(this)">
+                <!-- <input type="file" id="file-input" onchange="angular.element(this).scope().onImageChange(this)"> -->
             </div>
             <div class="text-center">
                 <h4 class="username">{{user.username}}</h4>
@@ -15,15 +15,19 @@
                     <i class="icon ion-ios-person-outline placeholder-icon"></i>
                     <input type="text" ng-model="user.name" placeholder="Digite o seu nome">
                 </label>
-                <label class="item item-input">
+                <label class="item item-input" ng-click='pickDate()'>
                     <i class="icon ion-ios-calendar-outline placeholder-icon"></i>
-                    <p>19/12/1990</p>
+                    <p>{{(user.birthdate | date:'dd/MM/yyyy') || "Clique para mudar"}}</p>
+                </label>
+                <label class="item item-input item-select">
+                    <i class="icon ion-ios-body-outline placeholder-icon"></i>
+                    <select ng-model='user.gender' ng-options='gender.id as gender.label for gender in genders'></select>
                 </label>
             </div>
         </div>
     </ion-content>
-    <div class="bar bar-footer bar-confirm">
-        <div class="title" ng-click="saveImage()">Salvar alterações</div>
+    <ion-footer-bar class="bar-confirm">
+        <div class="title" ng-click="update()">Salvar alterações</div>
         <!--TODO: SÓ APARECER QUANDO ALGUMA ALTERAÇÃO FOR FEITA-->
-    </div>
+    </ion-footer-bar>
 </ion-view>

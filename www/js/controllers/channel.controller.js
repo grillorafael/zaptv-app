@@ -14,6 +14,13 @@
             $scope.modal = modal;
         });
 
+        $scope.genders = {
+            'm': 'Masculino',
+            'f': 'Feminino',
+            'o': 'Outros',
+            'n': 'Não Informado',
+        };
+
         $ionicPlatform.ready(function() {
             if (!window.cordova) {
                 return;
