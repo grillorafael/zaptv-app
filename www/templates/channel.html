@@ -5,7 +5,7 @@
     <ion-nav-buttons side="right">
         <button class="button button-clear ion-information-circled" ng-click="openPopover($event)"></button>
     </ion-nav-buttons>
-    <ion-content class="padding" delegate-handle="chat-scroll">
+    <ion-content has-bouncing="true" class="padding" delegate-handle="chat-scroll">
         <ion-refresher pulling-text="Carregando mais mensagens.." on-refresh="loadBefore()"></ion-refresher>
         <ion-list>
             <div class="item-text-wrap" ng-class="{
@@ -33,17 +33,18 @@
         </ion-list>
     </ion-content>
     <form ng-submit="submitMessage(currentMessage)" novalidate>
-        <ion-footer-bar class="item-input-inset" keyboard-attach>
-            <label class="item-input-wrapper">
-                <i class="icon ion-ios7-search placeholder-icon"></i>
-                <input type="text" placeholder="Digite sua mensagem.." ng-model="currentMessage" required>
-            </label>
-            <button class="button button-clear button-send" ng-click="submitMessage(currentMessage)" ng-class="{
-                disabled: !currentMessage || currentMessage.trim().length == 0
-            }">
-                Enviar
-            </button>
-        </ion-footer-bar>
+            <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+                  <label class="item-input-wrapper">
+                      <textarea placeholder="Digite sua mensagem.." ng-model="currentMessage" required minlength="1" maxlength="1500" msd-elastic></textarea>
+                  </label>
+                  <div class="footer-btn-wrap">
+                    <button class="button button-icon icon ion-android-send footer-btn" type="submit"
+                    ng-click="submitMessage(currentMessage)" ng-class="{
+                        disabled: !currentMessage || currentMessage.trim().length == 0
+                    }">
+                    </button>
+                  </div>
+              </ion-footer-bar>
     </form>
 </ion-view>
 

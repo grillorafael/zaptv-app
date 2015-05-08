@@ -83,3 +83,12 @@ label {
 .channel-popover.popover .item {
     padding: 5px 10px;
 }
+
+.bar-footer {
+  overflow: visible !important;
+}
+
+.bar-footer textarea {
+  resize: none;
+  height: 25px;
+}
