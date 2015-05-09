@@ -291,6 +291,17 @@
             return $localForage.getItem('channels');
         }
 
+        function getFullSchedule(id, geoState) {
+            var deferred = $q.defer();
+
+            var stateInfo = geoState === undefined ? "" : geoState;
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/schedules/' + stateInfo))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             list: list,
             getInfo: getInfo,
@@ -300,7 +311,8 @@
             messageComplaint: messageComplaint,
             fetchMore: fetchMore,
             saveChannelsCache: saveChannelsCache,
-            getChannelsCache: getChannelsCache
+            getChannelsCache: getChannelsCache,
+            getFullSchedule: getFullSchedule
         };
     }
 

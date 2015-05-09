@@ -82,6 +82,8 @@
                 Channel.getMyLastScore($scope.channel.id, schedule.id).then(function(scoreResult) {
                     $scope.currentScore = scoreResult.score;
                 });
+            }, function(e) {
+                // TODO Handle
             });
 
             Channel.getNextSchedule($scope.channel.id, State.get('geo_state')).then(function(nextSchedule) {
@@ -95,6 +97,14 @@
                     $scope.minutesRemain -= 1;
                 }, 1000 * 60);
                 $scope.timeout = $timeout(updateChat, diff);
+            }, function(e) {
+                // TODO Handle
+            });
+
+            Channel.getFullSchedule($scope.channel.id, State.get('geo_state')).then(function(fullSchedule) {
+                $scope.fullSchedule = fullSchedule;
+            }, function(e) {
+                // TODO Handle
             });
         }
 

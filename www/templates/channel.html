@@ -33,18 +33,18 @@
         </ion-list>
     </ion-content>
     <form ng-submit="submitMessage(currentMessage)" novalidate>
-            <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
-                  <label class="item-input-wrapper">
-                      <textarea placeholder="Digite sua mensagem.." ng-model="currentMessage" required minlength="1" maxlength="1500" msd-elastic></textarea>
-                  </label>
-                  <div class="footer-btn-wrap">
-                    <button class="button button-icon icon ion-android-send footer-btn" type="submit"
-                    ng-click="submitMessage(currentMessage)" ng-class="{
-                        disabled: !currentMessage || currentMessage.trim().length == 0
-                    }">
-                    </button>
-                  </div>
-              </ion-footer-bar>
+        <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+              <label class="item-input-wrapper">
+                  <textarea placeholder="Digite sua mensagem.." ng-model="currentMessage" required minlength="1" maxlength="1500" msd-elastic></textarea>
+              </label>
+              <div class="footer-btn-wrap">
+                <button class="button button-icon icon ion-android-send footer-btn" type="submit"
+                ng-click="submitMessage(currentMessage)" ng-class="{
+                    disabled: !currentMessage || currentMessage.trim().length == 0
+                }">
+                </button>
+              </div>
+          </ion-footer-bar>
     </form>
 </ion-view>
 

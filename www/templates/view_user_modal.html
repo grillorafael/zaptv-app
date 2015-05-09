@@ -5,7 +5,7 @@
     <ion-content scroll="false">
         <div class="top-container">
             <div class="img-container">
-                <img handle-load-error id="current-image" src="img/placeholder.jpg" ng-src="{{userToView.image_url}}" alt="" class="full-image profile-image">
+                <img handle-load-error id="current-image" src="img/placeholder.jpg" ng-src="{{userToView.image_url || 'img/placeholder.jpg'}}" alt="" class="full-image profile-image">
             </div>
             <div class="text-center">
                 <h4 class="username">{{userToView.username}}</h4>
