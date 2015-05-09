@@ -14,8 +14,8 @@
         .factory('Analytics', Analytics)
         .factory('Utils', Utils)
         .value('Config', {
-            'ENDPOINT': 'http://104.236.227.193/api',
-            'SOCKET_ADDR': 'http://104.236.227.193:8080',
+            'ENDPOINT': 'http://api.zaper.com.br/api',
+            'SOCKET_ADDR': 'http://io.zaper.com.br',
             'ANALYTICS_UA': 'UA-62526664-1'
         });
 
