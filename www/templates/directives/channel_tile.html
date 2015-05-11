@@ -8,7 +8,13 @@
         <h2 class="channel-name">{{::channel.name}}</h2>
 
         <p class="channel-info">{{channel.current_schedule.name}}</p>
-        <p class="channel-info">100 participantes</p>
+        <p class="channel-info">
+            <ng-pluralize count="channelStatus[channel.id] || 0" when="{
+                    '0': 'Nenhum participante',
+                    'one': '1 participante',
+                    'other': '{} participantes'         
+             }"></ng-pluralize>
+        </p>
         <p class="rate channel-info">
 
             <i class="rate-icon" ng-class="{

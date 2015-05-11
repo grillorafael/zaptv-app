@@ -8,7 +8,8 @@
         'zaptv.filters',
         'angularMoment',
         'ngCordova',
-        'LocalForageModule'
+        'LocalForageModule',
+        'ngInflection'
         ])
         .run(function($ionicPlatform, amMoment) {
             amMoment.changeLocale('pt-br');

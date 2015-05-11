@@ -14,8 +14,8 @@
         .factory('Analytics', Analytics)
         .factory('Utils', Utils)
         .value('Config', {
-            'ENDPOINT': 'http://api.zaper.com.br/api',
-            'SOCKET_ADDR': 'http://io.zaper.com.br',
+            'ENDPOINT': 'http://localhost:3000/api',
+            'SOCKET_ADDR': 'http://localhost:8080',
             'ANALYTICS_UA': 'UA-62526664-1'
         });
 
@@ -317,24 +317,18 @@
     }
 
     function Socket($q, Config) {
-        var currentChannel = null;
         var socket = null;
 
         function connect() {
             socket = io(Config.SOCKET_ADDR);
         }
 
-        function joinChannel(id) {
-            currentChannel = id;
-            socket.emit('join channel', id);
+        function joinChannel(info) {
+            socket.emit('join channel', info);
         }
 
         function leaveChannel(id) {
-            if (id === undefined && currentChannel === null) {
-                return;
-            } else {
-                socket.emit('leave channel', id || currentChannel);
-            }
+            socket.emit('leave channel');
         }
 
         function sendMessage(info) {
@@ -349,13 +343,23 @@
             socket.on('message to device', fc);
         }
 
+        function getStatus() {
+            socket.emit('get status');
+        }
+
+        function onGetStatus(fc) {
+            socket.on('status response', fc);
+        }
+
         return {
             connect: connect,
             joinChannel: joinChannel,
             leaveChannel: leaveChannel,
             onMessage: onMessage,
             sendMessage: sendMessage,
-            emitScore: emitScore
+            emitScore: emitScore,
+            getStatus: getStatus,
+            onGetStatus: onGetStatus
         };
     }
 })();

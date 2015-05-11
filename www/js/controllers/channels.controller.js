@@ -5,8 +5,8 @@
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
         $ionicPopover, $ionicHistory, $ionicTabsDelegate, Analytics, Auth, State,
         ReverseGeolocation, GeoInfo, Channel, Socket) {
-        var geoState = null;
 
+        var geoState = null;
         var userId = Auth.getUserId();
 
         $scope.isLoading = true;
@@ -20,16 +20,16 @@
         });
 
         Socket.connect();
+        Socket.onGetStatus(function(info) {
+            $scope.channelStatus = info;
+        });
 
         $scope.$on('$ionicView.enter', function() {
             $ionicPlatform.ready(function() {
                 Analytics.init(userId);
                 Analytics.trackView('channels');
             });
-            var lastChannel = State.get('last_channel');
-            if (lastChannel !== undefined) {
-                Socket.leaveChannel(lastChannel.id);
-            }
+            Socket.leaveChannel();
         });
 
 
@@ -81,8 +81,8 @@
                 Channel.saveChannelsCache(openChannels, privateChannels);
                 $scope.openChannels = openChannels;
                 $scope.privateChannels = privateChannels;
-
                 $scope.$broadcast('scroll.refreshComplete');
+                Socket.getStatus();
                 $scope.isLoading = false;
             }, function() {
                 Channel.getChannelsCache().then(function(obj) {
@@ -131,7 +131,6 @@
 
         $scope.joinChannel = function(channel) {
             State.set('last_channel', channel);
-            Socket.joinChannel(channel.id);
             $state.go('channel');
         };
     }

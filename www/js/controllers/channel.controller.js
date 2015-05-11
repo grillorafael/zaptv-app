@@ -72,9 +72,10 @@
         $scope.messages = [];
 
         Socket.connect();
-        Socket.joinChannel($scope.channel.id);
-
-        State.set('last_channel', $scope.channel.id);
+        Socket.joinChannel({
+            id: $scope.channel.id,
+            geo_state: State.get('geo_state')
+        });
 
         function updateChat() {
             Channel.getInfo($scope.channel.id, State.get('geo_state')).then(function(schedule) {
