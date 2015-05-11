@@ -2,8 +2,10 @@
     background: url("../img/bg-login-2.jpg");
     background-size: cover;
     .item {
-        background: rgba(255,255,255,0.7);
         border: 0;
+        select {
+            background: #f4f4f4;
+        }
     }
     .input-label {
         font-size: 14px;
