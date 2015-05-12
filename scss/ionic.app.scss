@@ -37,6 +37,10 @@ body {
 }
 
 
+.salmon {
+    color: $salmon;
+}
+
 label {
     &.error i {
         color: $assertive;
@@ -93,4 +97,8 @@ label {
 .bar-footer textarea {
   resize: none;
   height: 25px;
+}
+
+.footer-btn-wrap {
+    width: 35px;
 }

@@ -1,8 +1,7 @@
 <ion-view hide-back-button="true" class="channels-view" view-title="Agora na TV" enable-menu-with-back-views="false">
     <ion-nav-buttons side="right">
         <button class="button button-clear" ng-click="openPopover($event)" ng-cloak>
-            <ion-spinner icon="dots" ng-if="isLoading" class="white-spinner"></ion-spinner>
-            <i class="icon ion-android-more-horizontal" ng-if="!isLoading"></i>
+            <i class="icon ion-android-more-horizontal" ></i>
         </button>
     </ion-nav-buttons>
     <ion-tabs class="tabs-striped tabs-color-assertive">
@@ -48,7 +47,7 @@
                     <i class="icon ion-person"></i> Meu Perfil
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="refresh()">
-                    <i class="icon ion-refresh"></i> Atualizar
+                    <i class="icon ion-android-favorite salmon"></i> Avaliar app!
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="logout()">
                     <i class="icon ion-log-out"></i> Sair
