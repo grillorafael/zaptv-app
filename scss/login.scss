@@ -52,12 +52,14 @@
     }
     .button-facebook {
         background-color: rgba(59, 89, 152, 1);
-        box-shadow: -1px 10px 4px -8px rgba(0,0,0,0.27);
+        /* box-shadow: -1px 10px 4px -8px rgba(0,0,0,0.27); */
+        box-shadow: none;
     }
     .list-button-salmon {
         background: rgba(221,94,106,1);
         color: white;
-        box-shadow: -1px 10px 4px -8px rgba(0,0,0,0.27);
+        /* box-shadow: -1px 10px 4px -8px rgba(0,0,0,0.27); */
+        box-shadow: none;
     }
     a.button-facebook {
         color: white;

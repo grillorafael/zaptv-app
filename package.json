@@ -21,10 +21,18 @@
     "com.ionic.keyboard",
     "cordova-plugin-statusbar",
     "cordova-plugin-geolocation",
-    "cordova-plugin-inappbrowser"
+    "cordova-plugin-inappbrowser",
+    {
+      "id": "cordova-plugin-crosswalk-webview",
+      "locator": "./engine/cordova-crosswalk-engine-c0.7.1"
+    },
+    "org.apache.cordova.splashscreen"
   ],
   "cordovaPlatforms": [
-    "android",
-    "ios"
+    "ios",
+    {
+      "platform": "android",
+      "locator": "./engine/cordova-android-c0.6.1/"
+    }
   ]
 }

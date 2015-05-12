@@ -193,6 +193,7 @@
 
             Socket.sendMessage(info);
             $scope.currentMessage = '';
+            $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
         };
 
         $scope.setScore = function(val) {
