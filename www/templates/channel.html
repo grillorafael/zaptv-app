@@ -28,6 +28,10 @@
                     </h2>
                     <p compile="::message.content | smartchat"></p>
                 </div>
+                <div class="like-button">
+                    <i class="icon ion-ios-heart"></i> <!--TODO: QUANDO CURTIR MUDAR PARA ion-ios-heart-->
+                    <p class="counter-like">40</p>
+                </div>
             </div>
             <div class="clearfix"></div>
         </ion-list>
@@ -60,13 +64,6 @@
                     <p class="popover-info">Avalie o {{schedule.name}}:</p>
                     <score ng-model="currentScore"></score>
                 </ion-item>
-                <ion-item>
-                    <p class="popover-info">Compartilhe a sua nota!</p>
-                    <a class="button ion-social-facebook  chat-button-facebook">
-                        Compartilhar
-                    </a>
-                </ion-item>
-
                 <ion-item class="item-divider">
                     <p class="popover-info">
                         <i class="icon ion-ios-time-outline"></i> Em {{minutesRemain | timeramain}} começa:
