@@ -23,6 +23,7 @@
             });
         })
         .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider) {
+            $ionicConfigProvider.scrolling.jsScrolling(false);
             $ionicConfigProvider.tabs.position('top');
             $httpProvider.interceptors.push('AuthInterceptor');
             $stateProvider
