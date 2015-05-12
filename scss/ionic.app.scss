@@ -37,6 +37,10 @@ body {
 }
 
 
+.salmon {
+    color: $salmon;
+}
+
 label {
     &.error i {
         color: $assertive;
@@ -97,4 +101,8 @@ label {
 
 .card {
     box-shadow: none;
+}
+
+.footer-btn-wrap {
+    width: 35px;
 }

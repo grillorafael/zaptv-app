@@ -7538,7 +7538,8 @@ a.button {
   background-size: cover; }
   .chat-view p {
     margin: 0 0 7px;
-    font-size: 1em; }
+    font-size: 1em;
+    line-height: 1.3; }
   .chat-view .clearfix {
     clear: both; }
   .chat-view .chat-message.pending, .chat-view .chat-message-self.pending {
@@ -7557,6 +7558,19 @@ a.button {
       display: none; }
     .chat-view .chat-message.same-last-user .username {
       display: none; }
+    .chat-view .chat-message .like-button {
+      color: white;
+      padding-top: 5px;
+      float: left;
+      padding-left: 5px; }
+      .chat-view .chat-message .like-button i {
+        font-size: 1.5em;
+        font-weight: bold; }
+      .chat-view .chat-message .like-button i.ion-ios-heart {
+        color: #F44336; }
+      .chat-view .chat-message .like-button p {
+        font-size: 0.8em;
+        line-height: 0.5; }
     .chat-view .chat-message .avatar {
       width: 40px;
       height: 40px;
@@ -7573,7 +7587,7 @@ a.button {
     transform: translate3d(0px, 0px, 0px);
     background: white;
     float: left;
-    max-width: 80%;
+    max-width: 72%;
     margin-bottom: 5px;
     border-radius: 5px; }
     .chat-view .chat-bubble:after {
@@ -7614,6 +7628,24 @@ a.button {
     position: relative;
     clear: both;
     margin-bottom: 5px; }
+    .chat-view .chat-message-self .like-button {
+      color: white;
+      padding-top: 4%;
+      float: right;
+      padding-right: 5px;
+      vertical-align: middle;
+      position: relative; }
+      .chat-view .chat-message-self .like-button i {
+        font-size: 1.5em;
+        vertical-align: middle;
+        margin: 0 auto;
+        font-weight: bold; }
+      .chat-view .chat-message-self .like-button i.ion-ios-heart {
+        color: #F44336; }
+      .chat-view .chat-message-self .like-button p {
+        font-size: 0.8em;
+        line-height: 0.5;
+        margin: 0 auto; }
     .chat-view .chat-message-self .avatar {
       width: 40px;
       height: 40px;
@@ -7639,7 +7671,7 @@ a.button {
     background: white;
     float: right;
     margin-bottom: 5px;
-    max-width: 80%;
+    max-width: 72%;
     border-radius: 5px; }
     .chat-view .chat-bubble-self:after {
       content: '';
@@ -8030,6 +8062,9 @@ loader svg {
 body {
   font-weight: 300; }
 
+.salmon {
+  color: #dd5e6a; }
+
 label.error i {
   color: #ef473a; }
 label.success i {
@@ -8076,3 +8111,6 @@ label.success i {
 .bar-footer textarea {
   resize: none;
   height: 25px; }
+
+.footer-btn-wrap {
+  width: 35px; }

@@ -1,0 +1,14 @@
+<ion-modal-view class="full-schedule-view">
+    <ion-header-bar class="bar-salmon">
+        <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closeScheduleModal()'></button>
+    </ion-header-bar>
+    <ion-list>
+        <h1>
+            {{channel.name}}
+        </h1>
+        <ion-item ng-repeat="schedule in fullSchedule">
+            {{schedule.name}}
+        </ion-item>
+    </ion-list>
+    </ion-content>
+</ion-modal-view>

@@ -28,6 +28,10 @@
                     </h2>
                     <p compile="::message.content | smartchat"></p>
                 </div>
+                <div class="like-button">
+                    <i class="icon ion-ios-heart-outline"></i> <!--TODO: QUANDO CURTIR MUDAR PARA ion-ios-heart-->
+                    <p class="counter-like">400</p>
+                </div>
             </div>
             <div class="clearfix"></div>
         </ion-list>
@@ -57,16 +61,9 @@
         <ion-content>
             <ion-list>
                 <ion-item>
-                    <p class="popover-info">Avalie o {{schedule.name}}:</p>
+                    <p class="popover-info">Avalie {{schedule.name}}:</p>
                     <score ng-model="currentScore"></score>
                 </ion-item>
-                <ion-item>
-                    <p class="popover-info">Compartilhe a sua nota!</p>
-                    <a class="button ion-social-facebook  chat-button-facebook">
-                        Compartilhar
-                    </a>
-                </ion-item>
-
                 <ion-item class="item-divider">
                     <p class="popover-info">
                         <i class="icon ion-ios-time-outline"></i> Em {{minutesRemain | timeramain}} começa:
@@ -76,7 +73,7 @@
                     <img src="img/placeholder.jpg" class="next-schedule-image" data-ng-src="{{nextSchedule.image_url}}" width="200">
                     <h2 class="next-schedule-name">{{nextSchedule.name}}</h2>
                     <p ng-show='nextSchedule.name != nextSchedule.description' class="next-schedule-description">{{nextSchedule.description}}</p>
-                    <p class="button button-block button-salmon text-center">
+                    <p class="button button-block button-salmon text-center" ng-click="viewSchedule()">
                         Ver progamação completa
                     </p>
                 </ion-item>
