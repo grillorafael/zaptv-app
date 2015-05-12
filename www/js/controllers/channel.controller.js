@@ -11,8 +11,34 @@
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
-            $scope.modal = modal;
+            $scope.viewUserModal = modal;
         });
+
+        $scope.viewUser = function(u) {
+            $scope.userToView = u;
+            $scope.viewUserModal.show();
+        };
+
+        $scope.closeModal = function() {
+            $scope.userToView = null;
+            $scope.viewUserModal.hide();
+        };
+
+
+        $ionicModal.fromTemplateUrl('templates/full_schedule_modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.viewScheduleModal = modal;
+        });
+
+        $scope.viewSchedule = function() {
+            $scope.viewScheduleModal.show();
+        };
+
+        $scope.closeScheduleModal = function() {
+            $scope.viewScheduleModal.hide();
+        };
 
         $scope.genders = {
             'm': 'Masculino',
@@ -127,15 +153,6 @@
             });
         });
 
-        $scope.viewUser = function(u) {
-            $scope.userToView = u;
-            $scope.modal.show();
-        };
-
-        $scope.closeModal = function() {
-            $scope.userToView = null;
-            $scope.modal.hide();
-        };
 
         $scope.loadBefore = function() {
             var beforeId = $scope.messages[0].id;

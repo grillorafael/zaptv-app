@@ -1,0 +1,11 @@
+<ion-modal-view class="profile-view">
+    <ion-header-bar class="bar-salmon">
+        <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closeScheduleModal()'></button>
+    </ion-header-bar>
+    <ion-list>
+        <ion-item ng-repeat="schedule in fullSchedule">
+            {{schedule.name}}
+        </ion-item>
+    </ion-list>
+    </ion-content>
+</ion-modal-view>
