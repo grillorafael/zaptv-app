@@ -18,12 +18,16 @@
         vertical-align: middle;
     }
     .schedule-item {
-        max-height: 100px;
+        max-height: 110px;
+        transition: height 1s;
+        box-shadow: inset 0px -10px 55px -30px grey;
     }
     .item  {
         white-space: normal;
+
         .program-description {
             white-space: normal;
+            font-weight: 300;
         }
     }
 

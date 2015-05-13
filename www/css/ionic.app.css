@@ -8071,11 +8071,14 @@ loader svg {
   display: inline-block;
   vertical-align: middle; }
 .full-schedule-view .schedule-item {
-  max-height: 100px; }
+  max-height: 110px;
+  transition: height 1s;
+  box-shadow: inset 0px -10px 55px -30px grey; }
 .full-schedule-view .item {
   white-space: normal; }
   .full-schedule-view .item .program-description {
-    white-space: normal; }
+    white-space: normal;
+    font-weight: 300; }
 .full-schedule-view .description-toggle-input {
   display: none; }
   .full-schedule-view .description-toggle-input:checked ~ .schedule-item {
