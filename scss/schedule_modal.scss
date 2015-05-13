@@ -1,4 +1,7 @@
 .full-schedule-view {
+    ion-content {
+        background: $salmon;
+    }
     .channel-logo {
         width: auto;
         height: 25px;
@@ -6,10 +9,11 @@
         vertical-align: middle;
     }
     .channel-name {
-        font-size: 1.3em;
+        color: white;
+        font-size: 1.5em;
         margin-top: 5px;
         margin-left: 5px;
-        font-weight: 300;
+        font-weight: 400;
         display: inline-block;
         vertical-align: middle;
     }
@@ -22,4 +26,12 @@
             white-space: normal;
         }
     }
+
+    .description-toggle-input {
+        display: none;
+        &:checked ~ .schedule-item {
+            max-height: 100%;
+        }
+    }
+
 }
