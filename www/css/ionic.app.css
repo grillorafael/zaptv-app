@@ -8055,6 +8055,25 @@ loader svg {
     font-size: 1.6em;
     color: black; }
 
+.full-schedule-view .channel-logo {
+  width: auto;
+  height: 25px;
+  display: inline-block;
+  vertical-align: middle; }
+.full-schedule-view .channel-name {
+  font-size: 1.3em;
+  margin-top: 5px;
+  margin-left: 5px;
+  font-weight: 300;
+  display: inline-block;
+  vertical-align: middle; }
+.full-schedule-view .schedule-item {
+  max-height: 100px; }
+.full-schedule-view .item {
+  white-space: normal; }
+  .full-schedule-view .item .program-description {
+    white-space: normal; }
+
 @font-face {
   font-family: 'MyWebFont';
   src: url('webfont.eot');

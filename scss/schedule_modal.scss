@@ -1,0 +1,25 @@
+.full-schedule-view {
+    .channel-logo {
+        width: auto;
+        height: 25px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .channel-name {
+        font-size: 1.3em;
+        margin-top: 5px;
+        margin-left: 5px;
+        font-weight: 300;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .schedule-item {
+        max-height: 100px;
+    }
+    .item  {
+        white-space: normal;
+        .program-description {
+            white-space: normal;
+        }
+    }
+}
