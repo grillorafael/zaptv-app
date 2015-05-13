@@ -129,6 +129,10 @@
             });
 
             Channel.getFullSchedule($scope.channel.id, State.get('geo_state')).then(function(fullSchedule) {
+                fullSchedule.forEach(function(sc) {
+                    var mmDt = moment(sc.start_time);
+                    sc.start_time = mmDt.toDate();
+                });
                 $scope.fullSchedule = fullSchedule;
             }, function(e) {
                 // TODO Handle
