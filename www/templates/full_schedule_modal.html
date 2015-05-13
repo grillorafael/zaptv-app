@@ -1,14 +1,18 @@
 <ion-modal-view class="full-schedule-view">
-    <ion-header-bar class="bar-salmon">
+    <ion-header-bar>
         <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closeScheduleModal()'></button>
     </ion-header-bar>
     <ion-content>
         <ion-list>
-            <h1>
+            <img ng-src="{{::channel.image_url}}" width="20" handle-load-error class="channel-logo" alt="logo da emissora">
+            <h2>
                 {{channel.name}}
-            </h1>
-            <ion-item ng-repeat="schedule in fullSchedule">
-                {{schedule.name}}
+            </h2>
+            <ion-item class="item-thumbnail-left" ng-repeat="schedule in fullSchedule">
+                <img src="img/placeholder.jpg" class="channel-image" data-ng-src="{{schedule.image_url}}">
+                <h2>{{schedule.name}}</h2>
+                <p>{{schedule.start_time | date:'MM/dd/yyyy @ HH:mm'}}</p>
+                <p>{{schedule.description}}</p>
             </ion-item>
         </ion-list>
     </ion-content>

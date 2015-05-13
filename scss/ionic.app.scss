@@ -106,3 +106,8 @@ label {
 .footer-btn-wrap {
     width: 35px;
 }
+
+
+.item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
+    height: auto;
+}
