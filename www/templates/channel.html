@@ -15,16 +15,17 @@
                 'pending': message.id == undefined
             }" ng-repeat="message in messages">
                 <div class="avatar">
-                    <img ng-click='viewUser(message.user)' handle-load-error class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url}}" alt="foto perfil do usuario" >
+                    <img ng-click='viewUser(message.user)' handle-load-error class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url}}" alt="foto perfil do usuario">
                 </div>
-                <div on-hold='messageOptions(message)'  ng-class="{
+                <div on-hold='messageOptions(message)' ng-class="{
                     'chat-bubble': message.user.id != user.id,
                     'chat-bubble-self': message.user.id == user.id
-                }" >
+                }">
                     <h2 class="c-username" ng-style="{
                         'color': getUserColor(message.user.id)
                     }">
-                        <span class="username">{{::message.user.username}}</span> <span class="timestamp" am-time-ago="message.created_at"></span>
+                        <span class="username">{{::message.user.username}}</span>
+                        <span class="timestamp" am-time-ago="message.created_at"></span>
                     </h2>
                     <p compile="::message.content | smartchat"></p>
                 </div>
@@ -41,17 +42,16 @@
     </ion-content>
     <form ng-submit="submitMessage(currentMessage)" novalidate>
         <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
-              <label class="item-input-wrapper">
-                  <textarea placeholder="Digite sua mensagem.." ng-model="currentMessage" required minlength="1" maxlength="1500" msd-elastic></textarea>
-              </label>
-              <div class="footer-btn-wrap">
-                <button class="button button-icon icon ion-android-send footer-btn" type="submit"
-                ng-click="submitMessage(currentMessage)" ng-class="{
-                    disabled: !currentMessage || currentMessage.trim().length == 0
-                }">
+            <label class="item-input-wrapper">
+                <textarea placeholder="Digite sua mensagem.." ng-model="currentMessage" required minlength="1" maxlength="1500" msd-elastic></textarea>
+            </label>
+            <div class="footer-btn-wrap">
+                <button class="button button-icon icon ion-android-send footer-btn" type="submit" ng-click="submitMessage(currentMessage)" ng-class="{
+                disabled: !currentMessage || currentMessage.trim().length == 0
+            }">
                 </button>
-              </div>
-          </ion-footer-bar>
+            </div>
+        </ion-footer-bar>
     </form>
 </ion-view>
 

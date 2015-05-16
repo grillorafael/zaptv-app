@@ -5,7 +5,6 @@
     ])
         .directive('animationHandle', animationHandle)
         .directive('compile', compile)
-        .directive('focus', focus)
         .directive('score', score)
         .directive('channelTile', channelTile)
         .directive('loader', loader)
@@ -70,17 +69,6 @@
         return {
             restrict: 'E',
             templateUrl: 'templates/directives/score.html'
-        };
-    }
-
-    function focus($timeout) {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attrs) {
-                $timeout(function() {
-                    element[0].focus();
-                }, 200);
-            }
         };
     }
 

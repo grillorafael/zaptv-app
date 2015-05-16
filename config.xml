@@ -8,11 +8,9 @@
         Ionic Framework Team
     </author>
   <content src="index.html"/>
-
   <access origin="*"/>
   <allow-intent href="*"/>
   <allow-navigation href="*"/>
-
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
@@ -70,6 +68,7 @@
     <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768"/>
     <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640"/>
     <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320"/>
+    <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
   </platform>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
 </widget>
