@@ -351,6 +351,10 @@
             socket.on('status response', fc);
         }
 
+        function toggleLike(info) {
+            socket.emit('toggle like', info);
+        }
+
         return {
             connect: connect,
             joinChannel: joinChannel,
@@ -359,7 +363,8 @@
             sendMessage: sendMessage,
             emitScore: emitScore,
             getStatus: getStatus,
-            onGetStatus: onGetStatus
+            onGetStatus: onGetStatus,
+            toggleLike: toggleLike
         };
     }
 })();

@@ -28,9 +28,12 @@
                     </h2>
                     <p compile="::message.content | smartchat"></p>
                 </div>
-                <div class="like-button">
-                    <i class="icon ion-ios-heart-outline"></i> <!--TODO: QUANDO CURTIR MUDAR PARA ion-ios-heart-->
-                    <p class="counter-like">400</p>
+                <div class="like-button" ng-click='toggleLike(message)'>
+                    <i class="icon" ng-class='{
+                        "ion-ios-heart-outline": !message.liked,
+                        "ion-ios-heart": message.liked
+                    }'></i>
+                    <p class="counter-like">{{message.count_likes}}</p>
                 </div>
             </div>
             <div class="clearfix"></div>

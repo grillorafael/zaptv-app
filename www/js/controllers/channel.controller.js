@@ -7,23 +7,19 @@
         $ionicPlatform, $ionicModal, Utils, Analytics, moment, State, Socket,
         Channel, Auth) {
 
+        $scope.genders = {
+            'm': 'Masculino',
+            'f': 'Feminino',
+            'o': 'Outros',
+            'n': 'Não Informado',
+        };
+
         $ionicModal.fromTemplateUrl('templates/view_user_modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.viewUserModal = modal;
         });
-
-        $scope.viewUser = function(u) {
-            $scope.userToView = u;
-            $scope.viewUserModal.show();
-        };
-
-        $scope.closeModal = function() {
-            $scope.userToView = null;
-            $scope.viewUserModal.hide();
-        };
-
 
         $ionicModal.fromTemplateUrl('templates/full_schedule_modal.html', {
             scope: $scope,
@@ -32,19 +28,21 @@
             $scope.viewScheduleModal = modal;
         });
 
+        $scope.viewUser = function(u) {
+            $scope.userToView = u;
+            $scope.viewUserModal.show();
+        };
+
+        $scope.closeModal = function() {
+            $scope.viewUserModal.hide();
+        };
+
         $scope.viewSchedule = function() {
             $scope.viewScheduleModal.show();
         };
 
         $scope.closeScheduleModal = function() {
             $scope.viewScheduleModal.hide();
-        };
-
-        $scope.genders = {
-            'm': 'Masculino',
-            'f': 'Feminino',
-            'o': 'Outros',
-            'n': 'Não Informado',
         };
 
         $ionicPlatform.ready(function() {
@@ -157,6 +155,21 @@
             });
         });
 
+        $scope.toggleLike = function(message) {
+            message.liked = !message.liked;
+            if(message.liked) {
+                message.count_likes++;
+            }
+            else {
+                message.count_likes--;
+            }
+
+            Socket.toggleLike({
+                message_id: message.id,
+                channel_id: $scope.channel.id,
+                token: token
+            });
+        };
 
         $scope.loadBefore = function() {
             var beforeId = $scope.messages[0].id;
@@ -207,6 +220,8 @@
             };
 
             $scope.messages.push({
+                count_likes: 0,
+                liked: false,
                 user: $scope.user,
                 content: currentMessage,
                 created_at: new Date()
