@@ -152,6 +152,7 @@
         }
 
         Socket.onMessage(function(msg) {
+            msg.created_at = moment(msg.created_at).toDate();
             if (msg.user.id === $scope.user.id) {
                 var msgIdx = null;
                 $scope.messages.forEach(function(m, i) {
