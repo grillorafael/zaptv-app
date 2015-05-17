@@ -1,0 +1,25 @@
+.ngn {
+    .ngn-dismiss {
+        display: none;
+    }
+}
+
+.ngn.ngn-info {
+    background-color: #0033CC;
+}
+
+.ngn.ngn-error {
+    background-color: #FF0000;
+}
+
+.ngn.ngn-success {
+    background-color: #00CC00;
+}
+
+.ngn.ngn-warn {
+    background-color: #FF9900;
+}
+
+.ngn.ngn-grimace {
+    background-color: #660099;
+}

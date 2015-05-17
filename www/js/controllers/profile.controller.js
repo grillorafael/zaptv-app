@@ -2,7 +2,7 @@
     'use strict';
     angular.module('zaptv').controller('ProfileCtrl', ProfileCtrl);
 
-    function ProfileCtrl($scope, $cordovaDatePicker, $cordovaCamera, $animationTrigger, User, Analytics) {
+    function ProfileCtrl($scope, $cordovaDatePicker, $cordovaCamera, $animationTrigger, User, Analytics, ngNotify) {
         Analytics.init();
         Analytics.trackView('profile');
 
@@ -25,6 +25,13 @@
             id: 'n',
             label: 'Não informado'
         }];
+
+        function showError() {
+            ngNotify.set('Ocorreu um erro na requisição', {
+                type: 'error',
+                position: 'bottom'
+            });
+        }
 
         var changedImage = false;
 
@@ -64,6 +71,11 @@
         };
 
         $scope.update = function() {
+            ngNotify.set('Atualizando...', {
+                position: 'bottom',
+                sticky: true
+            });
+
             User.update({
                 birthdate: $scope.user.birthdate,
                 gender: $scope.user.gender,
@@ -74,16 +86,17 @@
                         name: "image.png",
                         data: $scope.user.image_url
                     }).then(function() {
-
+                        ngNotify.dismiss();
                     }, function() {
-
+                        showError();
                     });
                 }
                 else {
+                    ngNotify.dismiss();
                     $scope.user = u;
                 }
             }, function(e) {
-                // TODO Handle this shit
+                showError();
             });
         };
     }

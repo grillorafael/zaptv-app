@@ -9,7 +9,8 @@
         'angularMoment',
         'ngCordova',
         'LocalForageModule',
-        'ngInflection'
+        'ngInflection',
+        'ngNotify'
         ])
         .run(function($ionicPlatform, amMoment) {
             amMoment.changeLocale('pt-br');

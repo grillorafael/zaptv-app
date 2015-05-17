@@ -8084,6 +8084,24 @@ loader svg {
   .full-schedule-view .description-toggle-input:checked ~ .schedule-item {
     max-height: 1000px; }
 
+.ngn .ngn-dismiss {
+  display: none; }
+
+.ngn.ngn-info {
+  background-color: #0033CC; }
+
+.ngn.ngn-error {
+  background-color: #FF0000; }
+
+.ngn.ngn-success {
+  background-color: #00CC00; }
+
+.ngn.ngn-warn {
+  background-color: #FF9900; }
+
+.ngn.ngn-grimace {
+  background-color: #660099; }
+
 @font-face {
   font-family: 'MyWebFont';
   src: url("webfont.eot");
