@@ -205,6 +205,14 @@
             top: 1px;
         }
     }
+    .bar.bar-stable {
+        border: 0;
+        border-color: transparent;
+        background: transparent;
+        .button {
+            color:$salmon;
+        }
+    }
 
 }
 

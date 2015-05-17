@@ -7708,6 +7708,12 @@ a.button {
       z-index: 1;
       right: -8px;
       top: 1px; }
+  .chat-view .bar.bar-stable {
+    border: 0;
+    border-color: transparent;
+    background: transparent; }
+    .chat-view .bar.bar-stable .button {
+      color: #dd5e6a; }
 
 .bar-footer {
   overflow: visible !important; }
