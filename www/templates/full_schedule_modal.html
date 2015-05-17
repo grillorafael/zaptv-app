@@ -17,7 +17,7 @@
                 <ion-item class="schedule-item" >
                     <div class="channel-image" style="background-image: url({{schedule.image_url}});" ></div> <!--data-ng-src="{{schedule.image_url}}"-->
                     <h2>{{schedule.name}}</h2>
-                    <p>{{schedule.start_time | date:'dd/MM/yyyy HH:mm'}}</p>
+                    <p class="schedule-date">{{schedule.start_time | date:'dd/MM/yyyy HH:mm'}}</p>
                     <p class="program-description" >{{schedule.description}}</p>
                 </ion-item>
             </label>

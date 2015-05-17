@@ -8103,6 +8103,8 @@ loader svg {
   margin-right: 5px; }
 .full-schedule-view .schedule-item {
   max-height: 110px; }
+.full-schedule-view .schedule-date {
+  font-style: italic; }
 .full-schedule-view .item {
   white-space: normal;
   vertical-align: top; }
@@ -8176,7 +8178,7 @@ label.success i {
   border-radius: 5px; }
 
 .bar-salmon .button-clear.button-clear.ion-information-circled {
-  font-size: 1.2em; }
+  font-size: 1.4em; }
 
 .platform-ios .popover-arrow:after {
   left: -2px; }
