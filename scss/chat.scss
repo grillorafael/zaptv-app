@@ -1,8 +1,7 @@
 .chat-view {
     background: grey;
-    // background: url("../img/bg-login-2.jpg");
-    // background-repeat: no-repeat;
-    // background-size: cover;
+    background: url("../img/giftly.png");
+    background-repeat: repeat;
     p {
         margin: 0 0 7px;
         font-size: 1em;
@@ -48,16 +47,18 @@
             i {
                 font-size: 1.5em;
                 font-weight: bold;
+                color: #EF7673;
 
             }
             i.ion-ios-heart {
-                color: #F44336;
+                color: #EF7673;
             }
             p {
                 font-size: 0.8em;
                 line-height: 0.8;
                 display: inline-block;
                 text-align: center;
+                color: black;
             }
         }
         .avatar {
@@ -140,9 +141,11 @@
                 vertical-align: middle;
                 margin: 0 auto;
                 font-weight: bold;
+                color: #EF7673;
+
             }
             i.ion-ios-heart {
-                color: #F44336;
+                color: #EF7673;
             }
             p {
                 font-size: 0.8em;
@@ -150,6 +153,7 @@
                 display: inline-block;
                 text-align: center;
                 margin: 0 auto;
+                color: black;
             }
         }
         .avatar {
