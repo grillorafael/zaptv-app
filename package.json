@@ -45,12 +45,16 @@
     },
     {
       "locator": "https://github.com/Wizcorp/phonegap-facebook-plugin.git",
-      "id": "com.phonegap.plugins.facebookconnect"
+      "id": "com.phonegap.plugins.facebookconnect",
+      "variables": {
+        "APP_ID": "806746042740574",
+        "APP_NAME": "zaper"
+      }
     },
     "cordova-plugin-whitelist"
   ],
   "cordovaPlatforms": [
-    "android",
-    "ios"
+    "ios",
+    "android"
   ]
 }

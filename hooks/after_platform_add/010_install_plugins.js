@@ -11,19 +11,28 @@ var sys = require('sys');
 var packageJSON = null;
 
 try {
-  packageJSON = require('../../package.json');
-} catch(ex) {
-  console.log('\nThere was an error fetching your package.json file.')
-  console.log('\nPlease ensure a valid package.json is in the root of this project\n')
-  return;
+    packageJSON = require('../../package.json');
+} catch (ex) {
+    console.log('\nThere was an error fetching your package.json file.')
+    console.log('\nPlease ensure a valid package.json is in the root of this project\n')
+    return;
 }
 
 var cmd = process.platform === 'win32' ? 'cordova.cmd' : 'cordova';
 // var script = path.resolve(__dirname, '../../node_modules/cordova/bin', cmd);
 
 packageJSON.cordovaPlugins = packageJSON.cordovaPlugins || [];
-packageJSON.cordovaPlugins.forEach(function (plugin) {
-  exec('cordova plugin add ' + plugin, function (error, stdout, stderr) {
-    sys.puts(stdout);
-  });
+packageJSON.cordovaPlugins.forEach(function(plugin) {
+    var pluginToInstall = plugin.locator ? plugin.locator : plugin;
+
+    if(plugin.variables) {
+        var variables = Object.keys(plugin.variables);
+        variables.forEach(function(v) {
+            pluginToInstall += ' --variable ' + v + '="' + plugin.variables[v] + '"';
+        });
+    }
+
+    exec('cordova plugin add ' + pluginToInstall, function(error, stdout, stderr) {
+        sys.puts(stdout);
+    });
 });
