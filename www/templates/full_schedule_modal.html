@@ -1,16 +1,17 @@
 <ion-modal-view class="full-schedule-view">
     <ion-header-bar class="bar-salmon">
         <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closeScheduleModal()'></button>
-    </ion-header-bar>
-    <ion-content>
-        <ion-list>
-            <div class="text-center">
+        <div class="title header-item" >
+            <span class="nav-bar-title">
                 <img ng-src="{{::channel.image_url}}" width="20" handle-load-error class="channel-logo" alt="logo da emissora">
                 <h2 class="channel-name">
                     {{channel.name}}
                 </h2>
-            </div>
-
+            </span>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
             <label ng-repeat="schedule in fullSchedule" for="{{schedule.name}}-{{$index}}">
                 <input type="checkbox" name="{{schedule.name}}-{{$index}}" id="{{schedule.name}}" class="description-toggle-input" autocomplete="off" />
                 <ion-item class="item-thumbnail-left schedule-item" >
