@@ -3,8 +3,8 @@
     angular.module('zaptv').controller('ChannelsCtrl', ChannelsCtrl);
 
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
-        $ionicPopover, $ionicHistory, $ionicTabsDelegate, Analytics, Auth, State,
-        ReverseGeolocation, GeoInfo, Channel, Socket) {
+        $ionicPopover, $ionicHistory, $ionicTabsDelegate, $cordovaAppRate, Analytics,
+        Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket) {
 
         var geoState = null;
         var userId = Auth.getUserId();
@@ -39,6 +39,12 @@
             });
         });
 
+        function askRating() {
+            if(window.cordova !== undefined) {
+                $cordovaAppRate.promptForRating().then(function(result) {});
+            }
+        }
+
         function initGeolocation() {
             $cordovaGeolocation
                 .getCurrentPosition({
@@ -70,10 +76,9 @@
                 var privateChannels = [];
 
                 channels.forEach(function(c) {
-                    if(c.is_private) {
+                    if (c.is_private) {
                         privateChannels.push(c);
-                    }
-                    else {
+                    } else {
                         openChannels.push(c);
                     }
                 });
@@ -84,9 +89,10 @@
                 $scope.$broadcast('scroll.refreshComplete');
                 Socket.getStatus();
                 $scope.isLoading = false;
+                askRating();
             }, function() {
                 Channel.getChannelsCache().then(function(obj) {
-                    if(obj && obj.open_channels) {
+                    if (obj && obj.open_channels) {
                         $scope.openChannels = obj.open_channels;
                         $scope.privateChannels = obj.private_channels;
                     }
@@ -108,6 +114,11 @@
 
         $scope.refresh = function() {
             listChannels(geoState);
+            $scope.popover.hide();
+        };
+
+        $scope.rateApp = function() {
+            $cordovaAppRate.navigateToAppStore().then(function(result) {});
             $scope.popover.hide();
         };
 

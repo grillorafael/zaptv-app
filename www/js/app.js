@@ -1,16 +1,16 @@
 (function() {
     'use strict';
     angular.module('zaptv', [
-        'ionic',
-        'zaptv.services',
-        'zaptv.directives',
-        'zaptv.values',
-        'zaptv.filters',
-        'angularMoment',
-        'ngCordova',
-        'LocalForageModule',
-        'ngInflection',
-        'ngNotify'
+            'ionic',
+            'zaptv.services',
+            'zaptv.directives',
+            'zaptv.values',
+            'zaptv.filters',
+            'angularMoment',
+            'ngCordova',
+            'LocalForageModule',
+            'ngInflection',
+            'ngNotify'
         ])
         .run(function($ionicPlatform, amMoment) {
             amMoment.changeLocale('pt-br');
@@ -23,8 +23,21 @@
                 }
             });
         })
-        .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider) {
-            // $ionicConfigProvider.scrolling.jsScrolling(false);
+        .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider, $cordovaAppRateProvider) {
+            if (window.cordova !== undefined) {
+                document.addEventListener("deviceready", function() {
+                    $cordovaAppRateProvider.setPreferences({
+                        language: 'pt',
+                        appName: 'Zaper',
+                        iosURL: 'com.goldenkricket.zaper',
+                        androidURL: 'market://details?id=com.goldenkricket.zaper',
+                        usesUntilPrompt: 3,
+                        promptForNewVersion: true
+                    });
+                }, false);
+
+            }
+
             $ionicConfigProvider.tabs.position('top');
             $httpProvider.interceptors.push('AuthInterceptor');
             $stateProvider
@@ -92,10 +105,9 @@
                     }
                 });
 
-            if(localStorage.getItem('auth_token')) {
+            if (localStorage.getItem('auth_token')) {
                 $urlRouterProvider.otherwise('/channels');
-            }
-            else {
+            } else {
                 $urlRouterProvider.otherwise('/login');
             }
         });
