@@ -7558,6 +7558,12 @@ a.button {
     .chat-view .chat-message.same-last-user .username {
       display: none; }
     .chat-view .chat-message .like-button {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
       color: white;
       padding-top: 5px;
       float: left;
@@ -7569,7 +7575,9 @@ a.button {
         color: #F44336; }
       .chat-view .chat-message .like-button p {
         font-size: 0.8em;
-        line-height: 0.5; }
+        line-height: 0.8;
+        display: inline-block;
+        text-align: center; }
     .chat-view .chat-message .avatar {
       width: 40px;
       height: 40px;
@@ -7628,6 +7636,12 @@ a.button {
     clear: both;
     margin-bottom: 5px; }
     .chat-view .chat-message-self .like-button {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
       color: white;
       padding-top: 4%;
       float: right;
@@ -7643,7 +7657,9 @@ a.button {
         color: #F44336; }
       .chat-view .chat-message-self .like-button p {
         font-size: 0.8em;
-        line-height: 0.5;
+        line-height: 0.8;
+        display: inline-block;
+        text-align: center;
         margin: 0 auto; }
     .chat-view .chat-message-self .avatar {
       width: 40px;

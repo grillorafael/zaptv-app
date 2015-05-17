@@ -40,6 +40,8 @@
             }
         }
         .like-button {
+            display: flex;
+            flex-direction: column;
             color: white;
             padding-top: 5px;
             float: left;
@@ -54,7 +56,9 @@
             }
             p {
                 font-size: 0.8em;
-                line-height: 0.5;
+                line-height: 0.8;
+                display: inline-block;
+                text-align: center;
             }
         }
         .avatar {
@@ -124,6 +128,8 @@
         clear: both;
         margin-bottom: 5px;
         .like-button {
+            display: flex;
+            flex-direction: column;
             color: white;
             padding-top: 4%;
             float: right;
@@ -141,7 +147,9 @@
             }
             p {
                 font-size: 0.8em;
-                line-height: 0.5;
+                line-height: 0.8;
+                display: inline-block;
+                text-align: center;
                 margin: 0 auto;
             }
         }
