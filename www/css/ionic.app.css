@@ -7532,7 +7532,9 @@ a.button {
   animation-duration: 2s; }
 
 .chat-view {
-  background: grey; }
+  background: grey;
+  background: url("../img/giftly.png");
+  background-repeat: repeat; }
   .chat-view p {
     margin: 0 0 7px;
     font-size: 1em;
