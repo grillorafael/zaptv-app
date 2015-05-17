@@ -7550,7 +7550,6 @@ a.button {
     .chat-view .chat-message:last-child, .chat-view .chat-message-self:last-child {
       margin-bottom: 0; }
   .chat-view .chat-message {
-    margin-bottom: 10px;
     clear: both; }
     .chat-view .chat-message.same-last-user .chat-bubble::after {
       display: none; }
