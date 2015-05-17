@@ -8085,10 +8085,23 @@ loader svg {
   font-weight: 400;
   display: inline-block;
   vertical-align: middle; }
+.full-schedule-view .channel-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  width: 100px;
+  height: 70px;
+  vertical-align: top;
+  float: left;
+  margin-right: 5px; }
 .full-schedule-view .schedule-item {
   max-height: 110px; }
 .full-schedule-view .item {
-  white-space: normal; }
+  white-space: normal;
+  vertical-align: top; }
+  .full-schedule-view .item h2, .full-schedule-view .item p {
+    vertical-align: top; }
   .full-schedule-view .item .program-description {
     white-space: normal;
     font-weight: 300; }

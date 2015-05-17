@@ -17,6 +17,17 @@
         display: inline-block;
         vertical-align: middle;
     }
+    .channel-image {
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        width: 100px;
+        height: 70px;
+        vertical-align: top;
+        float: left;
+        margin-right: 5px;
+    }
     .schedule-item {
         max-height: 110px;
         // transition: max-height 1s ease-in-out; TA BUGANDO
@@ -24,7 +35,10 @@
     }
     .item  {
         white-space: normal;
-
+        vertical-align: top;
+        h2, p {
+            vertical-align: top;
+        }
         .program-description {
             white-space: normal;
             font-weight: 300;
