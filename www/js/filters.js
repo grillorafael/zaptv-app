@@ -32,7 +32,12 @@
     .filter('timeramain', function() {
         return function(time) {
             if(time > 60) {
-                return ((time / 60).toFixed(1) + ' horas').replace('.', ',');
+                var numHours = parseInt(time / 60);
+                var numMinutes = time % 60;
+
+                var minutesText = numMinutes > 0 ? ' e ' + numMinutes + ' minutos' : '';
+                var hoursText = numHours + ' horas' + minutesText;
+                return hoursText.replace('.', ',');
             }
             else {
                 return time + ' minutos';
