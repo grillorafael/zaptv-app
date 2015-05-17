@@ -24,7 +24,7 @@
                     'color': getUserColor(message.user.id)
                 }">
                     <span class="username">{{::message.user.username}}</span>
-                    <span class="timestamp" am-time-ago="message.created_at"></span>
+                    <span class="timestamp">{{::message.created_at | date:'HH:mm'}}</span>
                 </h2>
                 <p compile="::message.content | smartchat"></p>
             </div>

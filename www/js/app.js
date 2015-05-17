@@ -32,7 +32,7 @@
         })
         .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider, $cordovaAppRateProvider) {
             if(ionic.Platform.isAndroid()) {
-                $ionicConfigProvider.scrolling.jsScrolling(false);
+                // $ionicConfigProvider.scrolling.jsScrolling(false);
             }
             if (window.cordova !== undefined) {
                 document.addEventListener("deviceready", function() {

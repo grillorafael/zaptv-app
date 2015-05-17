@@ -83,6 +83,9 @@
         $scope.$on('$ionicView.enter', function() {
             updateChat();
             Channel.lastMessages($scope.channel.id).then(function(messages) {
+                messages.forEach(function(m) {
+                    m.created_at = new Date(m.created_at);
+                });
                 $scope.messages = messages.reverse();
                 $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
             });
