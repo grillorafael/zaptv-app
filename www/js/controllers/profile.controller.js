@@ -2,7 +2,7 @@
     'use strict';
     angular.module('zaptv').controller('ProfileCtrl', ProfileCtrl);
 
-    function ProfileCtrl($scope, $cordovaDatePicker, User, Analytics) {
+    function ProfileCtrl($scope, $cordovaDatePicker, $cordovaCamera, $animationTrigger, User, Analytics) {
         Analytics.init();
         Analytics.trackView('profile');
 
@@ -26,43 +26,25 @@
             label: 'Não informado'
         }];
 
-        // $scope.onImageChange = function() {
-        //     var inputFile = document.getElementById("file-input");
-        //     var file = inputFile.files[0];
-        //     var FR = new FileReader();
-        //     FR.onload = function(e) {
-        //         $scope.im = {
-        //             name: file.name,
-        //             data: e.target.result,
-        //             size: e.total,
-        //             date: e.timeStamp
-        //         };
-        //
-        //         document.getElementById('current-image').setAttribute('src', e.target.result);
-        //     };
-        //     FR.readAsDataURL(file);
-        // };
-        //
-        // $scope.saveImage = function() {
-        //     var inputFile = document.getElementById("file-input");
-        //     var file = inputFile.files[0];
-        //     var FR = new FileReader();
-        //     FR.onload = function(e) {
-        //         var im = {
-        //             name: file.name,
-        //             data: e.target.result,
-        //             size: e.total,
-        //             date: e.timeStamp
-        //         };
-        //
-        //         User.changePicture(im).then(function(updatedUser) {
-        //             $scope.user = updatedUser;
-        //         }, {
-        //
-        //         });
-        //     };
-        //     FR.readAsDataURL(file);
-        // };
+        var changedImage = false;
+
+        $scope.changeImage = function() {
+            $cordovaCamera.getPicture({
+                quality: 50,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.PNG,
+                targetWidth: 400,
+                targetHeight: 400,
+                saveToPhotoAlbum: false
+            }).then(function(imageData) {
+                changedImage = true;
+                $scope.user.image_url = "data:image/jpeg;base64," + imageData;
+            }, function(err) {
+                // error
+            });
+        };
 
         $scope.pickDate = function() {
             $cordovaDatePicker.show({
@@ -71,29 +53,37 @@
                 allowOldDates: true,
                 allowFutureDates: false,
                 doneButtonLabel: 'Escolher',
-                doneButtonColor: '#F2F3F4',
+                doneButtonColor: '#000000',
                 cancelButtonLabel: 'Voltar',
                 cancelButtonColor: '#000000'
             }).then(function(date) {
-                if(date) {
+                if (date) {
                     $scope.user.birthdate = date.toISOString().split('T')[0];
                 }
             });
         };
 
         $scope.update = function() {
-            // TODO Show some fucking spinner
-            $scope.isUpdating = true;
             User.update({
                 birthdate: $scope.user.birthdate,
                 gender: $scope.user.gender,
                 name: $scope.user.name
             }).then(function(u) {
-                $scope.user = u;
+                if(changedImage) {
+                    User.changePicture({
+                        name: "image.png",
+                        data: $scope.user.image_url
+                    }).then(function() {
+
+                    }, function() {
+
+                    });
+                }
+                else {
+                    $scope.user = u;
+                }
             }, function(e) {
                 // TODO Handle this shit
-            }).finally(function() {
-                $scope.isUpdating = false;
             });
         };
     }

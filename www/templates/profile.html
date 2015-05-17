@@ -1,9 +1,8 @@
 <ion-view view-title="Meu Perfil" class="profile-view">
     <ion-content class="has-header" scroll="false">
         <div class="top-container">
-            <div class="img-container">
-                <img handle-load-error id="current-image" src="img/placeholder.jpg" ng-src="{{user.image_url}}" alt="" class="full-image profile-image">
-                <!-- <input type="file" id="file-input" onchange="angular.element(this).scope().onImageChange(this)"> -->
+            <div class="img-container" ng-click='changeImage()'>
+                <img handle-load-error src="img/placeholder.jpg" ng-src="{{user.image_url}}" alt="" class="full-image profile-image">
             </div>
             <div class="text-center">
                 <h4 class="username">{{user.username}}</h4>

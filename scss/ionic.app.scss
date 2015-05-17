@@ -24,24 +24,21 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "schedule_modal";
 
 @font-face {
-  font-family: 'MyWebFont';
-  src: url('webfont.eot'); /* IE9 Compat Modes */
-  src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
-       url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
-       url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+    font-family: 'MyWebFont';
+    src: url("webfont.eot");
+    /* IE9 Compat Modes */
+    src:/* IE6-IE8 *//* Super Modern Browsers */
+    /* Pretty Modern Browsers */
+    /* Safari, Android, iOS */
+    url('webfont.eot?#iefix') format('embedded-opentype'),url('webfont.woff2') format('woff2'),url('webfont.woff') format('woff'),url('webfont.ttf') format('truetype'),url('webfont.svg#svgFontName') format('svg');
+    /* Legacy iOS */
 }
-
 body {
     font-weight: 300;
 }
-
-
 .salmon {
     color: $salmon;
 }
-
 label {
     &.error i {
         color: $assertive;
@@ -74,41 +71,34 @@ label {
     margin-top: 10%;
     border-radius: 5px;
 }
-
 .bar-salmon .button-clear.button-clear.ion-information-circled {
     font-size: 1.2em;
 }
-
 .platform-ios .popover-arrow:after {
     left: -2px;
 }
-
 .platform-ios .popover .scroll-content.has-header {
     margin-bottom: 0;
 }
-
 .channel-popover.popover .item {
     padding: 5px 10px;
 }
-
 .bar-footer {
-  overflow: visible !important;
+    overflow: visible !important;
 }
-
 .bar-footer textarea {
-  resize: none;
-  height: 25px;
+    resize: none;
+    height: 25px;
 }
-
 .card {
     box-shadow: none;
 }
-
 .footer-btn-wrap {
     width: 35px;
 }
-
-
-.item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
+.item-thumbnail-left > img:first-child,
+.item-thumbnail-left .item-image,
+.item-thumbnail-left .item-content > img:first-child,
+.item-thumbnail-left .item-content .item-image {
     height: auto;
 }
