@@ -22,18 +22,35 @@
     "cordova-plugin-statusbar",
     "cordova-plugin-geolocation",
     "cordova-plugin-inappbrowser",
+    "cordova-plugin-camera",
     {
-      "id": "cordova-plugin-crosswalk-webview",
-      "locator": "./engine/cordova-crosswalk-engine-c0.7.1"
+      "locator": "https://github.com/pushandplay/cordova-plugin-apprate.git",
+      "id": "org.pushandplay.cordova.apprate"
     },
-    "org.apache.cordova.splashscreen",
-    "cordova-plugin-camera"
+    {
+      "locator": "https://github.com/VersoSolutions/CordovaClipboard.git",
+      "id": "com.verso.cordova.clipboard"
+    },
+    {
+      "locator": "https://github.com/VitaliiBlagodir/cordova-plugin-datepicker.git",
+      "id": "com.plugin.datepicker"
+    },
+    {
+      "locator": "https://github.com/danwilson/google-analytics-plugin.git",
+      "id": "cordova-plugin-google-analytics"
+    },
+    {
+      "locator": "https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git",
+      "id": "nl.x-services.plugins.socialsharing"
+    },
+    {
+      "locator": "https://github.com/Wizcorp/phonegap-facebook-plugin.git",
+      "id": "com.phonegap.plugins.facebookconnect"
+    },
+    "cordova-plugin-whitelist"
   ],
   "cordovaPlatforms": [
-    "ios",
-    {
-      "platform": "android",
-      "locator": "./engine/cordova-android-c0.6.1/"
-    }
+    "android",
+    "ios"
   ]
 }

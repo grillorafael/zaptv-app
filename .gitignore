@@ -2,5 +2,7 @@
 # http://git-scm.com/docs/gitignore
 
 node_modules/
-platforms/
-plugins/
+platforms/*
+!platforms/platforms.json
+plugins/*
+!plugins/fetch.json

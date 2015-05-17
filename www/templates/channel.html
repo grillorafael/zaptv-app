@@ -1,58 +1,53 @@
-<ion-view class="chat-view" enable-menu-with-back-views="false">
+<ion-view class="chat-view">
     <ion-nav-title>
         {{schedule.name || "Carregando.."}}
     </ion-nav-title>
     <ion-nav-buttons side="right">
         <button class="button button-clear ion-information-circled" ng-click="openPopover($event)"></button>
     </ion-nav-buttons>
-    <ion-content has-bouncing="true" class="padding" delegate-handle="chat-scroll">
+    <ion-content delegate-handle="chat-scroll">
         <ion-refresher pulling-text="Carregando mais mensagens.." on-refresh="loadBefore()"></ion-refresher>
-        <ion-list>
-            <div class="item-text-wrap" ng-class="{
-                'chat-message': message.user.id != user.id,
-                'chat-message-self': message.user.id == user.id,
-                'same-last-user': message.user.id == messages[$index - 1].user.id,
-                'pending': message.id == undefined
-            }" ng-repeat="message in messages">
-                <div class="avatar">
-                    <img ng-click='viewUser(message.user)' handle-load-error class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url}}" alt="foto perfil do usuario">
-                </div>
-                <div on-hold='messageOptions(message)' ng-class="{
-                    'chat-bubble': message.user.id != user.id,
-                    'chat-bubble-self': message.user.id == user.id
-                }">
-                    <h2 class="c-username" ng-style="{
-                        'color': getUserColor(message.user.id)
-                    }">
-                        <span class="username">{{::message.user.username}}</span>
-                        <span class="timestamp" am-time-ago="message.created_at"></span>
-                    </h2>
-                    <p compile="::message.content | smartchat"></p>
-                </div>
-                <div class="like-button" ng-click='toggleLike(message)'>
-                    <i class="icon" ng-class='{
-                        "ion-ios-heart-outline": !message.liked,
-                        "ion-ios-heart": message.liked
-                    }'></i>
-                    <p class="counter-like">{{message.count_likes}}</p>
-                </div>
+        <div class="item-text-wrap padding" ng-class="{
+            'chat-message': message.user.id != user.id,
+            'chat-message-self': message.user.id == user.id,
+            'same-last-user': message.user.id == messages[$index - 1].user.id,
+            'pending': message.id == undefined
+        }" ng-repeat="message in messages">
+            <div class="avatar">
+                <img ng-click='viewUser(message.user)' handle-load-error class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url}}" alt="foto perfil do usuario">
             </div>
-            <div class="clearfix"></div>
-        </ion-list>
-    </ion-content>
-    <form ng-submit="submitMessage(currentMessage)" novalidate>
-        <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
-            <label class="item-input-wrapper">
-                <textarea placeholder="Digite sua mensagem.." ng-model="currentMessage" required minlength="1" maxlength="1500" msd-elastic></textarea>
-            </label>
-            <div class="footer-btn-wrap">
-                <button class="button button-icon icon ion-android-send footer-btn" type="submit" ng-click="submitMessage(currentMessage)" ng-class="{
-                disabled: !currentMessage || currentMessage.trim().length == 0
+            <div on-hold='messageOptions(message)' ng-class="{
+                'chat-bubble': message.user.id != user.id,
+                'chat-bubble-self': message.user.id == user.id
             }">
-                </button>
+                <h2 class="c-username" ng-style="{
+                    'color': getUserColor(message.user.id)
+                }">
+                    <span class="username">{{::message.user.username}}</span>
+                    <span class="timestamp" am-time-ago="message.created_at"></span>
+                </h2>
+                <p compile="::message.content | smartchat"></p>
             </div>
-        </ion-footer-bar>
-    </form>
+            <div class="like-button" ng-click='toggleLike(message)'>
+                <i class="icon" ng-class='{
+                    "ion-ios-heart-outline": !message.liked,
+                    "ion-ios-heart": message.liked
+                }'></i>
+                <p class="counter-like">{{message.count_likes}}</p>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+        <label class="item-input-wrapper">
+            <textarea placeholder="Digite sua mensagem.." ng-model="currentMessage" minlength="1" maxlength="1500" msd-elastic></textarea>
+        </label>
+        <div class="footer-btn-wrap">
+            <button class="button button-icon icon ion-android-send footer-btn" type="submit" ng-click="submitMessage(currentMessage)" ng-class="{
+            disabled: !currentMessage || currentMessage.trim().length == 0
+        }">
+            </button>
+        </div>
+    </ion-footer-bar>
 </ion-view>
 
 <script id="channel_popover" type="text/ng-template">

@@ -24,6 +24,7 @@
             });
         })
         .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider, $cordovaAppRateProvider) {
+            $ionicConfigProvider.scrolling.jsScrolling(false);
             if (window.cordova !== undefined) {
                 document.addEventListener("deviceready", function() {
                     $cordovaAppRateProvider.setPreferences({

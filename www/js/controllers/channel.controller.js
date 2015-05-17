@@ -7,6 +7,10 @@
         $ionicPlatform, $ionicModal, Utils, Analytics, moment, State, Socket,
         Channel, Auth) {
 
+        window.addEventListener('native.keyboardshow', function() {
+            $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
+        });
+
         $scope.genders = {
             'm': 'Masculino',
             'f': 'Feminino',
@@ -50,8 +54,7 @@
                 return;
             }
 
-            var platform = $cordovaDevice.getPlatform();
-            if (platform === 'iOS') {
+            if (ionic.Platform.isIOS()) {
                 cordova.plugins.Keyboard.disableScroll(true);
             }
         });
@@ -77,7 +80,7 @@
             updateChat();
             Channel.lastMessages($scope.channel.id).then(function(messages) {
                 $scope.messages = messages.reverse();
-                $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
+                $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
             });
         });
 
@@ -151,16 +154,15 @@
             }
 
             $timeout(function() {
-                $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
+                $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
             });
         });
 
         $scope.toggleLike = function(message) {
             message.liked = !message.liked;
-            if(message.liked) {
+            if (message.liked) {
                 message.count_likes++;
-            }
-            else {
+            } else {
                 message.count_likes--;
             }
 
@@ -229,7 +231,7 @@
 
             Socket.sendMessage(info);
             $scope.currentMessage = '';
-            $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom(true);
+            $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
         };
 
         $scope.setScore = function(val) {

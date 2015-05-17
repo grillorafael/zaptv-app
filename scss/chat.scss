@@ -13,6 +13,8 @@
     }
 
     .chat-message, .chat-message-self {
+        padding-top: 0;
+        padding-bottom: 0;
         &.pending {
             opacity: 0.3;
         }
