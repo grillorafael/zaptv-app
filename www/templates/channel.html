@@ -24,9 +24,9 @@
                     'color': getUserColor(message.user.id)
                 }">
                     <span class="username">{{::message.user.username}}</span>
-                    <span class="timestamp">{{::message.created_at | date:'HH:mm'}}</span>
                 </h2>
                 <p compile="::message.content | smartchat"></p>
+                <span class="timestamp">{{::message.created_at | date:'HH:mm'}}</span>
             </div>
             <div class="like-button" ng-click='toggleLike(message)'>
                 <i class="icon" ng-class='{
