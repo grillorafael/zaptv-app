@@ -7625,12 +7625,13 @@ a.button {
     overflow: hidden;
     white-space: nowrap;
     padding-left: 2px;
-    width: 100%; }
+    width: 100%;
+    display: block;
+    text-align: right; }
   .chat-view .c-username {
     font-size: 1em;
     color: #f75f51;
-    margin-bottom: 0;
-    display: inline-block;
+    margin-bottom: 5px;
     overflow: hidden;
     white-space: nowrap;
     width: 100%; }
