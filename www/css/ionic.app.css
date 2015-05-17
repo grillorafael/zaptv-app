@@ -7540,15 +7540,15 @@ a.button {
   .chat-view .clearfix {
     clear: both; }
   .chat-view .chat-message, .chat-view .chat-message-self {
-    padding-top: 0;
-    padding-bottom: 0; }
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px; }
     .chat-view .chat-message.pending, .chat-view .chat-message-self.pending {
       opacity: 0.3; }
     .chat-view .chat-message .chat-link, .chat-view .chat-message-self .chat-link {
       color: #387ef5;
       text-decoration: none; }
-    .chat-view .chat-message:last-child, .chat-view .chat-message-self:last-child {
-      margin-bottom: 0; }
   .chat-view .chat-message {
     clear: both; }
     .chat-view .chat-message.same-last-user .chat-bubble::after {
