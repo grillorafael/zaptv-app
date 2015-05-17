@@ -80,6 +80,7 @@
         background: white;
         float: left;
         max-width: 72%;
+        min-width: 24%;
         margin-bottom: 5px;
         border-radius: 5px;
         &:after {
@@ -189,6 +190,7 @@
         float: right;
         margin-bottom: 5px;
         max-width: 72%;
+        min-width: 24%;
         border-radius: 5px;
         &:after {
             content: '';

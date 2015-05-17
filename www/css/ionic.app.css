@@ -7599,6 +7599,7 @@ a.button {
     background: white;
     float: left;
     max-width: 72%;
+    min-width: 24%;
     margin-bottom: 5px;
     border-radius: 5px; }
     .chat-view .chat-bubble:after {
@@ -7694,6 +7695,7 @@ a.button {
     float: right;
     margin-bottom: 5px;
     max-width: 72%;
+    min-width: 24%;
     border-radius: 5px; }
     .chat-view .chat-bubble-self:after {
       content: '';
