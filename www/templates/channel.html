@@ -7,7 +7,7 @@
     </ion-nav-buttons>
     <ion-content delegate-handle="chat-scroll">
         <ion-refresher pulling-text="Carregando mais mensagens.." on-refresh="loadBefore()"></ion-refresher>
-        <div class="item-text-wrap padding" ng-class="{
+        <div class="item-text-wrap" ng-class="{
             'chat-message': message.user.id != user.id,
             'chat-message-self': message.user.id == user.id,
             'same-last-user': message.user.id == messages[$index - 1].user.id,
