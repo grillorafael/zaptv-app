@@ -51,10 +51,12 @@
         "APP_NAME": "zaper"
       }
     },
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "cordova-plugin-crosswalk-webview",
+    "cordova-plugin-splashscreen"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "android",
+    "ios"
   ]
 }

@@ -12,7 +12,7 @@
             'ngInflection',
             'ngNotify'
         ])
-        .run(function($ionicPlatform, amMoment) {
+        .run(function($ionicPlatform, $timeout, amMoment) {
             amMoment.changeLocale('pt-br');
             $ionicPlatform.ready(function() {
                 if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -21,6 +21,12 @@
                 if (window.StatusBar) {
                     StatusBar.styleLightContent();
                 }
+
+                $timeout(function() {
+                    if (navigator.splashscreen !== undefined) {
+                        navigator.splashscreen.hide();
+                    }
+                }, 100);
             });
         })
         .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider, $cordovaAppRateProvider) {
