@@ -26,6 +26,9 @@
                     return "<a class='chat-link' href='tel:" + match + "'>" + displayText + "</a>";
                 });
 
+                text = text.replace(/&#10;/g, '<br>');
+                text = text.replace(/\n/g, '<br>');
+
                 return "<p>" + text + "</p>";
             };
         })

@@ -76,12 +76,20 @@
         $scope.currentScore = 0;
         $scope.minutesRemain = null;
 
+        var footerBar; // gets set in $ionicView.enter
+        var scroller;
+        var txtInput; // ^^^
+
         $scope.$on('$ionicView.enter', function() {
             updateChat();
             Channel.lastMessages($scope.channel.id).then(function(messages) {
                 $scope.messages = messages.reverse();
                 $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
             });
+
+            footerBar = document.body.querySelector('.chat-view .bar-footer');
+            scroller = document.body.querySelector('.chat-view .scroll-content');
+            txtInput = angular.element(footerBar.querySelector('textarea'));
         });
 
         $scope.$on('$ionicView.leave', function() {
@@ -278,5 +286,17 @@
         $scope.closePopover = function() {
             $scope.popover.hide();
         };
+
+        $scope.$on('elastic:resize', function(e, ta) {
+            if (!ta) return;
+            var taHeight = ta[0].offsetHeight;
+            if (!footerBar) return;
+
+            var newFooterHeight = taHeight + 10;
+            newFooterHeight = (newFooterHeight > 44) ? newFooterHeight : 44;
+
+            footerBar.style.height = newFooterHeight + 'px';
+            scroller.style.bottom = newFooterHeight + 'px';
+        });
     }
 })();

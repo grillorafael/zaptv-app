@@ -8168,18 +8168,38 @@ label.success i {
 .channel-popover.popover .item {
   padding: 5px 10px; }
 
+.card {
+  box-shadow: none; }
+
+.item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
+  height: auto; }
+
+/* allows the bar-footer to be elastic /*
+/* optionally set a max-height */
+/* maxlength on the textarea will prevent /*
+/* it from getting too large also */
 .bar-footer {
-  overflow: visible !important; }
+  overflow: visible !important;
+  height: 44px;
+  min-height: 44px;
+  max-height: 500px; }
 
 .bar-footer textarea {
   resize: none;
   height: 25px; }
 
-.card {
-  box-shadow: none; }
+/* fixes an ios bug bear */
+button.ion-android-send {
+  padding-top: 2px; }
 
+/* add this to keep your footer buttons down
+at the bottom as the textarea resizes */
 .footer-btn-wrap {
-  width: 35px; }
+  position: relative;
+  height: 100%;
+  width: 50px;
+  top: 7px; }
 
-.item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
-  height: auto; }
+.footer-btn {
+  position: absolute !important;
+  bottom: 0; }
