@@ -7730,7 +7730,7 @@ a.button {
     position: relative;
     text-align: center; }
     .chat-view .show-divider p::before, .chat-view .show-divider p::after {
-      background: #dd5e6a;
+      background: rgba(221, 94, 106, 0.7);
       content: "";
       display: block;
       height: 2px;
