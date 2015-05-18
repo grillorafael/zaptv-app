@@ -211,6 +211,7 @@
         background: transparent;
         .button {
             color:$salmon;
+            padding-bottom: 3px;
         }
     }
 
@@ -222,9 +223,13 @@
 
 .bar-footer textarea {
   resize: none;
-  height: 25px;
-  min-height: 32px;
+  height: 40px;
+  min-height: 40px;
   width: 100%;
+  padding-top: 10px;
+}
+.bar-footer label {
+    margin-bottom: 5px;
 }
 
 /* fixes an ios bug bear */
@@ -237,7 +242,7 @@ at the bottom as the textarea resizes */
 .footer-btn-wrap {
   position: relative;
   height: 100%;
-  width: 50px;
+  width: 35px;
   top: 7px;
 }
 

@@ -7533,7 +7533,7 @@ a.button {
 
 .chat-view {
   background: grey;
-  background: url("../img/halftone.png");
+  background: url("../img/giftly.png");
   background-repeat: repeat; }
   .chat-view p {
     margin: 0 0 7px;
@@ -7713,16 +7713,21 @@ a.button {
     border-color: transparent;
     background: transparent; }
     .chat-view .bar.bar-stable .button {
-      color: #dd5e6a; }
+      color: #dd5e6a;
+      padding-bottom: 3px; }
 
 .bar-footer {
   overflow: visible !important; }
 
 .bar-footer textarea {
   resize: none;
-  height: 25px;
-  min-height: 32px;
-  width: 100%; }
+  height: 40px;
+  min-height: 40px;
+  width: 100%;
+  padding-top: 10px; }
+
+.bar-footer label {
+  margin-bottom: 5px; }
 
 /* fixes an ios bug bear */
 button.ion-android-send {
@@ -7733,7 +7738,7 @@ at the bottom as the textarea resizes */
 .footer-btn-wrap {
   position: relative;
   height: 100%;
-  width: 50px;
+  width: 35px;
   top: 7px; }
 
 .footer-btn {
