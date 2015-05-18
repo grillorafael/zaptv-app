@@ -35,11 +35,16 @@
                 }'></i>
                 <p class="counter-like">{{message.count_likes}}</p>
             </div>
-        </div>
 
+        </div>
         <div class="clearfix"></div>
-            <hr>
+        <div class="show-divider">
+            <div class="text-center container">
+                <p>No ar : {{schedule.name}}</p>
+            </div>
+        </div>
     </ion-content>
+
     <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
         <label class="item-input-wrapper">
             <textarea placeholder="Digite sua mensagem..." ng-model="currentMessage" minlength="1" maxlength="1500" msd-elastic></textarea>

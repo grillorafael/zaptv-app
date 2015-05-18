@@ -7536,7 +7536,7 @@ a.button {
   background: url("../img/giftly.png");
   background-repeat: repeat; }
   .chat-view p {
-    margin: 0 0 7px;
+    margin: 0;
     font-size: 1em;
     line-height: 1.3; }
   .chat-view .clearfix {
@@ -7715,6 +7715,32 @@ a.button {
     .chat-view .bar.bar-stable .button {
       color: #dd5e6a;
       padding-bottom: 3px; }
+  .chat-view .show-divider .container {
+    overflow: hidden;
+    text-align: center; }
+  .chat-view .show-divider p {
+    background: rgba(221, 94, 106, 0.7);
+    display: inline-block;
+    padding: 0.3em 1.3em;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    color: white;
+    border-radius: 3px;
+    font-weight: 500;
+    position: relative;
+    text-align: center; }
+    .chat-view .show-divider p::before, .chat-view .show-divider p::after {
+      background: #dd5e6a;
+      content: "";
+      display: block;
+      height: 2px;
+      position: absolute;
+      top: 50%;
+      width: 400%; }
+    .chat-view .show-divider p::before {
+      right: 100%; }
+    .chat-view .show-divider p::after {
+      left: 100%; }
 
 .bar-footer {
   overflow: visible !important; }
