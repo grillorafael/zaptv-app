@@ -188,14 +188,17 @@
         $scope.loadBefore = function() {
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId).then(function(messages) {
-                    messages = messages.reverse();
-                    $scope.messages = messages.concat($scope.messages);
-                }, function() {
-                    // TODO handle this shiet
-                })
-                .finally(function() {
-                    $scope.$broadcast('scroll.refreshComplete');
+                messages.forEach(function(m) {
+                    m.created_at = moment(m.created_at).toDate();
                 });
+                messages = messages.reverse();
+                $scope.messages = messages.concat($scope.messages);
+            }, function() {
+                // TODO handle this shiet
+            })
+            .finally(function() {
+                $scope.$broadcast('scroll.refreshComplete');
+            });
         };
 
         $scope.getUserColor = function(id) {

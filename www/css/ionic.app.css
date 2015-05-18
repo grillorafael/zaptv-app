@@ -7721,6 +7721,7 @@ a.button {
 .bar-footer textarea {
   resize: none;
   height: 25px;
+  min-height: 32px;
   width: 100%; }
 
 /* fixes an ios bug bear */
