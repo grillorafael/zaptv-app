@@ -7585,7 +7585,7 @@ a.button {
     .chat-view .chat-message .avatar {
       width: 40px;
       height: 40px;
-      margin-right: 4%;
+      margin-right: 12px;
       float: left; }
     .chat-view .chat-message .profile-image {
       margin: 0;
@@ -7674,7 +7674,7 @@ a.button {
       height: 40px;
       display: inline-block;
       float: right;
-      margin-left: 4%; }
+      margin-left: 12px; }
       .chat-view .chat-message-self .avatar .profile-image {
         margin: 0;
         width: 100%;
