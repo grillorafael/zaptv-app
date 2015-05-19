@@ -55,7 +55,7 @@
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
                     ReverseGeolocation.get(lat, lng).then(function(locationInfo) {
-                        geoState = GeoInfo[locationInfo.address.country_code][locationInfo.address.county];
+                        geoState = GeoInfo[locationInfo.address.country_code][locationInfo.address.state];
                         State.set('geo_state', geoState);
                         listChannels(geoState);
                     }, function() {

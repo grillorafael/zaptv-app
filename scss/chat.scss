@@ -37,6 +37,17 @@
                 display: none;
             }
         }
+        &.twaper {
+            .chat-bubble::after {
+                display: block;
+            }
+            .profile-image {
+                display: block;
+            }
+            .username {
+                display: block;
+            }
+        }
         .like-button {
             display: flex;
             flex-direction: column;

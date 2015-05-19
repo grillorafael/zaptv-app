@@ -84,6 +84,7 @@
             updateChat();
             Channel.lastMessages($scope.channel.id).then(function(messages) {
                 messages.forEach(function(m) {
+                    listenToMessage(m);
                     m.created_at = moment(m.created_at).toDate();
                 });
                 $scope.messages = messages.reverse();
@@ -114,6 +115,12 @@
             id: $scope.channel.id,
             geo_state: State.get('geo_state')
         });
+
+        function listenToMessage(msg) {
+            if(!msg.payload) {
+                Socket.listenToMessage(msg.id);
+            }
+        }
 
         function updateChat() {
             Channel.getInfo($scope.channel.id, State.get('geo_state')).then(function(schedule) {
@@ -152,6 +159,7 @@
         }
 
         Socket.onMessage(function(msg) {
+            listenToMessage(msg);
             msg.created_at = moment(msg.created_at).toDate();
             if (msg.user.id === $scope.user.id) {
                 var msgIdx = null;
@@ -167,6 +175,19 @@
 
             $timeout(function() {
                 $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
+            });
+        });
+
+        Socket.onMessageUpdate(function(result) {
+            var messageId = result.message_id;
+            var countLikes = result.count_likes;
+
+            $scope.messages.forEach(function(m) {
+                if(m.id === messageId) {
+                    $scope.$apply(function() {
+                        m.count_likes = countLikes;
+                    });
+                }
             });
         });
 
@@ -189,6 +210,7 @@
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId).then(function(messages) {
                 messages.forEach(function(m) {
+                    listenToMessage(m);
                     m.created_at = moment(m.created_at).toDate();
                 });
                 messages = messages.reverse();

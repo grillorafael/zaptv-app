@@ -355,6 +355,14 @@
             socket.emit('toggle like', info);
         }
 
+        function listenToMessage(id) {
+            socket.emit('listen to message', id);
+        }
+
+        function onMessageUpdate(cb) {
+            socket.on('message update', cb);
+        }
+
         return {
             connect: connect,
             joinChannel: joinChannel,
@@ -364,7 +372,9 @@
             emitScore: emitScore,
             getStatus: getStatus,
             onGetStatus: onGetStatus,
-            toggleLike: toggleLike
+            toggleLike: toggleLike,
+            listenToMessage: listenToMessage,
+            onMessageUpdate: onMessageUpdate
         };
     }
 })();
