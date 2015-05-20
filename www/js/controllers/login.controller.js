@@ -49,7 +49,7 @@
 
         $scope.facebookLogin = function() {
             $ionicLoading.show({
-              template: 'Carregando...',
+              template: '<ion-spinner></ion-spinner>',
               hideOnStateChange: true
             });
             $scope.user = {};
@@ -86,7 +86,7 @@
 
         $scope.localLogin = function(ll) {
             $ionicLoading.show({
-              template: 'Carregando...',
+              template: '<ion-spinner></ion-spinner>',
               hideOnStateChange: true
             });
             User.login(ll).then(function() {

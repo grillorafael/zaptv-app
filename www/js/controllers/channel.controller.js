@@ -81,6 +81,7 @@
         var txtInput; // ^^^
 
         $scope.$on('$ionicView.enter', function() {
+            $scope.isLoadingChat = true;
             updateChat();
             Channel.lastMessages($scope.channel.id).then(function(messages) {
                 messages.forEach(function(m) {
@@ -134,6 +135,7 @@
 
             Channel.getNextSchedule($scope.channel.id, State.get('geo_state')).then(function(nextSchedule) {
                 $scope.nextSchedule = nextSchedule;
+                $scope.isLoadingChat = false;
                 var now = moment().toDate();
                 var nextScheduleStart = moment(nextSchedule.start_time).toDate();
                 var diff = nextScheduleStart.getTime() - now.getTime();

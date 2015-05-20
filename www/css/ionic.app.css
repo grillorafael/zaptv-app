@@ -7536,6 +7536,15 @@ a.button {
   background: url("../img/chat-bg.png");
   background: url("../img/chat-bg.svg");
   background-repeat: repeat; }
+  .chat-view .is-loading-chat {
+    margin-top: 50%; }
+  .chat-view .top-50 {
+    margin-top: 50%; }
+  .chat-view .spinner svg {
+    width: 28px;
+    height: 28px;
+    stroke: #dd5e6a;
+    fill: #dd5e6a; }
   .chat-view p {
     margin: 0;
     font-size: 1em;
@@ -8254,6 +8263,9 @@ label.success i {
 .bar-footer textarea {
   resize: none;
   height: 25px; }
+
+.loading-container .loading {
+  padding: 10px 15px; }
 
 /* fixes an ios bug bear */
 button.ion-android-send {

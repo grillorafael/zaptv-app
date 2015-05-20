@@ -122,6 +122,10 @@ label {
   height: 25px;
 }
 
+
+.loading-container .loading {
+    padding: 10px 15px;
+}
 /* fixes an ios bug bear */
 button.ion-android-send {
   padding-top: 2px;

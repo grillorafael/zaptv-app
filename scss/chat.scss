@@ -3,6 +3,18 @@
     background: url("../img/chat-bg.png");
     background: url("../img/chat-bg.svg");
     background-repeat: repeat;
+    .is-loading-chat {
+        margin-top: 50%;
+    }
+    .top-50 {
+        margin-top: 50%;
+    }
+    .spinner svg {
+      width: 28px;
+      height: 28px;
+      stroke: $salmon;
+      fill: $salmon;
+    }
     p {
         margin: 0;
         font-size: 1em;
