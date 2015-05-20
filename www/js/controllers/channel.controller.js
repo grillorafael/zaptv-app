@@ -149,7 +149,9 @@
                 $scope.timeout = $timeout(function() {
                     $scope.messages.push({
                         id: 0,
-                        user_id: 1,
+                        user: {
+                            id: 1
+                        },
                         payload: {
                             type: 'DIVIDER',
                             content: 'No ar ' + $scope.nextSchedule.name
