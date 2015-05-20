@@ -135,7 +135,7 @@
 
             Channel.getNextSchedule($scope.channel.id, State.get('geo_state')).then(function(nextSchedule) {
                 $scope.nextSchedule = nextSchedule;
-                $scope.isLoadingChat = false;
+                // $scope.isLoadingChat = false;
                 var now = moment().toDate();
                 var nextScheduleStart = moment(nextSchedule.start_time).toDate();
                 var diff = nextScheduleStart.getTime() - now.getTime();

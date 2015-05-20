@@ -7538,8 +7538,6 @@ a.button {
   background-repeat: repeat; }
   .chat-view .is-loading-chat {
     margin-top: 50%; }
-  .chat-view .top-50 {
-    margin-top: 50%; }
   .chat-view .spinner svg {
     width: 28px;
     height: 28px;
@@ -8212,6 +8210,14 @@ label.success i {
 .white-spinner {
   stroke: white;
   fill: white; }
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
 
 .button.button-login {
   border-radius: 6px;

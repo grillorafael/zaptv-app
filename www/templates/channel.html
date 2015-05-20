@@ -8,9 +8,7 @@
     <ion-content delegate-handle="chat-scroll">
         <ion-refresher pulling-text="Carregando mais mensagens.." on-refresh="loadBefore()"></ion-refresher>
         <!-- <message ng-repeat='message in messages'></message> -->
-        <div class="text-center top-50" ng-if="isLoadingChat" >
-            <ion-spinner icon="spiral" class="is-loading-chat"></ion-spinner>
-        </div>
+        <ion-spinner icon="spiral" ng-if="isLoadingChat" class="centered is-loading-chat"></ion-spinner>
         <div class="item-text-wrap" ng-class="{
             'chat-message': message.user.id != user.id,
             'chat-message-self': message.user.id == user.id,
