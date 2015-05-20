@@ -9,6 +9,9 @@ $royal: #4fc6b3 !default;
 $dark: #444 !default;
 $salmon: #dd5e6a;
 $facebook: #3b5998;
+$zaper-strong-blue: #949DD3;
+$zaper-light-blue: #BADEF4;
+$zaper-green: #ACCE8E;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
@@ -23,22 +26,29 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "username-view";
 @import "schedule_modal";
 @import "ngNotify-theme";
-
-@font-face {
-    font-family: 'MyWebFont';
-    src: url("webfont.eot");
-    /* IE9 Compat Modes */
-    src:/* IE6-IE8 *//* Super Modern Browsers */
-    /* Pretty Modern Browsers */
-    /* Safari, Android, iOS */
-    url('webfont.eot?#iefix') format('embedded-opentype'),url('webfont.woff2') format('woff2'),url('webfont.woff') format('woff'),url('webfont.ttf') format('truetype'),url('webfont.svg#svgFontName') format('svg');
-    /* Legacy iOS */
-}
+//
+// @font-face {
+//     font-family: 'MyWebFont';
+//     src: url("webfont.eot");
+//     /* IE9 Compat Modes */
+//     src:/* IE6-IE8 *//* Super Modern Browsers */
+//     /* Pretty Modern Browsers */
+//     /* Safari, Android, iOS */
+//     url('webfont.eot?#iefix') format('embedded-opentype'),url('webfont.woff2') format('woff2'),url('webfont.woff') format('woff'),url('webfont.ttf') format('truetype'),url('webfont.svg#svgFontName') format('svg');
+//     /* Legacy iOS */
+// }
 body {
     font-weight: 300;
 }
 .salmon {
     color: $salmon;
+}
+.zaper-strong-blue {
+    color: $zaper-strong-blue;
+}
+
+.zaper-green {
+    color: $zaper-green;
 }
 label {
     &.error i {
