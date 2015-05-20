@@ -16,37 +16,41 @@
             'pending': message.id == undefined,
             'twaper': message.user.id === 1
         }" ng-repeat='message in messages'>
-            <div class="avatar">
-                <img ng-click='viewUser(message.user)' handle-load-error class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url || message.payload.image_url}}" alt="foto perfil do usuario">
-                <i class="icon ion-social-twitter" ng-if='message.user.id == 1'></i>
+            <div ng-if="message.payload.type == 'DIVIDER'">
+                <div class="show-divider">
+                    <div class="text-center container">
+                        <p>{{message.payload.content}}</p>
+                    </div>
+                </div>
             </div>
-            <div on-hold='messageOptions(message)' ng-class="{
-                'chat-bubble': message.user.id != user.id,
-                'chat-bubble-self': message.user.id == user.id
-            }">
-                <h2 class="c-username" ng-style="{
-                'color': getUserColor(message.user.id)
+            <div ng-if="message.payload.type != 'DIVIDER'">
+                <div class="avatar">
+                    <img ng-click='viewUser(message.user)' handle-load-error class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url || message.payload.image_url}}" alt="foto perfil do usuario">
+                    <i class="icon ion-social-twitter" ng-if='message.user.id == 1'></i>
+                </div>
+                <div on-hold='messageOptions(message)' ng-class="{
+                    'chat-bubble': message.user.id != user.id,
+                    'chat-bubble-self': message.user.id == user.id
                 }">
-                    <span class="username" ng-if='message.user.id != 1'>{{::message.user.username}}</span>
-                    <span class="username" ng-if='message.user.id == 1'>{{::message.payload.username}}</span>
-                </h2>
-                <p compile="::(message.content || message.payload.content) | smartchat"></p>
-                <span class="timestamp" >{{::message.created_at | date:'HH:mm'}}</span>
-            </div>
-            <div class="like-button" ng-click='toggleLike(message)' ng-if='message.user.id != 1'>
-                <i class="icon" ng-class='{
-                "ion-ios-heart-outline": !message.liked,
-                "ion-ios-heart": message.liked
-            }'></i>
-                <p class="counter-like">{{message.count_likes}}</p>
+                    <h2 class="c-username" ng-style="{
+                    'color': getUserColor(message.user.id)
+                    }">
+                        <span class="username" ng-if='message.user.id != 1'>{{::message.user.username}}</span>
+                        <span class="username" ng-if='message.user.id == 1'>{{::message.payload.username}}</span>
+                    </h2>
+                    <p compile="::(message.content || message.payload.content) | smartchat"></p>
+                    <span class="timestamp" >{{::message.created_at | date:'HH:mm'}}</span>
+                </div>
+                <div class="like-button" ng-click='toggleLike(message)' ng-if='message.user.id != 1'>
+                    <i class="icon" ng-class='{
+                    "ion-ios-heart-outline": !message.liked,
+                    "ion-ios-heart": message.liked
+                }'></i>
+                    <p class="counter-like">{{message.count_likes}}</p>
+                </div>
             </div>
         </div>
         <div class="clearfix"></div>
-        <!-- <div class="show-divider">
-            <div class="text-center container">
-                <p>No ar {{schedule.name}}</p>
-            </div>
-        </div> -->
     </ion-content>
 
     <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>

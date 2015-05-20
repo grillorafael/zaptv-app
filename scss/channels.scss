@@ -4,6 +4,13 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    .bar-footer.rate-app-bar {
+        min-height: 70px;
+        .title-rate {
+            font-size: 1em;
+            font-weight: 300;
+        }
+    }
     .button-clear.button-clear {
         color: white;
     }

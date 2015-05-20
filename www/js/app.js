@@ -42,7 +42,8 @@
                         iosURL: 'com.goldenkricket.zaper',
                         androidURL: 'market://details?id=com.goldenkricket.zaper',
                         usesUntilPrompt: 3,
-                        promptForNewVersion: true
+                        promptForNewVersion: true,
+                        useCustomRateDialog: 'Gostou do zaper?'
                     });
                 }, false);
 
