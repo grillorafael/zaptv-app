@@ -3,7 +3,7 @@
         {{schedule.name || "Carregando.."}}
     </ion-nav-title>
     <ion-nav-buttons side="right">
-        <button class="button button-clear ion-information-circled" ng-click="openPopover($event)"></button>
+        <button class="button button-clear ion-information-circled" ng-click="openPopover($event)"> Info</button>
     </ion-nav-buttons>
     <ion-content delegate-handle="chat-scroll">
         <ion-refresher pulling-text="Carregando mais mensagens.." on-refresh="loadBefore()"></ion-refresher>

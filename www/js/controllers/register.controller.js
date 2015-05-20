@@ -2,7 +2,7 @@
     'use strict';
     angular.module('zaptv').controller('RegisterCtrl', RegisterCtrl);
 
-    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicHistory, $animationTrigger, User, Auth, Analytics) {
+    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicLoading, $ionicHistory, $animationTrigger, User, Auth, Analytics) {
         Analytics.init();
         Analytics.trackView('register');
 
@@ -11,6 +11,10 @@
         };
 
         $scope.register = function(user) {
+            $ionicLoading.show({
+              template: 'Carregando...',
+              hideOnStateChange: true
+            });
             if($scope.form.registerForm.$valid) {
                 User.register(user).then(function(tokenData) {
                     Analytics.trackEvent('Auth', 'register');

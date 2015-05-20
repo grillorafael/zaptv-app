@@ -2,7 +2,7 @@
     'use strict';
     angular.module('zaptv').controller('LoginCtrl', LoginCtrl);
 
-    function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory,
+    function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $ionicLoading,
         $animationTrigger, $cordovaFacebook, $ionicModal, Analytics, User, Auth, State) {
 
         $ionicPlatform.ready(function() {
@@ -48,6 +48,10 @@
         };
 
         $scope.facebookLogin = function() {
+            $ionicLoading.show({
+              template: 'Carregando...',
+              hideOnStateChange: true
+            });
             $scope.user = {};
             $cordovaFacebook.login(["public_profile", "email", "user_friends"])
                 .then(function(loginResponse) {
@@ -69,6 +73,7 @@
                                 $state.go('channels');
                             }, function() {
                                 // TODO Fix this gambi
+                                $ionicLoading.hide();
                                 $scope.modal.show();
                             });
                         }, function(error) {
@@ -80,6 +85,10 @@
         };
 
         $scope.localLogin = function(ll) {
+            $ionicLoading.show({
+              template: 'Carregando...',
+              hideOnStateChange: true
+            });
             User.login(ll).then(function() {
                 Analytics.trackEvent('Auth', 'login');
                 $ionicHistory.nextViewOptions({
