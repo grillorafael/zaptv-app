@@ -1,15 +1,47 @@
 (function() {
     'use strict';
     angular.module('zaptv.directives', [
-        'zaptv.services'
-    ])
+            'zaptv.services'
+        ])
         .directive('animationHandle', animationHandle)
         .directive('compile', compile)
         .directive('score', score)
         .directive('channelTile', channelTile)
         .directive('loader', loader)
         .directive('handleLoadError', handleLoadError)
-        .directive('username', username);
+        .directive('username', username)
+        .directive('message', message);
+
+    function message() {
+        return {
+            restrict: 'E',
+            replace: true,
+            scope: {
+                message: '=data'
+            },
+            template: '<ng-include src="getTemplateUrl()"/>',
+            controller: function($scope) {
+                $scope.user = $scope.$parent.user;
+                $scope.viewUser = $scope.$parent.viewUser;
+                $scope.toggleLike = $scope.$parent.toggleLike;
+                $scope.messageOptions = $scope.$parent.messageOptions;
+
+                $scope.getTemplateUrl = function() {
+                    if($scope.message.payload) {
+                        if ($scope.message.payload.type == "TWAPER") {
+                            return 'templates/directives/twaper_message.html';
+                        }
+                        else if ($scope.message.payload.type == "DIVIDER") {
+                            return 'templates/directives/divider_message.html';
+                        }
+                    }
+                    else {
+                        return 'templates/directives/user_message.html';
+                    }
+                };
+            }
+        };
+    }
 
     function username($q, User) {
         return {
@@ -23,10 +55,9 @@
                     var def = $q.defer();
 
                     User.checkUsername(modelValue).then(function(res) {
-                        if(res.has_username) {
+                        if (res.has_username) {
                             def.reject();
-                        }
-                        else {
+                        } else {
                             def.resolve();
                         }
                     }, function(e) {

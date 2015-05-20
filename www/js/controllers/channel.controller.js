@@ -89,7 +89,9 @@
                     m.created_at = moment(m.created_at).toDate();
                 });
                 $scope.messages = messages.reverse();
-                $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
+                $timeout(function() {
+                    $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
+                }, 200);
             });
 
             footerBar = document.body.querySelector('.chat-view .bar-footer');

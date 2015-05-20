@@ -1,0 +1,29 @@
+<div class="item-text-wrap" ng-class="{
+    'chat-message': message.user.id != user.id,
+    'chat-message-self': message.user.id == user.id,
+    'same-last-user': message.user.id == messages[$index - 1].user.id,
+    'pending': message.id == undefined
+}">
+    <div class="avatar">
+        <img ng-click='viewUser(message.user)' handle-load-error class="profile-image" src="img/placeholder.jpg" ng-src="{{message.user.image_url}}" alt="foto perfil do usuario">
+    </div>
+    <div on-hold='messageOptions(message)' ng-class="{
+        'chat-bubble': message.user.id != user.id,
+        'chat-bubble-self': message.user.id == user.id
+    }">
+        <h2 class="c-username" ng-style="{
+        'color': getUserColor(message.user.id)
+        }">
+            <span class="username" ng-if='message.user.id != 1'>{{::message.user.username}}</span>
+        </h2>
+        <p compile="::(message.content || message.payload.content) | smartchat"></p>
+        <span class="timestamp" >{{::message.created_at | date:'HH:mm'}}</span>
+    </div>
+    <div class="like-button" ng-click='toggleLike(message)'>
+        <i class="icon" ng-class='{
+        "ion-ios-heart-outline": !message.liked,
+        "ion-ios-heart": message.liked
+    }'></i>
+        <p class="counter-like">{{message.count_likes}}</p>
+    </div>
+</div>
