@@ -25,6 +25,7 @@
                 $scope.viewUser = $scope.$parent.viewUser;
                 $scope.toggleLike = $scope.$parent.toggleLike;
                 $scope.messageOptions = $scope.$parent.messageOptions;
+                $scope.openLink = $scope.$parent.openLink;
 
                 $scope.getTemplateUrl = function() {
                     if($scope.message.payload) {
