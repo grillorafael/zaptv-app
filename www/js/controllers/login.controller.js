@@ -102,6 +102,7 @@
                 $state.go('channels');
             }, function() {
                 // TODO Handle error
+                $ionicLoading.hide();
                 $animationTrigger.trigger('login-form', 'bounce-finite', $animationTrigger.FROM_START);
             });
         };

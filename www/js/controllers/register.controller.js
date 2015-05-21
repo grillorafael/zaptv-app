@@ -30,10 +30,12 @@
                     $state.go('channels');
                 }, function() {
                     // TODO Display email or username already taken
+                    $ionicLoading.hide();
                     $animationTrigger.trigger('register-form', 'bounce-finite', $animationTrigger.FROM_START);
                 });
             }
             else {
+                $ionicLoading.hide();
                 $animationTrigger.trigger('register-form', 'bounce-finite', $animationTrigger.FROM_START);
             }
         };
