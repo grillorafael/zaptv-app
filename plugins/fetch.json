@@ -171,7 +171,7 @@
     "com.parse.cordova.core.pushplugin": {
         "source": {
             "type": "git",
-            "url": "https://github.com/avivais/phonegap-parse-plugin",
+            "url": "https://github.com/grrrian/phonegap-parse-plugin",
             "subdir": "."
         },
         "is_top_level": true,

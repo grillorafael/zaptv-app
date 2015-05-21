@@ -55,7 +55,7 @@
     "cordova-plugin-crosswalk-webview",
     "cordova-plugin-splashscreen",
     {
-      "locator": "https://github.com/avivais/phonegap-parse-plugin",
+      "locator": "https://github.com/grrrian/phonegap-parse-plugin",
       "id": "com.parse.cordova.core.pushplugin",
       "variables": {
         "APP_ID": "RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q",
