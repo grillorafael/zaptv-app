@@ -4,7 +4,7 @@
 
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
         $ionicPopover, $ionicHistory, $ionicTabsDelegate, $cordovaAppRate, Analytics,
-        Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket) {
+        Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket, Utils) {
 
         var geoState = null;
         var userId = Auth.getUserId();
@@ -54,15 +54,13 @@
                 .then(function(position) {
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
-                    ReverseGeolocation.get(lat, lng).then(function(locationInfo) {
-                        geoState = GeoInfo[locationInfo.address.country_code][locationInfo.address.state];
-                        State.set('geo_state', geoState);
-                        listChannels(geoState);
+                    Utils.getCurrentState([lat, lng]).then(function(state) {
+                        State.set('geo_state', state);
+                        listChannels(state);
                     }, function() {
                         // TODO Better handle when can't get location info
                         listChannels();
                     });
-
                 }, function(err) {
                     // TODO Better handle when position is not available
                     listChannels();

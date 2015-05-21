@@ -19,8 +19,75 @@
             'ANALYTICS_UA': 'UA-62526664-1'
         });
 
-    function Utils($cordovaClipboard) {
+    function Utils($q, $cordovaClipboard, $localForage, ReverseGeolocation, GeoInfo) {
+        /** Converts numeric degrees to radians */
+        if (typeof(Number.prototype.toRad) === "undefined") {
+            Number.prototype.toRad = function() {
+                return this * Math.PI / 180;
+            };
+        }
+
+        function distanceBetween(pos1, pos2) {
+            var lat1 = pos1[0];
+            var lat2 = pos2[0];
+
+            var lon1 = pos1[1];
+            var lon2 = pos2[1];
+
+            var R = 6371; // Radius of the earth in km
+            var dLat = (lat2 - lat1).toRad(); // Javascript functions in radians
+            var dLon = (lon2 - lon1).toRad();
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = (R * c); // return in km
+            return d;
+        }
+
         return {
+            getCurrentState: function(pos) {
+                var deferred = $q.defer();
+
+                function execPositionDiscover() {
+                    ReverseGeolocation.get(pos[0], pos[1]).then(function(locationInfo) {
+                        var state = null;
+                        if(locationInfo.address && locationInfo.address.country_code && locationInfo.address.state) {
+                            state = GeoInfo[locationInfo.address.country_code][locationInfo.address.state];
+                        }
+
+                        if(state) {
+                            $localForage.setItem('position_info', {
+                                pos: pos,
+                                state: state
+                            });
+                        }
+                        deferred.resolve(state);
+                    }, function() {
+                        deferred.reject();
+                    });
+                }
+
+                $localForage.getItem('position_info').then(function(info) {
+                    if(info) {
+                        var distance = distanceBetween(pos, info.pos);
+                        if(distance > 20) {
+                            execPositionDiscover();
+                        }
+                        else {
+                            deferred.resolve(info.state);
+                        }
+                    }
+                    else {
+                        execPositionDiscover();
+                    }
+                }, function(e) {
+
+                });
+
+                return deferred.promise;
+            },
+            distanceBetween: distanceBetween,
             rndColor: function() {
                 return '#' + Math.floor(Math.random() * 16777215).toString(16);
             },
