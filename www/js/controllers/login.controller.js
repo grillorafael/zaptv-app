@@ -5,10 +5,13 @@
     function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $ionicLoading,
         $animationTrigger, $cordovaFacebook, $ionicModal, Analytics, User, Auth, State) {
 
-        $ionicPlatform.ready(function() {
-            Analytics.init();
-            Analytics.trackView('login');
+        $scope.$on('$ionicView.enter', function() {
+            $ionicPlatform.ready(function() {
+                Analytics.init();
+                Analytics.trackView($state.current.name);
+            });
         });
+
         $ionicModal.fromTemplateUrl('templates/set_username_modal.html', {
             scope: $scope,
             animation: 'slide-in-up'

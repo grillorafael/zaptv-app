@@ -3,8 +3,12 @@
     angular.module('zaptv').controller('RegisterCtrl', RegisterCtrl);
 
     function RegisterCtrl($scope, $state, $ionicPlatform, $ionicLoading, $ionicHistory, $animationTrigger, User, Auth, Analytics) {
-        Analytics.init();
-        Analytics.trackView('register');
+        $scope.$on('$ionicView.enter', function() {
+            $ionicPlatform.ready(function() {
+                Analytics.init();
+                Analytics.trackView($state.current.name);
+            });
+        });
 
         $scope.setForm = function(f) {
             $scope.form = f;

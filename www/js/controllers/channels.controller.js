@@ -27,7 +27,7 @@
         $scope.$on('$ionicView.enter', function() {
             $ionicPlatform.ready(function() {
                 Analytics.init(userId);
-                Analytics.trackView('channels');
+                Analytics.trackView($state.current.name);
             });
             Socket.leaveChannel();
         });

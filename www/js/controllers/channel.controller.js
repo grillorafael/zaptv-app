@@ -4,7 +4,7 @@
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $cordovaDevice,
-        $ionicPlatform, $ionicModal, Utils, Analytics, moment, State, Socket,
+        $ionicPlatform, $ionicModal, $state, Utils, Analytics, moment, State, Socket,
         Channel, Auth) {
 
         window.addEventListener('native.keyboardshow', function() {
@@ -35,6 +35,7 @@
         $scope.viewUser = function(u) {
             $scope.userToView = u;
             $scope.viewUserModal.show();
+            Analytics.trackEvent('Chat', 'view_user');
         };
 
         $scope.closeModal = function() {
@@ -43,6 +44,7 @@
 
         $scope.viewSchedule = function() {
             $scope.viewScheduleModal.show();
+            Analytics.trackEvent('Chat', 'view_schedules');
         };
 
         $scope.closeScheduleModal = function() {
@@ -71,7 +73,7 @@
         $scope.channel = State.get('last_channel');
 
         Analytics.init($scope.user.id);
-        Analytics.trackView('channel_chat_' + $scope.channel.id);
+        Analytics.trackView($state.current.name + '_' + $scope.channel.name);
 
         $scope.currentScore = 0;
         $scope.minutesRemain = null;
@@ -224,6 +226,7 @@
         };
 
         $scope.loadBefore = function() {
+            Analytics.trackEvent('Chat', 'load_before');
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId).then(function(messages) {
                 messages.forEach(function(m) {
@@ -250,6 +253,7 @@
         };
 
         $scope.openLink = function(url) {
+            Analytics.trackEvent('Chat', 'open_link');
             $cordovaInAppBrowser.open(url, '_blank', {
                     location: 'yes',
                     clearcache: 'yes',
@@ -265,6 +269,7 @@
         };
 
         $scope.submitMessage = function(currentMessage) {
+            Analytics.trackEvent('Chat', 'message_submit');
             if (currentMessage === undefined || currentMessage.length === 0) {
                 return;
             }
@@ -289,6 +294,7 @@
         };
 
         $scope.setScore = function(val) {
+            Analytics.trackEvent('Chat', 'set_score');
             $scope.currentScore = val;
             if ($scope.currentScore > 0) {
                 Socket.emitScore({
@@ -300,6 +306,7 @@
         };
 
         $scope.messageOptions = function(message) {
+            Analytics.trackEvent('Chat', 'message_options');
             $ionicActionSheet.show({
                 buttons: [{
                     text: 'Copiar mensagem'
@@ -326,6 +333,7 @@
         };
 
         $scope.openPopover = function($event) {
+            Analytics.trackEvent('Chat', 'open_popover');
             $scope.popover.show($event);
         };
 

@@ -2,9 +2,14 @@
     'use strict';
     angular.module('zaptv').controller('ProfileCtrl', ProfileCtrl);
 
-    function ProfileCtrl($scope, $cordovaDatePicker, $cordovaCamera, $animationTrigger, User, Analytics, ngNotify) {
-        Analytics.init();
-        Analytics.trackView('profile');
+    function ProfileCtrl($scope, $cordovaDatePicker, $cordovaCamera, $animationTrigger, User, Analytics, Auth, ngNotify) {
+        $scope.$on('$ionicView.enter', function() {
+            $ionicPlatform.ready(function() {
+                var user = Auth.getUser();
+                Analytics.init(user.id);
+                Analytics.trackView($state.current.name);
+            });
+        });
 
         User.me().then(function(user) {
             $scope.user = user;
@@ -87,6 +92,7 @@
                         data: $scope.user.image_url
                     }).then(function() {
                         ngNotify.dismiss();
+                        Analytics.trackEvent('Profile', 'update_image');
                     }, function() {
                         showError();
                     });
@@ -95,6 +101,7 @@
                     ngNotify.dismiss();
                     $scope.user = u;
                 }
+                Analytics.trackEvent('Profile', 'update');
             }, function(e) {
                 showError();
             });
