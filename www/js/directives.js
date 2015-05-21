@@ -10,7 +10,25 @@
         .directive('loader', loader)
         .directive('handleLoadError', handleLoadError)
         .directive('username', username)
-        .directive('message', message);
+        .directive('message', message)
+        .directive('preloadImage', preloadImage);
+
+    function preloadImage() {
+        return {
+            restrict: 'A',
+            link: function(scope, el, attrs) {
+                el[0].src = 'img/placeholder.jpg';
+
+                var url = attrs.preloadImage;
+                var img = new Image();
+                img.onload = function() {
+                    el[0].src = url;
+                };
+
+                img.src = url;
+            }
+        };
+    }
 
     function message() {
         return {

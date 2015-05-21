@@ -28,10 +28,19 @@
                         navigator.splashscreen.hide();
                     }
                 }, 100);
+
+
+                if(window.parsePlugin) {
+                    parsePlugin.initialize("RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q", "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl", function() {
+                        console.log('Success');
+                    }, function(e) {
+                        console.log('error');
+                    });
+                }
             });
         })
         .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider, $cordovaAppRateProvider) {
-            if(ionic.Platform.isAndroid()) {
+            if (ionic.Platform.isAndroid()) {
                 // $ionicConfigProvider.scrolling.jsScrolling(false);
             }
             if (window.cordova !== undefined) {
