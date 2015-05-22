@@ -355,6 +355,8 @@
             $ionicActionSheet.show({
                 buttons: [{
                     text: 'Copiar mensagem'
+                },{
+                    text: 'Compartilhar mensagem'
                 }],
                 destructiveText: 'Denunciar',
                 titleText: '',
