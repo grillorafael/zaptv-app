@@ -4,8 +4,8 @@
 
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
         $ionicPopover, $ionicHistory, $ionicTabsDelegate, $cordovaAppRate, $animationTrigger,
-        $localForage, $cordovaAppVersion, Analytics, Auth, State, ReverseGeolocation, GeoInfo,
-        Channel, Socket, Utils) {
+        $localForage, $cordovaAppVersion, $cordovaSocialSharing, Analytics, Auth, State,
+        ReverseGeolocation, GeoInfo, Channel, Socket, Utils) {
 
         var appVersion = null;
         var geoState = null;
@@ -146,6 +146,12 @@
         $scope.refresh = function() {
             listChannels(geoState);
             $scope.popover.hide();
+        };
+
+        $scope.shareApp = function() {
+            $cordovaSocialSharing
+                .share("Estou conversando sobre meus programas favoritos no zaper!", "zaper", null, "http://zaper.com.br")
+                .then(function(result) {}, function(err) {});
         };
 
         $scope.rateApp = function() {
