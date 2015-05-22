@@ -8255,10 +8255,37 @@ body {
 .zaper-green {
   color: #ACCE8E; }
 
+.popup-container .popup {
+  border: 2px solid #3b5998;
+  border-radius: 5px; }
+
+.bnt-font-size {
+  font-size: 0.8em; }
+
+.popup-head {
+  background: #3b5998;
+  border: 0; }
+
+.popup-title {
+  color: white; }
+
+.btn-zaper-green {
+  background: #78ac4a;
+  color: white;
+  border-color: #78ac4a; }
+
+.btn-outline-zaper-green {
+  background: none;
+  border: 2px solid #78ac4a;
+  color: white; }
+
 label.error i {
   color: #ef473a; }
 label.success i {
   color: #4fc6b3; }
+
+.popup-container .popup {
+  width: 300px; }
 
 .white-spinner {
   stroke: white;

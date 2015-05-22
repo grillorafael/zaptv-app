@@ -3,7 +3,7 @@
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet,
-        $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $cordovaDevice,
+        $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $ionicPopup, $cordovaDevice,
         $ionicPlatform, $ionicModal, $state, Utils, Analytics, moment, State, Socket,
         Channel, Auth) {
 
@@ -122,7 +122,7 @@
         });
 
         function listenToMessage(msg) {
-            if(!msg.payload) {
+            if (!msg.payload) {
                 Socket.listenToMessage(msg.id);
             }
         }
@@ -202,7 +202,7 @@
             var countLikes = result.count_likes;
 
             $scope.messages.forEach(function(m) {
-                if(m.id === messageId) {
+                if (m.id === messageId) {
                     $scope.$apply(function() {
                         m.count_likes = countLikes;
                     });
@@ -229,18 +229,18 @@
             Analytics.trackEvent('Chat', 'load_before');
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId).then(function(messages) {
-                messages.forEach(function(m) {
-                    listenToMessage(m);
-                    m.created_at = moment(m.created_at).toDate();
+                    messages.forEach(function(m) {
+                        listenToMessage(m);
+                        m.created_at = moment(m.created_at).toDate();
+                    });
+                    messages = messages.reverse();
+                    $scope.messages = messages.concat($scope.messages);
+                }, function() {
+                    // TODO handle this shiet
+                })
+                .finally(function() {
+                    $scope.$broadcast('scroll.refreshComplete');
                 });
-                messages = messages.reverse();
-                $scope.messages = messages.concat($scope.messages);
-            }, function() {
-                // TODO handle this shiet
-            })
-            .finally(function() {
-                $scope.$broadcast('scroll.refreshComplete');
-            });
         };
 
         $scope.getUserColor = function(id) {
@@ -301,6 +301,24 @@
                     token: token,
                     score: $scope.currentScore,
                     schedule_id: $scope.schedule.id
+                });
+                var shareAppPopup = $ionicPopup.show({
+                    template: '<div class="text-center">Deseja compartilhar suas notas para seus amigos via Facebook?</div>',
+                    title: 'Compartilhar pelo Facebook',
+                    scope: $scope,
+                    buttons: [{
+                        text: 'Não',
+                        type: 'bnt-font-size'
+                    }, {
+                        text: 'Só desta vez',
+                        type: 'bnt-font-size'
+                    }, {
+                        text: 'Sim',
+                        type: 'btn-zaper-green'
+                    }]
+                });
+                shareAppPopup.then(function(res) {
+                    console.log('Tapped!', res);
                 });
             }
         };

@@ -50,6 +50,36 @@ body {
 .zaper-green {
     color: $zaper-green;
 }
+
+.popup-container .popup {
+    border: 2px solid $facebook;
+    border-radius: 5px;
+}
+
+.bnt-font-size {
+    font-size: 0.8em;
+}
+.popup-head {
+    background: $facebook;
+    border: 0;
+}
+.popup-title {
+    color: white;
+}
+
+.btn-zaper-green {
+    background: darken($zaper-green, 20%);
+    color: white;
+    border-color: darken($zaper-green, 20%);
+}
+
+.btn-outline-zaper-green {
+    background: none;
+    border: 2px solid darken($zaper-green, 20%);
+    color: white;
+}
+
+
 label {
     &.error i {
         color: $assertive;
@@ -58,6 +88,11 @@ label {
         color: $royal;
     }
 }
+
+.popup-container .popup {
+    width: 300px;
+}
+
 .white-spinner {
     stroke: white;
     fill: white;
