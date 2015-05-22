@@ -309,39 +309,47 @@
                     score: $scope.currentScore,
                     schedule_id: $scope.schedule.id
                 });
-                var shareAppPopup = $ionicPopup.show({
-                    template: '<div class="text-center">Deseja compartilhar suas notas para seus amigos via Facebook?</div>',
-                    title: 'Compartilhar pelo Facebook',
-                    scope: $scope,
-                    buttons: [{
-                        text: 'Agora não',
-                        type: 'bnt-font-size'
-                    }, {
-                        text: 'Só desta vez',
-                        type: 'bnt-font-size'
-                    }, {
-                        text: 'Sim',
-                        type: 'btn-zaper-green'
-                    }]
-                });
-                shareAppPopup.then(function(res) {
-                    console.log('Tapped!', res); //TODO
-                });
+
                 if (window.cordova) {
                     $cordovaFacebook.getLoginStatus()
                         .then(function(success) {
-                            if (success.status === "connected" && shareWithFacebook) {
-                                var graph = "me/video.rate?access_token=:token:&rating:scale=5&rating:value=:rating:&video=:video:";
-                                graph = graph.replace(':token:', success.authResponse.accessToken);
-                                graph = graph.replace(':rating:', val);
-                                graph = graph.replace(':video:', 'http://api.zaper.com.br/api/meta/' + $scope.schedule.id);
-                                console.log(graph);
-                                $cordovaFacebook.api(graph)
-                                    .then(function(success) {
-                                        console.log(success);
-                                    }, function(error) {
-                                        console.log(error);
-                                    });
+                            if (success.status === "connected") {
+                                $localForage.getItem('always_share').then(function(alwaysShare) {
+                                    if(shareWithFacebook !== false || alwaysShare === undefined) {
+                                        if(!alwaysShare) {
+                                            $ionicPopup.show({
+                                                template: '<div class="text-center">Deseja compartilhar suas notas para seus amigos via Facebook?</div>',
+                                                title: 'Compartilhar pelo Facebook',
+                                                scope: $scope,
+                                                buttons: [{
+                                                    text: 'Agora não',
+                                                    type: 'bnt-font-size',
+                                                    onTap: function() {
+                                                        $localForage.setItem('always_share', false);
+                                                    }
+                                                }, {
+                                                    text: 'Só desta vez',
+                                                    type: 'bnt-font-size',
+                                                    onTap: function() {
+                                                        shareScore(success.authResponse.accessToken, val, $scope.schedule.id);
+                                                        $localForage.setItem('always_share', false);
+                                                    }
+                                                }, {
+                                                    text: 'Sim',
+                                                    type: 'btn-zaper-green',
+                                                    onTap: function() {
+                                                        $localForage.setItem('always_share', true);
+                                                        $localForage.setItem('facebook_share_enable', true);
+                                                        shareWithFacebook = true;
+                                                    }
+                                                }]
+                                            }).then(function(res) {});
+                                        }
+                                        else if(shareWithFacebook) {
+                                            shareScore(success.authResponse.accessToken, val, $scope.schedule.id);
+                                        }
+                                    }
+                                });
                             }
                         }, function(error) {
                             // error
@@ -399,5 +407,14 @@
             footerBar.style.height = newFooterHeight + 'px';
             scroller.style.bottom = newFooterHeight + 'px';
         });
+
+        function shareScore(fbToken, rating, id) {
+            var graph = "me/video.rate?access_token=:token:&rating:scale=5&rating:value=:rating:&video=:video:";
+            graph = graph.replace(':token:', fbToken);
+            graph = graph.replace(':rating:', rating);
+            graph = graph.replace(':video:', 'http://api.zaper.com.br/api/meta/' + id);
+            $cordovaFacebook.api(graph)
+                .then(function(success) {}, function(error) {});
+        }
     }
 })();
