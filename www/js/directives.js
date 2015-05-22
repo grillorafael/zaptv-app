@@ -44,6 +44,7 @@
                 $scope.toggleLike = $scope.$parent.toggleLike;
                 $scope.messageOptions = $scope.$parent.messageOptions;
                 $scope.openLink = $scope.$parent.openLink;
+                $scope.getUserColor = $scope.$parent.getUserColor;
 
                 $scope.getTemplateUrl = function() {
                     if($scope.message.payload) {

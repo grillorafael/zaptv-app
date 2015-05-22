@@ -37,15 +37,24 @@
                     <p class="popover-info">Avalie {{schedule.name}}:</p>
                     <score ng-model="currentScore"></score>
                 </ion-item>
-                <ion-item class="item-divider">
-                    <p class="popover-info">
-                        <i class="icon ion-ios-time-outline"></i> Em {{minutesRemain | timeramain}} começa:
-                    </p>
-                </ion-item>
+                <div class="wrapper-next-schedule" ng-class='{
+                    "is-loading": isLoadingNextSchedule,
+                    "error-loading": nextScheduleError
+                }'>
+                    <ion-spinner></ion-spinner>
+                    <button ng-click='loadNextSchedule()' id="refresh-button" class="button button-clear icon ion-ios-refresh-empty"></button>
+                    <ion-item class="item-divider">
+                        <p class="popover-info">
+                            <i class="icon ion-ios-time-outline"></i> Em {{minutesRemain | timeramain}} começa:
+                        </p>
+                    </ion-item>
+                    <ion-item>
+                        <img src="img/placeholder.jpg" class="next-schedule-image" ng-src="{{nextSchedule.image_url}}" width="200">
+                        <h2 class="next-schedule-name">{{nextSchedule.name}}</h2>
+                        <p ng-show='nextSchedule.name != nextSchedule.description' class="next-schedule-description">{{nextSchedule.description}}</p>
+                    </ion-item>
+                </div>
                 <ion-item>
-                    <img src="img/placeholder.jpg" class="next-schedule-image" ng-src="{{nextSchedule.image_url}}" width="200">
-                    <h2 class="next-schedule-name">{{nextSchedule.name}}</h2>
-                    <p ng-show='nextSchedule.name != nextSchedule.description' class="next-schedule-description">{{nextSchedule.description}}</p>
                     <p class="button button-block button-salmon text-center" ng-click="viewSchedule()">
                         Ver progamação completa
                     </p>

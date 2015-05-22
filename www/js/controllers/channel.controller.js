@@ -7,7 +7,48 @@
         $ionicPlatform, $ionicModal, $state, $localForage, $cordovaSocialSharing, Utils, Analytics,
         moment, State, Socket, Channel, Auth) {
 
+        var userColors = {};
         var shareWithFacebook = false;
+        var footerBar; // gets set in $ionicView.enter
+        var scroller;
+        var txtInput; // ^^^
+        var token = Auth.getToken();
+
+        $scope.currentMessage = '';
+        $scope.messages = [];
+        // BEG Loaders
+        $scope.isLoadingFullSchedule = false;
+        $scope.isLoadingChat = true;
+        $scope.isLoadingNextSchedule = true;
+        // END Loaders
+        // BEG Handlers
+        $scope.fetchMoreMessagesError = false;
+        $scope.loadMessagesError = false;
+        $scope.fullScheduleError = false;
+        $scope.nextScheduleError = false;
+        // END Handlers
+        $scope.user = Auth.getUser();
+        $scope.channel = State.get('last_channel');
+        $scope.currentScore = 0;
+        $scope.minutesRemain = null;
+        $scope.genders = {
+            'm': 'Masculino',
+            'f': 'Feminino',
+            'o': 'Outros',
+            'n': 'Não Informado',
+        };
+
+        $ionicPlatform.ready(function() {
+            if (window.cordova) {
+                if (ionic.Platform.isIOS()) {
+                    cordova.plugins.Keyboard.disableScroll(true);
+                }
+
+                Analytics.init($scope.user.id);
+                Analytics.trackView($state.current.name + '_' + $scope.channel.name);
+            }
+        });
+
         $localForage.getItem('facebook_share_enable').then(function(facebookShareEnable) {
             shareWithFacebook = facebookShareEnable;
         });
@@ -15,13 +56,6 @@
         window.addEventListener('native.keyboardshow', function() {
             $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
         });
-
-        $scope.genders = {
-            'm': 'Masculino',
-            'f': 'Feminino',
-            'o': 'Outros',
-            'n': 'Não Informado',
-        };
 
         $ionicModal.fromTemplateUrl('templates/view_user_modal.html', {
             scope: $scope,
@@ -37,59 +71,14 @@
             $scope.viewScheduleModal = modal;
         });
 
-        $scope.viewUser = function(u) {
-            $scope.userToView = u;
-            $scope.viewUserModal.show();
-            Analytics.trackEvent('Chat', 'view_user');
-        };
-
-        $scope.closeModal = function() {
-            $scope.viewUserModal.hide();
-        };
-
-        $scope.viewSchedule = function() {
-            $scope.viewScheduleModal.show();
-            Analytics.trackEvent('Chat', 'view_schedules');
-        };
-
-        $scope.closeScheduleModal = function() {
-            $scope.viewScheduleModal.hide();
-        };
-
-        $ionicPlatform.ready(function() {
-            if (!window.cordova) {
-                return;
-            }
-
-            if (ionic.Platform.isIOS()) {
-                cordova.plugins.Keyboard.disableScroll(true);
-            }
-        });
-
-        var userColors = {};
-
         $ionicPopover.fromTemplateUrl('channel_popover', {
             scope: $scope
         }).then(function(popover) {
             $scope.popover = popover;
         });
 
-        $scope.user = Auth.getUser();
-        $scope.channel = State.get('last_channel');
-
-        Analytics.init($scope.user.id);
-        Analytics.trackView($state.current.name + '_' + $scope.channel.name);
-
-        $scope.currentScore = 0;
-        $scope.minutesRemain = null;
-
-        var footerBar; // gets set in $ionicView.enter
-        var scroller;
-        var txtInput; // ^^^
-
         $scope.$on('$ionicView.enter', function() {
-            $scope.isLoadingChat = true;
-            updateChat();
+            $scope.schedule = $scope.channel.current_schedule;
             Channel.lastMessages($scope.channel.id).then(function(messages) {
                 messages.forEach(function(m) {
                     listenToMessage(m);
@@ -98,9 +87,15 @@
                 $scope.messages = messages.reverse();
                 $timeout(function() {
                     $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
+                    $scope.isLoadingChat = false;
                 }, 200);
+            }, function(e) {
+                // Não foi possível pegar as mensagens no server
             });
 
+            loadNextSchedule(true);
+
+            // ElasticTextArea stuff
             footerBar = document.body.querySelector('.chat-view .bar-footer');
             scroller = document.body.querySelector('.chat-view .scroll-content');
             txtInput = angular.element(footerBar.querySelector('textarea'));
@@ -116,73 +111,23 @@
             }
         });
 
-        var token = Auth.getToken();
-        $scope.currentMessage = '';
-        $scope.messages = [];
+        $scope.$on('elastic:resize', function(e, ta) {
+            if (!ta) return;
+            var taHeight = ta[0].offsetHeight;
+            if (!footerBar) return;
+
+            var newFooterHeight = taHeight + 10;
+            newFooterHeight = (newFooterHeight > 44) ? newFooterHeight : 44;
+
+            footerBar.style.height = newFooterHeight + 'px';
+            scroller.style.bottom = newFooterHeight + 'px';
+        });
 
         Socket.connect();
         Socket.joinChannel({
             id: $scope.channel.id,
             geo_state: State.get('geo_state')
         });
-
-        function listenToMessage(msg) {
-            if (!msg.payload) {
-                Socket.listenToMessage(msg.id);
-            }
-        }
-
-        function updateChat() {
-            Channel.getInfo($scope.channel.id, State.get('geo_state')).then(function(schedule) {
-                $scope.schedule = schedule;
-                Channel.getMyLastScore($scope.channel.id, schedule.id).then(function(scoreResult) {
-                    $scope.currentScore = scoreResult.score;
-                });
-            }, function(e) {
-                // TODO Handle
-            });
-
-            Channel.getNextSchedule($scope.channel.id, State.get('geo_state')).then(function(nextSchedule) {
-                $scope.nextSchedule = nextSchedule;
-                $scope.isLoadingChat = false;
-
-                var now = moment().toDate();
-                var nextScheduleStart = moment(nextSchedule.start_time).toDate();
-                var diff = nextScheduleStart.getTime() - now.getTime() + 10000;
-
-                $scope.minutesRemain = Math.ceil((diff / (1000 * 60)));
-                $scope.interval = $interval(function() {
-                    $scope.minutesRemain -= 1;
-                }, 1000 * 60);
-
-                $scope.timeout = $timeout(function() {
-                    $scope.messages.push({
-                        id: 0,
-                        user: {
-                            id: 1
-                        },
-                        payload: {
-                            type: 'DIVIDER',
-                            content: 'No ar ' + $scope.nextSchedule.name
-                        }
-                    });
-                    $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
-                    updateChat();
-                }, diff);
-            }, function(e) {
-                // TODO Handle
-            });
-
-            Channel.getFullSchedule($scope.channel.id, State.get('geo_state')).then(function(fullSchedule) {
-                fullSchedule.forEach(function(sc) {
-                    var mmDt = moment(sc.start_time);
-                    sc.start_time = mmDt.toDate();
-                });
-                $scope.fullSchedule = fullSchedule;
-            }, function(e) {
-                // TODO Handle
-            });
-        }
 
         Socket.onMessage(function(msg) {
             listenToMessage(msg);
@@ -217,6 +162,108 @@
             });
         });
 
+        function listenToMessage(msg) {
+            if (!msg.payload) {
+                Socket.listenToMessage(msg.id);
+            }
+        }
+
+        function loadNextSchedule(force) {
+            if(!$scope.nextScheduleError && !force) {
+                return;
+            }
+
+            $scope.isLoadingNextSchedule = true;
+            $scope.nextScheduleError = false;
+
+            Channel.getNextSchedule($scope.channel.id, State.get('geo_state')).then(function(nextSchedule) {
+                $scope.nextSchedule = nextSchedule;
+
+                var now = moment().toDate();
+                var nextScheduleStart = moment(nextSchedule.start_time).toDate();
+                var diff = nextScheduleStart.getTime() - now.getTime() + 10000;
+
+                $scope.minutesRemain = Math.ceil((diff / (1000 * 60)));
+                $scope.interval = $interval(function() {
+                    $scope.minutesRemain -= 1;
+                }, 1000 * 60);
+
+                $scope.timeout = $timeout(function() {
+                    $scope.messages.push({
+                        id: 0,
+                        user: {
+                            id: 1
+                        },
+                        payload: {
+                            type: 'DIVIDER',
+                            content: 'No ar ' + $scope.nextSchedule.name
+                        }
+                    });
+                    $scope.schedule = $scope.nextSchedule;
+                    loadNextSchedule(true);
+                    if($scope.fullSchedule) {
+                        $scope.fullSchedule.shift();
+                    }
+
+                    $timeout(function() {
+                        $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
+                    });
+                }, diff);
+                $scope.isLoadingNextSchedule = false;
+                $scope.nextScheduleError = false;
+            }, function(e) {
+                // TODO Handle
+                $timeout(function() {
+                    $scope.isLoadingNextSchedule = false;
+                    $scope.nextScheduleError = true;
+                });
+            });
+        }
+
+        function loadFullSchedule() {
+            $scope.isLoadingFullSchedule = true;
+            $scope.fullScheduleError = false;
+            Channel.getFullSchedule($scope.channel.id, State.get('geo_state')).then(function(fullSchedule) {
+                fullSchedule.forEach(function(sc) {
+                    var mmDt = moment(sc.start_time);
+                    sc.start_time = mmDt.toDate();
+                });
+                $scope.fullSchedule = fullSchedule;
+
+                $scope.isLoadingFullSchedule = false;
+                $scope.fullScheduleError = false;
+            }, function(e) {
+                $scope.isLoadingFullSchedule = false;
+                $scope.fullScheduleError = true;
+            });
+        }
+
+        $scope.loadNextSchedule = loadNextSchedule;
+        $scope.loadFullSchedule = loadFullSchedule;
+
+        $scope.viewUser = function(u) {
+            $scope.userToView = u;
+            $scope.viewUserModal.show();
+            Analytics.trackEvent('Chat', 'view_user');
+        };
+
+        $scope.closeModal = function() {
+            $scope.viewUserModal.hide();
+        };
+
+        $scope.viewSchedule = function() {
+            if(!$scope.fullSchedule) {
+                loadFullSchedule();
+            }
+
+            $scope.viewScheduleModal.show();
+            Analytics.trackEvent('Chat', 'view_schedules');
+        };
+
+        $scope.closeScheduleModal = function() {
+            $scope.viewScheduleModal.hide();
+        };
+
         $scope.toggleLike = function(message) {
             message.liked = !message.liked;
             if (message.liked) {
@@ -234,6 +281,7 @@
 
         $scope.loadBefore = function() {
             Analytics.trackEvent('Chat', 'load_before');
+            $scope.fetchMoreMessagesError = false;
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId).then(function(messages) {
                     messages.forEach(function(m) {
@@ -244,6 +292,7 @@
                     $scope.messages = messages.concat($scope.messages);
                 }, function() {
                     // TODO handle this shiet
+                    $scope.fetchMoreMessagesError = true;
                 })
                 .finally(function() {
                     $scope.$broadcast('scroll.refreshComplete');
@@ -399,18 +448,6 @@
         $scope.closePopover = function() {
             $scope.popover.hide();
         };
-
-        $scope.$on('elastic:resize', function(e, ta) {
-            if (!ta) return;
-            var taHeight = ta[0].offsetHeight;
-            if (!footerBar) return;
-
-            var newFooterHeight = taHeight + 10;
-            newFooterHeight = (newFooterHeight > 44) ? newFooterHeight : 44;
-
-            footerBar.style.height = newFooterHeight + 'px';
-            scroller.style.bottom = newFooterHeight + 'px';
-        });
 
         function shareScore(fbToken, rating, id) {
             var graph = "me/video.rate?access_token=:token:&rating:scale=5&rating:value=:rating:&video=:video:";

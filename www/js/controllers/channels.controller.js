@@ -156,8 +156,11 @@
 
         $scope.rateApp = function() {
             $cordovaAppRate.navigateToAppStore().then(function(result) {});
-            $scope.popover.hide();
             $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.STOP);
+            $scope.popover.hide();
+            if(appVersion) {
+                $localForage.setItem('rate_ask_' + appVersion, 'NOT_ASK');
+            }
         };
 
         $scope.noThanks = function() {

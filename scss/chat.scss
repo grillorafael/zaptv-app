@@ -1,3 +1,41 @@
+/* EXPERIMENT */
+.wrapper-next-schedule {
+    svg, #refresh-button {
+        position: absolute;
+        z-index: 99;
+    }
+    svg {
+        opacity: 0;
+        left: 45%;
+        top: 45%;
+    }
+    #refresh-button {
+        opacity: 0;
+        left: 40%;
+        top: 43%;
+    }
+    #refresh-button::before {
+        font-size: 64px;
+    }
+
+    &.is-loading, &.error-loading {
+        .item {
+            filter: blur(5px);
+        }
+    }
+    &.is-loading {
+        svg {
+            opacity: 1;
+        }
+    }
+    &.error-loading {
+        #refresh-button {
+            color: white;
+            opacity: 1;
+        }
+    }
+}
+
 .chat-view {
     background: grey;
     background: url("../img/chat-bg.png");
@@ -6,7 +44,7 @@
     .is-loading-chat {
         margin-top: 50%;
     }
-    
+
     .spinner svg {
       width: 28px;
       height: 28px;

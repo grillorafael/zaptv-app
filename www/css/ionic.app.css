@@ -7531,6 +7531,29 @@ a.button {
   -webkit-animation-duration: 2s;
   animation-duration: 2s; }
 
+/* EXPERIMENT */
+.wrapper-next-schedule svg, .wrapper-next-schedule #refresh-button {
+  position: absolute;
+  z-index: 99; }
+.wrapper-next-schedule svg {
+  opacity: 0;
+  left: 45%;
+  top: 45%; }
+.wrapper-next-schedule #refresh-button {
+  opacity: 0;
+  left: 40%;
+  top: 43%; }
+.wrapper-next-schedule #refresh-button::before {
+  font-size: 64px; }
+.wrapper-next-schedule.is-loading .item, .wrapper-next-schedule.error-loading .item {
+  -webkit-filter: blur(5px);
+  filter: blur(5px); }
+.wrapper-next-schedule.is-loading svg {
+  opacity: 1; }
+.wrapper-next-schedule.error-loading #refresh-button {
+  color: white;
+  opacity: 1; }
+
 .chat-view {
   background: grey;
   background: url("../img/chat-bg.png");

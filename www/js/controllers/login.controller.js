@@ -63,6 +63,7 @@
                 hideOnStateChange: true
             });
             $scope.user = {};
+            //$cordovaFacebook.login(["public_profile", "email", "user_friends", "publish_actions", "user_birthdate"])
             $cordovaFacebook.login(["public_profile", "email", "user_friends"])
                 .then(function(loginResponse) {
                     $scope.user.fb_token = loginResponse.authResponse.accessToken;
@@ -89,8 +90,12 @@
                             });
                         }, function(error) {
                             // TODO Handle error
+                            console.log(error);
+                            $ionicLoading.hide();
                         });
                 }, function(error) {
+                    console.log(error);
+                    $ionicLoading.hide();
                     // TODO Handle error
                 });
         };
