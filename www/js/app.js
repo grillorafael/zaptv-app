@@ -30,12 +30,10 @@
                 }, 100);
 
 
-                if(window.parsePlugin) {
+                if (window.parsePlugin) {
                     parsePlugin.initialize("RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q", "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl", function() {
-                        console.log('Success');
-                    }, function(e) {
-                        console.log('error');
-                    });
+                        parsePlugin.getInstallationId(function(id) {}, function(e) {});
+                    }, function(e) {});
                 }
             });
         })

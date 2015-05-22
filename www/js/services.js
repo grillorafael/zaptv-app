@@ -53,7 +53,9 @@
                     ReverseGeolocation.get(pos[0], pos[1]).then(function(locationInfo) {
                         var state = null;
                         if(locationInfo.address && locationInfo.address.country_code && locationInfo.address.state) {
-                            state = GeoInfo[locationInfo.address.country_code][locationInfo.address.state];
+                            if(GeoInfo[locationInfo.address.country_code]) {
+                                state = GeoInfo[locationInfo.address.country_code][locationInfo.address.state];
+                            }
                         }
 
                         if(state) {

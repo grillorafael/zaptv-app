@@ -4,8 +4,13 @@
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $cordovaDevice,
-        $ionicPlatform, $ionicModal, $state, Utils, Analytics, moment, State, Socket,
-        Channel, Auth) {
+        $ionicPlatform, $ionicModal, $state, $cordovaFacebook, $localForage, Utils,
+        Analytics, moment, State, Socket, Channel, Auth) {
+
+        var shareWithFacebook = false;
+        $localForage.getItem('facebook_share_enable').then(function(facebookShareEnable) {
+            shareWithFacebook = facebookShareEnable;
+        });
 
         window.addEventListener('native.keyboardshow', function() {
             $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
@@ -122,7 +127,7 @@
         });
 
         function listenToMessage(msg) {
-            if(!msg.payload) {
+            if (!msg.payload) {
                 Socket.listenToMessage(msg.id);
             }
         }
@@ -140,14 +145,16 @@
             Channel.getNextSchedule($scope.channel.id, State.get('geo_state')).then(function(nextSchedule) {
                 $scope.nextSchedule = nextSchedule;
                 $scope.isLoadingChat = false;
+
                 var now = moment().toDate();
                 var nextScheduleStart = moment(nextSchedule.start_time).toDate();
-                var diff = nextScheduleStart.getTime() - now.getTime();
+                var diff = nextScheduleStart.getTime() - now.getTime() + 10000;
 
                 $scope.minutesRemain = Math.ceil((diff / (1000 * 60)));
                 $scope.interval = $interval(function() {
                     $scope.minutesRemain -= 1;
                 }, 1000 * 60);
+
                 $scope.timeout = $timeout(function() {
                     $scope.messages.push({
                         id: 0,
@@ -202,7 +209,7 @@
             var countLikes = result.count_likes;
 
             $scope.messages.forEach(function(m) {
-                if(m.id === messageId) {
+                if (m.id === messageId) {
                     $scope.$apply(function() {
                         m.count_likes = countLikes;
                     });
@@ -229,18 +236,18 @@
             Analytics.trackEvent('Chat', 'load_before');
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId).then(function(messages) {
-                messages.forEach(function(m) {
-                    listenToMessage(m);
-                    m.created_at = moment(m.created_at).toDate();
+                    messages.forEach(function(m) {
+                        listenToMessage(m);
+                        m.created_at = moment(m.created_at).toDate();
+                    });
+                    messages = messages.reverse();
+                    $scope.messages = messages.concat($scope.messages);
+                }, function() {
+                    // TODO handle this shiet
+                })
+                .finally(function() {
+                    $scope.$broadcast('scroll.refreshComplete');
                 });
-                messages = messages.reverse();
-                $scope.messages = messages.concat($scope.messages);
-            }, function() {
-                // TODO handle this shiet
-            })
-            .finally(function() {
-                $scope.$broadcast('scroll.refreshComplete');
-            });
         };
 
         $scope.getUserColor = function(id) {
@@ -302,6 +309,27 @@
                     score: $scope.currentScore,
                     schedule_id: $scope.schedule.id
                 });
+
+                if (window.cordova) {
+                    $cordovaFacebook.getLoginStatus()
+                        .then(function(success) {
+                            if (success.status === "connected" && shareWithFacebook) {
+                                var graph = "me/video.rate?access_token=:token:&rating:scale=5&rating:value=:rating:&video=:video:";
+                                graph = graph.replace(':token:', success.authResponse.accessToken);
+                                graph = graph.replace(':rating:', val);
+                                graph = graph.replace(':video:', 'http://api.zaper.com.br/api/meta/' + $scope.schedule.id);
+                                console.log(graph);
+                                $cordovaFacebook.api(graph)
+                                    .then(function(success) {
+                                        console.log(success);
+                                    }, function(error) {
+                                        console.log(error);
+                                    });
+                            }
+                        }, function(error) {
+                            // error
+                        });
+                }
             }
         };
 

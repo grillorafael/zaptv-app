@@ -22,6 +22,16 @@
                     <i class="icon ion-ios-body-outline placeholder-icon"></i>
                     <select ng-model='user.gender' ng-options='gender.id as gender.label for gender in genders'></select>
                 </label>
+                <label class="item item-toggle">
+                    Compartilhar com FB
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox" ng-model='data.facebookShareEnable'>
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </label>
+                <!-- <ion-toggle ng-model="facebookShareEnable" ng-change='toggleFacebookShare()' toggle-class="toggle-calm">Compartilhamentos</ion-toggle> -->
             </div>
         </div>
     </ion-content>
