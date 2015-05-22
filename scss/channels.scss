@@ -4,12 +4,68 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
-    .bar-footer.rate-app-bar {
-        min-height: 70px;
-        .title-rate {
-            font-size: 1em;
-            font-weight: 300;
+    .rate-app-bar.slide-up {
+        transform: translateY(0);
+    }
+    .rate-app-bar {
+        position: absolute;
+        right: 0;
+        left: 0;
+        z-index: 9;
+        width: 100%;
+        padding: 5px;
+        height: 110px;
+        background: darken($zaper-green, 15%);
+        overflow: visible;
+        bottom: 0;
+        box-shadow: 0px -16px 30px -13px rgba(0,0,0,1);
+        transform: translateY(150px);
+        transition: .5s ease-in-out;
+        .close-rate-bar {
+            position: absolute;
+            font-size: 2em;
+            top: -35px;
+            right: 5px;
+            background:  darken($zaper-green, 15%);
+            border-radius: 5px 5px 0 0;
+            padding: 0 10px;
+
         }
+        .button-clear.activated {
+            opacity: 1;
+        }
+        .container-title-rate {
+            display: block;
+            margin: 0 auto;
+            max-height: 32px;
+            width: 100%;
+            .title-rate {
+                font-size: 1.1em;
+                font-weight: 400;
+                display: block;
+                color: white;
+                margin-bottom: 15px;
+            }
+        }
+        .button-no {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            font-size: 1em;
+            clear: both;
+
+        }
+        .button-yes {
+            background: white;
+            border: 2px solid white;
+            color: darken($zaper-green, 15%);
+            font-weight: 500;
+            margin-left: 4%;
+            font-size: 1em;
+            clear: both;
+
+        }
+
     }
     .button-clear.button-clear {
         color: white;

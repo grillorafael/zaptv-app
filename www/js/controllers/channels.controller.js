@@ -3,7 +3,7 @@
     angular.module('zaptv').controller('ChannelsCtrl', ChannelsCtrl);
 
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
-        $ionicPopover, $ionicHistory, $ionicTabsDelegate, $cordovaAppRate, Analytics,
+        $ionicPopover, $ionicHistory, $ionicTabsDelegate, $cordovaAppRate, $animationTrigger, Analytics,
         Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket, Utils) {
 
         var geoState = null;
@@ -68,7 +68,6 @@
         }
 
         function listChannels(gs) {
-            $scope.isLoading = true;
             Channel.list(gs).then(function(channels) {
                 var openChannels = [];
                 var privateChannels = [];
@@ -88,7 +87,9 @@
                 Socket.getStatus();
                 $scope.isLoading = false;
                 askRating();
+                $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.START);
             }, function() {
+
                 Channel.getChannelsCache().then(function(obj) {
                     if (obj && obj.open_channels) {
                         $scope.openChannels = obj.open_channels;
@@ -99,6 +100,11 @@
                     $scope.isLoading = false;
                 });
             });
+        }
+
+        $scope.hideRateBar =function () {
+            $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.STOP);
+
         }
 
         $scope.goToTab = function(i) {

@@ -7809,11 +7809,59 @@ input, textarea, .item-input, .item-input-wrapper {
   background: url("../img/bg-login-2.jpg");
   background-repeat: no-repeat;
   background-size: cover; }
-.channels-view .bar-footer.rate-app-bar {
-  min-height: 70px; }
-  .channels-view .bar-footer.rate-app-bar .title-rate {
+.channels-view .rate-app-bar.slide-up {
+  -webkit-transform: translateY(0);
+  transform: translateY(0); }
+.channels-view .rate-app-bar {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  padding: 5px;
+  height: 110px;
+  background: #85b759;
+  overflow: visible;
+  bottom: 0;
+  box-shadow: 0px -16px 30px -13px black;
+  -webkit-transform: translateY(150px);
+  transform: translateY(150px);
+  transition: .5s ease-in-out; }
+  .channels-view .rate-app-bar .close-rate-bar {
+    position: absolute;
+    font-size: 2em;
+    top: -35px;
+    right: 5px;
+    background: #85b759;
+    border-radius: 5px 5px 0 0;
+    padding: 0 10px; }
+  .channels-view .rate-app-bar .button-clear.activated {
+    opacity: 1; }
+  .channels-view .rate-app-bar .container-title-rate {
+    display: block;
+    margin: 0 auto;
+    max-height: 32px;
+    width: 100%; }
+    .channels-view .rate-app-bar .container-title-rate .title-rate {
+      font-size: 1.1em;
+      font-weight: 400;
+      display: block;
+      color: white;
+      margin-bottom: 15px; }
+  .channels-view .rate-app-bar .button-no {
+    background: none;
+    border: 2px solid white;
+    color: white;
     font-size: 1em;
-    font-weight: 300; }
+    clear: both; }
+  .channels-view .rate-app-bar .button-yes {
+    background: white;
+    border: 2px solid white;
+    color: #85b759;
+    font-weight: 500;
+    margin-left: 4%;
+    font-size: 1em;
+    clear: both; }
 .channels-view .button-clear.button-clear {
   color: white; }
 .channels-view .channels-list {
