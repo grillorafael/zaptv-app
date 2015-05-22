@@ -2,21 +2,15 @@
     'use strict';
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
-    function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet,
-<<<<<<< HEAD
+    function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaFacebook,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $ionicPopup, $cordovaDevice,
-        $ionicPlatform, $ionicModal, $state, Utils, Analytics, moment, State, Socket,
+        $ionicPlatform, $ionicModal, $state, $localForage, Utils, Analytics, moment, State, Socket,
         Channel, Auth) {
-=======
-        $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $cordovaDevice,
-        $ionicPlatform, $ionicModal, $state, $cordovaFacebook, $localForage, Utils,
-        Analytics, moment, State, Socket, Channel, Auth) {
 
         var shareWithFacebook = false;
         $localForage.getItem('facebook_share_enable').then(function(facebookShareEnable) {
             shareWithFacebook = facebookShareEnable;
         });
->>>>>>> 562fdc8339b4c954de6fbbe95f4cb951130e89db
 
         window.addEventListener('native.keyboardshow', function() {
             $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
@@ -315,13 +309,12 @@
                     score: $scope.currentScore,
                     schedule_id: $scope.schedule.id
                 });
-<<<<<<< HEAD
                 var shareAppPopup = $ionicPopup.show({
                     template: '<div class="text-center">Deseja compartilhar suas notas para seus amigos via Facebook?</div>',
                     title: 'Compartilhar pelo Facebook',
                     scope: $scope,
                     buttons: [{
-                        text: 'Não',
+                        text: 'Agora não',
                         type: 'bnt-font-size'
                     }, {
                         text: 'Só desta vez',
@@ -332,10 +325,8 @@
                     }]
                 });
                 shareAppPopup.then(function(res) {
-                    console.log('Tapped!', res);
+                    console.log('Tapped!', res); //TODO
                 });
-=======
-
                 if (window.cordova) {
                     $cordovaFacebook.getLoginStatus()
                         .then(function(success) {
@@ -356,7 +347,6 @@
                             // error
                         });
                 }
->>>>>>> 562fdc8339b4c954de6fbbe95f4cb951130e89db
             }
         };
 
