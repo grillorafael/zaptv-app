@@ -3,9 +3,20 @@
     angular.module('zaptv').controller('ChannelCtrl', ChannelCtrl);
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet,
+<<<<<<< HEAD
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $ionicPopup, $cordovaDevice,
         $ionicPlatform, $ionicModal, $state, Utils, Analytics, moment, State, Socket,
         Channel, Auth) {
+=======
+        $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $cordovaDevice,
+        $ionicPlatform, $ionicModal, $state, $cordovaFacebook, $localForage, Utils,
+        Analytics, moment, State, Socket, Channel, Auth) {
+
+        var shareWithFacebook = false;
+        $localForage.getItem('facebook_share_enable').then(function(facebookShareEnable) {
+            shareWithFacebook = facebookShareEnable;
+        });
+>>>>>>> 562fdc8339b4c954de6fbbe95f4cb951130e89db
 
         window.addEventListener('native.keyboardshow', function() {
             $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
@@ -140,14 +151,16 @@
             Channel.getNextSchedule($scope.channel.id, State.get('geo_state')).then(function(nextSchedule) {
                 $scope.nextSchedule = nextSchedule;
                 $scope.isLoadingChat = false;
+
                 var now = moment().toDate();
                 var nextScheduleStart = moment(nextSchedule.start_time).toDate();
-                var diff = nextScheduleStart.getTime() - now.getTime();
+                var diff = nextScheduleStart.getTime() - now.getTime() + 10000;
 
                 $scope.minutesRemain = Math.ceil((diff / (1000 * 60)));
                 $scope.interval = $interval(function() {
                     $scope.minutesRemain -= 1;
                 }, 1000 * 60);
+
                 $scope.timeout = $timeout(function() {
                     $scope.messages.push({
                         id: 0,
@@ -302,6 +315,7 @@
                     score: $scope.currentScore,
                     schedule_id: $scope.schedule.id
                 });
+<<<<<<< HEAD
                 var shareAppPopup = $ionicPopup.show({
                     template: '<div class="text-center">Deseja compartilhar suas notas para seus amigos via Facebook?</div>',
                     title: 'Compartilhar pelo Facebook',
@@ -320,6 +334,29 @@
                 shareAppPopup.then(function(res) {
                     console.log('Tapped!', res);
                 });
+=======
+
+                if (window.cordova) {
+                    $cordovaFacebook.getLoginStatus()
+                        .then(function(success) {
+                            if (success.status === "connected" && shareWithFacebook) {
+                                var graph = "me/video.rate?access_token=:token:&rating:scale=5&rating:value=:rating:&video=:video:";
+                                graph = graph.replace(':token:', success.authResponse.accessToken);
+                                graph = graph.replace(':rating:', val);
+                                graph = graph.replace(':video:', 'http://api.zaper.com.br/api/meta/' + $scope.schedule.id);
+                                console.log(graph);
+                                $cordovaFacebook.api(graph)
+                                    .then(function(success) {
+                                        console.log(success);
+                                    }, function(error) {
+                                        console.log(error);
+                                    });
+                            }
+                        }, function(error) {
+                            // error
+                        });
+                }
+>>>>>>> 562fdc8339b4c954de6fbbe95f4cb951130e89db
             }
         };
 

@@ -3,9 +3,11 @@
     angular.module('zaptv').controller('ChannelsCtrl', ChannelsCtrl);
 
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
-        $ionicPopover, $ionicHistory, $ionicTabsDelegate, $cordovaAppRate, $animationTrigger, Analytics,
-        Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket, Utils) {
+        $ionicPopover, $ionicHistory, $ionicTabsDelegate, $cordovaAppRate, $animationTrigger,
+        $localForage, $cordovaAppVersion, Analytics, Auth, State, ReverseGeolocation, GeoInfo,
+        Channel, Socket, Utils) {
 
+        var appVersion = null;
         var geoState = null;
         var userId = Auth.getUserId();
 
@@ -40,9 +42,33 @@
         });
 
         function askRating() {
-            if(window.cordova !== undefined) {
-                $cordovaAppRate.promptForRating().then(function(result) {});
+            if(!window.cordova) {
+                return;
             }
+
+            $cordovaAppVersion.getAppVersion().then(function(version) {
+                appVersion = version;
+                if(appVersion !== null) {
+                    var key = 'rate_ask_' + appVersion;
+                    $localForage.getItem(key).then(function(rateAsk) {
+                        if(rateAsk === 'NOT_ASK') {
+                            return;
+                        }
+
+                        if (!rateAsk) {
+                            rateAsk = 0;
+                            $localForage.setItem(key, rateAsk);
+                        }
+
+                        if (rateAsk >= 4) {
+                            $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.START);
+                        } else {
+                            rateAsk++;
+                            $localForage.setItem(key, rateAsk);
+                        }
+                    });
+                }
+            });
         }
 
         function initGeolocation() {
@@ -87,7 +113,6 @@
                 Socket.getStatus();
                 $scope.isLoading = false;
                 askRating();
-                $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.START);
             }, function() {
 
                 Channel.getChannelsCache().then(function(obj) {
@@ -102,10 +127,12 @@
             });
         }
 
-        $scope.hideRateBar =function () {
+        $scope.hideRateBar = function() {
+            if(appVersion) {
+                $localForage.setItem('rate_ask_' + appVersion, 0);
+            }
             $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.STOP);
-
-        }
+        };
 
         $scope.goToTab = function(i) {
             $ionicTabsDelegate.select(i);
@@ -124,6 +151,14 @@
         $scope.rateApp = function() {
             $cordovaAppRate.navigateToAppStore().then(function(result) {});
             $scope.popover.hide();
+            $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.STOP);
+        };
+
+        $scope.noThanks = function() {
+            if(appVersion) {
+                $localForage.setItem('rate_ask_' + appVersion, 'NOT_ASK');
+            }
+            $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.STOP);
         };
 
         $scope.logout = function() {

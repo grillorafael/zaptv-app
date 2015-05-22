@@ -4,11 +4,20 @@
 
     function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $ionicLoading,
         $animationTrigger, $cordovaFacebook, $ionicModal, Analytics, User, Auth, State) {
-
         $scope.$on('$ionicView.enter', function() {
             $ionicPlatform.ready(function() {
                 Analytics.init();
                 Analytics.trackView($state.current.name);
+
+                if (window.cordova) {
+                    // Logs out of facebook
+                    $cordovaFacebook.logout()
+                        .then(function(success) {
+                            // success
+                        }, function(error) {
+                            // error
+                        });
+                }
             });
         });
 
@@ -17,7 +26,6 @@
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.modal = modal;
-
         });
 
         $scope.setForm = function(f) {
@@ -25,7 +33,7 @@
         };
 
         $scope.setUsername = function(u) {
-            if($scope.form.usernameForm.$valid) {
+            if ($scope.form.usernameForm.$valid) {
                 User.login(u).then(function(tokenData) {
                     Analytics.trackEvent('Auth', 'facebook_login');
                     $ionicHistory.nextViewOptions({
@@ -39,8 +47,7 @@
                     // TODO Display email or username already taken
                     $animationTrigger.trigger('username-form', 'bounce-finite', $animationTrigger.FROM_START);
                 });
-            }
-            else {
+            } else {
                 $animationTrigger.trigger('username-form', 'bounce-finite', $animationTrigger.FROM_START);
             }
         };
@@ -52,8 +59,8 @@
 
         $scope.facebookLogin = function() {
             $ionicLoading.show({
-              template: '<ion-spinner></ion-spinner>',
-              hideOnStateChange: true
+                template: '<ion-spinner></ion-spinner>',
+                hideOnStateChange: true
             });
             $scope.user = {};
             $cordovaFacebook.login(["public_profile", "email", "user_friends"])
@@ -63,6 +70,7 @@
 
                     $cordovaFacebook.api("me", ["public_profile"])
                         .then(function(meResponse) {
+                            $scope.hasEmail = meResponse.email;
                             $scope.user.email = meResponse.email;
                             $scope.user.name = meResponse.name;
                             $scope.user.gender = meResponse.gender ? meResponse.gender[0] : null;
@@ -89,8 +97,8 @@
 
         $scope.localLogin = function(ll) {
             $ionicLoading.show({
-              template: '<ion-spinner></ion-spinner>',
-              hideOnStateChange: true
+                template: '<ion-spinner></ion-spinner>',
+                hideOnStateChange: true
             });
             User.login(ll).then(function() {
                 Analytics.trackEvent('Auth', 'login');

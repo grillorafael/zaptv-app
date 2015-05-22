@@ -16,6 +16,12 @@
                     <i class="icon ion-ios-at-outline placeholder-icon"></i>
                     <input type="text" placeholder="apelido" name="username" ng-model="user.username" username>
                 </label>
+                <label ng-if='!hasEmail' class="item item-input bg-transparent bradius-bottom" ng-class="{
+                    'error': usernameForm.email.$dirty && !usernameForm.email.$valid,
+                    'success': usernameForm.email.$dirty && usernameForm.email.$valid
+                }">
+                    <input type="email" placeholder="email" name="email" ng-model="user.email">
+                </label>
                 <button class="button button-block button-salmon button-login">
                     Continuar
                 </button>

@@ -2,13 +2,25 @@
     'use strict';
     angular.module('zaptv').controller('ProfileCtrl', ProfileCtrl);
 
-    function ProfileCtrl($scope, $cordovaDatePicker, $cordovaCamera, $animationTrigger, User, Analytics, Auth, ngNotify) {
+    function ProfileCtrl($scope, $cordovaDatePicker, $cordovaCamera, $animationTrigger,
+        $ionicPlatform, $state, $localForage, $timeout, User, Analytics, Auth, ngNotify) {
+
+        $scope.data = {};
+
         $scope.$on('$ionicView.enter', function() {
             $ionicPlatform.ready(function() {
                 var user = Auth.getUser();
                 Analytics.init(user.id);
                 Analytics.trackView($state.current.name);
             });
+        });
+
+        $localForage.getItem('facebook_share_enable').then(function(facebookShareEnable) {
+            $scope.data.facebookShareEnable = facebookShareEnable;
+        });
+
+        $scope.$watch('data.facebookShareEnable', function(v) {
+            $localForage.setItem('facebook_share_enable', $scope.data.facebookShareEnable);
         });
 
         User.me().then(function(user) {
