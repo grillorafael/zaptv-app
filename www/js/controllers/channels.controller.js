@@ -68,7 +68,6 @@
         }
 
         function listChannels(gs) {
-            $scope.isLoading = true;
             Channel.list(gs).then(function(channels) {
                 var openChannels = [];
                 var privateChannels = [];

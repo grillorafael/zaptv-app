@@ -9,7 +9,7 @@
             <ion-view on-swipe-left="goToTab(1)">
                 <ion-spinner icon="spiral" ng-if="isLoading" class="centered"></ion-spinner>
                 <ion-content>
-                    <ion-refresher pulling-text="Carregando programação..." on-refresh="refresh()"></ion-refresher>
+                    <ion-refresher pulling-text="Atualizando conversas..." on-refresh="refresh()"></ion-refresher>
                     <div class="padding channels-list">
                         <channel-tile ng-repeat="channel in openChannels" item-width="50%"></channel-tile>
                     </div>
@@ -31,18 +31,16 @@
             </ion-view>
         </ion-tab>
     </ion-tabs>
-    <!-- <ion-footer-bar class="rate-app-bar">
+    <div class="rate-app-bar">
+        <button class="button button-clear button-icon ion-ios-close-empty close-rate-bar"></button>
+        <div class="container-title-rate">
+            <h4 class="title-rate text-center">Que tal avaliar o <strong>zaper</strong> na App Store?</h4>
+        </div>
         <div class="text-center">
-            <h4 class="title-rate">Que tal avaliar o <strong>zaper</strong> na App Store?</h4>
+            <button class="button button-no">Não, obrigado</button>
+            <button class="button button-yes">Sim, com certeza!</button>
         </div>
-        <div class="buttons">
-            <button class="button">Left Button</button>
-        </div>
-
-        <div class="buttons" ng-click="doSomething()">
-            <button class="button">Right Button</button>
-        </div>
-    </ion-footer-bar> -->
+    </div>
 </ion-view>
 
 <script id="channels_popover" type="text/ng-template">
