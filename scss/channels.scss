@@ -4,6 +4,9 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    .rate-app-bar.slide-up {
+        transform: translateY(0);
+    }
     .rate-app-bar {
         position: absolute;
         right: 0;
@@ -16,7 +19,8 @@
         overflow: visible;
         bottom: 0;
         box-shadow: 0px -16px 30px -13px rgba(0,0,0,1);
-        // transform: translateY(100px);
+        transform: translateY(150px);
+        transition: .5s ease-in-out;
         .close-rate-bar {
             position: absolute;
             font-size: 2em;
@@ -26,6 +30,9 @@
             border-radius: 5px 5px 0 0;
             padding: 0 10px;
 
+        }
+        .button-clear.activated {
+            opacity: 1;
         }
         .container-title-rate {
             display: block;
