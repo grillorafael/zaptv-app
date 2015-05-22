@@ -16,7 +16,7 @@
         });
 
         $localForage.getItem('facebook_share_enable').then(function(facebookShareEnable) {
-            $scope.data.facebookShareEnable = facebookShareEnable;
+            $scope.data.facebookShareEnable = facebookShareEnable === undefined ? true : facebookShareEnable;
         });
 
         $scope.$watch('data.facebookShareEnable', function(v) {
