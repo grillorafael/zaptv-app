@@ -61,6 +61,10 @@
         "APP_ID": "RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q",
         "CLIENT_KEY": "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl"
       }
+    },
+    {
+      "locator": "https://github.com/whiteoctober/cordova-plugin-app-version.git",
+      "id": "uk.co.whiteoctober.cordova.appversion"
     }
   ],
   "cordovaPlatforms": [
