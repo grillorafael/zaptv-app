@@ -4,8 +4,8 @@
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaFacebook,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $ionicPopup, $cordovaDevice,
-        $ionicPlatform, $ionicModal, $state, $localForage, Utils, Analytics, moment, State, Socket,
-        Channel, Auth) {
+        $ionicPlatform, $ionicModal, $state, $localForage, $cordovaSocialSharing, Utils, Analytics,
+        moment, State, Socket, Channel, Auth) {
 
         var shareWithFacebook = false;
         $localForage.getItem('facebook_share_enable').then(function(facebookShareEnable) {
@@ -315,8 +315,8 @@
                         .then(function(success) {
                             if (success.status === "connected") {
                                 $localForage.getItem('always_share').then(function(alwaysShare) {
-                                    if(shareWithFacebook !== false || alwaysShare === undefined) {
-                                        if(!alwaysShare) {
+                                    if (shareWithFacebook !== false || alwaysShare === undefined) {
+                                        if (!alwaysShare) {
                                             $ionicPopup.show({
                                                 template: '<div class="text-center">Deseja compartilhar suas notas para seus amigos via Facebook?</div>',
                                                 title: 'Compartilhar pelo Facebook',
@@ -344,8 +344,7 @@
                                                     }
                                                 }]
                                             }).then(function(res) {});
-                                        }
-                                        else if(shareWithFacebook) {
+                                        } else if (shareWithFacebook) {
                                             shareScore(success.authResponse.accessToken, val, $scope.schedule.id);
                                         }
                                     }
@@ -363,7 +362,7 @@
             $ionicActionSheet.show({
                 buttons: [{
                     text: 'Copiar mensagem'
-                },{
+                }, {
                     text: 'Compartilhar mensagem'
                 }],
                 destructiveText: 'Denunciar',
@@ -381,6 +380,11 @@
                 buttonClicked: function(index) {
                     if (index === 0) {
                         Utils.copyToClipboard(message.content);
+                    } else if (index === 1) {
+                        var messageTxt = "@" + message.user.username + ": \"" + message.content + "\" - Assistindo " + $scope.schedule.name + " no zaper";
+                        $cordovaSocialSharing
+                            .share(messageTxt, "zaper", null, "http://zaper.com.br")
+                            .then(function(result) {}, function(err) {});
                     }
                     return true;
                 }
