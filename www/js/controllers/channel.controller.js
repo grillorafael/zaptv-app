@@ -302,7 +302,7 @@
                         },
                         payload: {
                             type: 'DIVIDER',
-                            content: 'Mensagens anteriores'
+                            content: '↑ Mensagens anteriores ↑'
                         }
                     });
                     $scope.messages = messages.concat($scope.messages);
