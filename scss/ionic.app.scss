@@ -55,7 +55,9 @@ body {
     border: 2px solid $facebook;
     border-radius: 5px;
 }
-
+.channel-popover.popover .item-btn-schedule.item { 
+    padding: 0;
+}
 .bnt-font-size {
     font-size: 0.8em;
 }
