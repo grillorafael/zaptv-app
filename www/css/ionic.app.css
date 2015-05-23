@@ -8153,7 +8153,7 @@ loader svg {
 
 .register-view {
   background: #ede1b5;
-  background: url("../img/bg-login.jpg");
+  background: url("../img/bg-login-2.jpg");
   background-size: cover; }
   .register-view .padding {
     padding: 10px 30px; }
@@ -8280,6 +8280,9 @@ body {
 .popup-container .popup {
   border: 2px solid #3b5998;
   border-radius: 5px; }
+
+.channel-popover.popover .item-btn-schedule.item {
+  padding: 0; }
 
 .bnt-font-size {
   font-size: 0.8em; }
