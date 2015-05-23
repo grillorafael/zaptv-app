@@ -12,8 +12,8 @@
         var userId = Auth.getUserId();
 
         $scope.isLoading = true;
-        $scope.evenChannels = [];
-        $scope.oddChannels = [];
+        $scope.openChannels = [];
+        $scope.privateChannels = [];
 
         $ionicPopover.fromTemplateUrl('channels_popover', {
             scope: $scope
@@ -107,8 +107,20 @@
                 });
 
                 Channel.saveChannelsCache(openChannels, privateChannels);
-                $scope.openChannels = openChannels;
-                $scope.privateChannels = privateChannels;
+                if($scope.openChannels.length === 0) {
+                    $scope.openChannels = openChannels;
+                    $scope.privateChannels = privateChannels;
+                }
+                else {
+                    openChannels.forEach(function(oc, i) {
+                        $scope.openChannels[i].current_schedule = oc.current_schedule;
+                    });
+
+                    privateChannels.forEach(function(pc, i) {
+                        $scope.privateChannels[i].current_schedule = pc.current_schedule;
+                    });
+                }
+
                 $scope.$broadcast('scroll.refreshComplete');
                 Socket.getStatus();
                 $scope.isLoading = false;
@@ -191,6 +203,15 @@
         $scope.joinChannel = function(channel) {
             State.set('last_channel', channel);
             $state.go('channel');
+        };
+
+        $scope.test = function() {
+            if(ionic.Platform.isAndroid()) {
+                var sel = document.querySelector('.channels-list');
+                sel.style.display = 'none';
+                sel.offsetHeight; // no need to store this anywhere, the reference is enough
+                sel.style.display = '';
+            }
         };
     }
 })();

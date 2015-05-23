@@ -8,7 +8,7 @@
         <ion-tab title="TV Aberta">
             <ion-view on-swipe-left="goToTab(1)">
                 <ion-spinner icon="spiral" ng-if="isLoading" class="centered"></ion-spinner>
-                <ion-content>
+                <ion-content on-scroll="forceRepaint()">
                     <ion-refresher pulling-text="Atualizando conversas..." on-refresh="refresh()"></ion-refresher>
                     <div class="padding channels-list">
                         <channel-tile ng-repeat="channel in openChannels" item-width="50%"></channel-tile>
@@ -19,7 +19,7 @@
         <ion-tab title="TV por assinatura">
             <ion-view on-swipe-right="goToTab(0)">
                 <ion-spinner icon="spiral" ng-if="isLoading" class="centered"></ion-spinner>
-                <ion-content>
+                <ion-content on-scroll="forceRepaint()">
                     <ion-refresher pulling-text="Carregando programação..." on-refresh="refresh()"></ion-refresher>
                     <div class="padding channels-list">
                         <channel-tile ng-repeat="channel in privateChannels" item-width="50%"></channel-tile>
