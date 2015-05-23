@@ -3,7 +3,7 @@
     'chat-message-self': message.user.id == user.id,
     'same-last-user': message.user.id == messages[$index - 1].user.id,
     'pending': message.id == undefined
-}">
+}"  id="message-{{message.id}}">
     <div class="avatar">
         <img ng-click='viewUser(message.user)' class="profile-image" preload-image="{{message.user.image_url}}" alt="foto perfil do usuario">
     </div>

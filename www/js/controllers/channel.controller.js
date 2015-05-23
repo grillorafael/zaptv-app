@@ -4,8 +4,8 @@
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaFacebook,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $ionicPopup, $cordovaDevice,
-        $ionicPlatform, $ionicModal, $state, $localForage, $cordovaSocialSharing, Utils, Analytics,
-        moment, State, Socket, Channel, Auth) {
+        $ionicPlatform, $ionicModal, $state, $localForage, $cordovaSocialSharing, $location, Utils,
+        Analytics, moment, State, Socket, Channel, Auth) {
 
         var userColors = {};
         var shareWithFacebook = false;
@@ -194,6 +194,7 @@
 
                 $scope.timeout = $timeout(function() {
                     $scope.messages.push({
+                        created_at: new Date(),
                         id: 0,
                         user: {
                             id: 1
@@ -293,6 +294,17 @@
                         m.created_at = moment(m.created_at).toDate();
                     });
                     messages = messages.reverse();
+                    $scope.messages.unshift({
+                        created_at: new Date(),
+                        id: 0,
+                        user: {
+                            id: 1
+                        },
+                        payload: {
+                            type: 'DIVIDER',
+                            content: 'Mensagens anteriores'
+                        }
+                    });
                     $scope.messages = messages.concat($scope.messages);
                 }, function() {
                     // TODO handle this shiet
