@@ -105,7 +105,7 @@
                     }).then(function() {
                         $timeout(function() {
                             ngNotify.dismiss();
-                        });
+                        }, 500);
                         Analytics.trackEvent('Profile', 'update_image');
                     }, function() {
                         showError();
@@ -114,7 +114,7 @@
                 else {
                     $timeout(function() {
                         ngNotify.dismiss();
-                    });
+                    }, 500);
                     $scope.user = u;
                     localStorage.setItem('user', JSON.stringify(u));
                 }
