@@ -81,6 +81,7 @@
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
                     Utils.getCurrentState([lat, lng]).then(function(state) {
+                        geoState = state;
                         State.set('geo_state', state);
                         listChannels(state);
                     }, function() {
@@ -205,7 +206,7 @@
             $state.go('channel');
         };
 
-        $scope.test = function() {
+        $scope.forceRepaint = function() {
             if(ionic.Platform.isAndroid()) {
                 var sel = document.querySelector('.channels-list');
                 sel.style.display = 'none';
