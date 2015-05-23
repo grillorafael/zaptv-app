@@ -4,8 +4,8 @@
 
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaFacebook,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $ionicPopup, $cordovaDevice,
-        $ionicPlatform, $ionicModal, $state, $localForage, $cordovaSocialSharing, $location, Utils,
-        Analytics, moment, State, Socket, Channel, Auth) {
+        $ionicPlatform, $ionicModal, $state, $localForage, $cordovaSocialSharing, $location, $filter,
+        Utils, Analytics, moment, State, Socket, Channel, Auth) {
 
         var userColors = {};
         var shareWithFacebook = false;
@@ -85,6 +85,8 @@
 
             Channel.lastMessages($scope.channel.id).then(function(messages) {
                 messages.forEach(function(m) {
+                    var content = m.content || m.payload.content;
+                    m.compiled_content = $filter('smartchat')(content);
                     listenToMessage(m);
                     m.created_at = moment(m.created_at).toDate();
                 });
@@ -134,6 +136,8 @@
         });
 
         Socket.onMessage(function(msg) {
+            var content = msg.content || msg.payload.content;
+            msg.compiled_content = $filter('smartchat')(content);
             listenToMessage(msg);
             msg.created_at = moment(msg.created_at).toDate();
             if (msg.user.id === $scope.user.id) {
@@ -143,7 +147,9 @@
                         msgIdx = i;
                     }
                 });
-                $scope.messages[msgIdx] = msg;
+                if ($scope.messages[msgIdx]) {
+                    $scope.messages[msgIdx].id = msg.id;
+                }
             } else {
                 $scope.messages.push(msg);
             }
@@ -173,7 +179,7 @@
         }
 
         function loadNextSchedule(force) {
-            if(!$scope.nextScheduleError && !force) {
+            if (!$scope.nextScheduleError && !force) {
                 return;
             }
 
@@ -206,7 +212,7 @@
                     });
                     $scope.schedule = $scope.nextSchedule;
                     loadNextSchedule(true);
-                    if($scope.fullSchedule) {
+                    if ($scope.fullSchedule) {
                         $scope.fullSchedule.shift();
                     }
 
@@ -257,7 +263,7 @@
         };
 
         $scope.viewSchedule = function() {
-            if(!$scope.fullSchedule) {
+            if (!$scope.fullSchedule) {
                 loadFullSchedule();
             }
 
@@ -291,6 +297,8 @@
             Channel.fetchMore($scope.channel.id, beforeId).then(function(messages) {
                     messages.forEach(function(m) {
                         listenToMessage(m);
+                        var content = m.content || m.payload.content;
+                        m.compiled_content = $filter('smartchat')(content);
                         m.created_at = moment(m.created_at).toDate();
                     });
                     messages = messages.reverse();
@@ -357,6 +365,7 @@
                 liked: false,
                 user: $scope.user,
                 content: currentMessage,
+                compiled_content: $filter('smartchat')(currentMessage),
                 created_at: new Date()
             });
 
@@ -444,7 +453,10 @@
                 },
                 buttonClicked: function(index) {
                     if (index === 0) {
-                        Utils.copyToClipboard(message.content);
+                        var decodedContent = message.content.replace(/&#(\d+);/g, function(match, dec) {
+                            return String.fromCharCode(dec);
+                        });
+                        Utils.copyToClipboard(decodedContent);
                     } else if (index === 1) {
                         var messageTxt = "@" + message.user.username + ": \"" + message.content + "\" - Assistindo " + $scope.schedule.name + " no zaper";
                         $cordovaSocialSharing

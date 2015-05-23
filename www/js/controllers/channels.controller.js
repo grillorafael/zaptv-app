@@ -127,7 +127,6 @@
                 $scope.isLoading = false;
                 askRating();
             }, function() {
-
                 Channel.getChannelsCache().then(function(obj) {
                     if (obj && obj.open_channels) {
                         $scope.openChannels = obj.open_channels;

@@ -29,7 +29,7 @@
                 text = text.replace(/&#10;/g, '<br>');
                 text = text.replace(/\n/g, '<br>');
 
-                return "<p>" + text + "</p>";
+                return text;
             };
         })
     .filter('timeramain', function() {

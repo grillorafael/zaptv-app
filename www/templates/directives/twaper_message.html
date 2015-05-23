@@ -9,7 +9,7 @@
         }">
             <span class="username">{{::message.payload.username}}</span>
         </h2>
-        <p compile="::message.payload.content | smartchat"></p>
+        <p ng-bind-html="::message.compiled_content"></p>
         <span class="timestamp" >{{::message.created_at | date:'HH:mm'}}</span>
     </div>
 </div>

@@ -3,7 +3,7 @@
     angular.module('zaptv').controller('LoginCtrl', LoginCtrl);
 
     function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $ionicLoading,
-        $animationTrigger, $cordovaFacebook, $ionicModal, Analytics, User, Auth, State) {
+        $animationTrigger, $cordovaFacebook, $ionicModal, $localForage, Analytics, User, Auth, State) {
         $scope.$on('$ionicView.enter', function() {
             $ionicPlatform.ready(function() {
                 Analytics.init();
@@ -19,6 +19,8 @@
                         });
                 }
             });
+
+            $localForage.clear();
         });
 
         $ionicModal.fromTemplateUrl('templates/set_username_modal.html', {

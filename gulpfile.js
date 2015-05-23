@@ -7,6 +7,7 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var autoprefixer = require('gulp-autoprefixer');
+var templateCache = require('gulp-angular-templatecache');
 
 var paths = {
     sass: ['./scss/**/*.scss']
@@ -32,7 +33,17 @@ gulp.task('sass', function(done) {
         .on('end', done);
 });
 
+gulp.task('generate:cache', function () {
+    gulp.src('www/templates/**/*.html')
+        .pipe(templateCache({
+            module: 'zaptv',
+            root: 'templates/'
+        }))
+        .pipe(gulp.dest('www/js'));
+});
+
 gulp.task('watch', function() {
+    gulp.watch('./www/templates/**/*.html', ['generate:cache']);
     gulp.watch(paths.sass, ['sass']);
 });
 

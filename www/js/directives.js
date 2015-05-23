@@ -4,7 +4,6 @@
             'zaptv.services'
         ])
         .directive('animationHandle', animationHandle)
-        .directive('compile', compile)
         .directive('score', score)
         .directive('channelTile', channelTile)
         .directive('loader', loader)
@@ -68,7 +67,7 @@
             require: 'ngModel',
             link: function(scope, elm, attrs, ctrl) {
                 ctrl.$asyncValidators.username = function(modelValue, viewValue) {
-                    if (ctrl.$isEmpty(modelValue) || !/^[a-zA-Z0-9_]{6,16}$/.test(modelValue)) {
+                    if (ctrl.$isEmpty(modelValue) || !/^[a-zA-Z0-9_]{4,16}$/.test(modelValue)) {
                         return $q.reject();
                     }
 
@@ -143,20 +142,6 @@
                     }
                 });
             }
-        };
-    }
-
-    function compile($compile) {
-        return function(scope, element, attrs) {
-            scope.$watch(
-                function(scope) {
-                    return scope.$eval(attrs.compile);
-                },
-                function(value) {
-                    element.html(value);
-                    $compile(element.contents())(scope);
-                }
-            );
         };
     }
 })();
