@@ -10,7 +10,31 @@
         .directive('handleLoadError', handleLoadError)
         .directive('username', username)
         .directive('message', message)
-        .directive('preloadImage', preloadImage);
+        .directive('preloadImage', preloadImage)
+        .directive('compile', compile);
+
+    function compile($compile) {
+        // directive factory creates a link function
+        return function(scope, element, attrs) {
+            scope.$watch(
+                function(scope) {
+                    // watch the 'compile' expression for changes
+                    return scope.$eval(attrs.compile);
+                },
+                function(value) {
+                    // when the 'compile' expression changes
+                    // assign it into the current DOM
+                    element.html(value);
+
+                    // compile the new DOM and link it to the current
+                    // scope.
+                    // NOTE: we only compile .childNodes so that
+                    // we don't get into infinite loop compiling ourselves
+                    $compile(element.contents())(scope);
+                }
+            );
+        };
+    }
 
     function preloadImage() {
         return {
@@ -29,17 +53,15 @@
         };
     }
 
-    function message($templateCache, $compile) {
+    function message($templateCache, $compile, $parse) {
         function getTemplate(msg) {
-            if(msg.payload) {
+            if (msg.payload) {
                 if (msg.payload.type == "TWAPER") {
                     return 'templates/directives/twaper_message.html';
-                }
-                else if (msg.payload.type == "DIVIDER") {
+                } else if (msg.payload.type == "DIVIDER") {
                     return 'templates/directives/divider_message.html';
                 }
-            }
-            else {
+            } else {
                 return 'templates/directives/user_message.html';
             }
         }
@@ -57,8 +79,10 @@
                 scope.messageOptions = scope.$parent.messageOptions;
                 scope.openLink = scope.$parent.openLink;
                 scope.getUserColor = scope.$parent.getUserColor;
+
                 var templateUrl = getTemplate(scope.message);
                 var template = $templateCache.get(templateUrl);
+
                 element.html(template);
                 $compile(element.contents())(scope);
             }
