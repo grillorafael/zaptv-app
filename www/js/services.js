@@ -390,9 +390,27 @@
 
         function connect() {
             socket = io(Config.SOCKET_ADDR);
-            socket.on('error', function(e) {
-                console.log(e);
+            socket.on('connect', function(e) {
+                console.log('Socket connected', e);
             });
+
+            socket.on('connect_error', function(e) {
+                console.log('Socket connection error', e);
+            });
+
+            socket.on('connect_timeout', function(e) {
+                console.log('Socket connection timeout', e);
+            });
+
+            socket.on('reconnect', function(e) {
+                console.log('Socket reconnected', e);
+            });
+
+            socket.on('reconnect_error', function(e) {
+                console.log('Socket reconnected failure', e);
+            });
+
+
         }
 
         function joinChannel(info) {
