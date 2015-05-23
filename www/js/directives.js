@@ -29,35 +29,38 @@
         };
     }
 
-    function message() {
+    function message($templateCache, $compile) {
+        function getTemplate(msg) {
+            if(msg.payload) {
+                if (msg.payload.type == "TWAPER") {
+                    return 'templates/directives/twaper_message.html';
+                }
+                else if (msg.payload.type == "DIVIDER") {
+                    return 'templates/directives/divider_message.html';
+                }
+            }
+            else {
+                return 'templates/directives/user_message.html';
+            }
+        }
+
         return {
             restrict: 'E',
             replace: true,
             scope: {
                 message: '=data'
             },
-            template: '<ng-include src="getTemplateUrl()"/>',
-            controller: function($scope) {
-                $scope.user = $scope.$parent.user;
-                $scope.viewUser = $scope.$parent.viewUser;
-                $scope.toggleLike = $scope.$parent.toggleLike;
-                $scope.messageOptions = $scope.$parent.messageOptions;
-                $scope.openLink = $scope.$parent.openLink;
-                $scope.getUserColor = $scope.$parent.getUserColor;
-
-                $scope.getTemplateUrl = function() {
-                    if($scope.message.payload) {
-                        if ($scope.message.payload.type == "TWAPER") {
-                            return 'templates/directives/twaper_message.html';
-                        }
-                        else if ($scope.message.payload.type == "DIVIDER") {
-                            return 'templates/directives/divider_message.html';
-                        }
-                    }
-                    else {
-                        return 'templates/directives/user_message.html';
-                    }
-                };
+            link: function(scope, element, attrs) {
+                scope.user = scope.$parent.user;
+                scope.viewUser = scope.$parent.viewUser;
+                scope.toggleLike = scope.$parent.toggleLike;
+                scope.messageOptions = scope.$parent.messageOptions;
+                scope.openLink = scope.$parent.openLink;
+                scope.getUserColor = scope.$parent.getUserColor;
+                var templateUrl = getTemplate(scope.message);
+                var template = $templateCache.get(templateUrl);
+                element.html(template);
+                $compile(element.contents())(scope);
             }
         };
     }
