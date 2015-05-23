@@ -54,12 +54,10 @@
     .item p {
         color: black;
     }
-    .bar-confirm {
+    .button-confirm {
         background: rgba(76,175,80,0.8);
         color: white;
-        .title {
-            font-weight: 400;
-            font-size: 17px;
-        }
+        font-weight: 400;
+        font-size: 17px;
     }
 }

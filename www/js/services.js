@@ -390,6 +390,9 @@
 
         function connect() {
             socket = io(Config.SOCKET_ADDR);
+            socket.on('error', function(e) {
+                console.log(e);
+            });
         }
 
         function joinChannel(info) {

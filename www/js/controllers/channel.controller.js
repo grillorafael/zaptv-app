@@ -79,6 +79,10 @@
 
         $scope.$on('$ionicView.enter', function() {
             $scope.schedule = $scope.channel.current_schedule;
+            Channel.getMyLastScore($scope.channel.id, $scope.schedule.id).then(function(scoreResult) {
+                $scope.currentScore = scoreResult.score;
+            });
+
             Channel.lastMessages($scope.channel.id).then(function(messages) {
                 messages.forEach(function(m) {
                     listenToMessage(m);

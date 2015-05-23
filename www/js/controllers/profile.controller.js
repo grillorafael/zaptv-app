@@ -103,15 +103,20 @@
                         name: "image.png",
                         data: $scope.user.image_url
                     }).then(function() {
-                        ngNotify.dismiss();
+                        $timeout(function() {
+                            ngNotify.dismiss();
+                        });
                         Analytics.trackEvent('Profile', 'update_image');
                     }, function() {
                         showError();
                     });
                 }
                 else {
-                    ngNotify.dismiss();
+                    $timeout(function() {
+                        ngNotify.dismiss();
+                    });
                     $scope.user = u;
+                    localStorage.setItem('user', JSON.stringify(u));
                 }
                 Analytics.trackEvent('Profile', 'update');
             }, function(e) {
