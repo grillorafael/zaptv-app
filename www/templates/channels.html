@@ -11,7 +11,7 @@
                 <ion-content on-scroll="forceRepaint()">
                     <ion-refresher pulling-text="Atualizando conversas..." on-refresh="refresh()"></ion-refresher>
                     <div class="padding channels-list">
-                        <channel-tile ng-repeat="channel in openChannels" item-width="50%"></channel-tile>
+                        <channel-tile ng-repeat="channel in openChannels track by channel.id" item-width="50%"></channel-tile>
                     </div>
                 </ion-content>
             </ion-view>
@@ -22,7 +22,7 @@
                 <ion-content on-scroll="forceRepaint()">
                     <ion-refresher pulling-text="Carregando programação..." on-refresh="refresh()"></ion-refresher>
                     <div class="padding channels-list">
-                        <channel-tile ng-repeat="channel in privateChannels" item-width="50%"></channel-tile>
+                        <channel-tile ng-repeat="channel in privateChannels track by channel.id" item-width="50%"></channel-tile>
                     </div>
                     <div class="text-center">
                         <ion-spinner icon="bubbles" ng-if="isLoading" class="bubble-spinner"></ion-spinner>

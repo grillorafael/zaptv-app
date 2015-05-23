@@ -5,14 +5,14 @@
             <span class="nav-bar-title">
                 <img ng-src="{{::channel.image_url}}" width="20" handle-load-error class="channel-logo" alt="logo da emissora">
                 <h2 class="channel-name">
-                    {{channel.name}}
+                    {{::channel.name}}
                 </h2>
             </span>
         </div>
     </ion-header-bar>
     <ion-content>
         <ion-list>
-            <label ng-repeat="schedule in fullSchedule" for="{{::schedule.name}}-{{$index}}">
+            <label ng-repeat="schedule in fullSchedule track by schedule.id" for="{{::schedule.name}}-{{$index}}">
                 <input type="checkbox" name="{{::schedule.name}}-{{$index}}" id="{{::schedule.name}}" class="description-toggle-input" autocomplete="off" />
                 <ion-item class="schedule-item" >
                     <div class="channel-image" style="background-image: url({{::schedule.image_url || 'img/placeholder.jpg'}});" ></div> <!--data-ng-src="{{schedule.image_url}}"-->
