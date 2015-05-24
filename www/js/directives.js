@@ -154,7 +154,6 @@
             restrict: 'A',
             link: function(scope, element, attrs) {
                 scope.$on('animation:trigger:' + attrs.animationHandle, function(e, handler, animation, mode) {
-                    console.log('animation:trigger:' + attrs.animationHandle);
                     if (mode === $animationTrigger.START) {
                         element.addClass(animation);
                     } else if (mode === $animationTrigger.STOP) {
