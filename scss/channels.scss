@@ -86,7 +86,6 @@
         border: 1px solid rgba(0, 0, 0, .15);
         box-shadow: none;
         .img-box {
-            position: relative;
             .channel-image {
                 width: 100%;
                 border-top-right-radius: 5px;
@@ -96,21 +95,31 @@
         .card-info {
             background: white;
             padding: 0.5em 1em;
-            position: relative;
             display: block;
             margin-top: -5px;
             .button-salmon {
                 margin-bottom: 10px;
             }
+            .channel-logo {
+                display: inline-block;
+                max-width: 25px;
+                max-height: 25px;
+                width: 100%;
+                height: 100%;
+                vertical-align: middle;
+            }
             .channel-name {
                 font-size: 1.1em;
                 font-weight: 300;
-                margin-top: 3px;
+                margin-top: 13px;
                 margin-bottom: 15px;
-                padding-left: 30px;
+                padding-left: 3px;
+                display: inline-block;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+                vertical-align: middle;
+
             }
             .channel-info {
                 font-size: 0.8em;
@@ -126,15 +135,7 @@
                     color: gold;
                 }
             }
-            .channel-logo {
-                position: absolute;
-                top: 7px;
-                left: 13px;
-                max-width: 25px;
-                max-height: 25px;
-                width: 100%;
-                height: 100%;
-            }
+
         }
     }
 }
