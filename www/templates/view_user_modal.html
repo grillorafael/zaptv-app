@@ -11,8 +11,8 @@
                 <h4 class="username">{{userToView.username}}</h4>
             </div>
         </div>
-        <div class="bottom-container padding" ng-if="userToView.name || userToView.birthdate || userToView.gender">
-            <div class="text-center">
+        <div class="bottom-container" ng-if="userToView.name || userToView.birthdate || userToView.gender">
+            <div class="list">
                 <label class="item item-input" ng-if="userToView.name">
                     <i class="icon ion-ios-person-outline placeholder-icon"></i>
                     <p>{{userToView.name}}</p>
@@ -22,7 +22,7 @@
                     <p>{{userToView.birthdate | date:'dd/MM/yyyy'}}</p>
                 </label>
                 <label class="item item-input" ng-if="userToView.gender">
-                    <i class="icon ion-ios-body-outline placeholder-icon"></i>
+                    <i class="icon ion-ios-people-outline placeholder-icon"></i>
                     <p>{{genders[userToView.gender]}}</p>
                 </label>
             </div>
