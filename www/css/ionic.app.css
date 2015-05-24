@@ -7592,7 +7592,9 @@ a.button {
       display: none; }
     .chat-view .chat-message.twaper .chat-bubble {
       max-width: 86%;
-      border-top-left-radius: 0; }
+      border-top-left-radius: 0;
+      padding-bottom: 7px;
+      box-shadow: inset 0px 7px 0px -5px #55acee; }
     .chat-view .chat-message.twaper .chat-bubble::after {
       display: none; }
     .chat-view .chat-message.twaper .avatar {
