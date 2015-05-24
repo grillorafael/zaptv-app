@@ -8,8 +8,11 @@
                 <h4 class="username">{{user.username}}</h4>
             </div>
         </div>
-        <div class="bottom-container card">
-            <div class="text-center">
+        <div class="bottom-container">
+            <div class="list">
+                <div class="item item-divider">
+                    Dados do usuário
+                </div>
                 <label class="item item-input">
                     <i class="icon ion-ios-person-outline placeholder-icon"></i>
                     <input type="text" ng-model="user.name" placeholder="Digite o seu nome">
@@ -19,13 +22,25 @@
                     <p>{{(user.birthdate | date:'dd/MM/yyyy') || "Clique para mudar"}}</p>
                 </label>
                 <label class="item item-input item-select">
-                    <i class="icon ion-ios-body-outline placeholder-icon"></i>
+                    <i class="icon ion-ios-people-outline placeholder-icon"></i>
                     <select ng-model='user.gender' ng-options='gender.id as gender.label for gender in genders'></select>
                 </label>
+                <div class="item item-divider">
+                    Configurações
+                </div>
                 <label class="item item-toggle">
-                    Compartilhar com FB
+                    Compartilhar com Facebook
                     <label class="toggle toggle-assertive">
                         <input type="checkbox" ng-model='data.facebookShareEnable'>
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </label>
+                <label class="item item-toggle">
+                    Receber tweets no chat
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox">
                         <div class="track">
                             <div class="handle"></div>
                         </div>

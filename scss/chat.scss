@@ -109,6 +109,7 @@
             }
             .username {
                 display: block;
+                color: $twitter!important;
                 &::before {
                     content: "@";
                 }

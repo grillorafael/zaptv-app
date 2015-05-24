@@ -7606,7 +7606,8 @@ a.button {
       border-top-left-radius: 20%;
       border-bottom-left-radius: 20%; }
     .chat-view .chat-message.twaper .username {
-      display: block; }
+      display: block;
+      color: #55acee !important; }
       .chat-view .chat-message.twaper .username::before {
         content: "@"; }
       .chat-view .chat-message.twaper .username::after {
@@ -8066,17 +8067,7 @@ input, textarea, .item-input, .item-input-wrapper {
     border-bottom: 1px solid black; }
 
 .profile-view {
-  background: url("../img/chat-bg.png");
-  background: url("../img/chat-bg.svg"); }
-  .profile-view .item {
-    border: 0; }
-    .profile-view .item select {
-      background: #f4f4f4; }
-  .profile-view .input-label {
-    font-size: 14px;
-    font-weight: bold;
-    width: 15%;
-    color: #dd5e6a; }
+  background: #dd5e6a; }
   .profile-view .top-container {
     position: relative;
     padding-top: 5%;
@@ -8103,19 +8094,29 @@ input, textarea, .item-input, .item-input-wrapper {
     .profile-view .top-container .username {
       color: white; }
   .profile-view .placeholder-icon:first-child {
-    font-size: 2.5em;
+    font-size: 2em;
     color: #dd5e6a;
     padding-right: 20px; }
   .profile-view .placeholder-icon:last-child {
-    padding-left: 0;
-    font-size: 2.1em; }
+    padding-left: 0; }
   .profile-view .item p {
     color: black; }
   .profile-view .button-confirm {
-    background: rgba(76, 175, 80, 0.8);
+    background: #4caf50;
     color: white;
     font-weight: 400;
-    font-size: 17px; }
+    font-size: 17px;
+    margin-top: 0;
+    margin-bottom: 0; }
+  .profile-view .item-input, .profile-view input {
+    background: white !important; }
+
+.item-select select {
+  left: 46px;
+  direction: ltr; }
+
+.item-toggle {
+  text-align: left; }
 
 loader svg {
   width: 100%; }

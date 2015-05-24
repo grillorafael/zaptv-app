@@ -1,18 +1,5 @@
 .profile-view {
-    background: url("../img/chat-bg.png");
-    background: url("../img/chat-bg.svg");
-    .item {
-        border: 0;
-        select {
-            background: #f4f4f4;
-        }
-    }
-    .input-label {
-        font-size: 14px;
-        font-weight: bold;
-        width: 15%;
-        color: $salmon;
-    }
+    background: $salmon;
     .top-container {
         position: relative;
         padding-top: 5%;
@@ -44,21 +31,34 @@
         }
     }
     .placeholder-icon:first-child {
-        font-size: 2.5em;
+        font-size: 2em;
         color: $salmon;
         padding-right: 20px;
     }
     .placeholder-icon:last-child {
         padding-left: 0;
-        font-size: 2.1em;
     }
     .item p {
         color: black;
     }
     .button-confirm {
-        background: rgba(76,175,80,0.8);
+        background: rgba(76,175,80,1);
         color: white;
         font-weight: 400;
         font-size: 17px;
+        margin-top: 0;
+        margin-bottom: 0;
     }
+    .item-input, input {
+        background: white!important;
+    }
+}
+
+.item-select select {
+    left: 46px;
+    direction: ltr;
+}
+
+.item-toggle {
+    text-align: left;
 }
