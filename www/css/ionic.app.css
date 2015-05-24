@@ -8404,6 +8404,18 @@ label.success i {
   resize: none;
   height: 25px; }
 
+.platform-android .action-sheet-wrapper {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  /* bring your own prefixes */
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 80%; }
+  .platform-android .action-sheet-wrapper .action-sheet-group {
+    padding: .2em .2em;
+    border-radius: 5px; }
+
 .loading-container .loading {
   padding: 10px 15px; }
 

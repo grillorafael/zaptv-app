@@ -435,11 +435,11 @@
             Analytics.trackEvent('Chat', 'message_options');
             $ionicActionSheet.show({
                 buttons: [{
-                    text: 'Copiar mensagem'
+                    text: '<i class="icon ion-ios-browsers-outline"></i> Copiar mensagem'
                 }, {
-                    text: 'Compartilhar mensagem'
+                    text: '<i class="icon ion-android-share-alt"></i> Compartilhar mensagem'
                 }],
-                destructiveText: 'Denunciar',
+                destructiveText: '<i class="icon ion-android-alert"></i> Denunciar',
                 titleText: '',
                 cancelText: 'Voltar',
                 destructiveButtonClicked: function() {
