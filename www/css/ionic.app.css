@@ -7590,12 +7590,37 @@ a.button {
       display: none; }
     .chat-view .chat-message.same-last-user .username {
       display: none; }
+    .chat-view .chat-message.twaper .chat-bubble {
+      max-width: 86%;
+      border-top-left-radius: 0; }
     .chat-view .chat-message.twaper .chat-bubble::after {
-      display: block; }
+      display: none; }
+    .chat-view .chat-message.twaper .avatar {
+      position: relative;
+      margin: 0; }
     .chat-view .chat-message.twaper .profile-image {
-      display: block; }
+      display: block;
+      border-radius: 0;
+      border-top-left-radius: 20%;
+      border-bottom-left-radius: 20%; }
     .chat-view .chat-message.twaper .username {
       display: block; }
+      .chat-view .chat-message.twaper .username::before {
+        content: "@"; }
+      .chat-view .chat-message.twaper .username::after {
+        content: " via twitter";
+        font-size: 0.8em;
+        font-weight: 300;
+        color: black; }
+    .chat-view .chat-message.twaper .twitter-icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: #55acee;
+      color: white;
+      padding: 0.3em 0.6em;
+      border-bottom-left-radius: 5px;
+      border-top-right-radius: 5px; }
     .chat-view .chat-message .like-button {
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -7637,7 +7662,7 @@ a.button {
     float: left;
     max-width: 72%;
     min-width: 24%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     border-radius: 5px; }
     .chat-view .chat-bubble:after {
       content: '';
@@ -7730,7 +7755,7 @@ a.button {
     transform: translate3d(0px, 0px, 0px);
     background: white;
     float: right;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     max-width: 72%;
     min-width: 24%;
     border-radius: 5px; }

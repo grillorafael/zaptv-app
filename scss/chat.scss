@@ -41,7 +41,7 @@
     background: url("../img/chat-bg.png");
     background: url("../img/chat-bg.svg");
     background-repeat: repeat;
-    
+
     .is-loading-chat {
         margin-top: 50%;
     }
@@ -88,15 +88,47 @@
             }
         }
         &.twaper {
+            .chat-bubble {
+                max-width: 86%;
+                border-top-left-radius: 0;
+            }
             .chat-bubble::after {
-                display: block;
+                display: none;
+            }
+            .avatar {
+                position: relative;
+                margin: 0;
             }
             .profile-image {
                 display: block;
+                border-radius: 0;
+                border-top-left-radius: 20%;
+                border-bottom-left-radius: 20%;
             }
             .username {
                 display: block;
+                &::before {
+                    content: "@";
+                }
+                &::after {
+                    content: " via twitter";
+                    font-size: 0.8em;
+                    font-weight: 300;
+                    color: black;
+                }
+
             }
+            .twitter-icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+                background: $twitter;
+                color: white;
+                padding: 0.3em 0.6em;
+                border-bottom-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+
         }
         .like-button {
             display: flex;
@@ -143,7 +175,7 @@
         float: left;
         max-width: 72%;
         min-width: 24%;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         border-radius: 5px;
         &:after {
             content: '';
@@ -250,7 +282,7 @@
         transform: translate3d(0px, 0px, 0px);
         background: white;
         float: right;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         max-width: 72%;
         min-width: 24%;
         border-radius: 5px;
