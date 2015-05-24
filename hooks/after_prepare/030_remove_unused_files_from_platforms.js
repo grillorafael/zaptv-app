@@ -21,8 +21,22 @@ var deleteFolderRecursive = function(removePath) {
     }
 };
 
-var iosPlatformsDir = path.resolve(__dirname, '../../platforms/ios/www/lib/ionic/scss');
-var androidPlatformsDir = path.resolve(__dirname, '../../platforms/android/assets/www/lib/ionic/scss');
+var otherDirs = [
+    'www/templates',
+    'www/lib/localforage/site',
+    'www/lib/localforage/src',
+    'www/lib/moment/benchmarks',
+    'www/lib/moment/meteor',
+    'www/lib/moment/locale',
+    'www/lib/moment/scripts',
+    'www/lib/ng-notify/src',
+    'www/lib/ngInflection/test',
+    'www/lib/socket.io-client/lib',
+    'www/lib/socket.io-client/support',
+    'www/lib/socket.io-client/test',
+];
 
-deleteFolderRecursive(iosPlatformsDir);
-deleteFolderRecursive(androidPlatformsDir);
+otherDirs.forEach(function(src) {
+    deleteFolderRecursive(path.resolve(__dirname, '../../platforms/ios/' + src));
+    deleteFolderRecursive(path.resolve(__dirname, '../../platforms/android/assets/' + src));
+});
