@@ -10,7 +10,7 @@
             </span>
         </div>
     </ion-header-bar>
-    <ion-content>
+    <ion-content overflow-scroll="true">
         <ion-list>
             <label ng-repeat="schedule in fullSchedule track by schedule.id" for="{{::schedule.name}}-{{$index}}">
                 <input type="checkbox" name="{{::schedule.name}}-{{$index}}" id="{{::schedule.name}}" class="description-toggle-input" autocomplete="off"/>

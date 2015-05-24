@@ -31,7 +31,7 @@
             <h2 class="title">{{::channel.name}}</h2>
             <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closePopover()'></button>
         </ion-header-bar>
-        <ion-content>
+        <ion-content overflow-scroll="true">
             <ion-list>
                 <ion-item class="item-btn-schedule text-center">
                     <p class="text-center" ng-click="viewSchedule()">
