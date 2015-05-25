@@ -58,9 +58,15 @@ body {
 }
 .channel-popover.popover .item-btn-schedule.item {
     padding: 1em;
+    background:darken($zaper-green, 20%);
     p {
-        color: darken($zaper-green, 30%);
-        font-weight: 400;
+        color: white;
+        font-weight: 500;
+        vertical-align: middle;
+        i {
+            font-size: 1.3em;
+            vertical-align: middle;
+        }
     }
 }
 .bnt-font-size {

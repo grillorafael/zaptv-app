@@ -8309,10 +8309,15 @@ body {
   border-radius: 5px; }
 
 .channel-popover.popover .item-btn-schedule.item {
-  padding: 1em; }
+  padding: 1em;
+  background: #78ac4a; }
   .channel-popover.popover .item-btn-schedule.item p {
-    color: #5f883b;
-    font-weight: 400; }
+    color: white;
+    font-weight: 500;
+    vertical-align: middle; }
+    .channel-popover.popover .item-btn-schedule.item p i {
+      font-size: 1.3em;
+      vertical-align: middle; }
 
 .bnt-font-size {
   font-size: 0.8em; }
