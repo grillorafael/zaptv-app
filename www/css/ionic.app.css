@@ -7577,6 +7577,8 @@ a.button {
     padding-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px; }
+    .chat-view .chat-message:first-child, .chat-view .chat-message-self:first-child {
+      margin-top: 15px; }
     .chat-view .chat-message.pending, .chat-view .chat-message-self.pending {
       opacity: 0.3; }
     .chat-view .chat-message .chat-link, .chat-view .chat-message-self .chat-link {
@@ -7703,7 +7705,6 @@ a.button {
     white-space: nowrap;
     width: 100%; }
   .chat-view .chat-message-self {
-    margin-bottom: 10px;
     position: relative;
     clear: both;
     margin-bottom: 5px; }

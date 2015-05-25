@@ -65,6 +65,9 @@
         padding-right: 10px;
         margin-top: 5px;
         margin-bottom: 5px;
+        &:first-child {
+            margin-top: 15px;
+        }
         &.pending {
             opacity: 0.3;
         }
@@ -222,7 +225,6 @@
         width: 100%;
     }
     .chat-message-self {
-        margin-bottom: 10px;
         position: relative;
         clear: both;
         margin-bottom: 5px;
