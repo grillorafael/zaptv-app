@@ -8387,6 +8387,9 @@ label.success i {
 .platform-ios .popover .scroll-content.has-header {
   margin-bottom: 0; }
 
+.platform-ios .action-sheet-option i {
+  display: none; }
+
 .channel-popover.popover .item {
   padding: 5px 10px; }
 
