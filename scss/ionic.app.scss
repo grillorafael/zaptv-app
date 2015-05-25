@@ -183,7 +183,7 @@ label {
     .action-sheet-group {
         padding: .2em .2em;
         border-radius: 5px;
-        
+
     }
 }
 
@@ -207,4 +207,10 @@ at the bottom as the textarea resizes */
 .footer-btn {
   position: absolute !important;
   bottom: 0;
+}
+
+.right-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }
