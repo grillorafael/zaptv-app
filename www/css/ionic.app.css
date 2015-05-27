@@ -7717,7 +7717,7 @@ a.button {
       -ms-flex-direction: column;
       flex-direction: column;
       color: white;
-      padding-top: 4%;
+      padding-top: 10px;
       float: right;
       padding-right: 5px;
       vertical-align: middle;
