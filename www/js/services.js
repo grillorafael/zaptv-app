@@ -93,6 +93,11 @@
             rndColor: function() {
                 return '#' + Math.floor(Math.random() * 16777215).toString(16);
             },
+            decodeStr: function(str) {
+                return str.replace(/&#(\d+);/g, function(match, dec) {
+                    return String.fromCharCode(dec);
+                });
+            },
             copyToClipboard: function(txt) {
                 if(!window.cordova) {
                     return;
@@ -371,6 +376,17 @@
             return deferred.promise;
         }
 
+        function toggleLike(channelId, geoState, scheduleName) {
+            var deferred = $q.defer();
+
+            $http.post(Auth.appendToken(Config.ENDPOINT + '/channel/' + channelId + '/favorite'), {
+                geo_state: geoState,
+                schedule_name: scheduleName
+            }).success(deferred.resolve).error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             list: list,
             getInfo: getInfo,
@@ -381,7 +397,8 @@
             fetchMore: fetchMore,
             saveChannelsCache: saveChannelsCache,
             getChannelsCache: getChannelsCache,
-            getFullSchedule: getFullSchedule
+            getFullSchedule: getFullSchedule,
+            toggleLike: toggleLike
         };
     }
 

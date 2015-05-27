@@ -45,14 +45,6 @@
       "id": "nl.x-services.plugins.socialsharing"
     },
     {
-      "locator": "https://github.com/grrrian/phonegap-parse-plugin",
-      "id": "com.parse.cordova.core.pushplugin",
-      "variables": {
-        "APP_ID": "RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q",
-        "CLIENT_KEY": "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl"
-      }
-    },
-    {
       "locator": "https://github.com/Wizcorp/phonegap-facebook-plugin.git",
       "id": "com.phonegap.plugins.facebookconnect",
       "variables": {
@@ -64,8 +56,12 @@
     "cordova-plugin-crosswalk-webview",
     "cordova-plugin-splashscreen",
     {
-      "locator": "https://github.com/whiteoctober/cordova-plugin-app-version.git",
-      "id": "uk.co.whiteoctober.cordova.appversion"
+      "locator": "https://github.com/avivais/phonegap-parse-plugin",
+      "id": "com.parse.cordova.core.pushplugin",
+      "variables": {
+        "APP_ID": "RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q",
+        "CLIENT_KEY": "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl"
+      }
     }
   ],
   "cordovaPlatforms": [

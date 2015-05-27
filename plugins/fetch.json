@@ -168,18 +168,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "com.parse.cordova.core.pushplugin": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/grrrian/phonegap-parse-plugin",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {
-            "APP_ID": "RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q",
-            "CLIENT_KEY": "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl"
-        }
-    },
     "uk.co.whiteoctober.cordova.appversion": {
         "source": {
             "type": "git",
@@ -188,5 +176,17 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.parse.cordova.core.pushplugin": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/avivais/phonegap-parse-plugin",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q",
+            "CLIENT_KEY": "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl"
+        }
     }
 }
