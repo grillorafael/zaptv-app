@@ -278,11 +278,12 @@
         };
 
         $scope.viewSchedule = function() {
-            if (!$scope.fullSchedule) {
-                loadFullSchedule();
-            }
-
-            $scope.viewScheduleModal.show();
+            $scope.popover.hide();
+            $scope.viewScheduleModal.show().then(function() {
+                if (!$scope.fullSchedule) {
+                    loadFullSchedule();
+                }
+            });
             Analytics.trackEvent('Chat', 'view_schedules');
         };
 
