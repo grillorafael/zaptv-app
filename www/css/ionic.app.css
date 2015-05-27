@@ -7594,6 +7594,7 @@ a.button {
       display: none; }
     .chat-view .chat-message.twaper .chat-bubble {
       max-width: 86%;
+      min-width: 80%;
       border-top-left-radius: 0;
       padding-bottom: 7px;
       box-shadow: inset 0px 7px 0px -5px #55acee; }
@@ -7809,6 +7810,22 @@ a.button {
     .chat-view .show-divider p::after {
       left: 100%; }
 
+.channel-popover.popover {
+  height: 370px; }
+  .channel-popover.popover .popover-info {
+    font-size: 0.8em;
+    margin-bottom: 2%; }
+  .channel-popover.popover .next-schedule-name {
+    font-size: 1em; }
+  .channel-popover.popover .next-schedule-image {
+    width: 100%; }
+  .channel-popover.popover .item {
+    padding: 10px; }
+  .channel-popover.popover .item .next-schedule-description {
+    white-space: initial; }
+  .channel-popover.popover .icon {
+    font-weight: bold; }
+
 .bar-footer {
   overflow: visible !important; }
 
@@ -7980,21 +7997,24 @@ input, textarea, .item-input, .item-input-wrapper {
       .channels-view .a-card .card-info .rate .rate-icon {
         color: gold; }
 
-.channel-popover.popover {
+.profile-image-popover {
+  width: 32px;
+  height: 32px;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  left: 11px;
+  position: absolute;
+  top: 10px;
+  border-radius: 20%; }
+
+.channels-popover.popover {
   height: 370px; }
-  .channel-popover.popover .popover-info {
-    font-size: 0.8em;
-    margin-bottom: 2%; }
-  .channel-popover.popover .next-schedule-name {
-    font-size: 1em; }
-  .channel-popover.popover .next-schedule-image {
-    width: 100%; }
-  .channel-popover.popover .item {
-    padding: 10px; }
-  .channel-popover.popover .item .next-schedule-description {
-    white-space: initial; }
-  .channel-popover.popover .icon {
-    font-weight: bold; }
+  .channels-popover.popover .ion-ios-star {
+    color: gold; }
 
 .score .icon {
   font-size: 2em;
@@ -8278,7 +8298,6 @@ loader svg {
   vertical-align: middle; }
 .full-schedule-view .schedule-item {
   max-height: 130px;
-  transition: all 0.2s;
   box-shadow: inset 0px -20px 10px -16px rgba(0, 0, 0, 0.2); }
 .full-schedule-view .schedule-date {
   font-style: italic; }

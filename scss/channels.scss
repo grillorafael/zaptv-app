@@ -7,6 +7,7 @@
     .rate-app-bar.slide-up {
         transform: translateY(0);
     }
+
     .rate-app-bar {
         position: absolute;
         right: 0;
@@ -138,28 +139,25 @@
         }
     }
 }
-.channel-popover.popover {
+
+.profile-image-popover {
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    display: flex;
+    left:11px;
+    position: absolute;
+    top: 10px;
+    border-radius: 20%;
+}
+
+.channels-popover.popover {
     height: 370px;
-    .popover-info {
-        font-size: 0.8em;
-        margin-bottom: 2%;
-    }
-    .next-schedule-name {
-        font-size: 1em;
-    }
-    .next-schedule-image {
-        width: 100%;
-    }
-    .item {
-        padding: 10px;
-    }
-    .item .next-schedule-description {
-        white-space: initial;
-    }
-    .icon {
-        font-weight: bold;
+    .ion-ios-star {
+        color: gold;
     }
 }
+
 .score {
     .icon {
         font-size: 2em;
