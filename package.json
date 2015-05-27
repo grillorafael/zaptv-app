@@ -65,7 +65,7 @@
     "cordova-plugin-splashscreen"
   ],
   "cordovaPlatforms": [
-    "android",
-    "ios"
+    "ios",
+    "android"
   ]
 }
