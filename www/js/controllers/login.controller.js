@@ -3,7 +3,7 @@
     angular.module('zaptv').controller('LoginCtrl', LoginCtrl);
 
     function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $ionicLoading,
-        $animationTrigger, $cordovaFacebook, $ionicModal, $localForage, Analytics, User, Auth, State) {
+        $animationTrigger, $cordovaFacebook, $ionicModal, $localForage, Analytics, User, Auth, State, ngNotify) {
         $scope.$on('$ionicView.enter', function() {
             $ionicPlatform.ready(function() {
                 Analytics.init();
@@ -114,11 +114,17 @@
                     historyRoot: true
                 });
 
+
                 $state.go('channels');
             }, function() {
                 // TODO Handle error
                 $ionicLoading.hide();
                 $animationTrigger.trigger('login-form', 'bounce-finite', $animationTrigger.FROM_START);
+                ngNotify.set('Seu usuário ou senha estão incorretos', {
+                    type: 'error',
+                    theme: 'pure',
+                    duration: 4000
+                });
             });
         };
     }
