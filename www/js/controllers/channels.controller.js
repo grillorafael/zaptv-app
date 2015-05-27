@@ -14,6 +14,7 @@
         $scope.isLoading = true;
         $scope.openChannels = [];
         $scope.privateChannels = [];
+        $scope.user = Auth.getUser();
 
         $ionicPopover.fromTemplateUrl('channels_popover', {
             scope: $scope

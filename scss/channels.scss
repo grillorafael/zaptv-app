@@ -7,6 +7,7 @@
     .rate-app-bar.slide-up {
         transform: translateY(0);
     }
+
     .rate-app-bar {
         position: absolute;
         right: 0;
@@ -138,8 +139,20 @@
         }
     }
 }
+
+.profile-image-popover {
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    display: flex;
+    left:11px;
+    position: absolute;
+    top: 10px;
+    border-radius: 20%;
+}
 .channel-popover.popover {
     height: 370px;
+
     .popover-info {
         font-size: 0.8em;
         margin-bottom: 2%;

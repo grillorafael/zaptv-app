@@ -51,7 +51,8 @@
         <ion-content overflow-scroll="true">
             <ion-list>
                 <ion-item class="item-icon-left" ng-click="goToProfile()">
-                    <i class="icon ion-person"></i> Meu Perfil
+                    <img ng-src="{{user.image_url}}" class="profile-image-popover" alt="profile image">
+                    Meu Perfil
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="refresh()">
                     <i class="icon ion-refresh"></i> Atualizar
