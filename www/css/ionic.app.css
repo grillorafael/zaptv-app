@@ -8283,14 +8283,14 @@ loader svg {
   border: 2px solid #78ac4a;
   padding: 0.1em 0.4em;
   border-radius: 5px;
-  transition: all 1s; }
+  transition: all .4s; }
 .full-schedule-view .favorited-button {
   background: #78ac4a;
   border: 2px solid #78ac4a;
   padding: 0.1em 0.4em;
   border-radius: 5px;
   color: white;
-  transition: all 1s; }
+  transition: all .4s; }
 .full-schedule-view .ion-ios-star-outline::before, .full-schedule-view .ion-ios-star::before {
   color: gold; }
 .full-schedule-view .ion-ios-checkmark-empty::before {
@@ -8334,7 +8334,7 @@ loader svg {
   display: none; }
 
 .ngn.ngn-info {
-  background-color: #0033CC; }
+  background-color: #0e90d2; }
 
 .ngn.ngn-error {
   background-color: #F44336; }
