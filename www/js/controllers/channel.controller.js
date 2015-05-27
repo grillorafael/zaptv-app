@@ -452,13 +452,11 @@
 
                 },
                 buttonClicked: function(index) {
+                    var decodedContent = Utils.decodeStr(message.content);
                     if (index === 0) {
-                        var decodedContent = message.content.replace(/&#(\d+);/g, function(match, dec) {
-                            return String.fromCharCode(dec);
-                        });
                         Utils.copyToClipboard(decodedContent);
                     } else if (index === 1) {
-                        var messageTxt = "@" + message.user.username + ": \"" + message.content + "\" - Assistindo " + $scope.schedule.name + " no zaper";
+                        var messageTxt = "@" + message.user.username + ": \"" + decodedContent + "\" - Assistindo " + $scope.schedule.name + " no zaper";
                         $cordovaSocialSharing
                             .share(messageTxt, "zaper", null, "http://zaper.com.br")
                             .then(function(result) {}, function(err) {});
@@ -479,7 +477,8 @@
 
         $scope.toggleFavorite = function (schedule) {
             schedule.is_favorite = !schedule.is_favorite;
-        }
+            Channel.toggleLike($scope.channel.id, State.get('geo_state'), schedule.name);
+        };
 
         function shareScore(fbToken, rating, id) {
             var graph = "me/video.rate?access_token=:token:&rating:scale=5&rating:value=:rating:&video=:video:";

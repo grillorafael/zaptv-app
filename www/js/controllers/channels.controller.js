@@ -189,7 +189,6 @@
         };
 
         $scope.logout = function() {
-            Auth.clear();
             $ionicHistory.nextViewOptions({
                 disableBack: true,
                 historyRoot: true

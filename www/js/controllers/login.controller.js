@@ -20,7 +20,22 @@
                 }
             });
 
-            $localForage.clear();
+            if(window.cordova) {
+                var user = Auth.getUser();
+                if(user && user.id) {
+                    parsePlugin.unsubscribe("user_" + user.id, function() {
+                        Auth.clear();
+                        $localForage.clear();
+                    }, function() {
+                        Auth.clear();
+                        $localForage.clear();
+                    });
+                }
+            }
+            else {
+                Auth.clear();
+                $localForage.clear();
+            }
         });
 
         $ionicModal.fromTemplateUrl('templates/set_username_modal.html', {
@@ -107,7 +122,7 @@
                 template: '<ion-spinner></ion-spinner>',
                 hideOnStateChange: true
             });
-            User.login(ll).then(function() {
+            User.login(ll).then(function(response) {
                 Analytics.trackEvent('Auth', 'login');
                 $ionicHistory.nextViewOptions({
                     disableBack: true,

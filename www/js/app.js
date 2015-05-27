@@ -13,7 +13,7 @@
             'ngNotify',
             'monospaced.elastic'
         ])
-        .run(function($ionicPlatform, $timeout, amMoment) {
+        .run(function($ionicPlatform, $timeout, $localForage, amMoment, Auth) {
             amMoment.changeLocale('pt-br');
             $ionicPlatform.ready(function() {
                 if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -32,9 +32,26 @@
 
                 if (window.parsePlugin) {
                     parsePlugin.initialize("RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q", "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl", function() {
-                        parsePlugin.getInstallationId(function(id) {}, function(e) {});
+                        try {
+                            var user = Auth.getUser();
+                            parsePlugin.subscribe("user_" + user.id, function() {
+
+                            });
+                        }
+                        catch(e) {
+
+                        }
                     }, function(e) {});
                 }
+
+                $localForage.getItem('config').then(function(cfg) {
+                    if(!cfg) {
+                        $localForage.setItem('config', {
+                            facebook_share_enable: true,
+                            twaper_enable: true
+                        });
+                    }
+                });
             });
         })
         .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider, $cordovaAppRateProvider) {
