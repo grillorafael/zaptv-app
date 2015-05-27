@@ -25,6 +25,14 @@
     "cordova-plugin-inappbrowser",
     "cordova-plugin-camera",
     {
+      "locator": "https://github.com/avivais/phonegap-parse-plugin",
+      "id": "com.parse.cordova.core.pushplugin",
+      "variables": {
+        "APP_ID": "RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q",
+        "CLIENT_KEY": "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl"
+      }
+    },
+    {
       "locator": "https://github.com/pushandplay/cordova-plugin-apprate.git",
       "id": "org.pushandplay.cordova.apprate"
     },
@@ -54,18 +62,10 @@
     },
     "cordova-plugin-whitelist",
     "cordova-plugin-crosswalk-webview",
-    "cordova-plugin-splashscreen",
-    {
-      "locator": "https://github.com/avivais/phonegap-parse-plugin",
-      "id": "com.parse.cordova.core.pushplugin",
-      "variables": {
-        "APP_ID": "RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q",
-        "CLIENT_KEY": "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl"
-      }
-    }
+    "cordova-plugin-splashscreen"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "android",
+    "ios"
   ]
 }

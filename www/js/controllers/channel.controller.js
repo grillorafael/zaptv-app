@@ -13,6 +13,7 @@
         var scroller;
         var txtInput; // ^^^
         var token = Auth.getToken();
+        var cfg;
 
         $scope.currentMessage = '';
         $scope.messages = [];
@@ -78,33 +79,43 @@
         });
 
         $scope.$on('$ionicView.enter', function() {
-            $scope.schedule = $scope.channel.current_schedule;
-            Channel.getMyLastScore($scope.channel.id, $scope.schedule.id).then(function(scoreResult) {
-                $scope.currentScore = scoreResult.score;
-            });
+            $localForage.getItem('config').then(function(config) {
+                if(!config) {
+                    config = {
+                        facebook_share_enable: true,
+                        twaper_enable: true
+                    };
+                }
 
-            Channel.lastMessages($scope.channel.id).then(function(messages) {
-                messages.forEach(function(m) {
-                    var content = m.content || m.payload.content;
-                    m.compiled_content = $filter('smartchat')(content);
-                    listenToMessage(m);
-                    m.created_at = moment(m.created_at).toDate();
+                cfg = config;
+                $scope.schedule = $scope.channel.current_schedule;
+                Channel.getMyLastScore($scope.channel.id, $scope.schedule.id).then(function(scoreResult) {
+                    $scope.currentScore = scoreResult.score;
                 });
-                $scope.messages = messages.reverse();
-                $timeout(function() {
-                    $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
-                    $scope.isLoadingChat = false;
-                }, 200);
-            }, function(e) {
-                // Não foi possível pegar as mensagens no server
+
+                Channel.lastMessages($scope.channel.id, config.twaper_enable).then(function(messages) {
+                    messages.forEach(function(m) {
+                        var content = m.content || m.payload.content;
+                        m.compiled_content = $filter('smartchat')(content);
+                        listenToMessage(m);
+                        m.created_at = moment(m.created_at).toDate();
+                    });
+                    $scope.messages = messages.reverse();
+                    $timeout(function() {
+                        $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
+                        $scope.isLoadingChat = false;
+                    }, 200);
+                }, function(e) {
+                    // Não foi possível pegar as mensagens no server
+                });
+
+                loadNextSchedule(true);
+
+                // ElasticTextArea stuff
+                footerBar = document.body.querySelector('.chat-view .bar-footer');
+                scroller = document.body.querySelector('.chat-view .scroll-content');
+                txtInput = angular.element(footerBar.querySelector('textarea'));
             });
-
-            loadNextSchedule(true);
-
-            // ElasticTextArea stuff
-            footerBar = document.body.querySelector('.chat-view .bar-footer');
-            scroller = document.body.querySelector('.chat-view .scroll-content');
-            txtInput = angular.element(footerBar.querySelector('textarea'));
         });
 
         $scope.$on('$ionicView.leave', function() {
@@ -136,6 +147,10 @@
         });
 
         Socket.onMessage(function(msg) {
+            if(!msg.content && !cfg.twaper_enable) {
+                return;
+            }
+
             var content = msg.content || msg.payload.content;
             msg.compiled_content = $filter('smartchat')(content);
             listenToMessage(msg);
@@ -294,7 +309,7 @@
             Analytics.trackEvent('Chat', 'load_before');
             $scope.fetchMoreMessagesError = false;
             var beforeId = $scope.messages[0].id;
-            Channel.fetchMore($scope.channel.id, beforeId).then(function(messages) {
+            Channel.fetchMore($scope.channel.id, beforeId, cfg.twaper_enable).then(function(messages) {
                     messages.forEach(function(m) {
                         listenToMessage(m);
                         var content = m.content || m.payload.content;

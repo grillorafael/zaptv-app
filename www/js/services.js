@@ -314,10 +314,10 @@
             return deferred.promise;
         }
 
-        function lastMessages(id) {
+        function lastMessages(id, enableTwaper) {
             var deferred = $q.defer();
 
-            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/last'))
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + id + '/last/' + enableTwaper))
                 .success(deferred.resolve)
                 .error(deferred.reject);
 
@@ -344,10 +344,10 @@
             return deferred.promise;
         }
 
-        function fetchMore(channelId, lastMessageId) {
+        function fetchMore(channelId, lastMessageId, enableTwaper) {
             var deferred = $q.defer();
 
-            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + channelId + '/more/' + lastMessageId))
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/channel/' + channelId + '/more/' + lastMessageId + '/' + enableTwaper))
                 .success(deferred.resolve)
                 .error(deferred.reject);
 

@@ -22,18 +22,16 @@
             var msg = '';
             if (!user || !$scope.form.registerForm.username.$valid) {
                 msg = 'Usuário necessita ter no mínimo 4 caracteres.';
-                console.log(user)
                 if (user && $scope.form.registerForm.username.$modelValue.length >= 4) {
-                    msg = 'Este usuário já existe. Escolha outro, por favor.'
+                    msg = 'Este usuário já existe. Escolha outro, por favor.';
                 }
             }
-
             else if(!$scope.form.registerForm.email.$valid) {
                 msg = 'O email necessita ser válido.';
             }
-            // else if($scope.form.registerForm.password.$modelValue.length < 4) {
-            //     msg = 'A senha necessita ser mais que 4 dígitos.';
-            // }
+            else if(!$scope.form.registerForm.password.$modelValue || $scope.form.registerForm.password.$modelValue.length < 4) {
+                msg = 'A senha necessita ser mais que 4 dígitos.';
+            }
 
             if ($scope.form.registerForm.$valid) {
                 User.register(user).then(function(tokenData) {

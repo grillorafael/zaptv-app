@@ -7,6 +7,7 @@
 
         $scope.data = {};
 
+
         $scope.$on('$ionicView.enter', function() {
             $ionicPlatform.ready(function() {
                 var user = Auth.getUser();
@@ -15,12 +16,26 @@
             });
         });
 
-        $localForage.getItem('facebook_share_enable').then(function(facebookShareEnable) {
-            $scope.data.facebookShareEnable = facebookShareEnable === undefined ? true : facebookShareEnable;
+        $localForage.getItem('config').then(function(config) {
+            if(!config) {
+                config = {
+                    facebook_share_enable: true,
+                    twaper_enable: true
+                };
+                $localForage.setItem('config', config);
+            }
+            $scope.data.facebookShareEnable = config.facebook_share_enable;
+            $scope.data.twaperEnable = config.twaper_enable;
         });
 
         $scope.$watch('data.facebookShareEnable', function(v) {
-            $localForage.setItem('facebook_share_enable', $scope.data.facebookShareEnable);
+            $scope.data.facebook_share_enable = v;
+            $localForage.setItem('config', $scope.data);
+        });
+
+        $scope.$watch('data.twaperEnable', function(v) {
+            $scope.data.twaper_enable = v;
+            $localForage.setItem('config', $scope.data);
         });
 
         User.me().then(function(user) {
