@@ -11,7 +11,19 @@
         .directive('username', username)
         .directive('message', message)
         .directive('preloadImage', preloadImage)
-        .directive('compile', compile);
+        .directive('compile', compile)
+        .directive('expandItem', expandItem);
+
+    function expandItem() {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                element.on('click', function() {
+                    element.parent('label').toggleClass('expanded');
+                })
+            }
+        };
+    }
 
     function compile($compile) {
         // directive factory creates a link function

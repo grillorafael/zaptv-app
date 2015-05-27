@@ -477,6 +477,10 @@
             $scope.popover.hide();
         };
 
+        $scope.toggleFavorite = function (schedule) {
+            schedule.is_favorite = !schedule.is_favorite;
+        }
+
         function shareScore(fbToken, rating, id) {
             var graph = "me/video.rate?access_token=:token:&rating:scale=5&rating:value=:rating:&video=:video:";
             graph = graph.replace(':token:', fbToken);

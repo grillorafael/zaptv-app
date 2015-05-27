@@ -12,15 +12,23 @@
     </ion-header-bar>
     <ion-content overflow-scroll="true">
         <ion-list>
-            <label ng-repeat="schedule in fullSchedule track by schedule.id" for="{{::schedule.name}}-{{$index}}">
-                <input type="checkbox" name="{{::schedule.name}}-{{$index}}" id="{{::schedule.name}}" class="description-toggle-input" autocomplete="off"/>
-                <ion-item class="schedule-item" >
-                    <div class="channel-image" style="background-image: url({{::schedule.image_url || 'img/placeholder.jpg'}});" ></div>
-                    <h2>{{::schedule.name}}</h2>
-                    <p class="schedule-date">{{::schedule.start_time | date:'dd/MM/yyyy HH:mm'}}</p>
-                    <p class="program-description" >{{::schedule.description}}</p>
-                </ion-item>
-            </label>
+            <ion-item class="schedule-item" ng-repeat="schedule in fullSchedule track by schedule.id" >
+                <div class="channel-image" style="background-image: url({{::schedule.image_url || 'img/placeholder.jpg'}});" ></div>
+                <h2>{{::schedule.name}}</h2>
+                <p class="schedule-date">{{::schedule.start_time | date:'dd/MM/yyyy HH:mm'}}</p>
+                <button class="icon-left" ng-click="toggleFavorite(schedule)" ng-class="{
+                                                    'ion-ios-star-outline': !schedule.is_favorite,
+                                                    'favorite-button': !schedule.is_favorite,
+                                                    'favorited-button': schedule.is_favorite,
+                                                    'ion-ios-star': schedule.is_favorite
+                                                }"> {{schedule.is_favorite ? 'Salvo' : 'Salvar nos favoritos'}}</button>
+                <label expand-item for="{{::schedule.name}}-{{$index}}" ng-if="schedule.description.length > 0 && schedule.name != schedule.description">
+                    <i class="icon ion-ios-arrow-down see-more-button"></i>
+                    <input type="checkbox" name="{{::schedule.name}}-{{$index}}" id="{{::schedule.name}}" class="description-toggle-input" autocomplete="off"/>
+                    <p class="program-description">{{::schedule.description}}</p>
+
+                </label>
+            </ion-item>
         </ion-list>
     </ion-content>
 </ion-modal-view>
