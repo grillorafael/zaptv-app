@@ -147,7 +147,7 @@
         });
 
         Socket.onMessage(function(msg) {
-            if(!msg.content && !cfg.twaper_enable) {
+            if(!cfg.twaper_enable && !msg.payload) {
                 return;
             }
 
