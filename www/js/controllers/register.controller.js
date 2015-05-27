@@ -41,6 +41,10 @@
                         historyRoot: true
                     });
 
+                    if(window.cordova) {
+                        parsePlugin.subscribe("user_" + tokenData.user.id, function() {});
+                    }
+
                     $state.go('channels');
                 }, function() {
                     // TODO Display email or username already taken
