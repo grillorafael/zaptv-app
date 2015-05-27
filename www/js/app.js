@@ -95,6 +95,15 @@
                         }
                     }
                 })
+                .state('favorites', {
+                    url: '/favorites',
+                    views: {
+                        'mainContent': {
+                            templateUrl: 'templates/favorites.html',
+                            controller: 'FavoritesCtrl'
+                        }
+                    }
+                })
                 .state('channels', {
                     url: '/channels',
                     views: {

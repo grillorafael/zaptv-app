@@ -43,7 +43,7 @@
 </ion-view>
 
 <script id="channels_popover" type="text/ng-template">
-    <ion-popover-view>
+    <ion-popover-view class="channels-popover">
         <ion-header-bar>
             <h1 class="title">Menu</h1>
             <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closePopover()'></button>
@@ -51,17 +51,21 @@
         <ion-content overflow-scroll="true">
             <ion-list>
                 <ion-item class="item-icon-left" ng-click="goToProfile()">
-                    <img ng-src="{{user.image_url}}" class="profile-image-popover" alt="profile image">
+                    <img ng-src="{{user.image_url}}" src="img/placeholder.jpg" class="profile-image-popover" alt="profile image">
                     Meu Perfil
                 </ion-item>
-                <ion-item class="item-icon-left" ng-click="refresh()">
-                    <i class="icon ion-refresh"></i> Atualizar
+                <ion-item class="item-icon-left" ng-click="goToFavorites()">
+                    <i class="icon ion-ios-star"></i> Programas favoritos
                 </ion-item>
+
                 <ion-item class="item-icon-left" ng-click="rateApp()">
                     <i class="icon ion-android-favorite salmon"></i> Avaliar app!
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="shareApp()">
                     <i class="icon ion-android-share-alt facebook"></i> Compartilhar app
+                </ion-item>
+                <ion-item class="item-icon-left" ng-click="refresh()">
+                    <i class="icon ion-android-refresh"></i> Atualizar
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="logout()">
                     <i class="icon ion-log-out"></i> Sair

@@ -150,29 +150,14 @@
     top: 10px;
     border-radius: 20%;
 }
-.channel-popover.popover {
-    height: 370px;
 
-    .popover-info {
-        font-size: 0.8em;
-        margin-bottom: 2%;
-    }
-    .next-schedule-name {
-        font-size: 1em;
-    }
-    .next-schedule-image {
-        width: 100%;
-    }
-    .item {
-        padding: 10px;
-    }
-    .item .next-schedule-description {
-        white-space: initial;
-    }
-    .icon {
-        font-weight: bold;
+.channels-popover.popover {
+    height: 370px;
+    .ion-ios-star {
+        color: gold;
     }
 }
+
 .score {
     .icon {
         font-size: 2em;

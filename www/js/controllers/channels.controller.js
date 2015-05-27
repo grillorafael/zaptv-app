@@ -156,6 +156,11 @@
             $state.go('profile');
         };
 
+        $scope.goToFavorites = function() {
+            $scope.popover.hide();
+            $state.go('favorites');
+        };
+
         $scope.refresh = function() {
             listChannels(geoState);
             $scope.popover.hide();
