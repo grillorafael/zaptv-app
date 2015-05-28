@@ -2,7 +2,7 @@
     <div class="img-box">
         <img preload-image="{{channel.current_schedule.image_url}}" class="channel-image">
     </div>
-    <div class="card-info" >
+    <div class="card-info" ng-click="joinChannel(channel)">
 
         <h2 class="channel-name"><img preload-image="{{::channel.image_url}}" class="channel-logo" alt="logo da emissora"> {{::channel.name}}</h2>
 
@@ -42,6 +42,6 @@
             }"></i>
             {{channel.current_schedule.current_score}}
         </p>
-        <button class="btn button-salmon" ng-click="joinChannel(channel)">Entrar no chat</button>
+        <button class="btn button-salmon">Entrar no chat</button>
     </div>
 </div>
