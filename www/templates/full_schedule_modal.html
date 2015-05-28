@@ -1,7 +1,7 @@
 <ion-modal-view class="full-schedule-view">
-    <ion-header-bar class="bar-salmon">
+    <ion-header-bar class="bar-salmon ">
         <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closeScheduleModal()'></button>
-        <div class="title header-item" >
+        <div class="title header-item">
             <span class="nav-bar-title">
                 <img ng-src="{{::channel.image_url}}" width="20" handle-load-error class="channel-logo" alt="logo da emissora">
                 <h2 class="channel-name">
@@ -9,14 +9,25 @@
                 </h2>
             </span>
         </div>
+
     </ion-header-bar>
     <ion-content overflow-scroll="true">
         <a ng-if='!isLoadingFullSchedule && fullScheduleError' ng-click='loadFullSchedule()' class="button button-clear icon ion-ios-refresh-empty refresher"></a>
         <ion-spinner ng-if='isLoadingFullSchedule'></ion-spinner>
+
         <ion-list ng-if='!isLoadingFullSchedule'>
-            <ion-item class="schedule-item" ng-repeat="schedule in fullSchedule track by schedule.id" >
-                <div class="channel-image" style="background-image: url({{::schedule.image_url || 'img/placeholder.jpg'}});" ></div>
-                <h2>{{::schedule.name}}</h2>
+            <div class="bar bar-header item-input-inset">
+                <label class="item-input-wrapper">
+                    <i class="icon ion-ios-search placeholder-icon"></i>
+                    <input type="text" placeholder="Search" ng-model="search">
+                </label>
+                <button class="button button-clear">
+                    Buscar
+                </button>
+            </div>
+            <ion-item class="schedule-item" ng-repeat="schedule in fullSchedule track by schedule.id">
+                <div class="channel-image" style="background-image: url({{::schedule.image_url || 'img/placeholder.jpg'}});"></div>
+                <h2>{{::schedule.name | filter:search}}</h2>
                 <p class="schedule-date">{{::schedule.start_time | date:'dd/MM/yyyy HH:mm'}}</p>
                 <button class="icon-left" ng-click="toggleFavorite(schedule)" ng-class="{
                                                     'ion-ios-star-outline': !schedule.is_favorite,
@@ -26,7 +37,7 @@
                                                 }"> {{schedule.is_favorite ? 'Salvo' : 'Salvar nos favoritos'}}</button>
                 <label expand-item for="{{::schedule.name}}-{{$index}}" ng-if="schedule.description.length > 0 && schedule.name != schedule.description">
                     <i class="icon ion-ios-arrow-down see-more-button"></i>
-                    <input type="checkbox" name="{{::schedule.name}}-{{$index}}" id="{{::schedule.name}}" class="description-toggle-input" autocomplete="off"/>
+                    <input type="checkbox" name="{{::schedule.name}}-{{$index}}" id="{{::schedule.name}}" class="description-toggle-input" autocomplete="off" />
                     <p class="program-description">{{::schedule.description}}</p>
 
                 </label>
