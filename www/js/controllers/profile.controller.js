@@ -108,35 +108,48 @@
                 sticky: true
             });
 
-            User.update({
-                birthdate: $scope.user.birthdate,
-                gender: $scope.user.gender,
-                name: $scope.user.name
-            }).then(function(u) {
-                if(changedImage) {
-                    User.changePicture({
-                        name: "image.png",
-                        data: $scope.user.image_url
-                    }).then(function() {
+            if(changedImage) {
+                User.changePicture({
+                    name: "image.png",
+                    data: $scope.user.image_url
+                }).then(function() {
+                    User.update({
+                        birthdate: $scope.user.birthdate,
+                        gender: $scope.user.gender,
+                        name: $scope.user.name
+                    }).then(function(u) {
+                        Analytics.trackEvent('Profile', 'update');
+                        $scope.user = u;
+
                         $timeout(function() {
                             ngNotify.dismiss();
                         }, 500);
-                        Analytics.trackEvent('Profile', 'update_image');
-                    }, function() {
+                        localStorage.setItem('user', JSON.stringify(u));
+                    }, function(e) {
                         showError();
                     });
-                }
-                else {
+                    Analytics.trackEvent('Profile', 'update_image');
+                }, function() {
+                    showError();
+                });
+            }
+            else {
+                User.update({
+                    birthdate: $scope.user.birthdate,
+                    gender: $scope.user.gender,
+                    name: $scope.user.name
+                }).then(function(u) {
+                    Analytics.trackEvent('Profile', 'update');
+                    $scope.user = u;
+
                     $timeout(function() {
                         ngNotify.dismiss();
                     }, 500);
-                    $scope.user = u;
                     localStorage.setItem('user', JSON.stringify(u));
-                }
-                Analytics.trackEvent('Profile', 'update');
-            }, function(e) {
-                showError();
-            });
+                }, function(e) {
+                    showError();
+                });
+            }
         };
     }
 })();
