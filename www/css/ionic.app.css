@@ -8289,13 +8289,13 @@ loader svg {
   margin-right: 15px; }
 .full-schedule-view .favorite-button {
   background: none;
-  border: 2px solid #78ac4a;
+  border: 1px solid #78ac4a;
   padding: 0.1em 0.4em;
   border-radius: 5px;
   transition: all .4s; }
 .full-schedule-view .favorited-button {
   background: #78ac4a;
-  border: 2px solid #78ac4a;
+  border: 1px solid #78ac4a;
   padding: 0.1em 0.4em;
   border-radius: 5px;
   color: white;

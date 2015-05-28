@@ -30,7 +30,7 @@
     }
     .favorite-button {
         background: none;
-        border: 2px solid darken($zaper-green, 20%);
+        border: 1px solid darken($zaper-green, 20%);
         padding: 0.1em 0.4em;
         border-radius: 5px;
         transition: all .4s;
@@ -38,7 +38,7 @@
     }
     .favorited-button {
         background: darken($zaper-green, 20%);
-        border: 2px solid darken($zaper-green, 20%);
+        border: 1px solid darken($zaper-green, 20%);
         padding: 0.1em 0.4em;
         border-radius: 5px;
         color: white;
