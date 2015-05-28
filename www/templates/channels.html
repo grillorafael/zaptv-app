@@ -50,7 +50,7 @@
         <ion-content overflow-scroll="true">
             <ion-list>
                 <ion-item class="item-icon-left" ng-click="goToProfile()">
-                    <img ng-src="{{user.image_url}}" src="img/placeholder.jpg" class="profile-image-popover" alt="profile image"> Meu Perfil
+                    <img preload-image="{{user.image_url}}" class="profile-image-popover" alt="profile image"> Meu Perfil
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="goToFavorites()">
                     <i class="icon ion-ios-star"></i> Programas favoritos

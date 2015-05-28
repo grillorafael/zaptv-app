@@ -33,6 +33,7 @@
                 Analytics.trackView($state.current.name);
             });
             Socket.leaveChannel();
+            $scope.user = Auth.getUser();
         });
 
 
