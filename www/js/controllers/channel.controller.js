@@ -58,6 +58,10 @@
             $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
         });
 
+        window.addEventListener('native.keyboardhide', function() {
+            $ionicScrollDelegate.$getByHandle('chat-scroll').resize();
+        });
+
         $ionicModal.fromTemplateUrl('templates/view_user_modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
