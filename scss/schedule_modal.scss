@@ -2,6 +2,25 @@
     ion-content {
         background: $salmon;
     }
+    .spinner svg {
+        stroke: #fff;
+        fill: #fff;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50%;
+        display: block;
+    }
+    .refresher {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50%;
+        color: #FFF;
+
+        &:before {
+            font-size: 3em;    
+        }
+    }
     .channel-logo {
         width: auto;
         height: 25px;
@@ -18,7 +37,7 @@
         vertical-align: middle;
     }
     .channel-image {
-        background-size:cover;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         display: inline-block;
@@ -33,8 +52,7 @@
         border: 1px solid darken($zaper-green, 20%);
         padding: 0.1em 0.4em;
         border-radius: 5px;
-        transition: all .4s;
-
+        transition: all 0.4s;
     }
     .favorited-button {
         background: darken($zaper-green, 20%);
@@ -42,19 +60,19 @@
         padding: 0.1em 0.4em;
         border-radius: 5px;
         color: white;
-        transition: all .4s;
+        transition: all 0.4s;
     }
-    .ion-ios-star-outline::before, .ion-ios-star::before {
+    .ion-ios-star-outline::before,
+    .ion-ios-star::before {
         color: gold;
     }
-
-    .ion-ios-checkmark-empty::before{
+    .ion-ios-checkmark-empty::before {
         font-size: 1.5em;
         vertical-align: middle;
     }
     .schedule-item {
         max-height: 130px;
-        box-shadow: inset 0px -20px 10px -16px rgba(0,0,0,0.2);
+        box-shadow: inset 0 -20px 10px -16px rgba(0,0,0,0.2);
     }
     .schedule-date {
         font-style: italic;
@@ -70,10 +88,11 @@
         color: $salmon;
         transition: all 0.4s;
     }
-    .item  {
+    .item {
         white-space: normal;
         vertical-align: top;
-        h2, p {
+        h2,
+        p {
             vertical-align: top;
         }
         .program-description {
@@ -84,7 +103,6 @@
             padding-right: 15px;
         }
     }
-
     .description-toggle-input {
         display: none;
     }
@@ -94,5 +112,4 @@
             transform: rotate(180deg);
         }
     }
-
 }

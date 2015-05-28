@@ -8264,6 +8264,21 @@ loader svg {
 
 .full-schedule-view ion-content {
   background: #dd5e6a; }
+.full-schedule-view .spinner svg {
+  stroke: #fff;
+  fill: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50%;
+  display: block; }
+.full-schedule-view .refresher {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50%;
+  color: #FFF; }
+  .full-schedule-view .refresher:before {
+    font-size: 3em; }
 .full-schedule-view .channel-logo {
   width: auto;
   height: 25px;
@@ -8292,14 +8307,14 @@ loader svg {
   border: 1px solid #78ac4a;
   padding: 0.1em 0.4em;
   border-radius: 5px;
-  transition: all .4s; }
+  transition: all 0.4s; }
 .full-schedule-view .favorited-button {
   background: #78ac4a;
   border: 1px solid #78ac4a;
   padding: 0.1em 0.4em;
   border-radius: 5px;
   color: white;
-  transition: all .4s; }
+  transition: all 0.4s; }
 .full-schedule-view .ion-ios-star-outline::before, .full-schedule-view .ion-ios-star::before {
   color: gold; }
 .full-schedule-view .ion-ios-checkmark-empty::before {
@@ -8307,7 +8322,7 @@ loader svg {
   vertical-align: middle; }
 .full-schedule-view .schedule-item {
   max-height: 130px;
-  box-shadow: inset 0px -20px 10px -16px rgba(0, 0, 0, 0.2); }
+  box-shadow: inset 0 -20px 10px -16px rgba(0, 0, 0, 0.2); }
 .full-schedule-view .schedule-date {
   font-style: italic; }
 .full-schedule-view .see-more-button {

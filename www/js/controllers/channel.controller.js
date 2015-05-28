@@ -18,7 +18,7 @@
         $scope.currentMessage = '';
         $scope.messages = [];
         // BEG Loaders
-        $scope.isLoadingFullSchedule = false;
+        $scope.isLoadingFullSchedule = true;
         $scope.isLoadingChat = true;
         $scope.isLoadingNextSchedule = true;
         // END Loaders
