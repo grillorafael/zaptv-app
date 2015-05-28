@@ -106,6 +106,11 @@ label {
     width: 300px;
 }
 
+.bar-salmon .button-clear.button-clear.ion-android-more-vertical {
+    font-size: 2em;
+    padding-right: 10px;
+}
+
 .white-spinner {
     stroke: white;
     fill: white;
@@ -151,9 +156,7 @@ label {
 .platform-ios .action-sheet-option i {
     display: none;
 }
-.channel-popover.popover .item {
-    padding: 5px 10px;
-}
+
 .card {
     box-shadow: none;
 }

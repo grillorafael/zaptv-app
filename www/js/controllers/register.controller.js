@@ -2,7 +2,7 @@
     'use strict';
     angular.module('zaptv').controller('RegisterCtrl', RegisterCtrl);
 
-    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicLoading, $ionicHistory, $animationTrigger, User, Auth, Analytics, ngNotify) {
+    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicModal, $ionicLoading, $ionicHistory, $animationTrigger, User, Auth, Analytics, ngNotify) {
         $scope.$on('$ionicView.enter', function() {
             $ionicPlatform.ready(function() {
                 Analytics.init();
@@ -13,6 +13,12 @@
         $scope.setForm = function(f) {
             $scope.form = f;
         };
+        $ionicModal.fromTemplateUrl('templates/set_username_modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
 
         $scope.register = function(user) {
             $ionicLoading.show({

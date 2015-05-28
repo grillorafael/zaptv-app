@@ -1,10 +1,10 @@
 <ion-view class="chat-view">
     <ion-nav-title class="chat-title">
-        {{schedule.name || "Carregando.."}} <br>
-        1 participante
+        {{schedule.name || "Carregando.."}}
+
     </ion-nav-title>
     <ion-nav-buttons side="right">
-        <button class="button button-clear ion-information-circled" ng-click="openPopover($event)"> Info</button>
+        <button class="button button-clear ion-android-more-vertical" ng-click="openPopover($event)"></button>
     </ion-nav-buttons>
     <ion-content delegate-handle="chat-scroll">
         <ion-refresher pulling-text="Carregando mais mensagens.." on-refresh="loadBefore()"></ion-refresher>
@@ -34,13 +34,18 @@
         </ion-header-bar>
         <ion-content overflow-scroll="true">
             <ion-list>
-                <ion-item class="item-btn-schedule text-center" ng-click="viewSchedule()">
-                    <p class="text-center">
+                <ion-item class="item item-icon-left favorite-program-popover" ng-click="toggleFavorite(schedule)" >
+                    <i class="icon ion-ios-star-outline" ng-class="{
+                                                        'ion-ios-star-outline': !schedule.is_favorite,
+                                                        'ion-ios-star': schedule.is_favorite
+                                                    }"></i> {{schedule.is_favorite ? 'Salvo' : 'Salvar programa nos favoritos?'}}
+                </ion-item>
+                <ion-item class="item item-icon-left" ng-click="viewSchedule()">
+                    <i class="icon ion-ios-calendar-outline"></i>
                         Ver progamação completa
-                    </p>
                 </ion-item>
                 <ion-item>
-                    <p class="popover-info">Avalie {{schedule.name}}:</p>
+                    <p class="popover-info">Avaliar {{schedule.name}}:</p>
                     <score ng-model="currentScore"></score>
                 </ion-item>
                 <div class="wrapper-next-schedule" ng-class='{
