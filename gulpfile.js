@@ -43,6 +43,7 @@ gulp.task('generate:cache', function () {
 });
 
 gulp.task('watch', function() {
+    gulp.start('generate:cache');
     gulp.watch('./www/templates/**/*.html', ['generate:cache']);
     gulp.watch(paths.sass, ['sass']);
 });
