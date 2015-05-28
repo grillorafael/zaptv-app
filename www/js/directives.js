@@ -9,6 +9,7 @@
         .directive('loader', loader)
         .directive('handleLoadError', handleLoadError)
         .directive('username', username)
+        .directive('email', email)
         .directive('message', message)
         .directive('preloadImage', preloadImage)
         .directive('compile', compile)
@@ -20,7 +21,7 @@
             link: function(scope, element, attrs) {
                 element.on('click', function() {
                     element.parent('label').toggleClass('expanded');
-                })
+                });
             }
         };
     }
@@ -107,6 +108,34 @@
             }
         };
     }
+
+    function email($q, User) {
+        return {
+            require: 'ngModel',
+            link: function(scope, elm, attrs, ctrl) {
+                ctrl.$asyncValidators.email = function(modelValue, viewValue) {
+                    if (ctrl.$isEmpty(modelValue)) {
+                        return $q.reject();
+                    }
+
+                    var def = $q.defer();
+
+                    User.checkEmail(modelValue).then(function(res) {
+                        if (res.has_email) {
+                            def.reject();
+                        } else {
+                            def.resolve();
+                        }
+                    }, function(e) {
+                        def.reject();
+                    });
+
+                    return def.promise;
+                };
+            }
+        };
+    }
+
 
     function username($q, User) {
         return {

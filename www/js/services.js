@@ -249,6 +249,16 @@
             return deferred.promise;
         }
 
+        function checkEmail(v) {
+            var deferred = $q.defer();
+
+            $http.get(Config.ENDPOINT + '/email/check/' + v)
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         function getUserInfo(id) {
             var deferred = $q.defer();
 
@@ -275,6 +285,7 @@
             changePicture: changePicture,
             me: me,
             checkUsername: checkUsername,
+            checkEmail: checkEmail,
             getUserInfo: getUserInfo,
             update: update
         };

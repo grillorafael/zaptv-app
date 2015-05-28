@@ -3,27 +3,25 @@
         <h1 class="text-center">
             <img src="img/logo.png" alt="" width="150">
         </h1>
-
-
         <div class="padding form-login">
             <div class="text-center">
                 <p>Ao registrar, você estará aceitando nosso <a href="">Termo de Serviço</a>.</p>
 
             </div>
-            <form name="registerForm" ng-init="setForm(this)" ng-submit="register(user)" class="list list-inset med-quick-anim" novalidate animation-handle="register-form">
-                <label class="item item-input bg-transparent" ng-class="{
+            <form name="registerForm" ng-init="setForm(this, 'register')" ng-submit="register(user)" class="list list-inset med-quick-anim" novalidate animation-handle="register-form">
+                <!-- <label class="item item-input bg-transparent" ng-class="{
                     'error': registerForm.username.$dirty && !registerForm.username.$valid,
                     'success': registerForm.username.$dirty && registerForm.username.$valid
                 }">
                     <i class="icon ion-ios-person-outline placeholder-icon"></i>
                     <input type="text" placeholder="Usuário" name="username" ng-model="user.username" username>
-                </label>
+                </label> -->
                 <label class="item item-input bg-transparent"ng-class="{
                     'error': registerForm.email.$dirty && !registerForm.email.$valid,
                     'success': registerForm.email.$dirty && registerForm.email.$valid
                 }">
                     <i class="icon ion-ios-email-outline placeholder-icon"></i>
-                    <input type="email" placeholder="Email" name="email" ng-model="user.email" required>
+                    <input type="email" placeholder="Email" name="email" ng-model="user.email" required email>
                 </label>
                 <label class="item item-input  bg-transparent" ng-class="{
                     'error': registerForm.password.$dirty && !registerForm.password.$valid,

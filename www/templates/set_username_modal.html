@@ -8,7 +8,7 @@
         </h1>
         <div class="padding form-login">
             <p class="text-center">Seu apelido será sua identidade!</p>
-            <form name="usernameForm" ng-init="setForm(this)" ng-submit="setUsername(user)" class="list list-inset med-quick-anim" novalidate animation-handle="username-form">
+            <form name="usernameForm" ng-init="setForm(this, 'user')" ng-submit="setUsername(user)" class="list list-inset med-quick-anim" novalidate animation-handle="username-form">
                 <label class="item item-input bg-transparent bradius-bottom" ng-class="{
                     'error': usernameForm.username.$dirty && !usernameForm.username.$valid,
                     'success': usernameForm.username.$dirty && usernameForm.username.$valid
@@ -16,7 +16,7 @@
                     <i class="icon ion-ios-at-outline placeholder-icon"></i>
                     <input type="text" placeholder="apelido" name="username" ng-model="user.username" username>
                 </label>
-                <label ng-if='!hasEmail' class="item item-input bg-transparent bradius-bottom" ng-class="{
+                <label ng-if='!hasEmail && !hideEmailFieldFromModal' class="item item-input bg-transparent bradius-bottom" ng-class="{
                     'error': usernameForm.email.$dirty && !usernameForm.email.$valid,
                     'success': usernameForm.email.$dirty && usernameForm.email.$valid
                 }">
