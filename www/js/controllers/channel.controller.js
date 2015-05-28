@@ -311,6 +311,7 @@
             $scope.fetchMoreMessagesError = false;
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId, cfg.twaper_enable).then(function(messages) {
+                if(messages.length > 0) {
                     messages.forEach(function(m) {
                         listenToMessage(m);
                         var content = m.content || m.payload.content;
@@ -330,13 +331,14 @@
                         }
                     });
                     $scope.messages = messages.concat($scope.messages);
-                }, function() {
-                    // TODO handle this shiet
-                    $scope.fetchMoreMessagesError = true;
-                })
-                .finally(function() {
-                    $scope.$broadcast('scroll.refreshComplete');
-                });
+                }
+            }, function() {
+                // TODO handle this shiet
+                $scope.fetchMoreMessagesError = true;
+            })
+            .finally(function() {
+                $scope.$broadcast('scroll.refreshComplete');
+            });
         };
 
         $scope.getUserColor = function(id) {
