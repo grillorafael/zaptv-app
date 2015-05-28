@@ -315,6 +315,15 @@
             $scope.fetchMoreMessagesError = false;
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId, cfg.twaper_enable).then(function(messages) {
+                // Removes older dividers
+                for(var i = ($scope.messages.length - 1); i >= 0; i -= 20) {
+                    var m = $scope.messages[i];
+                    if(m.id === -1) {
+                        $scope.messages.splice(i, 1);
+                        break;
+                    }
+                }
+
                 if(messages.length > 0) {
                     messages.forEach(function(m) {
                         listenToMessage(m);
@@ -325,7 +334,7 @@
                     messages = messages.reverse();
                     $scope.messages.unshift({
                         created_at: new Date(),
-                        id: 0,
+                        id: -1,
                         user: {
                             id: 1
                         },
