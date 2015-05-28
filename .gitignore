@@ -6,3 +6,4 @@ platforms/*
 !platforms/platforms.json
 plugins/*
 !plugins/fetch.json
+www/js/templates.js

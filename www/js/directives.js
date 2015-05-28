@@ -54,6 +54,18 @@
             link: function(scope, el, attrs) {
                 el[0].src = 'img/placeholder.jpg';
 
+                scope.$watch('attrs.preloadImage', function(nv) {
+                    console.log('watch');
+                    console.log(nv);
+                    console.log(attrs.preloadImage);
+                });
+
+                attrs.$observe('preloadImage', function(nv){
+                    console.log('observe');
+                    console.log(nv);
+                    console.log(attrs.preloadImage);
+                });
+
                 var url = attrs.preloadImage;
                 var img = new Image();
                 img.onload = function() {
