@@ -227,3 +227,16 @@ at the bottom as the textarea resizes */
     right: 5px;
     top: 5px;
 }
+
+
+.platform-android .popover .item {
+    border: 1px solid #ddd;
+}
+
+.popover .item:first-child {
+    border-top: 0;
+}
+
+.popover .item:last-child {
+    border-bottom: 0;
+}
