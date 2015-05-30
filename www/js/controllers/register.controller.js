@@ -41,9 +41,6 @@
                         historyRoot: true
                     });
 
-                    if(window.cordova) {
-                        parsePlugin.subscribe("user_" + tokenData.user.id, function() {});
-                    }
                     $scope.modal.hide();
                     $state.go('channels');
                 }, function() {

@@ -31,6 +31,15 @@
             $ionicPlatform.ready(function() {
                 Analytics.init(userId);
                 Analytics.trackView($state.current.name);
+
+                if (window.parsePlugin) {
+                    parsePlugin.initialize("RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q", "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl", function() {
+                        try {
+                            parsePlugin.subscribe("user_" + $scope.user.id, function() {});
+                        }
+                        catch(e) {}
+                    }, function(e) {});
+                }
             });
             Socket.leaveChannel();
             $scope.user = Auth.getUser();

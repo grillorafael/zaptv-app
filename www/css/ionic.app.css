@@ -8308,13 +8308,9 @@ loader svg {
   padding: 0.1em 0.4em;
   border-radius: 5px;
   transition: all 0.4s; }
-.full-schedule-view .favorited-button {
-  background: #78ac4a;
-  border: 1px solid #78ac4a;
-  padding: 0.1em 0.4em;
-  border-radius: 5px;
-  color: white;
-  transition: all 0.4s; }
+  .full-schedule-view .favorite-button.favorited-button {
+    background: #78ac4a;
+    color: white; }
 .full-schedule-view .ion-ios-star-outline::before, .full-schedule-view .ion-ios-star::before {
   color: gold; }
 .full-schedule-view .ion-ios-checkmark-empty::before {

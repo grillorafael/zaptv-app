@@ -80,8 +80,43 @@
             }).then(function(imageData) {
                 changedImage = true;
                 $scope.user.image_url = "data:image/jpeg;base64," + imageData;
+
+                ngNotify.set('Atualizando...', {
+                    position: 'bottom',
+                    sticky: true
+                });
+
+                User.changePicture({
+                    name: "image.png",
+                    data: $scope.user.image_url
+                }).then(function(u) {
+                    Analytics.trackEvent('Profile', 'update_image');
+                    localStorage.setItem('user', JSON.stringify(u));
+
+                    $timeout(function() {
+                        ngNotify.dismiss();
+                    }, 500);
+                }, function() {
+                    $timeout(function() {
+                        ngNotify.dismiss();
+                        showError();
+                    }, 500);
+                });
             }, function(err) {
                 // error
+            });
+        };
+
+        $scope.changeProfile = function() {
+            User.update({
+                birthdate: $scope.user.birthdate,
+                gender: $scope.user.gender,
+                name: $scope.user.name
+            }).then(function(u) {
+                Analytics.trackEvent('Profile', 'update');
+                localStorage.setItem('user', JSON.stringify(u));
+            }, function(e) {
+                showError();
             });
         };
 
@@ -98,58 +133,9 @@
             }).then(function(date) {
                 if (date) {
                     $scope.user.birthdate = date.toISOString().split('T')[0];
+                    $scope.changeProfile();
                 }
             });
-        };
-
-        $scope.update = function() {
-            ngNotify.set('Atualizando...', {
-                position: 'bottom',
-                sticky: true
-            });
-
-            if(changedImage) {
-                User.changePicture({
-                    name: "image.png",
-                    data: $scope.user.image_url
-                }).then(function() {
-                    User.update({
-                        birthdate: $scope.user.birthdate,
-                        gender: $scope.user.gender,
-                        name: $scope.user.name
-                    }).then(function(u) {
-                        Analytics.trackEvent('Profile', 'update');
-                        $scope.user = u;
-
-                        $timeout(function() {
-                            ngNotify.dismiss();
-                        }, 500);
-                        localStorage.setItem('user', JSON.stringify(u));
-                    }, function(e) {
-                        showError();
-                    });
-                    Analytics.trackEvent('Profile', 'update_image');
-                }, function() {
-                    showError();
-                });
-            }
-            else {
-                User.update({
-                    birthdate: $scope.user.birthdate,
-                    gender: $scope.user.gender,
-                    name: $scope.user.name
-                }).then(function(u) {
-                    Analytics.trackEvent('Profile', 'update');
-                    $scope.user = u;
-
-                    $timeout(function() {
-                        ngNotify.dismiss();
-                    }, 500);
-                    localStorage.setItem('user', JSON.stringify(u));
-                }, function(e) {
-                    showError();
-                });
-            }
         };
     }
 })();

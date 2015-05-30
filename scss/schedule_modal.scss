@@ -18,7 +18,7 @@
         color: #FFF;
 
         &:before {
-            font-size: 3em;    
+            font-size: 3em;
         }
     }
     .channel-logo {
@@ -53,14 +53,10 @@
         padding: 0.1em 0.4em;
         border-radius: 5px;
         transition: all 0.4s;
-    }
-    .favorited-button {
-        background: darken($zaper-green, 20%);
-        border: 1px solid darken($zaper-green, 20%);
-        padding: 0.1em 0.4em;
-        border-radius: 5px;
-        color: white;
-        transition: all 0.4s;
+        &.favorited-button {
+            background: darken($zaper-green, 20%);
+            color: white;
+        }
     }
     .ion-ios-star-outline::before,
     .ion-ios-star::before {

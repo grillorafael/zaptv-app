@@ -29,21 +29,6 @@
                     }
                 }, 100);
 
-
-                if (window.parsePlugin) {
-                    parsePlugin.initialize("RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q", "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl", function() {
-                        try {
-                            var user = Auth.getUser();
-                            parsePlugin.subscribe("user_" + user.id, function() {
-
-                            });
-                        }
-                        catch(e) {
-
-                        }
-                    }, function(e) {});
-                }
-
                 $localForage.getItem('config').then(function(cfg) {
                     if(!cfg) {
                         $localForage.setItem('config', {

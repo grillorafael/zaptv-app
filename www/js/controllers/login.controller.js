@@ -17,25 +17,28 @@
                         }, function(error) {
                             // error
                         });
+
+                    var user = Auth.getUser();
+                    if (user && user.id) {
+                        parsePlugin.getInstallationId(function(id) {
+                            parsePlugin.unsubscribe("user_" + user.id, function() {
+                                Auth.clear();
+                                $localForage.clear();
+                            }, function() {
+                                Auth.clear();
+                                $localForage.clear();
+                            });
+                        }, function(e) {
+                            Auth.clear();
+                            $localForage.clear();
+                        });
+                    }
+                }
+                else {
+                    Auth.clear();
+                    $localForage.clear();
                 }
             });
-
-            if(window.cordova) {
-                var user = Auth.getUser();
-                if(user && user.id) {
-                    parsePlugin.unsubscribe("user_" + user.id, function() {
-                        Auth.clear();
-                        $localForage.clear();
-                    }, function() {
-                        Auth.clear();
-                        $localForage.clear();
-                    });
-                }
-            }
-            else {
-                Auth.clear();
-                $localForage.clear();
-            }
         });
 
         $ionicModal.fromTemplateUrl('templates/set_username_modal.html', {
@@ -57,10 +60,6 @@
                         disableBack: true,
                         historyRoot: true
                     });
-
-                    if(window.cordova) {
-                        parsePlugin.subscribe("user_" + tokenData.user.id, function() {});
-                    }
 
                     $scope.modal.hide();
                     $state.go('channels');
@@ -132,10 +131,6 @@
                     disableBack: true,
                     historyRoot: true
                 });
-
-                if(window.cordova) {
-                    parsePlugin.subscribe("user_" + response.user.id, function() {});
-                }
 
                 $state.go('channels');
             }, function() {

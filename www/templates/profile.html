@@ -15,7 +15,7 @@
                 </div>
                 <label class="item item-input">
                     <i class="icon ion-ios-person-outline placeholder-icon"></i>
-                    <input type="text" ng-model="user.name" placeholder="Digite o seu nome">
+                    <input type="text" ng-model="user.name" placeholder="Digite o seu nome" ng-change='changeProfile()'>
                 </label>
                 <label class="item item-input" ng-click='pickDate()'>
                     <i class="icon ion-ios-calendar-outline placeholder-icon"></i>
@@ -23,7 +23,7 @@
                 </label>
                 <label class="item item-input item-select">
                     <i class="icon ion-ios-people-outline placeholder-icon"></i>
-                    <select ng-model='user.gender' ng-options='gender.id as gender.label for gender in genders'></select>
+                    <select ng-model='user.gender' ng-options='gender.id as gender.label for gender in genders' ng-change='changeProfile()'></select>
                 </label>
                 <div class="item item-divider">
                     Configurações
@@ -47,9 +47,6 @@
                     </label>
                 </label>
             </div>
-        </div>
-        <div class="padding">
-            <button class="button button-block button-confirm padding" ng-click="update()">Salvar alterações</button>
         </div>
     </ion-content>
 </ion-view>
