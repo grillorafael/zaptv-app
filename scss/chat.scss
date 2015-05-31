@@ -153,8 +153,6 @@
             }
             i.ion-ios-heart {
                 color: #EF7673;
-                animation-name: popout;
-                animation-duration: .3s;
             }
             p {
                 font-size: 0.8em;
@@ -250,8 +248,6 @@
             }
             i.ion-ios-heart {
                 color: #EF7673;
-                animation-name: popout;
-                animation-duration: .3s;
             }
             p {
                 font-size: 0.8em;
@@ -357,17 +353,7 @@
 }
 
 
-@keyframes popout {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.6);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
+
 
 .channel-popover.popover {
     height: 370px;

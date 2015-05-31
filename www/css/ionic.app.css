@@ -7459,6 +7459,32 @@ a.button {
   opacity: 0;
   transition-duration: 0s; }
 
+@-webkit-keyframes popout {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+
+  50% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6); }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+@keyframes popout {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+
+  50% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6); }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
 @-webkit-keyframes rotate-360 {
   from {
     -webkit-transform: rotate(0deg);
@@ -7644,11 +7670,7 @@ a.button {
         font-weight: bold;
         color: #EF7673; }
       .chat-view .chat-message .like-button i.ion-ios-heart {
-        color: #EF7673;
-        -webkit-animation-name: popout;
-        animation-name: popout;
-        -webkit-animation-duration: .3s;
-        animation-duration: .3s; }
+        color: #EF7673; }
       .chat-view .chat-message .like-button p {
         font-size: 0.8em;
         line-height: 0.8;
@@ -7733,11 +7755,7 @@ a.button {
         font-weight: bold;
         color: #EF7673; }
       .chat-view .chat-message-self .like-button i.ion-ios-heart {
-        color: #EF7673;
-        -webkit-animation-name: popout;
-        animation-name: popout;
-        -webkit-animation-duration: .3s;
-        animation-duration: .3s; }
+        color: #EF7673; }
       .chat-view .chat-message-self .like-button p {
         font-size: 0.8em;
         line-height: 0.8;
@@ -7817,19 +7835,6 @@ a.button {
       right: 100%; }
     .chat-view .show-divider p::after {
       left: 100%; }
-
-@-webkit-keyframes popout {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1); }
-
-  50% {
-    -webkit-transform: scale(1.6);
-    transform: scale(1.6); }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1); } }
 
 @keyframes popout {
   0% {
