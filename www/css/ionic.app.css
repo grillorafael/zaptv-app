@@ -7644,7 +7644,11 @@ a.button {
         font-weight: bold;
         color: #EF7673; }
       .chat-view .chat-message .like-button i.ion-ios-heart {
-        color: #EF7673; }
+        color: #EF7673;
+        -webkit-animation-name: popout;
+        animation-name: popout;
+        -webkit-animation-duration: .3s;
+        animation-duration: .3s; }
       .chat-view .chat-message .like-button p {
         font-size: 0.8em;
         line-height: 0.8;
