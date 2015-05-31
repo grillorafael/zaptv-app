@@ -19,7 +19,7 @@
         <p compile="::message.compiled_content"></p>
         <span class="timestamp" >{{::message.created_at | date:'HH:mm'}}</span>
     </div>
-    <div class="like-button" ng-click='toggleLike(message)'>
+    <div class="like-button med-quick-anim" ng-click='toggleLike(message)' animation-handle='message-{{message.id}}'>
         <i class="icon" ng-class='{
         "ion-ios-heart-outline": !message.liked,
         "ion-ios-heart": message.liked

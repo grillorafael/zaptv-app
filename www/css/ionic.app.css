@@ -7459,6 +7459,7 @@ a.button {
   opacity: 0;
   transition-duration: 0s; }
 
+/* Animation Definitions */
 @-webkit-keyframes popout {
   0% {
     -webkit-transform: scale(1);
@@ -7471,7 +7472,6 @@ a.button {
   100% {
     -webkit-transform: scale(1);
     transform: scale(1); } }
-
 @keyframes popout {
   0% {
     -webkit-transform: scale(1);
@@ -7529,6 +7529,11 @@ a.button {
     -webkit-transform: translateX(-15px);
     transform: translateX(-15px); } }
 
+/* Animation Classes */
+.popout {
+  -webkit-animation: popout 1s;
+  animation: popout 1s; }
+
 .rotate-360-continuous {
   -webkit-animation: rotate-360 1s infinite;
   animation: rotate-360 1s infinite; }
@@ -7537,13 +7542,14 @@ a.button {
   -webkit-animation: bounce 1s;
   animation: bounce 1s; }
 
+/* Animation TEMPO */
 .quick-anim {
   -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s; }
 
 .med-quick-anim {
-  -webkit-animation-duration: 0.6s;
-  animation-duration: 0.6s; }
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s; }
 
 .med-anim {
   -webkit-animation-duration: 1s;
@@ -7835,19 +7841,6 @@ a.button {
       right: 100%; }
     .chat-view .show-divider p::after {
       left: 100%; }
-
-@keyframes popout {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1); }
-
-  50% {
-    -webkit-transform: scale(1.6);
-    transform: scale(1.6); }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1); } }
 
 .channel-popover.popover {
   height: 370px;

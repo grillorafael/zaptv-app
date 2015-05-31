@@ -5,7 +5,7 @@
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaFacebook,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $ionicPopup, $cordovaDevice,
         $ionicPlatform, $ionicModal, $state, $localForage, $cordovaSocialSharing, $location, $filter,
-        Utils, Analytics, moment, State, Socket, Channel, Auth) {
+        $animationTrigger, Utils, Analytics, moment, State, Socket, Channel, Auth) {
 
         var userColors = {};
         var shareWithFacebook = false;
@@ -297,6 +297,12 @@
 
         $scope.toggleLike = function(message) {
             message.liked = !message.liked;
+            $animationTrigger.trigger(
+                'message-' + message.id,
+                'popout',
+                message.liked ? $animationTrigger.START : $animationTrigger.STOP
+            );
+
             if (message.liked) {
                 message.count_likes++;
             } else {
