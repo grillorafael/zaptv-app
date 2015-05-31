@@ -7,14 +7,14 @@
         <h2 class="channel-name"><img preload-image="{{::channel.image_url}}" class="channel-logo" alt="logo da emissora"> {{::channel.name}}</h2>
 
         <p class="channel-info">{{channel.current_schedule.name}}</p>
-        <p class="channel-info">
+        <!-- <p class="channel-info">
             <ng-pluralize count="channelStatus[channel.id] || 0" when="{
                     '0': 'Nenhum participante',
                     'one': '1 participante',
                     'other': '{} participantes'
              }"></ng-pluralize>
-        </p>
-        <p class="rate channel-info">
+        </p> -->
+        <!-- <p class="rate channel-info">
             <i class="rate-icon" ng-class="{
                 'ion-ios-star': channel.current_schedule.current_score >= 1,
                 'ion-ios-star-half': (channel.current_schedule.current_score < 1 && channel.current_schedule.current_score > 0),
@@ -41,7 +41,7 @@
                 'ion-ios-star-outline': channel.current_schedule.current_score <= 4
             }"></i>
             {{channel.current_schedule.current_score}}
-        </p>
+        </p> -->
         <button class="btn button-salmon">Entrar no chat</button>
     </div>
 </div>

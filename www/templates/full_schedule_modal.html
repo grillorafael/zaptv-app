@@ -29,7 +29,7 @@
                                                     'ion-ios-star-outline': !schedule.is_favorite,
                                                     'favorited-button': schedule.is_favorite,
                                                     'ion-ios-star': schedule.is_favorite
-                                                }"> {{schedule.is_favorite ? 'Salvo' : 'Salvar nos favoritos'}}</button>
+                                                }"> {{schedule.is_favorite ? 'Favorito' : 'Favoritar programa'}}</button>
                 <label expand-item for="{{::schedule.name}}-{{$index}}" ng-if="schedule.description.length > 0 && schedule.name != schedule.description">
                     <i class="icon ion-ios-arrow-down see-more-button"></i>
                     <input type="checkbox" name="{{::schedule.name}}-{{$index}}" id="{{::schedule.name}}" class="description-toggle-input" autocomplete="off" />
