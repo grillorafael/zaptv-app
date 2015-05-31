@@ -30,7 +30,7 @@
         $scope.setUsername = function(u) {
             if ($scope.form.user.usernameForm.$valid) {
                 $ionicLoading.show({
-                    template: 'Carregando...',
+                    template: '<ion-spinner></ion-spinner>',
                     hideOnStateChange: true
                 });
 
