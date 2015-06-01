@@ -30,7 +30,7 @@
                 }, 100);
 
                 $localForage.getItem('config').then(function(cfg) {
-                    if(!cfg) {
+                    if (!cfg) {
                         $localForage.setItem('config', {
                             facebook_share_enable: true,
                             twaper_enable: true
@@ -40,9 +40,6 @@
             });
         })
         .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider, $cordovaAppRateProvider) {
-            if (ionic.Platform.isAndroid()) {
-                // $ionicConfigProvider.scrolling.jsScrolling(false);
-            }
             if (window.cordova !== undefined) {
                 document.addEventListener("deviceready", function() {
                     $cordovaAppRateProvider.setPreferences({
