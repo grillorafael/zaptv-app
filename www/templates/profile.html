@@ -2,7 +2,7 @@
     <ion-content class="has-header">
         <div class="top-container">
             <div class="img-container" ng-click='changeImage()'>
-                <img handle-load-error src="img/placeholder.jpg" ng-src="{{user.image_url}}" alt="" class="full-image profile-image">
+                <div handle-load-error style="background-image: url({{user.image_url || 'img/placeholder.jpg'}})" class="full-image profile-image"></div>
             </div>
             <div class="text-center">
                 <h4 class="username">{{user.username}}</h4>

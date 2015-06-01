@@ -5,7 +5,7 @@
     'pending': message.id == undefined
 }"  id="message-{{message.id}}">
     <div class="avatar">
-        <img ng-click='viewUser(message.user)' class="profile-image" preload-image="{{message.user.image_url}}" alt="foto perfil do usuario">
+        <div ng-click='viewUser(message.user)' class="profile-image" style="background-image: url({{message.user.image_url || 'img/placeholder.jpg'}})" alt="foto perfil do usuario"></div>
     </div>
     <div on-hold='messageOptions(message)' ng-class="{
         'chat-bubble': message.user.id != user.id,
@@ -19,8 +19,9 @@
         <p compile="::message.compiled_content"></p>
         <span class="timestamp" >{{::message.created_at | date:'HH:mm'}}</span>
     </div>
-    <div class="like-button med-quick-anim" ng-click='toggleLike(message)' animation-handle='message-{{message.id}}'>
-        <i class="icon" ng-class='{
+    <div class="like-button" ng-click='toggleLike(message)' >
+        <i class="icon med-quick-anim" animation-handle='message-{{message.id}}'
+        ng-class='{
         "ion-ios-heart-outline": !message.liked,
         "ion-ios-heart": message.liked
     }'></i>
