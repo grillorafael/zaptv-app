@@ -8392,13 +8392,47 @@ loader svg {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg); }
 
+@-webkit-keyframes swipeOutList {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0); }
+
+  50% {
+    opacity: 1;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%); }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@keyframes swipeOutList {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0); }
+
+  50% {
+    opacity: 1;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%); }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
 .favorites-view {
-  background: #F5F5F5; }
+  background: #f5f5f5; }
   .favorites-view .ion-ios-gear {
     padding-right: 300px; }
   .favorites-view .item {
-    padding: 0;
-    transition: all .7s ease-in-out; }
+    padding: 0; }
+    .favorites-view .item.ng-leave {
+      -webkit-animation: swipeOutList .4s forwards linear;
+      animation: swipeOutList .4s forwards linear; }
   .favorites-view .show-image {
     width: 140px;
     height: 60px;
@@ -8407,7 +8441,7 @@ loader svg {
     background-position: center center;
     background-size: cover; }
   .favorites-view .show-info {
-    padding: .3em; }
+    padding: 0.3em; }
     .favorites-view .show-info a {
       position: absolute;
       top: 5px;
@@ -8416,16 +8450,16 @@ loader svg {
       font-size: 23px; }
     .favorites-view .show-info .remove-fav {
       border: 0;
-      padding: .2em;
+      padding: 0.2em;
       position: absolute;
       top: 0;
       right: 0;
       height: 100%;
-      color: #F44336;
+      color: #f44336;
       background: white;
       font-size: 2em;
-      transition: -webkit-transform .4s ease-in-out;
-      transition: transform .4s ease-in-out; }
+      transition: -webkit-transform 0.4s ease-in-out;
+      transition: transform 0.4s ease-in-out; }
     .favorites-view .show-info .button.icon-left:before, .favorites-view .show-info .button.icon-right:before, .favorites-view .show-info .button.icon:before {
       font-size: 35px; }
   .favorites-view h2.title {
@@ -8439,7 +8473,7 @@ loader svg {
       color: #f8dcdf; }
     .favorites-view .no-favs-text h5 {
       width: 100%;
-      color: #949DD3; }
+      color: #949dd3; }
 
 .slideRight {
   -webkit-transform: translateX(100px);
@@ -8448,10 +8482,6 @@ loader svg {
 .slideLeft {
   -webkit-transform: translateX(0);
   transform: translateX(0); }
-
-.slideRightDelete {
-  -webkit-transform: translateX(400px);
-  transform: translateX(400px); }
 
 .bar-salmon .button-clear.button-clear.ion-plus-round {
   padding-right: 20px;

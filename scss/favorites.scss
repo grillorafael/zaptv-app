@@ -1,16 +1,28 @@
-.favorites-view {
-    background: #F5F5F5;
-
-    ion-item.ng-leave {
-        transform: translateX(-100%)
+@keyframes swipeOutList {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
     }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
 
+.favorites-view {
+    background: #f5f5f5;
     .ion-ios-gear {
         padding-right: 300px;
     }
     .item {
         padding: 0;
-        transition: all .7s ease-in-out;
+        &.ng-leave {
+            animation: swipeOutList .4s forwards linear;
+        }
     }
     .show-image {
         width: 140px;
@@ -21,7 +33,7 @@
         background-size: cover;
     }
     .show-info {
-        padding: .3em;
+        padding: 0.3em;
         a {
             position: absolute;
             top: 5px;
@@ -32,17 +44,19 @@
         }
         .remove-fav {
             border: 0;
-            padding: .2em;
+            padding: 0.2em;
             position: absolute;
             top: 0;
             right: 0;
             height: 100%;
-            color: #F44336;
+            color: #f44336;
             background: white;
             font-size: 2em;
-            transition: transform .4s ease-in-out;
+            transition: transform 0.4s ease-in-out;
         }
-        .button.icon-left:before, .button.icon-right:before, .button.icon:before {
+        .button.icon-left:before,
+        .button.icon-right:before,
+        .button.icon:before {
             font-size: 35px;
         }
     }
@@ -55,35 +69,24 @@
             width: 100%;
             text-align: center;
             font-size: 5em;
-            color: lighten($salmon, 30%);;
+            color: lighten($salmon, 30%);
         }
         h5 {
             width: 100%;
-            color: #949DD3;
+            color: #949dd3;
         }
     }
 }
-
 .slideRight {
     transform: translateX(100px);
 }
-
 .slideLeft {
     transform: translateX(0);
 }
-
-
-.slideRightDelete {
-    transform: translateX(400px); //TODO:ADD WHEN ION-ITEM DELETE
-}
-
-
-
 .bar-salmon .button-clear.button-clear.ion-plus-round {
     padding-right: 20px;
     font-size: 25px;
 }
-
 .bar-salmon .button-clear.button-clear.ion-ios-trash {
     font-size: 25px;
 }
