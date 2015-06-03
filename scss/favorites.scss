@@ -1,6 +1,10 @@
 .favorites-view {
     background: #F5F5F5;
 
+    ion-item.ng-leave {
+        transform: translateX(-100%)
+    }
+
     .ion-ios-gear {
         padding-right: 300px;
     }
