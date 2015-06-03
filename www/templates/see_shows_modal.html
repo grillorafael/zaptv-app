@@ -1,0 +1,43 @@
+<ion-modal-view class="favorites-view">
+    <ion-header-bar class="bar-salmon ">
+        <button class="button button-clear button-icon ion-ios-close-empty" ng-click='closeShowsModal()'></button>
+        <div class="title header-item">
+            <span class="nav-bar-title">
+                <p class="title">
+                    Programas
+                </p>
+            </span>
+        </div>
+    </ion-header-bar>
+    <ion-content overflow-scroll="true">
+        <!-- <ion-spinner ng-if='isLoadingFullSchedule'></ion-spinner> -->
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="text" placeholder="Digite o nome do programa" ng-model="search.name">
+            </label>
+            <button class="button button-small">
+              Buscar
+            </button>
+        </div>
+        <!-- <ion-list ng-if='!isLoadingFullSchedule'>
+
+            <ion-item class="schedule-item" ng-repeat="schedule in fullSchedule | filter:search track by schedule.id">
+                <div class="channel-image" style="background-image: url({{::schedule.image_url || 'img/placeholder.jpg'}});"></div>
+                <h2>{{::schedule.name | filter:search}}</h2>
+                <p class="schedule-date">{{::schedule.start_time | date:'dd/MM/yyyy HH:mm'}}</p>
+                <button class="icon-left favorite-button" ng-click="toggleFavorite(schedule)" ng-class="{
+                                                    'ion-ios-star-outline': !schedule.is_favorite,
+                                                    'favorited-button': schedule.is_favorite,
+                                                    'ion-ios-star': schedule.is_favorite
+                                                }"> {{schedule.is_favorite ? 'Favorito' : 'Favoritar programa'}}</button>
+                <label expand-item for="{{::schedule.name}}-{{$index}}" ng-if="schedule.description.length > 0 && schedule.name != schedule.description">
+                    <i class="icon ion-ios-arrow-down see-more-button"></i>
+                    <input type="checkbox" name="{{::schedule.name}}-{{$index}}" id="{{::schedule.name}}" class="description-toggle-input" autocomplete="off" />
+                    <p class="program-description">{{::schedule.description}}</p>
+
+                </label>
+            </ion-item>
+        </ion-list> -->
+    </ion-content>
+</ion-modal-view>

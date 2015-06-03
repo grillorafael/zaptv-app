@@ -8392,6 +8392,24 @@ loader svg {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg); }
 
+.favorites-view {
+  background: #F5F5F5; }
+  .favorites-view .bar .button.button-clear.ion-plus-round {
+    padding-right: 10px;
+    font-size: 20px; }
+  .favorites-view h2 {
+    color: white; }
+  .favorites-view .no-favs-text {
+    margin-top: 40%; }
+    .favorites-view .no-favs-text i {
+      width: 100%;
+      text-align: center;
+      font-size: 5em;
+      color: #f8dcdf; }
+    .favorites-view .no-favs-text h5 {
+      width: 100%;
+      color: #949DD3; }
+
 .ngn .ngn-dismiss {
   display: none; }
 

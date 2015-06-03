@@ -26,6 +26,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "register-view";
 @import "username-view";
 @import "schedule_modal";
+@import "favorites";
 @import "ngNotify-theme";
 //
 // @font-face {
@@ -166,6 +167,8 @@ label {
 .item-thumbnail-left .item-content .item-image {
     height: auto;
 }
+
+
 
 
 

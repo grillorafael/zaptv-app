@@ -1,0 +1,23 @@
+.favorites-view {
+    background: #F5F5F5;
+    .bar .button.button-clear.ion-plus-round {
+        padding-right: 10px;
+        font-size: 20px;
+    }
+    h2 {
+        color: white;
+    }
+    .no-favs-text {
+        margin-top: 40%;
+        i {
+            width: 100%;
+            text-align: center;
+            font-size: 5em;
+            color: lighten($salmon, 30%);;
+        }
+        h5 {
+            width: 100%;
+            color: #949DD3;
+        }
+    }
+}

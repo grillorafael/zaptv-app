@@ -1,11 +1,25 @@
-<ion-view view-title="Programas favoritos" class="profile-view">
+<ion-view view-title="Programas favoritos" class="favorites-view">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear ion-plus-round" ng-click="seeShows()"></button>
+    </ion-nav-buttons>
     <ion-content class="has-header">
-        <div class="list">
+        <!-- <div class="list" >
             <a class="item item-thumbnail-left" href="#">
                 <img src="img/placeholder.jpg">
                 <h2>Pretty Hate Machine</h2>
                 <p>Nine Inch Nails</p>
             </a>
+        </div> -->
+        <div class="no-favs-text">
+            <div class="row">
+                <i class="icon ion-ios-star"></i>
+            </div>
+            <div class="row">
+                <h5 class="text-center">Você não tem nenhum programa favoritado</h5>
+            </div>
+            <div class="row">
+                <p class="text-center help-text-fav">Favorite seus programas preferidos e iremos lhe avisar antes dele começar!</p>
+            </div>
         </div>
     </ion-content>
 </ion-view>
