@@ -1,22 +1,41 @@
 .favorites-view {
     background: #F5F5F5;
-    .bar .button.button-clear.ion-plus-round {
-        padding-right: 10px;
-        font-size: 20px;
+
+    .ion-ios-gear {
+        padding-right: 300px;
     }
     .item {
         padding: 0;
     }
     .show-image {
-        width: 100px;
-        height: 100px;
+        width: 140px;
+        height: 60px;
         float: left;
-        margin-right: 20px;
+        margin-right: 10px;
         background-position: center center;
         background-size: cover;
     }
     .show-info {
-        padding: .8em;
+        padding: .3em;
+        a {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+        }
+        .button-icon.icon:before {
+            font-size: 23px;
+        }
+        .remove-fav {
+            border: 0;
+            padding: .2em;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            background:#F44336;
+            color: white;
+            animation: slideLeft 1s ease-in-out;
+        }
     }
     h2.title {
         color: white;
@@ -34,4 +53,24 @@
             color: #949DD3;
         }
     }
+}
+
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+.bar-salmon .button-clear.button-clear.ion-plus-round {
+    padding-right: 20px;
+    font-size: 20px;
+}
+
+.bar-salmon .button-clear.button-clear.ion-ios-minus-outline {
+    font-size: 20px;
 }

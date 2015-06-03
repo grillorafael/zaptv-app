@@ -1,6 +1,7 @@
-<ion-view view-title="Programas favoritos" class="favorites-view">
+<ion-view view-title="Favoritos" class="favorites-view">
     <ion-nav-buttons side="right">
         <button class="button button-clear ion-plus-round" ng-click="seeShows()"></button>
+        <button class="button button-clear ion-ios-minus-outline" ng-click='showDeleteButton = !showDeleteButton'></button>
     </ion-nav-buttons>
     <ion-content class="has-header">
         <ion-spinner ng-if='isLoadingFavorites'></ion-spinner>
@@ -9,8 +10,8 @@
                 <div style="background-image: url('{{schedule.show_schedule.image_url}}')" class="show-image"></div>
                 <div class="show-info">
                     <h2>{{schedule.show_schedule.name}}</h2>
-                    <p>{{schedule.show_schedule.name}}</p>
-                    <button ng-click='removeLike(schedule, $index)'>Nem curti</button>
+                    <p>{{schedule.show_schedule.channel.name}}</p>
+                    <button ng-click='removeLike(schedule, $index)' class="button icon ion-ios-close-empty remove-fav" ng-if='showDeleteButton'></button>
                 </div>
             </ion-item>
         </ion-list>

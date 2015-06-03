@@ -3,7 +3,7 @@
     angular.module('zaptv').controller('FavoritesCtrl', FavoritesCtrl);
 
     function FavoritesCtrl($scope, $ionicModal, User, Channel) {
-
+        $scope.showDeleteButton = false;
         $ionicModal.fromTemplateUrl('templates/see_shows_modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
