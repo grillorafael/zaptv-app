@@ -519,7 +519,7 @@
                     s.is_favorite = schedule.is_favorite;
                 }
             });
-            Channel.toggleLike($scope.channel.id, State.get('geo_state'), schedule.name);
+            Channel.toggleLike($scope.channel.id, schedule.geo_state, schedule.name);
         };
 
         function shareScore(fbToken, rating, id) {
