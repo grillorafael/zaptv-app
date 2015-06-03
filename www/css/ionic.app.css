@@ -8424,7 +8424,8 @@ loader svg {
       color: #F44336;
       background: white;
       font-size: 2em;
-      transition: all .8s ease-in-out; }
+      transition: -webkit-transform .4s ease-in-out;
+      transition: transform .4s ease-in-out; }
     .favorites-view .show-info .button.icon-left:before, .favorites-view .show-info .button.icon-right:before, .favorites-view .show-info .button.icon:before {
       font-size: 35px; }
   .favorites-view h2.title {
