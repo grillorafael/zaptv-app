@@ -1,10 +1,12 @@
 @keyframes swipeOutList {
     0% {
         transform: translateX(0);
+        max-height: 65px;
     }
 
     100% {
         transform: translateX(101%);
+        max-height: 0px;
     }
 }
 
