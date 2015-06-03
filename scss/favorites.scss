@@ -1,15 +1,10 @@
 @keyframes swipeOutList {
     0% {
-        opacity: 1;
         transform: translateX(0);
     }
-    50% {
-        opacity: 1;
-        transform: translateX(-50%);
-    }
+
     100% {
-        opacity: 0;
-        transform: translateX(-100%);
+        transform: translateX(101%);
     }
 }
 
@@ -21,7 +16,7 @@
     .item {
         padding: 0;
         &.ng-leave {
-            animation: swipeOutList .4s forwards linear;
+            animation: swipeOutList .8s forwards ease;
         }
     }
     .show-image {

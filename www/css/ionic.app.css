@@ -8394,35 +8394,21 @@ loader svg {
 
 @-webkit-keyframes swipeOutList {
   0% {
-    opacity: 1;
     -webkit-transform: translateX(0);
     transform: translateX(0); }
 
-  50% {
-    opacity: 1;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%); }
-
   100% {
-    opacity: 0;
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%); } }
+    -webkit-transform: translateX(101%);
+    transform: translateX(101%); } }
 
 @keyframes swipeOutList {
   0% {
-    opacity: 1;
     -webkit-transform: translateX(0);
     transform: translateX(0); }
 
-  50% {
-    opacity: 1;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%); }
-
   100% {
-    opacity: 0;
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%); } }
+    -webkit-transform: translateX(101%);
+    transform: translateX(101%); } }
 
 .favorites-view {
   background: #f5f5f5; }
@@ -8431,8 +8417,8 @@ loader svg {
   .favorites-view .item {
     padding: 0; }
     .favorites-view .item.ng-leave {
-      -webkit-animation: swipeOutList .4s forwards linear;
-      animation: swipeOutList .4s forwards linear; }
+      -webkit-animation: swipeOutList .8s forwards ease;
+      animation: swipeOutList .8s forwards ease; }
   .favorites-view .show-image {
     width: 140px;
     height: 60px;
