@@ -514,11 +514,13 @@
 
         $scope.toggleFavorite = function (schedule) {
             schedule.is_favorite = !schedule.is_favorite;
-            $scope.fullSchedule.forEach(function(s) {
-                if(s.name == schedule.name) {
-                    s.is_favorite = schedule.is_favorite;
-                }
-            });
+            if($scope.fullSchedule) {
+                $scope.fullSchedule.forEach(function(s) {
+                    if(s.name == schedule.name) {
+                        s.is_favorite = schedule.is_favorite;
+                    }
+                });
+            }
             Channel.toggleLike($scope.channel.id, schedule.geo_state, schedule.name);
         };
 
