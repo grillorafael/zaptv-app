@@ -36,7 +36,7 @@
             color: #F44336;
             background: white;
             font-size: 2em;
-            transition: all .8s ease-in-out;
+            transition: transform .4s ease-in-out;
         }
         .button.icon-left:before, .button.icon-right:before, .button.icon:before {
             font-size: 35px;
