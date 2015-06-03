@@ -8397,7 +8397,18 @@ loader svg {
   .favorites-view .bar .button.button-clear.ion-plus-round {
     padding-right: 10px;
     font-size: 20px; }
-  .favorites-view h2 {
+  .favorites-view .item {
+    padding: 0; }
+  .favorites-view .show-image {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 20px;
+    background-position: center center;
+    background-size: cover; }
+  .favorites-view .show-info {
+    padding: .8em; }
+  .favorites-view h2.title {
     color: white; }
   .favorites-view .no-favs-text {
     margin-top: 40%; }

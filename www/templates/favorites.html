@@ -5,11 +5,13 @@
     <ion-content class="has-header">
         <ion-spinner ng-if='isLoadingFavorites'></ion-spinner>
         <ion-list>
-            <ion-item class="item-thumbnail-left" ng-if='schedules.length > 0' ng-repeat='schedule in schedules'>
-                <img ng-src="{{schedule.show_schedule.image_url}}">
-                <h2>{{schedule.show_schedule.name}}</h2>
-                <p>{{schedule.show_schedule.name}}</p>
-                <button ng-click='removeLike(schedule, $index)'>Nem curti</button>
+            <ion-item ng-if='schedules.length > 0' ng-repeat='schedule in schedules'>
+                <div style="background-image: url('{{schedule.show_schedule.image_url}}')" class="show-image"></div>
+                <div class="show-info">
+                    <h2>{{schedule.show_schedule.name}}</h2>
+                    <p>{{schedule.show_schedule.name}}</p>
+                    <button ng-click='removeLike(schedule, $index)'>Nem curti</button>
+                </div>
             </ion-item>
         </ion-list>
         <div class="no-favs-text" ng-if='schedules.length === 0'>
