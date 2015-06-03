@@ -409,6 +409,16 @@
             return deferred.promise;
         }
 
+        function searchSchedulesForFavorite(query, geoState) {
+            var deferred = $q.defer();
+
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/schedules/search/' + query + '/' + geoState))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             list: list,
             getInfo: getInfo,
@@ -420,7 +430,8 @@
             saveChannelsCache: saveChannelsCache,
             getChannelsCache: getChannelsCache,
             getFullSchedule: getFullSchedule,
-            toggleLike: toggleLike
+            toggleLike: toggleLike,
+            searchSchedulesForFavorite: searchSchedulesForFavorite
         };
     }
 
