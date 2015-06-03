@@ -31,6 +31,10 @@
             $scope.seeShowsModal.hide();
         };
 
+        $scope.toggleDisplayDelete = function() {
+            $scope.showDeleteButton = !$scope.showDeleteButton;
+        };
+
         $scope.removeLike = function(schedule, index) {
             Channel.toggleLike(schedule.channel_id, schedule.geo_state, schedule.schedule_name);
             $scope.schedules.splice(index, 1);
