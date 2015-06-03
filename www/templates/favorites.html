@@ -3,14 +3,16 @@
         <button class="button button-clear ion-plus-round" ng-click="seeShows()"></button>
     </ion-nav-buttons>
     <ion-content class="has-header">
-        <!-- <div class="list" >
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/placeholder.jpg">
-                <h2>Pretty Hate Machine</h2>
-                <p>Nine Inch Nails</p>
-            </a>
-        </div> -->
-        <div class="no-favs-text">
+        <ion-spinner ng-if='isLoadingFavorites'></ion-spinner>
+        <ion-list>
+            <ion-item class="item-thumbnail-left" ng-if='schedules.length > 0' ng-repeat='schedule in schedules'>
+                <img ng-src="{{schedule.show_schedule.image_url}}">
+                <h2>{{schedule.show_schedule.name}}</h2>
+                <p>{{schedule.show_schedule.name}}</p>
+                <button ng-click='removeLike(schedule, $index)'>Nem curti</button>
+            </ion-item>
+        </ion-list>
+        <div class="no-favs-text" ng-if='schedules.length === 0'>
             <div class="row">
                 <i class="icon ion-ios-star"></i>
             </div>

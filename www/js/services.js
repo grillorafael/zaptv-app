@@ -279,6 +279,16 @@
             return deferred.promise;
         }
 
+        function myFavorites() {
+            var deferred = $q.defer();
+
+            $http.get(Auth.appendToken(Config.ENDPOINT + '/me/favorites'))
+                .success(deferred.resolve)
+                .error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             register: register,
             login: login,
@@ -287,7 +297,8 @@
             checkUsername: checkUsername,
             checkEmail: checkEmail,
             getUserInfo: getUserInfo,
-            update: update
+            update: update,
+            myFavorites: myFavorites
         };
     }
 
