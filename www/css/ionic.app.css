@@ -8397,7 +8397,8 @@ loader svg {
   .favorites-view .ion-ios-gear {
     padding-right: 300px; }
   .favorites-view .item {
-    padding: 0; }
+    padding: 0;
+    transition: all .7s ease-in-out; }
   .favorites-view .show-image {
     width: 140px;
     height: 60px;
@@ -8446,6 +8447,10 @@ loader svg {
 .slideLeft {
   -webkit-transform: translateX(0);
   transform: translateX(0); }
+
+.slideRightDelete {
+  -webkit-transform: translateX(400px);
+  transform: translateX(400px); }
 
 .bar-salmon .button-clear.button-clear.ion-plus-round {
   padding-right: 20px;
