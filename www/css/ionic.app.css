@@ -8394,8 +8394,8 @@ loader svg {
 
 @-webkit-keyframes swipeOutList {
   0% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
     max-height: 65px; }
 
   100% {
@@ -8405,8 +8405,8 @@ loader svg {
 
 @keyframes swipeOutList {
   0% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
     max-height: 65px; }
 
   100% {
@@ -8414,27 +8414,23 @@ loader svg {
     transform: translateX(101%);
     max-height: 0px; } }
 
-@-webkit-keyframes swipeInList {
+@-webkit-keyframes enterFromTop {
   0% {
-    -webkit-transform: translateX(101%);
-    transform: translateX(101%);
-    max-height: 0px; }
+    -webkit-transform: translateY(-101%);
+    transform: translateY(-101%); }
 
   100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    max-height: 65px; } }
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
 
-@keyframes swipeInList {
+@keyframes enterFromTop {
   0% {
-    -webkit-transform: translateX(101%);
-    transform: translateX(101%);
-    max-height: 0px; }
+    -webkit-transform: translateY(-101%);
+    transform: translateY(-101%); }
 
   100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    max-height: 65px; } }
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
 
 .favorites-view {
   background: #f5f5f5; }
@@ -8443,8 +8439,8 @@ loader svg {
   .favorites-view .item {
     padding: 0; }
     .favorites-view .item.ng-enter {
-      -webkit-animation: swipeInList .8s forwards ease;
-      animation: swipeInList .8s forwards ease; }
+      -webkit-animation: enterFromTop .8s forwards ease;
+      animation: enterFromTop .8s forwards ease; }
     .favorites-view .item.ng-leave {
       -webkit-animation: swipeOutList .8s forwards ease;
       animation: swipeOutList .8s forwards ease; }

@@ -1,6 +1,6 @@
 @keyframes swipeOutList {
     0% {
-        transform: translateX(0);
+        transform: translateY(0);
         max-height: 65px;
     }
 
@@ -10,14 +10,12 @@
     }
 }
 
-@keyframes swipeInList {
+@keyframes enterFromTop {
     0% {
-        transform: translateX(101%);
-        max-height: 0px;
+        transform: translateY(-101%);
     }
     100% {
-        transform: translateX(0);
-        max-height: 65px;
+        transform: translateY(0);
     }
 }
 
@@ -29,7 +27,7 @@
     .item {
         padding: 0;
         &.ng-enter {
-            animation: swipeInList .8s forwards ease;
+            animation: enterFromTop .8s forwards ease;
         }
         &.ng-leave {
             animation: swipeOutList .8s forwards ease;
