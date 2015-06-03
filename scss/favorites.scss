@@ -32,9 +32,13 @@
             top: 0;
             right: 0;
             height: 100%;
-            background:#F44336;
-            color: white;
-            animation: slideLeft 1s ease-in-out;
+            color: #F44336;
+            background: white;
+            font-size: 2em;
+            transition: all .8s ease-in-out;
+        }
+        .button.icon-left:before, .button.icon-right:before, .button.icon:before {
+            font-size: 35px;
         }
     }
     h2.title {
@@ -55,22 +59,21 @@
     }
 }
 
-
-@keyframes slideLeft {
-    0% {
-        transform: translateX(100px);
-    }
-    100% {
-        transform: translateX(0);
-    }
-
+.slideRight {
+    transform: translateX(100px);
 }
+
+.slideLeft {
+    transform: translateX(0);
+}
+
+
 
 .bar-salmon .button-clear.button-clear.ion-plus-round {
     padding-right: 20px;
-    font-size: 20px;
+    font-size: 25px;
 }
 
-.bar-salmon .button-clear.button-clear.ion-ios-minus-outline {
-    font-size: 20px;
+.bar-salmon .button-clear.button-clear.ion-ios-trash {
+    font-size: 25px;
 }
