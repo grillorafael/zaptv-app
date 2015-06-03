@@ -2,7 +2,7 @@
     'use strict';
     angular.module('zaptv').controller('FavoritesCtrl', FavoritesCtrl);
 
-    function FavoritesCtrl($scope, $ionicModal, State, User, Channel) {
+    function FavoritesCtrl($scope, $ionicModal, $timeout, State, User, Channel) {
         // TODO ADD TRACKER EVENTS
 
         $scope.showDeleteButton = false;
@@ -41,13 +41,26 @@
             $scope.schedules.splice(index, 1);
         };
 
+        var timeout = null;
         $scope.queryResult = function(query) {
-            Channel.searchSchedulesForFavorite(query, State.get('geo_state')).then(function(result) {
-                $scope.searchSchedules = result;
-                console.log(result);
-            }, function(e) {
-                // TODO Handle error
-            });
+            if(timeout) {
+                $timeout.cancel(timeout);
+                timeout = null;
+            }
+
+            timeout = $timeout(function() {
+                if(query && query.replace(' ', '').length > 0) {
+                    $scope.isFetching = true;
+                    Channel.searchSchedulesForFavorite(query, State.get('geo_state')).then(function(result) {
+                        $scope.searchSchedules = result;
+                        console.log(result);
+                    }, function(e) {
+                        // TODO Handle error
+                    }).finally(function() {
+                        $scope.isFetching = false;
+                    });
+                }
+            }, 500);
         };
     }
 })();

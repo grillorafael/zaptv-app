@@ -10,6 +10,17 @@
     }
 }
 
+@keyframes swipeInList {
+    0% {
+        transform: translateX(101%);
+        max-height: 0px;
+    }
+    100% {
+        transform: translateX(0);
+        max-height: 65px;
+    }
+}
+
 .favorites-view {
     background: #f5f5f5;
     .ion-ios-gear {
@@ -17,6 +28,9 @@
     }
     .item {
         padding: 0;
+        &.ng-enter {
+            animation: swipeInList .8s forwards ease;
+        }
         &.ng-leave {
             animation: swipeOutList .8s forwards ease;
         }

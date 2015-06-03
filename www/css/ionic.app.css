@@ -8414,12 +8414,37 @@ loader svg {
     transform: translateX(101%);
     max-height: 0px; } }
 
+@-webkit-keyframes swipeInList {
+  0% {
+    -webkit-transform: translateX(101%);
+    transform: translateX(101%);
+    max-height: 0px; }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    max-height: 65px; } }
+
+@keyframes swipeInList {
+  0% {
+    -webkit-transform: translateX(101%);
+    transform: translateX(101%);
+    max-height: 0px; }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    max-height: 65px; } }
+
 .favorites-view {
   background: #f5f5f5; }
   .favorites-view .ion-ios-gear {
     padding-right: 300px; }
   .favorites-view .item {
     padding: 0; }
+    .favorites-view .item.ng-enter {
+      -webkit-animation: swipeInList .8s forwards ease;
+      animation: swipeInList .8s forwards ease; }
     .favorites-view .item.ng-leave {
       -webkit-animation: swipeOutList .8s forwards ease;
       animation: swipeOutList .8s forwards ease; }
