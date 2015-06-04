@@ -354,9 +354,18 @@
         }
     }
 
+
 }
 
 
+.popup-buttons {
+    flex-direction: column;
+}
+
+.popup-buttons .button {
+    margin-right: 0;
+    margin-top: 5px;
+}
 
 
 .channel-popover.popover {

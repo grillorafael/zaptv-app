@@ -434,13 +434,13 @@
                                                 scope: $scope,
                                                 buttons: [{
                                                     text: 'Agora não',
-                                                    type: 'bnt-font-size',
+                                                    type: 'btn-font-size',
                                                     onTap: function() {
                                                         $localForage.setItem('always_share', false);
                                                     }
                                                 }, {
                                                     text: 'Só desta vez',
-                                                    type: 'bnt-font-size',
+                                                    type: 'btn-font-size',
                                                     onTap: function() {
                                                         shareScore(success.authResponse.accessToken, val, $scope.schedule.id);
                                                         $localForage.setItem('always_share', false);

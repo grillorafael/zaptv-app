@@ -7846,6 +7846,15 @@ a.button {
     .chat-view .show-divider p::after {
       left: 100%; }
 
+.popup-buttons {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.popup-buttons .button {
+  margin-right: 0;
+  margin-top: 5px; }
+
 .channel-popover.popover {
   height: 370px;
   width: 240px; }
@@ -8560,8 +8569,8 @@ body {
       font-size: 1.3em;
       vertical-align: middle; }
 
-.bnt-font-size {
-  font-size: 0.8em; }
+.btn-font-size {
+  font-size: 0.9em; }
 
 .popup-head {
   background: #3b5998;
