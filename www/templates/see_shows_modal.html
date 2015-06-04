@@ -18,12 +18,15 @@
         </div>
         <ion-spinner ng-if='isFetching' class="centered"></ion-spinner>
         <ion-list>
-            <ion-item ng-repeat='schedule in searchSchedules track by schedule.id'>
+            <ion-item ng-repeat='schedule in searchSchedules track by schedule.id' ng-class="{
+                'is-favorite': schedule.is_favorite
+            }">
+                <div class="backdrop-item">FAVORITADO</div>
                 <div style="background-image: url('{{::schedule.image_url || 'img/placeholder.jpg'}}')" class="show-image-modal"></div>
                 <div class="show-info">
                     <h2>{{::schedule.name}}</h2>
                     <p>{{schedule.channel.name}}</p>
-                    <button class="icon-left favorite-button" ng-click="addFavorite(schedule)" ng-class="{
+                    <button class="icon-left favorite-button" ng-click="addFavorite(schedule, $index)" ng-class="{
                                                         'ion-ios-star-outline': !schedule.is_favorite,
                                                         'favorited-button': schedule.is_favorite,
                                                         'ion-ios-star': schedule.is_favorite

@@ -2,8 +2,10 @@
     'use strict';
     angular.module('zaptv').controller('FavoritesCtrl', FavoritesCtrl);
 
-    function FavoritesCtrl($scope, $ionicModal, $timeout, State, User, Channel) {
+    function FavoritesCtrl($scope, $ionicModal, $timeout, State, User, Channel, Auth) {
         // TODO ADD TRACKER EVENTS
+
+        var user = Auth.getUser();
 
         $scope.showDeleteButton = false;
         $scope.searchSchedules = [];
@@ -18,6 +20,7 @@
 
         User.myFavorites().then(function(schedules) {
             $scope.schedules = schedules;
+            console.log(schedules);
         }, function(e) {
             // TODO Handle error
         })
@@ -42,9 +45,20 @@
             $scope.schedules.splice(index, 1);
         };
 
-        $scope.addFavorite = function (schedule) {
+        $scope.addFavorite = function (schedule, index) {
             schedule.is_favorite = !schedule.is_favorite;
+            $timeout(function() {
+                $scope.searchSchedules.splice(index, 1);
+            }, 500);
             Channel.toggleLike(schedule.channel.id, schedule.geo_state, schedule.name);
+            $scope.schedules.push({
+                channel_id: schedule.channel.id,
+                geo_state: schedule.geo_state,
+                status: "A",
+                user_id: user.id,
+                schedule_name: schedule.name,
+                show_schedule: schedule
+            });
         };
 
         var timeout = null;

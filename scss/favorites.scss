@@ -3,13 +3,11 @@
         transform: translateY(0);
         max-height: 65px;
     }
-
     100% {
         transform: translateX(101%);
-        max-height: 0px;
+        max-height: 0;
     }
 }
-
 @keyframes enterFromTop {
     0% {
         transform: translateY(-101%);
@@ -18,7 +16,6 @@
         transform: translateY(0);
     }
 }
-
 .favorites-view {
     background: #f5f5f5;
     .ion-ios-gear {
@@ -27,10 +24,27 @@
     .item {
         padding: 0;
         &.ng-enter {
-            animation: enterFromTop .8s forwards ease;
+            animation: enterFromTop 0.8s forwards ease;
         }
         &.ng-leave {
-            animation: swipeOutList .8s forwards ease;
+            animation: swipeOutList 0.8s forwards ease;
+        }
+        .backdrop-item {
+            display: none;
+        }
+        &.is-favorite {
+            .backdrop-item {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                color: white;
+                text-align: center;
+                line-height: 65px;
+                font-weight: bold;
+                font-size: 2em;
+                display: block;
+            }
         }
     }
     .show-image {
@@ -83,7 +97,7 @@
     .add-show-text {
         background: #949dd3;
         color: white;
-        padding: .3em;
+        padding: 0.3em;
         text-align: center;
         position: absolute;
         width: 100%;
@@ -91,23 +105,23 @@
         right: 0;
         left: 0;
     }
-
-    .add-show-text:after, .add-show-text:before {
-    	bottom: 100%;
-    	left: 50%;
-    	border: solid transparent;
-    	content: " ";
-    	height: 0;
-    	width: 0;
-    	position: absolute;
-    	pointer-events: none;
+    .add-show-text:after,
+    .add-show-text:before {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
         z-index: 99999;
     }
     .add-show-text:after {
-    	border-color: rgba(148, 157, 211, 0);
-    	border-bottom-color: #949dd3;
-    	border-width: 10px;
-    	margin-left: 95px;
+        border-color: rgba(148, 157, 211, 0);
+        border-bottom-color: #949dd3;
+        border-width: 10px;
+        margin-left: 95px;
     }
     .no-favs-text {
         margin-top: 40%;
@@ -123,8 +137,7 @@
         }
         .help-text-fav {
             display: block;
-            margin: 0 auto;
-            margin-top: 5px;
+            margin: 5px auto 0;
         }
     }
     .schedule-item {
@@ -146,7 +159,6 @@
         color: gold;
     }
 }
-
 i.ion-arrow-up-b {
     position: absolute;
     bottom: -14px;
@@ -154,7 +166,6 @@ i.ion-arrow-up-b {
     font-size: 1.8em;
     color: #949dd3;
 }
-
 .slideRight {
     transform: translateX(100px);
 }
@@ -169,18 +180,11 @@ i.ion-arrow-up-b {
     font-size: 25px;
 }
 
-
 // MEDIA QUERIES
-
-
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 2) {
     .favorites-view {
         .no-favs-text {
             margin-top: 20%;
         }
     }
-
 }
