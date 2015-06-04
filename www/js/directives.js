@@ -103,8 +103,8 @@
                 var templateUrl = getTemplate(scope.message);
                 var template = $templateCache.get(templateUrl);
 
-                element.html(template);
-                $compile(element.contents())(scope);
+                var e = $compile(template)(scope);
+                element.replaceWith(e);
             }
         };
     }
