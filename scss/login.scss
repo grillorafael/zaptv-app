@@ -92,4 +92,27 @@
         font-weight: 400;
         text-decoration: underline;
     }
+    
+
+}
+
+
+@media only screen
+and (min-device-width : 600px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    .login-view {
+        .main-logo {
+            margin-top: 30%;
+            img {
+                width: 50%;
+
+            }
+        }
+        p.call-text {
+            font-size: 2em;
+            line-height: 1;
+        }
+    }
+
 }
