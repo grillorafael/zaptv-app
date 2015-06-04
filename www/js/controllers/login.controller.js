@@ -48,6 +48,27 @@
             $scope.modal = modal;
         });
 
+        $ionicModal.fromTemplateUrl('templates/forgot_password_modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.forgotPasswordModal = modal;
+        });
+
+        $scope.openForgotPasswordModal = function() {
+            $scope.forgotPasswordModal.show();
+        };
+
+        $scope.closeForgotPasswordModal = function() {
+            $scope.forgotPasswordModal.hide();
+        };
+
+        $scope.forgot = function(email) {
+            User.forgotPassword(email).then(function(result) {
+                console.log(result);
+            });
+        };
+
         $scope.setForm = function(f) {
             $scope.form = f;
         };

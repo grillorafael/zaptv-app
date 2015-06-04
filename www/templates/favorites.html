@@ -2,7 +2,9 @@
     <ion-nav-buttons side="right">
         <button class="button button-clear ion-plus-round" ng-click="seeShows()"></button>
         <button class="button button-clear ion-ios-trash" ng-click='toggleDisplayDelete()'></button>
+        <i class="icon ion-arrow-up-b" ng-if='schedules.length === 0'></i>
     </ion-nav-buttons>
+    <p class="add-show-text" ng-if='schedules.length === 0'>Adicionar programas favoritos</p>
     <ion-content class="has-header">
         <ion-spinner ng-if='isLoadingFavorites' class="centered-pixel"></ion-spinner>
         <ion-list ng-if='schedules.length > 0'>
@@ -19,15 +21,17 @@
                 </div>
             </ion-item>
         </ion-list>
-        <div class="no-favs-text" ng-if='schedules.length === 0'>
-            <div class="row">
-                <i class="icon ion-ios-star"></i>
-            </div>
-            <div class="row">
-                <h5 class="text-center">Você não tem nenhum programa favoritado</h5>
-            </div>
-            <div class="row">
-                <p class="text-center help-text-fav">Favorite seus programas preferidos e iremos lhe avisar antes dele começar!</p>
+        <div class="no-favs-wrapper" ng-if='schedules.length === 0'>
+            <div class="no-favs-text" >
+                <div class="row">
+                    <i class="icon ion-ios-star"></i>
+                </div>
+                <div class="row">
+                    <h5 class="text-center">Você não tem nenhum programa favoritado</h5>
+                </div>
+                <div class="row">
+                    <p class="text-center help-text-fav">Favorite seus programas preferidos e iremos lhe avisar antes dele começar!</p>
+                </div>
             </div>
         </div>
     </ion-content>
