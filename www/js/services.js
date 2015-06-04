@@ -289,6 +289,16 @@
             return deferred.promise;
         }
 
+        function forgotPassword(email) {
+            var deferred = $q.defer();
+
+            $http.post(Config.ENDPOINT + '/password/forgot', {
+                email: email
+            }).success(deferred.resolve).error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             register: register,
             login: login,
@@ -298,7 +308,8 @@
             checkEmail: checkEmail,
             getUserInfo: getUserInfo,
             update: update,
-            myFavorites: myFavorites
+            myFavorites: myFavorites,
+            forgotPassword: forgotPassword
         };
     }
 

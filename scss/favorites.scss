@@ -41,6 +41,14 @@
         background-position: center center;
         background-size: cover;
     }
+    .show-image-modal {
+        width: 140px;
+        height: 80px;
+        float: left;
+        margin-right: 10px;
+        background-position: center center;
+        background-size: cover;
+    }
     .show-info {
         padding: 0.3em;
         a {
@@ -72,6 +80,35 @@
     h2.title {
         color: white;
     }
+    .add-show-text {
+        background: #949dd3;
+        color: white;
+        padding: .3em;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        top: 44px;
+        right: 0;
+        left: 0;
+    }
+
+    .add-show-text:after, .add-show-text:before {
+    	bottom: 100%;
+    	left: 50%;
+    	border: solid transparent;
+    	content: " ";
+    	height: 0;
+    	width: 0;
+    	position: absolute;
+    	pointer-events: none;
+        z-index: 99999;
+    }
+    .add-show-text:after {
+    	border-color: rgba(148, 157, 211, 0);
+    	border-bottom-color: #949dd3;
+    	border-width: 10px;
+    	margin-left: 95px;
+    }
     .no-favs-text {
         margin-top: 40%;
         i {
@@ -84,8 +121,40 @@
             width: 100%;
             color: #949dd3;
         }
+        .help-text-fav {
+            display: block;
+            margin: 0 auto;
+            margin-top: 5px;
+        }
+    }
+    .schedule-item {
+        max-height: 130px;
+    }
+    .favorite-button {
+        background: none;
+        border: 1px solid darken($zaper-green, 20%);
+        padding: 0.1em 0.4em;
+        border-radius: 5px;
+        transition: all 0.4s;
+        &.favorited-button {
+            background: darken($zaper-green, 20%);
+            color: white;
+        }
+    }
+    .ion-ios-star-outline::before,
+    .ion-ios-star::before {
+        color: gold;
     }
 }
+
+i.ion-arrow-up-b {
+    position: absolute;
+    bottom: -13px;
+    right: 43px;
+    font-size: 1.8em;
+    color: #949dd3;
+}
+
 .slideRight {
     transform: translateX(100px);
 }
@@ -98,4 +167,20 @@
 }
 .bar-salmon .button-clear.button-clear.ion-ios-trash {
     font-size: 25px;
+}
+
+
+// MEDIA QUERIES
+
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    .favorites-view {
+        .no-favs-text {
+            margin-top: 20%;
+        }
+    }
+
 }

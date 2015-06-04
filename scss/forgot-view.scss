@@ -1,0 +1,21 @@
+.forgot-view {
+    background: url("../img/bg-login-2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    .bar {
+        background: transparent;
+        .button.button-clear {
+            font-size: 20px;
+            color: white;
+        }
+    }
+    .list-inset {
+        background: none;
+    }
+    .padding {
+        padding: 20px;
+    }
+    p {
+        color: white;
+    }
+}

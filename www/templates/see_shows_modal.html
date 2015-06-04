@@ -16,24 +16,23 @@
                 <input type="text" placeholder="Digite o nome do programa" ng-model="query" ng-change='queryResult(query)'>
             </label>
         </div>
-        <ion-spinner ng-if='isFetching'></ion-spinner>
+        <ion-spinner ng-if='isFetching' class="centered"></ion-spinner>
         <ion-list>
-            <ion-item class="schedule-item" ng-repeat="schedule in searchSchedules track by schedule.id">
-                <div class="channel-image" style="background-image: url({{::schedule.image_url || 'img/placeholder.jpg'}});"></div>
-                <h2>{{::schedule.name}}</h2>
-                <!-- <button class="icon-left favorite-button" ng-click="toggleFavorite(schedule)" ng-class="{
-                                                    'ion-ios-star-outline': !schedule.is_favorite,
-                                                    'favorited-button': schedule.is_favorite,
-                                                    'ion-ios-star': schedule.is_favorite
-                                                }"> {{schedule.is_favorite ? 'Favorito' : 'Favoritar programa'}}</button> -->
-                <!-- <label expand-item for="{{::schedule.name}}-{{$index}}" ng-if="schedule.description.length > 0 && schedule.name != schedule.description">
-                    <i class="icon ion-ios-arrow-down see-more-button"></i>
-                    <input type="checkbox" name="{{::schedule.name}}-{{$index}}" id="{{::schedule.name}}" class="description-toggle-input" autocomplete="off" />
-                    <p class="program-description">{{::schedule.description}}</p>
-                </label> -->
+            <ion-item ng-repeat='schedule in searchSchedules track by schedule.id'>
+                <div style="background-image: url('{{::schedule.image_url || 'img/placeholder.jpg'}}')" class="show-image-modal"></div>
+                <div class="show-info">
+                    <h2>{{::schedule.name}}</h2>
+                    <p>{{schedule.channel.name}}</p>
+                    <button class="icon-left favorite-button" ng-click="addFavorite(schedule)" ng-class="{
+                                                        'ion-ios-star-outline': !schedule.is_favorite,
+                                                        'favorited-button': schedule.is_favorite,
+                                                        'ion-ios-star': schedule.is_favorite
+                                                    }"> {{schedule.is_favorite ? 'Favorito' : 'Favoritar programa'}}</button>
+                </div>
+
             </ion-item>
         </ion-list>
-        <div class="no-favs-text">
+        <div class="no-favs-text" ng-if='searchSchedules.length === 0 && !isFetching'>
             <div class="row">
                 <i class="icon ion-ios-search"></i>
             </div>

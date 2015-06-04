@@ -27,6 +27,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "username-view";
 @import "schedule_modal";
 @import "favorites";
+@import "forgot-view";
 @import "ngNotify-theme";
 //
 // @font-face {
@@ -70,8 +71,8 @@ body {
         }
     }
 }
-.bnt-font-size {
-    font-size: 0.8em;
+.btn-font-size {
+    font-size: 0.9em;
 }
 .popup-head {
     background: $facebook;
@@ -122,6 +123,13 @@ label {
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
+}
+
+.centered-pixel {
+    margin-left: 50%;
+    margin-right: auto;
+    margin-top: 50%;
+    display: block;
 }
 
 .button.button-login {
