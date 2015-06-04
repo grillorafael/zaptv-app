@@ -71,7 +71,7 @@
         color: white;
     }
     .channels-list {
-        column-gap: 10px;
+        column-gap: 5px;
         column-fill: auto;
         column-width: 45%;
         column-count: 2;
@@ -81,7 +81,7 @@
         &:first-child {
             margin-top: 0;
         }
-        margin-top: 10px;
+        margin-top: 5px;
         border-radius: 5px;
         border: 1px solid rgba(0, 0, 0, .15);
         box-shadow: none;
@@ -162,4 +162,29 @@
         font-size: 2em;
         color: gold;
     }
+}
+
+
+// MEDIA QUERIES
+
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    .channels-view {
+        .channels-list {
+            column-count: 3;
+        }
+        .a-card .card-info {
+            .channel-name {
+                font-size: 1.3em;
+            }
+            .channel-info {
+                font-size: 1.2em;
+            }
+        }
+
+    }
+
 }

@@ -7,24 +7,26 @@
     <div class="avatar">
         <div ng-click='viewUser(message.user)' class="profile-image" style="background-image: url({{message.user.image_url || 'img/placeholder.jpg'}})" alt="foto perfil do usuario"></div>
     </div>
-    <div on-hold='messageOptions(message)' ng-class="{
-        'chat-bubble': message.user.id != user.id,
-        'chat-bubble-self': message.user.id == user.id
-    }">
-        <h2 class="c-username" ng-style="{
-        'color': getUserColor(message.user.id)
+    <div class="message-wrapper">
+        <div on-hold='messageOptions(message)' ng-class="{
+            'chat-bubble': message.user.id != user.id,
+            'chat-bubble-self': message.user.id == user.id
         }">
-            <span class="username" ng-if='message.user.id != 1'>{{::message.user.username}}</span>
-        </h2>
-        <p compile="::message.compiled_content"></p>
-        <span class="timestamp" >{{::message.created_at | date:'HH:mm'}}</span>
-    </div>
-    <div class="like-button" ng-click='toggleLike(message)' >
-        <i class="icon med-quick-anim" animation-handle='message-{{message.id}}'
-        ng-class='{
-        "ion-ios-heart-outline": !message.liked,
-        "ion-ios-heart": message.liked
-    }'></i>
-        <p class="counter-like">{{message.count_likes}}</p>
+            <h2 class="c-username" ng-style="{
+            'color': getUserColor(message.user.id)
+            }">
+                <span class="username" ng-if='message.user.id != 1'>{{::message.user.username}}</span>
+            </h2>
+            <p compile="::message.compiled_content"></p>
+            <span class="timestamp" >{{::message.created_at | date:'HH:mm'}}</span>
+        </div>
+        <div class="like-button" ng-click='toggleLike(message)' >
+            <i class="icon med-quick-anim" animation-handle='message-{{message.id}}'
+            ng-class='{
+            "ion-ios-heart-outline": !message.liked,
+            "ion-ios-heart": message.liked
+        }'></i>
+            <p class="counter-like" ng-if="message.count_likes > 0">{{message.count_likes}}</p>
+        </div>
     </div>
 </div>
