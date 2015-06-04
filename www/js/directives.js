@@ -75,7 +75,12 @@
                 function imageLoad(url) {
                     var img = new Image();
                     img.onload = function() {
-                        el[0].src = url;
+                        if(attrs.isCss !== undefined) {
+                            el[0].style.backgroundImage = "url('" + url + "')";
+                        }
+                        else {
+                            el[0].src = url;
+                        }
                     };
 
                     img.src = url;
