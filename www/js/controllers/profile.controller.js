@@ -13,6 +13,9 @@
                 var user = Auth.getUser();
                 Analytics.init(user.id);
                 Analytics.trackView($state.current.name);
+                if (window.cordova && window.cordova.plugins.Keyboard) {
+                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+                }
             });
         });
 

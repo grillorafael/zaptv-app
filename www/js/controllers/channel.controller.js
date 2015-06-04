@@ -45,6 +45,10 @@
                     cordova.plugins.Keyboard.disableScroll(true);
                 }
 
+                if (window.cordova && window.cordova.plugins.Keyboard) {
+                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                }
+
                 Analytics.init($scope.user.id);
                 Analytics.trackView($state.current.name + '_' + $scope.channel.name);
             }

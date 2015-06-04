@@ -13,7 +13,24 @@
         .directive('message', message)
         .directive('preloadImage', preloadImage)
         .directive('compile', compile)
-        .directive('expandItem', expandItem);
+        .directive('expandItem', expandItem)
+        .directive('keepFocusOnTextarea', keepFocusOnTextarea);
+
+    function keepFocusOnTextarea ($timeout) {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                var isAndroid = ionic.Platform.isAndroid();
+                if(isAndroid) {
+                    element.on('click', function() {
+                        $timeout(function() {
+                            document.getElementById('message-field').focus();
+                        });
+                    });
+                }
+            }
+        };
+    }
 
     function expandItem() {
         return {
@@ -58,7 +75,12 @@
                 function imageLoad(url) {
                     var img = new Image();
                     img.onload = function() {
-                        el[0].src = url;
+                        if(attrs.isCss !== undefined) {
+                            el[0].style.backgroundImage = "url('" + url + "')";
+                        }
+                        else {
+                            el[0].src = url;
+                        }
                     };
 
                     img.src = url;
