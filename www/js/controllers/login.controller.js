@@ -4,6 +4,11 @@
 
     function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $ionicLoading,
         $animationTrigger, $cordovaFacebook, $ionicModal, $localForage, Analytics, User, Auth, State, ngNotify) {
+
+        $scope.isSending = false;
+        $scope.sentEmail = false;
+        $scope.mailError = false;
+
         $scope.$on('$ionicView.enter', function() {
             $ionicPlatform.ready(function() {
                 Analytics.init();
@@ -56,7 +61,10 @@
         });
 
         $scope.openForgotPasswordModal = function() {
-            $scope.forgotPasswordModal.show();
+            $scope.sentEmail = false;
+            $scope.mailError = false;
+            $scope.forgotPasswordModal.show().then(function() {
+            })
         };
 
         $scope.closeForgotPasswordModal = function() {
@@ -64,9 +72,26 @@
         };
 
         $scope.forgot = function(email) {
+            $scope.isSending = true;
+            $ionicLoading.show({
+                template: '<ion-spinner></ion-spinner>',
+                hideOnStateChange: true
+            });
+            $scope.mailError = false;
             User.forgotPassword(email).then(function(result) {
                 console.log(result);
-            });
+                $scope.sentEmail = true;
+            }, function() {
+                $scope.mailError = true;
+                ngNotify.set('Seu email está está incorreto ou não existe.', {
+                    type: 'error',
+                    theme: 'pure',
+                    duration: 4000
+                });
+            }).finally(function() {
+                $scope.isSending = false;
+                $ionicLoading.hide();
+            })
         };
 
         $scope.setForm = function(f) {

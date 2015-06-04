@@ -8606,8 +8606,10 @@ i.ion-arrow-up-b {
     background: none; }
   .forgot-view .padding {
     padding: 20px; }
-  .forgot-view p {
+  .forgot-view p, .forgot-view h4 {
     color: white; }
+  .forgot-view h4 {
+    margin-top: 50px; }
   .forgot-view #forgot-label {
     border-radius: 6px; }
 
