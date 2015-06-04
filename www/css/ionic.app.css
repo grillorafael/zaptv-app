@@ -8608,6 +8608,8 @@ i.ion-arrow-up-b {
     padding: 20px; }
   .forgot-view p {
     color: white; }
+  .forgot-view #forgot-label {
+    border-radius: 6px; }
 
 .ngn .ngn-dismiss {
   display: none; }
