@@ -8481,13 +8481,18 @@ loader svg {
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(221, 94, 106, 0.9);
       color: white;
       text-align: center;
-      line-height: 65px;
+      line-height: 85px;
       font-weight: bold;
-      font-size: 2em;
-      display: block; }
+      font-size: 1.2em;
+      display: block;
+      vertical-align: middle; }
+      .favorites-view .item.is-favorite .backdrop-item .ion-ios-checkmark-empty {
+        color: #4CAF50;
+        font-size: 2.3em;
+        vertical-align: middle; }
   .favorites-view .show-image {
     width: 140px;
     height: 60px;

@@ -21,6 +21,7 @@
     .ion-ios-gear {
         padding-right: 300px;
     }
+
     .item {
         padding: 0;
         &.ng-enter {
@@ -37,13 +38,19 @@
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);
+                background-color: rgba(221, 94, 106, 0.9);
                 color: white;
                 text-align: center;
-                line-height: 65px;
+                line-height: 85px;
                 font-weight: bold;
-                font-size: 2em;
+                font-size: 1.2em;
                 display: block;
+                vertical-align: middle;
+                .ion-ios-checkmark-empty {
+                    color: #4CAF50;
+                    font-size: 2.3em;
+                    vertical-align: middle;
+                }
             }
         }
     }

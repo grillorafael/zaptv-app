@@ -20,7 +20,6 @@
 
         User.myFavorites().then(function(schedules) {
             $scope.schedules = schedules;
-            console.log(schedules);
         }, function(e) {
             // TODO Handle error
         })
