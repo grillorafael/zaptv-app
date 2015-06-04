@@ -6,6 +6,7 @@
         // TODO ADD TRACKER EVENTS
 
         $scope.showDeleteButton = false;
+        $scope.searchSchedules = [];
         $ionicModal.fromTemplateUrl('templates/see_shows_modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -39,6 +40,11 @@
         $scope.removeLike = function(schedule, index) {
             Channel.toggleLike(schedule.channel_id, schedule.geo_state, schedule.schedule_name);
             $scope.schedules.splice(index, 1);
+        };
+
+        $scope.addFavorite = function (schedule) {
+            schedule.is_favorite = !schedule.is_favorite;
+            Channel.toggleLike(schedule.channel.id, schedule.geo_state, schedule.name);
         };
 
         var timeout = null;

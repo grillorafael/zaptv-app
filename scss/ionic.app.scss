@@ -124,6 +124,13 @@ label {
     transform: translate(-50%, -50%);
 }
 
+.centered-pixel {
+    margin-left: 50%;
+    margin-right: auto;
+    margin-top: 50%;
+    display: block;
+}
+
 .button.button-login {
     border-radius: 6px;
     border: 0;

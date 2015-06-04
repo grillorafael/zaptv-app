@@ -41,6 +41,14 @@
         background-position: center center;
         background-size: cover;
     }
+    .show-image-modal {
+        width: 140px;
+        height: 80px;
+        float: left;
+        margin-right: 10px;
+        background-position: center center;
+        background-size: cover;
+    }
     .show-info {
         padding: 0.3em;
         a {
@@ -85,7 +93,27 @@
             color: #949dd3;
         }
     }
+    .schedule-item {
+        max-height: 130px;
+    }
+    .favorite-button {
+        background: none;
+        border: 1px solid darken($zaper-green, 20%);
+        padding: 0.1em 0.4em;
+        border-radius: 5px;
+        transition: all 0.4s;
+        &.favorited-button {
+            background: darken($zaper-green, 20%);
+            color: white;
+        }
+    }
+    .ion-ios-star-outline::before,
+    .ion-ios-star::before {
+        color: gold;
+    }
 }
+
+
 .slideRight {
     transform: translateX(100px);
 }

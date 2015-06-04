@@ -8474,6 +8474,13 @@ loader svg {
     margin-right: 10px;
     background-position: center center;
     background-size: cover; }
+  .favorites-view .show-image-modal {
+    width: 140px;
+    height: 80px;
+    float: left;
+    margin-right: 10px;
+    background-position: center center;
+    background-size: cover; }
   .favorites-view .show-info {
     padding: 0.3em; }
     .favorites-view .show-info a {
@@ -8508,6 +8515,19 @@ loader svg {
     .favorites-view .no-favs-text h5 {
       width: 100%;
       color: #949dd3; }
+  .favorites-view .schedule-item {
+    max-height: 130px; }
+  .favorites-view .favorite-button {
+    background: none;
+    border: 1px solid #78ac4a;
+    padding: 0.1em 0.4em;
+    border-radius: 5px;
+    transition: all 0.4s; }
+    .favorites-view .favorite-button.favorited-button {
+      background: #78ac4a;
+      color: white; }
+  .favorites-view .ion-ios-star-outline::before, .favorites-view .ion-ios-star::before {
+    color: gold; }
 
 .slideRight {
   -webkit-transform: translateX(100px);
@@ -8612,6 +8632,12 @@ label.success i {
   /* bring your own prefixes */
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
+
+.centered-pixel {
+  margin-left: 50%;
+  margin-right: auto;
+  margin-top: 50%;
+  display: block; }
 
 .button.button-login {
   border-radius: 6px;
