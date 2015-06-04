@@ -13,7 +13,24 @@
         .directive('message', message)
         .directive('preloadImage', preloadImage)
         .directive('compile', compile)
-        .directive('expandItem', expandItem);
+        .directive('expandItem', expandItem)
+        .directive('keepFocusOnTextarea', keepFocusOnTextarea);
+
+    function keepFocusOnTextarea ($timeout) {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                var isAndroid = ionic.Platform.isAndroid();
+                if(isAndroid) {
+                    element.on('click', function() {
+                        $timeout(function() {
+                            document.getElementById('message-field').focus();
+                        });
+                    });
+                }
+            }
+        };
+    }
 
     function expandItem() {
         return {
