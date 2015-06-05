@@ -62,7 +62,8 @@
     },
     "cordova-plugin-whitelist",
     "cordova-plugin-crosswalk-webview",
-    "cordova-plugin-splashscreen"
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-vibration"
   ],
   "cordovaPlatforms": [
     "ios",

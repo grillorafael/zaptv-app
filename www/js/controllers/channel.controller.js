@@ -5,7 +5,7 @@
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaFacebook,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $ionicPopup, $cordovaDevice,
         $ionicPlatform, $ionicModal, $state, $localForage, $cordovaSocialSharing, $location, $filter,
-        $animationTrigger, Utils, Analytics, moment, State, Socket, Channel, Auth) {
+        $animationTrigger, $cordovaVibration, Utils, Analytics, moment, State, Socket, Channel, Auth) {
 
         var userColors = {};
         var shareWithFacebook = false;
@@ -473,6 +473,9 @@
         };
 
         $scope.messageOptions = function(message) {
+            if(window.cordova) {
+                $cordovaVibration.vibrate(50);
+            }
             Analytics.trackEvent('Chat', 'message_options');
             $ionicActionSheet.show({
                 buttons: [{
