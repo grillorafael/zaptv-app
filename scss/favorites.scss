@@ -8,14 +8,6 @@
         max-height: 0;
     }
 }
-@keyframes enterFromTop {
-    0% {
-        transform: translateY(-101%);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
 
 .platform-ios {
     .favorites-view {
@@ -33,9 +25,6 @@
 
     .item {
         padding: 0;
-        &.ng-enter {
-            animation: enterFromTop 0.8s forwards ease;
-        }
         &.ng-leave {
             animation: swipeOutList 0.8s forwards ease;
         }
