@@ -5,7 +5,7 @@
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaFacebook,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $ionicPopup, $cordovaDevice,
         $ionicPlatform, $ionicModal, $state, $localForage, $cordovaSocialSharing, $location, $filter,
-        $animationTrigger, $cordovaVibration, Utils, Analytics, moment, State, Socket, Channel, Auth) {
+        $animationTrigger, $cordovaVibration, Utils, Analytics, moment, State, Socket, Channel, Auth, $ionicPosition) {
 
         var userColors = {};
         var shareWithFacebook = false;
@@ -322,8 +322,8 @@
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId, cfg.twaper_enable).then(function(messages) {
                 if(messages.length > 0) {
+                    var scrollToId = messages[0].id;
                     messages = messages.reverse();
-
                     messages.forEach(function(m) {
                         listenToMessage(m);
                         var content = m.content || m.payload.content;
@@ -341,8 +341,11 @@
                             content: '↑ Mensagens anteriores ↑'
                         }
                     });
-
+                    window.location.replace('#/channel#message-' + scrollToId);
                     $scope.messages = messages.concat($scope.messages);
+                    $timeout(function() {
+                        $ionicScrollDelegate.$getByHandle('chat-scroll').anchorScroll();
+                    });
                 }
             }, function() {
                 // TODO handle this shiet
