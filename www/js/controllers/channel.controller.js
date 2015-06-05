@@ -164,15 +164,11 @@
             listenToMessage(msg);
             msg.created_at = moment(msg.created_at).toDate();
             if (msg.user.id === $scope.user.id) {
-                var msgIdx = null;
                 $scope.messages.forEach(function(m, i) {
-                    if (m.user.id === $scope.user.id && m.id === undefined) {
-                        msgIdx = i;
+                    if (m.user.id === $scope.user.id && !m.id) {
+                        m.id = msg.id;
                     }
                 });
-                if ($scope.messages[msgIdx]) {
-                    $scope.messages[msgIdx].id = msg.id;
-                }
             } else {
                 $scope.messages.push(msg);
             }
@@ -325,25 +321,17 @@
             $scope.fetchMoreMessagesError = false;
             var beforeId = $scope.messages[0].id;
             Channel.fetchMore($scope.channel.id, beforeId, cfg.twaper_enable).then(function(messages) {
-                // Removes older dividers
-                for(var i = ($scope.messages.length - 1); i >= 0; i -= 20) {
-                    var m = $scope.messages[i];
-                    if(m.id === -1) {
-                        $scope.messages.splice(i, 1);
-                        break;
-                    }
-                }
-
                 if(messages.length > 0) {
+                    messages = messages.reverse();
+
                     messages.forEach(function(m) {
                         listenToMessage(m);
                         var content = m.content || m.payload.content;
                         m.compiled_content = $filter('smartchat')(content);
                         m.created_at = moment(m.created_at).toDate();
                     });
-                    messages = messages.reverse();
-                    $scope.messages.unshift({
-                        created_at: new Date(),
+                    messages.push({
+                        created_at: moment().toDate(),
                         id: -1,
                         user: {
                             id: 1
@@ -353,6 +341,7 @@
                             content: '↑ Mensagens anteriores ↑'
                         }
                     });
+
                     $scope.messages = messages.concat($scope.messages);
                 }
             }, function() {

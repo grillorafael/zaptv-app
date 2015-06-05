@@ -63,8 +63,7 @@
         $scope.openForgotPasswordModal = function() {
             $scope.sentEmail = false;
             $scope.mailError = false;
-            $scope.forgotPasswordModal.show().then(function() {
-            })
+            $scope.forgotPasswordModal.show().then(function() {});
         };
 
         $scope.closeForgotPasswordModal = function() {
