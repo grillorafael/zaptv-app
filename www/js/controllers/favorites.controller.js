@@ -2,7 +2,7 @@
     'use strict';
     angular.module('zaptv').controller('FavoritesCtrl', FavoritesCtrl);
 
-    function FavoritesCtrl($scope, $ionicModal, $timeout, $ionicPlatform, State, User, Channel, Auth) {
+    function FavoritesCtrl($scope, $ionicModal, $timeout, $ionicPlatform, $state, State, User, Channel, Auth, Analytics) {
         var user = Auth.getUser();
 
         $ionicPlatform.ready(function() {
@@ -12,6 +12,7 @@
 
         $scope.showDeleteButton = false;
         $scope.searchSchedules = [];
+
         $ionicModal.fromTemplateUrl('templates/see_shows_modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -21,13 +22,15 @@
 
         $scope.isLoadingFavorites = true;
 
-        User.myFavorites().then(function(schedules) {
-            $scope.schedules = schedules;
-        }, function(e) {
-            // TODO Handle error
-        })
-        .finally(function() {
-            $scope.isLoadingFavorites = false;
+        $scope.$on('$ionicView.enter', function() {
+            User.myFavorites().then(function(schedules) {
+                $scope.schedules = schedules;
+            }, function(e) {
+                // TODO Handle error
+            })
+            .finally(function() {
+                $scope.isLoadingFavorites = false;
+            });
         });
 
         $scope.seeShows = function() {
@@ -43,17 +46,18 @@
         };
 
         $scope.removeLike = function(schedule, index) {
-            Channel.toggleLike(schedule.channel_id, schedule.geo_state, schedule.schedule_name);
+            schedule.is_favorite = false;
+            Channel.toggleFavorite(schedule.channel_id, schedule.geo_state, schedule.schedule_name, schedule);
             $scope.schedules.splice(index, 1);
             Analytics.trackEvent('Favorite', 'remove_favorite');
         };
 
         $scope.addFavorite = function (schedule, index) {
-            schedule.is_favorite = !schedule.is_favorite;
+            schedule.is_favorite = true;
             $timeout(function() {
                 $scope.searchSchedules.splice(index, 1);
             }, 500);
-            Channel.toggleLike(schedule.channel.id, schedule.geo_state, schedule.name);
+            Channel.toggleFavorite(schedule.channel.id, schedule.geo_state, schedule.name, schedule);
             $scope.schedules.push({
                 channel_id: schedule.channel.id,
                 geo_state: schedule.geo_state,
@@ -77,7 +81,6 @@
                     $scope.isFetching = true;
                     Channel.searchSchedulesForFavorite(query, State.get('geo_state')).then(function(result) {
                         $scope.searchSchedules = result;
-                        console.log(result);
                     }, function(e) {
                         // TODO Handle error
                     }).finally(function() {

@@ -1,9 +1,9 @@
 (function() {
     'use strict';
     angular.module('zaptv.services', [
-        'ngCordova',
-        'LocalForageModule'
-    ])
+            'ngCordova',
+            'LocalForageModule'
+        ])
         .factory('User', User)
         .factory('Channel', Channel)
         .factory('Socket', Socket)
@@ -52,13 +52,13 @@
                 function execPositionDiscover() {
                     ReverseGeolocation.get(pos[0], pos[1]).then(function(locationInfo) {
                         var state = null;
-                        if(locationInfo.address && locationInfo.address.country_code && locationInfo.address.state) {
-                            if(GeoInfo[locationInfo.address.country_code]) {
+                        if (locationInfo.address && locationInfo.address.country_code && locationInfo.address.state) {
+                            if (GeoInfo[locationInfo.address.country_code]) {
                                 state = GeoInfo[locationInfo.address.country_code][locationInfo.address.state];
                             }
                         }
 
-                        if(state) {
+                        if (state) {
                             $localForage.setItem('position_info', {
                                 pos: pos,
                                 state: state
@@ -71,16 +71,14 @@
                 }
 
                 $localForage.getItem('position_info').then(function(info) {
-                    if(info) {
+                    if (info) {
                         var distance = distanceBetween(pos, info.pos);
-                        if(distance > 20) {
+                        if (distance > 20) {
                             execPositionDiscover();
-                        }
-                        else {
+                        } else {
                             deferred.resolve(info.state);
                         }
-                    }
-                    else {
+                    } else {
                         execPositionDiscover();
                     }
                 }, function(e) {
@@ -99,12 +97,24 @@
                 });
             },
             copyToClipboard: function(txt) {
-                if(!window.cordova) {
+                if (!window.cordova) {
                     return;
                 }
 
                 $cordovaClipboard.copy(txt)
                     .then(function() {}, function() {});
+            },
+            filterStr: function(str) {
+                str = str.replace(/[ÀÁÂÃÄÅ]/, "A");
+                str = str.replace(/[àáâãäå]/, "a");
+                str = str.replace(/[ÈÉÊË]/, "E");
+                str = str.replace(/[èéê]/, "e");
+                str = str.replace(/[íì]/, "i");
+                str = str.replace(/[Ç]/, "C");
+                str = str.replace(/[ç]/, "c");
+
+                // o resto
+                return str.replace(/[^a-z0-9]/gi, '');
             }
         };
     }
@@ -112,23 +122,23 @@
     function Analytics($cordovaGoogleAnalytics, Config) {
         return {
             init: function(userId) {
-                if(!window.cordova) {
+                if (!window.cordova) {
                     return;
                 }
                 // $cordovaGoogleAnalytics.debugMode();
                 $cordovaGoogleAnalytics.startTrackerWithId(Config.ANALYTICS_UA);
-                if(userId) {
+                if (userId) {
                     $cordovaGoogleAnalytics.setUserId(userId);
                 }
             },
             trackView: function(name) {
-                if(!window.cordova) {
+                if (!window.cordova) {
                     return;
                 }
                 $cordovaGoogleAnalytics.trackView(name);
             },
             trackEvent: function(category, action, label, value) {
-                if(!window.cordova) {
+                if (!window.cordova) {
                     return;
                 }
                 $cordovaGoogleAnalytics.trackEvent(category, action, label, value);
@@ -313,7 +323,7 @@
         };
     }
 
-    function Channel($http, $q, $localForage, Config, Auth) {
+    function Channel($http, $q, $localForage, Config, Auth, Utils) {
         function list(geoState) {
             var deferred = $q.defer();
 
@@ -409,13 +419,26 @@
             return deferred.promise;
         }
 
-        function toggleLike(channelId, geoState, scheduleName) {
+        function toggleFavorite(channelId, geoState, scheduleName, schedule) {
             var deferred = $q.defer();
 
             $http.post(Auth.appendToken(Config.ENDPOINT + '/channel/' + channelId + '/favorite'), {
                 geo_state: geoState,
                 schedule_name: scheduleName
             }).success(deferred.resolve).error(deferred.reject);
+
+            if (window.parsePlugin) {
+                parsePlugin.getInstallationId(function(id) {
+                    var key = 'fav_' + Utils.filterStr(scheduleName.split(' ').join('_').toLowerCase());
+                    if (schedule.is_favorite) {
+                        parsePlugin.subscribe(key, function() {});
+                    } else {
+                        parsePlugin.unsubscribe(key, function() {});
+                    }
+                }, function(e) {
+
+                });
+            }
 
             return deferred.promise;
         }
@@ -441,7 +464,7 @@
             saveChannelsCache: saveChannelsCache,
             getChannelsCache: getChannelsCache,
             getFullSchedule: getFullSchedule,
-            toggleLike: toggleLike,
+            toggleFavorite: toggleFavorite,
             searchSchedulesForFavorite: searchSchedulesForFavorite
         };
     }

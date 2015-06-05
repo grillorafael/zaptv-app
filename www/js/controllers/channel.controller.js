@@ -528,7 +528,7 @@
                     }
                 });
             }
-            Channel.toggleLike($scope.channel.id, schedule.geo_state, schedule.name);
+            Channel.toggleFavorite($scope.channel.id, schedule.geo_state, schedule.name, schedule);
         };
 
         function shareScore(fbToken, rating, id) {
