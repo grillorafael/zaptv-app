@@ -9,13 +9,13 @@
             </span>
         </div>
     </ion-header-bar>
-    <ion-content overflow-scroll="true">
-        <div class="bar bar-header item-input-inset">
-            <label class="item-input-wrapper">
-                <i class="icon ion-ios-search placeholder-icon"></i>
-                <input type="text" placeholder="Digite o nome do programa" ng-model="query" ng-change='queryResult(query)'>
-            </label>
-        </div>
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="text" placeholder="Digite o nome do programa" ng-model="query" ng-change='queryResult(query)'>
+        </label>
+    </div>
+    <ion-content overflow-scroll="true" class="has-subheader">
         <ion-spinner ng-if='isFetching' class="centered"></ion-spinner>
         <ion-list>
             <ion-item ng-repeat='schedule in searchSchedules track by schedule.id' ng-class="{

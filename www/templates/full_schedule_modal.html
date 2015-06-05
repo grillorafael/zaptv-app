@@ -10,17 +10,18 @@
             </span>
         </div>
     </ion-header-bar>
-    <ion-content overflow-scroll="true">
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="text" placeholder="Digite o nome do programa" ng-model="search.name">
+        </label>
+    </div>
+    <ion-content overflow-scroll="true" class="has-subheader">
         <a ng-if='!isLoadingFullSchedule && fullScheduleError' ng-click='loadFullSchedule()' class="button button-clear icon ion-ios-refresh-empty refresher"></a>
         <ion-spinner ng-if='isLoadingFullSchedule'></ion-spinner>
 
         <ion-list ng-if='!isLoadingFullSchedule'>
-            <div class="bar bar-header item-input-inset">
-                <label class="item-input-wrapper">
-                    <i class="icon ion-ios-search placeholder-icon"></i>
-                    <input type="text" placeholder="Digite o nome do programa" ng-model="search.name">
-                </label>
-            </div>
+
             <ion-item class="schedule-item" ng-repeat="schedule in fullSchedule | filter:search track by schedule.id">
                 <div class="channel-image" style="background-image: url({{::schedule.image_url || 'img/placeholder.jpg'}});"></div>
                 <h2>{{::schedule.name | filter:search}}</h2>
