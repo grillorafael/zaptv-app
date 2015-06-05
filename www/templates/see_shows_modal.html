@@ -15,8 +15,7 @@
             <input type="text" placeholder="Digite o nome do programa" ng-model="query" ng-change='queryResult(query)'>
         </label>
     </div>
-    <ion-content overflow-scroll="true" class="has-subheader">
-        <ion-spinner ng-if='isFetching' class="centered"></ion-spinner>
+    <ion-content class="has-subheader">
         <ion-list>
             <ion-item ng-repeat='schedule in searchSchedules track by schedule.id' ng-class="{
                 'is-favorite': schedule.is_favorite
@@ -35,9 +34,10 @@
 
             </ion-item>
         </ion-list>
-        <div class="no-favs-text" ng-if='searchSchedules.length === 0 && !isFetching'>
+        <div class="no-favs-text" ng-if='searchSchedules.length === 0 || isFetching'>
             <div class="row">
-                <i class="icon ion-ios-search"></i>
+                <ion-spinner ng-if='isFetching' class="centered"></ion-spinner>
+                <i ng-if='!isFetching' class="icon ion-ios-search"></i>
             </div>
         </div>
     </ion-content>
