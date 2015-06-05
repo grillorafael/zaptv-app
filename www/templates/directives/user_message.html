@@ -2,12 +2,13 @@
     'chat-message': message.user.id != user.id,
     'chat-message-self': message.user.id == user.id,
     'same-last-user': message.user.id == messages[$index - 1].user.id,
-    'pending': message.id == undefined
+    'pending': message.id == undefined,
+    'focus-message': message.is_focused
 }"  id="message-{{message.id}}">
     <div class="avatar">
         <div ng-click='viewUser(message.user)' class="profile-image" style="background-image: url('img/placeholder.jpg')" preload-image="{{::message.user.image_url}}" is-css alt="foto perfil do usuario"></div>
     </div>
-    <div class="message-wrapper">
+    <div class="message-wrapper" on-touch='message.is_focused = true' on-release='message.is_focused = false'>
         <div on-hold='messageOptions(message)' ng-class="{
             'chat-bubble': message.user.id != user.id,
             'chat-bubble-self': message.user.id == user.id

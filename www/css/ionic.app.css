@@ -7615,6 +7615,12 @@ a.button {
     .chat-view .chat-message .chat-link, .chat-view .chat-message-self .chat-link {
       color: #387ef5;
       text-decoration: none; }
+    .chat-view .chat-message.focus-message .chat-bubble, .chat-view .chat-message.focus-message .chat-bubble-self, .chat-view .chat-message-self.focus-message .chat-bubble, .chat-view .chat-message-self.focus-message .chat-bubble-self {
+      background: #cccccc;
+      transition: background 1s; }
+      .chat-view .chat-message.focus-message .chat-bubble:after, .chat-view .chat-message.focus-message .chat-bubble-self:after, .chat-view .chat-message-self.focus-message .chat-bubble:after, .chat-view .chat-message-self.focus-message .chat-bubble-self:after {
+        border-color: transparent #cccccc;
+        transition: border-color 1s; }
   .chat-view .chat-message {
     clear: both; }
     .chat-view .chat-message.same-last-user .chat-bubble::after {

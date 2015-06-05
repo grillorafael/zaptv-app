@@ -74,6 +74,14 @@
             color: $positive;
             text-decoration: none;
         }
+        &.focus-message .chat-bubble, &.focus-message .chat-bubble-self {
+            background: darken(white, 20%);
+            transition: background 1s;
+            &:after {
+                border-color: transparent darken(white, 20%);
+                transition: border-color 1s;
+            }
+        }
 
     }
     .chat-message {
