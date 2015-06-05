@@ -37,8 +37,10 @@
                         try {
                             parsePlugin.subscribe("user_" + $scope.user.id, function() {});
                         }
-                        catch(e) {}
-                    }, function(e) {});
+                        catch(e) {
+                        }
+                    }, function(e) {
+                    });
                 }
             });
             Socket.leaveChannel();
