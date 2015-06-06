@@ -221,14 +221,5 @@
             State.set('last_channel', channel);
             $state.go('channel');
         };
-
-        $scope.forceRepaint = function() {
-            if(ionic.Platform.isAndroid() && false) {
-                var sel = document.querySelector('.channels-list');
-                sel.style.display = 'none';
-                sel.offsetHeight; // no need to store this anywhere, the reference is enough
-                sel.style.display = '';
-            }
-        };
     }
 })();
