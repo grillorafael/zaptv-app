@@ -21,7 +21,7 @@
                 'is-favorite': schedule.is_favorite
             }">
                 <div class="backdrop-item"><i class="icon ion-checkmark"></i> Favoritado</div>
-                <div style="background-image: url('{{::schedule.image_url || 'img/placeholder.jpg'}}')" class="show-image-modal"></div>
+                <div style="background-image: url('img/placeholder.jpg')" preload-image="{{::schedule.image_url}}" is-css class="show-image-modal"></div>
                 <div class="show-info">
                     <h2>{{::schedule.name}}</h2>
                     <p>{{schedule.channel.name}}</p>
