@@ -8293,6 +8293,8 @@ loader svg {
   background: #ede1b5;
   background: url("../img/bg-login-2.jpg");
   background-size: cover; }
+  .register-view a.terms, .register-view a.terms:visited {
+    color: #9b212c; }
   .register-view .padding {
     padding: 10px 30px; }
   .register-view h1 {

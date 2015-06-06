@@ -5,7 +5,7 @@
         </h1>
         <div class="padding form-login">
             <div class="text-center">
-                <p>Ao registrar, você estará aceitando nosso <a href="">Termo de Serviço</a>.</p>
+                <p>Ao registrar, você estará aceitando nosso <a class="terms" ng-click='viewTerms()'>Termo de Serviço</a>.</p>
 
             </div>
             <form name="registerForm" ng-init="setForm(this, 'register')" ng-submit="register(user)" class="list list-inset med-quick-anim" novalidate animation-handle="register-form">

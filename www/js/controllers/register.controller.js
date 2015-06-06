@@ -2,7 +2,8 @@
     'use strict';
     angular.module('zaptv').controller('RegisterCtrl', RegisterCtrl);
 
-    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicModal, $ionicLoading, $ionicHistory, $animationTrigger, User, Auth, Analytics, ngNotify) {
+    function RegisterCtrl($scope, $state, $ionicPlatform, $ionicModal, $ionicLoading,
+        $ionicHistory, $animationTrigger, $cordovaInAppBrowser, User, Auth, Analytics, ngNotify) {
         $scope.hideEmailFieldFromModal = true;
 
         $scope.$on('$ionicView.enter', function() {
@@ -26,6 +27,21 @@
         }).then(function(modal) {
             $scope.modal = modal;
         });
+
+        $scope.viewTerms = function() {
+            $cordovaInAppBrowser.open("http://zaper.com.br/termos.html", '_blank', {
+                    location: 'yes',
+                    clearcache: 'yes',
+                    toolbar: 'yes',
+                    closebuttoncaption: 'Fechar'
+                })
+                .then(function(event) {
+                    // success
+                })
+                .catch(function(event) {
+                    // error
+                });
+        };
 
         $scope.setUsername = function(u) {
             if ($scope.form.user.usernameForm.$valid) {

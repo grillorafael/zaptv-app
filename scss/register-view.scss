@@ -2,6 +2,9 @@
     background: #ede1b5;
     background: url("../img/bg-login-2.jpg");
     background-size: cover;
+    a.terms, a.terms:visited {
+        color: darken($salmon, 25%);
+    }
     .padding {
         padding: 10px 30px;
     }
