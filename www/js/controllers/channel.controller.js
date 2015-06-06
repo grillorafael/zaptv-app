@@ -448,7 +448,7 @@
                                     $localForage.getItem('always_share').then(function(alwaysShare) {
                                         if (alwaysShare) {
                                             shareScore(success.authResponse.accessToken, val, $scope.schedule.id);
-                                        } else if (shareWithFacebook) {
+                                        } else if (cfg.facebook_share_enable) {
                                             displayFacebookPopup(success.authResponse.accessToken, val, $scope.schedule.id);
                                         }
                                     });
