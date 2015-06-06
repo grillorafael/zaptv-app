@@ -10,6 +10,7 @@
         var appVersion = null;
         var geoState = null;
         var userId = Auth.getUserId();
+        var firstLoad = true;
 
         $scope.isLoading = true;
         $scope.openChannels = [];
@@ -43,6 +44,11 @@
                     });
                 }
             });
+
+            if(!firstLoad) {
+                listChannels(State.get('geo_state'));
+            }
+
             Socket.leaveChannel();
             $scope.user = Auth.getUser();
         });
@@ -108,6 +114,7 @@
         }
 
         function listChannels(gs) {
+            firstLoad = false;
             Channel.list(gs).then(function(channels) {
                 var openChannels = [];
                 var privateChannels = [];
