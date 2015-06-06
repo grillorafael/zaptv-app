@@ -23,7 +23,6 @@
             }, function(e) {
                 $scope.isLoading = false;
                 $scope.errorLoading = true;
-                // TODO Handle error;
             });
         }
 

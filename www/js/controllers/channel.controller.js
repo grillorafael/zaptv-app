@@ -5,7 +5,7 @@
     function ChannelCtrl($scope, $ionicScrollDelegate, $ionicActionSheet, $cordovaFacebook,
         $cordovaInAppBrowser, $timeout, $interval, $ionicPopover, $ionicPopup, $cordovaDevice,
         $ionicPlatform, $ionicModal, $state, $localForage, $cordovaSocialSharing, $location, $filter,
-        $animationTrigger, $cordovaVibration, Utils, Analytics, moment, State, Socket, Channel, Auth, $ionicPosition) {
+        $animationTrigger, $cordovaVibration, Utils, Analytics, moment, State, Socket, Channel, Auth) {
 
         var userColors = {};
         var footerBar; // gets set in $ionicView.enter

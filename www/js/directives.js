@@ -95,7 +95,7 @@
         };
     }
 
-    function message($templateCache, $compile, $parse) {
+    function message($templateCache, $compile, $parse, $timeout) {
         function getTemplate(msg) {
             if (msg.payload) {
                 if (msg.payload.type == "TWAPER") {
@@ -126,7 +126,9 @@
                 var template = $templateCache.get(templateUrl);
 
                 var e = $compile(template)(scope);
-                element.replaceWith(e);
+                $timeout(function() {
+                    element.replaceWith(e);
+                });
             }
         };
     }
