@@ -3,12 +3,34 @@
     angular.module('zaptv').controller('ProfileCtrl', ProfileCtrl);
 
     function ProfileCtrl($scope, $cordovaDatePicker, $cordovaCamera, $animationTrigger,
-        $ionicPlatform, $state, $localForage, $timeout, User, Analytics, Auth, ngNotify) {
+        $ionicPlatform, $state, $localForage, $timeout, $ionicLoading, User, Analytics, Auth, ngNotify) {
+
+        $scope.isLoading = true;
+        $scope.errorLoading = false;
+
+        $ionicLoading.show({
+            scope: $scope,
+            template: '<ion-spinner ng-if="isLoading"></ion-spinner><i class="ion-ios-refresh-empty profile-view-reload" ng-click="reload()" ng-if="errorLoading"></i>',
+            hideOnStateChange: true
+        });
+
+        function loadUser() {
+            $scope.isLoading = true;
+            $scope.errorLoading = false;
+            User.me().then(function(user) {
+                $scope.user = user;
+                $ionicLoading.hide();
+            }, function(e) {
+                $scope.isLoading = false;
+                $scope.errorLoading = true;
+                // TODO Handle error;
+            });
+        }
 
         $scope.data = {};
 
-
         $scope.$on('$ionicView.enter', function() {
+            loadUser();
             $ionicPlatform.ready(function() {
                 var user = Auth.getUser();
                 Analytics.init(user.id);
@@ -41,12 +63,6 @@
             $localForage.setItem('config', $scope.data);
         });
 
-        User.me().then(function(user) {
-            $scope.user = user;
-        }, function(e) {
-            // TODO Handle error;
-        });
-
         $scope.genders = [{
             id: 'm',
             label: 'Masculino'
@@ -69,6 +85,8 @@
         }
 
         var changedImage = false;
+
+        $scope.reload = loadUser;
 
         $scope.changeImage = function() {
             $cordovaCamera.getPicture({
