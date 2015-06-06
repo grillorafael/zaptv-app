@@ -8,7 +8,6 @@
         $animationTrigger, $cordovaVibration, Utils, Analytics, moment, State, Socket, Channel, Auth, $ionicPosition) {
 
         var userColors = {};
-        var shareWithFacebook = false;
         var footerBar; // gets set in $ionicView.enter
         var scroller;
         var txtInput; // ^^^
@@ -52,10 +51,6 @@
                 Analytics.init($scope.user.id);
                 Analytics.trackView($state.current.name + '_' + $scope.channel.name);
             }
-        });
-
-        $localForage.getItem('facebook_share_enable').then(function(facebookShareEnable) {
-            shareWithFacebook = facebookShareEnable;
         });
 
         window.addEventListener('native.keyboardshow', function() {
@@ -109,10 +104,10 @@
                         m.created_at = moment(m.created_at).toDate();
                     });
                     $scope.messages = messages.reverse();
+                    $scope.isLoadingChat = false;
                     $timeout(function() {
                         $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
-                        $scope.isLoadingChat = false;
-                    }, 200);
+                    });
                 }, function(e) {
                     // Não foi possível pegar as mensagens no server
                 });
@@ -268,6 +263,34 @@
             });
         }
 
+        function displayFacebookPopup(accessToken, val, scheduleId) {
+            $ionicPopup.show({
+                template: '<div class="text-center">Deseja compartilhar suas notas para seus amigos via Facebook?</div>',
+                title: 'Compartilhar pelo Facebook',
+                scope: $scope,
+                buttons: [{
+                    text: 'Agora não',
+                    type: 'btn-font-size',
+                    onTap: function() {
+                        $localForage.setItem('always_share', false);
+                    }
+                }, {
+                    text: 'Só desta vez',
+                    type: 'btn-font-size',
+                    onTap: function() {
+                        shareScore(accessToken, val, scheduleId);
+                        $localForage.setItem('always_share', false);
+                    }
+                }, {
+                    text: 'Sim',
+                    type: 'btn-zaper-green',
+                    onTap: function() {
+                        $localForage.setItem('always_share', true);
+                    }
+                }]
+            }).then(function(res) {});
+        }
+
         $scope.loadNextSchedule = loadNextSchedule;
         $scope.loadFullSchedule = loadFullSchedule;
 
@@ -421,41 +444,15 @@
                     $cordovaFacebook.getLoginStatus()
                         .then(function(success) {
                             if (success.status === "connected") {
-                                $localForage.getItem('always_share').then(function(alwaysShare) {
-                                    if (shareWithFacebook !== false || alwaysShare === undefined) {
-                                        if (!alwaysShare) {
-                                            $ionicPopup.show({
-                                                template: '<div class="text-center">Deseja compartilhar suas notas para seus amigos via Facebook?</div>',
-                                                title: 'Compartilhar pelo Facebook',
-                                                scope: $scope,
-                                                buttons: [{
-                                                    text: 'Agora não',
-                                                    type: 'btn-font-size',
-                                                    onTap: function() {
-                                                        $localForage.setItem('always_share', false);
-                                                    }
-                                                }, {
-                                                    text: 'Só desta vez',
-                                                    type: 'btn-font-size',
-                                                    onTap: function() {
-                                                        shareScore(success.authResponse.accessToken, val, $scope.schedule.id);
-                                                        $localForage.setItem('always_share', false);
-                                                    }
-                                                }, {
-                                                    text: 'Sim',
-                                                    type: 'btn-zaper-green',
-                                                    onTap: function() {
-                                                        $localForage.setItem('always_share', true);
-                                                        $localForage.setItem('facebook_share_enable', true);
-                                                        shareWithFacebook = true;
-                                                    }
-                                                }]
-                                            }).then(function(res) {});
-                                        } else if (shareWithFacebook) {
+                                if(cfg.facebook_share_enable) {
+                                    $localForage.getItem('always_share').then(function(alwaysShare) {
+                                        if (alwaysShare) {
                                             shareScore(success.authResponse.accessToken, val, $scope.schedule.id);
+                                        } else if (shareWithFacebook) {
+                                            displayFacebookPopup(success.authResponse.accessToken, val, $scope.schedule.id);
                                         }
-                                    }
-                                });
+                                    });
+                                }
                             }
                         }, function(error) {
                             // error
