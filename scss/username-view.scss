@@ -2,6 +2,10 @@
     background: url("../img/bg-login-2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    label.item {
+        margin-bottom: 5px;
+        border-radius: 6px;
+    }
     .bar {
         background: transparent;
         .button.button-clear {

@@ -8301,8 +8301,7 @@ loader svg {
     margin-top: 2%;
     margin-bottom: 0; }
   .register-view label.item {
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    margin-bottom: 5px; }
+    border: 2px solid rgba(255, 255, 255, 0.4); }
   .register-view .placeholder-icon:first-child {
     font-size: 1.6em; }
   .register-view .list-inset {
@@ -8322,6 +8321,9 @@ loader svg {
   background: url("../img/bg-login-2.jpg");
   background-repeat: no-repeat;
   background-size: cover; }
+  .username-view label.item {
+    margin-bottom: 5px;
+    border-radius: 6px; }
   .username-view .bar {
     background: transparent; }
     .username-view .bar .button.button-clear {
