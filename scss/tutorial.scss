@@ -1,0 +1,16 @@
+.slider {
+    height: 100%;
+    .slider-slide section {
+        margin-top: 20px;
+    }
+    .slider-slide.slide-2, .slider-slide.slide-3, .slider-slide.slide-4 {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .slider-slide.slide-1 {
+        background-color: transparent;
+    }
+    .slider-slide.slide-1 section{
+        position: absolute;
+        bottom: 50px;
+    }
+}

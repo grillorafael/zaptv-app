@@ -2,6 +2,13 @@
     background: #ede1b5;
     background: url("../img/bg-login-2.jpg");
     background-size: cover;
+    .channels-list {
+        width: 90%;
+        margin: auto;
+    }
+    .btn.button-salmon {
+        display: none;
+    }
     .padding {
         padding: 10px 30px;
     }
@@ -71,7 +78,7 @@
         margin-top: 10px;
     }
     .bar-footer {
-        background: rgba(255,255,255,0.8);
+        /* background: rgba(255,255,255,0.8); */
     }
     .register-button {
         z-index: 0;
@@ -92,7 +99,7 @@
         font-weight: 400;
         text-decoration: underline;
     }
-    
+
 
 }
 

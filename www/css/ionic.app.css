@@ -8095,6 +8095,11 @@ input, textarea, .item-input, .item-input-wrapper {
   background: #ede1b5;
   background: url("../img/bg-login-2.jpg");
   background-size: cover; }
+  .login-view .channels-list {
+    width: 90%;
+    margin: auto; }
+  .login-view .btn.button-salmon {
+    display: none; }
   .login-view .padding {
     padding: 10px 30px; }
   .login-view .list.padding {
@@ -8144,7 +8149,7 @@ input, textarea, .item-input, .item-input-wrapper {
   .login-view .list a {
     margin-top: 10px; }
   .login-view .bar-footer {
-    background: rgba(255, 255, 255, 0.8); }
+    /* background: rgba(255,255,255,0.8); */ }
   .login-view .register-button {
     z-index: 0;
     display: block;
@@ -8626,6 +8631,18 @@ i.ion-arrow-up-b {
 
 .ngn.ngn-grimace {
   background-color: #660099; }
+
+.slider {
+  height: 100%; }
+  .slider .slider-slide section {
+    margin-top: 20px; }
+  .slider .slider-slide.slide-2, .slider .slider-slide.slide-3, .slider .slider-slide.slide-4 {
+    background-color: rgba(0, 0, 0, 0.5); }
+  .slider .slider-slide.slide-1 {
+    background-color: transparent; }
+  .slider .slider-slide.slide-1 section {
+    position: absolute;
+    bottom: 50px; }
 
 body {
   font-weight: 300; }

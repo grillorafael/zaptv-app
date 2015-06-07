@@ -8,6 +8,13 @@
                 <p>Ao registrar, você estará aceitando nosso <a class="terms" ng-click='viewTerms()'>Termo de Serviço</a>.</p>
 
             </div>
+            <div class="login-view" ng-controller="LoginCtrl">
+                <a class="item item-icon-left item-icon-right button-facebook" ng-click='facebookLogin()'>
+                    <i class="icon ion-social-facebook "></i> Entrar com o Facebook
+                    <i class="icon ion-ios-arrow-right"></i>
+                </a>
+            </div>
+            <hr>
             <form name="registerForm" ng-init="setForm(this, 'register')" ng-submit="register(user)" class="list list-inset med-quick-anim" novalidate animation-handle="register-form">
                 <label class="item item-input bg-transparent"ng-class="{
                     'error': registerForm.email.$dirty && !registerForm.email.$valid,

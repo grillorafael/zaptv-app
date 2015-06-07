@@ -5,6 +5,29 @@
     function LoginCtrl($scope, $state, $ionicPlatform, $ionicHistory, $ionicLoading,
         $animationTrigger, $cordovaFacebook, $ionicModal, $localForage, Analytics, User, Auth, State, ngNotify) {
 
+        $scope.channels = [
+            {
+                id: 1,
+                name: 'Globo',
+                image_url: 'img/globo.png',
+                current_schedule: {
+                    name: 'Mais Você',
+                    image_url: 'img/maisvc640.jpg',
+                    current_score: 5
+                }
+            },
+            {
+                id: 2,
+                name: 'Warner Channel',
+                image_url: 'img/warner.png',
+                current_schedule: {
+                    name: 'Curtindo A Liberdade',
+                    image_url: 'img/schedule_02.jpg',
+                    current_score: 5
+                }
+            }
+        ];
+
         $scope.isSending = false;
         $scope.sentEmail = false;
         $scope.mailError = false;
@@ -90,7 +113,7 @@
             }).finally(function() {
                 $scope.isSending = false;
                 $ionicLoading.hide();
-            })
+            });
         };
 
         $scope.setForm = function(f) {
