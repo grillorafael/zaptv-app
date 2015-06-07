@@ -159,11 +159,17 @@
             listenToMessage(msg);
             msg.created_at = moment(msg.created_at).toDate();
             if (msg.user.id === $scope.user.id) {
+                var foundId = false;
                 $scope.messages.forEach(function(m, i) {
                     if (m.user.id === $scope.user.id && !m.id) {
+                        foundId = true;
                         m.id = msg.id;
                     }
                 });
+
+                if(!foundId) {
+                    $scope.messages.push(msg);
+                }
             } else {
                 $scope.messages.push(msg);
             }
@@ -427,7 +433,9 @@
 
             Socket.sendMessage(info);
             $scope.currentMessage = '';
-            $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
+            $timeout(function() {
+                $ionicScrollDelegate.$getByHandle('chat-scroll').scrollBottom();
+            });
         };
 
         $scope.setScore = function(val) {
