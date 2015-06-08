@@ -2,8 +2,12 @@
     height: 100%;
     .call-text {
         font-size: 1.1em;
+        text-align: center;
     }
-
+    .tiles {
+        width: 50%;
+        height: 50%;
+    }
 
     .slider-slide section {
         margin-top: 20px;
@@ -30,25 +34,5 @@
 }
 
 @media (max-width: 330px) {
-    .channels-view .a-card {
-        margin-top: 0;
-        width: 100%;
-        height: 100%;
-        &:last-child {
-            position: absolute;
-            width: 150px;
-            top: 175px;
-            right: 50px;
-            height: 160px;
-            box-shadow: -8px 4px 18px -10px rgba(0,0,0,0.63);
-        }
-        .card-info {
-            text-align: left;
-        }
-    }
-    .slider {
-        .channels-list {
-            margin-left: 40px;
-        }
-    }
+
 }
