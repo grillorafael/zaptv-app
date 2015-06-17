@@ -448,24 +448,24 @@
                     schedule_id: $scope.schedule.id
                 });
 
-                if (window.cordova) {
-                    $cordovaFacebook.getLoginStatus()
-                        .then(function(success) {
-                            if (success.status === "connected") {
-                                if(cfg.facebook_share_enable) {
-                                    $localForage.getItem('always_share').then(function(alwaysShare) {
-                                        if (alwaysShare) {
-                                            shareScore(success.authResponse.accessToken, val, $scope.schedule.id);
-                                        } else if (cfg.facebook_share_enable) {
-                                            displayFacebookPopup(success.authResponse.accessToken, val, $scope.schedule.id);
-                                        }
-                                    });
-                                }
-                            }
-                        }, function(error) {
-                            // error
-                        });
-                }
+                // if (window.cordova) {
+                //     $cordovaFacebook.getLoginStatus()
+                //         .then(function(success) {
+                //             if (success.status === "connected") {
+                //                 if(cfg.facebook_share_enable) {
+                //                     $localForage.getItem('always_share').then(function(alwaysShare) {
+                //                         if (alwaysShare) {
+                //                             shareScore(success.authResponse.accessToken, val, $scope.schedule.id);
+                //                         } else if (cfg.facebook_share_enable) {
+                //                             displayFacebookPopup(success.authResponse.accessToken, val, $scope.schedule.id);
+                //                         }
+                //                     });
+                //                 }
+                //             }
+                //         }, function(error) {
+                //             // error
+                //         });
+                // }
             }
         };
 
