@@ -99,8 +99,22 @@
         font-weight: 400;
         text-decoration: underline;
     }
+    .slide-2 {
+        position: relative;
+    }
+    .notification-mock {
+        left:0;
+        position: absolute;
+        bottom:-50px;
+        width: 100%;
+    }
 
+}
 
+.form-login {
+    hr {
+        margin-top: 20px;
+    }
 }
 
 
@@ -120,6 +134,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
             font-size: 2em;
             line-height: 1;
         }
+    }
+    .notification-mock {
+        width: 400px;
     }
 
 }
