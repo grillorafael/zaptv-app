@@ -475,23 +475,23 @@
         function connect() {
             socket = io(Config.SOCKET_ADDR);
             socket.on('connect', function(e) {
-                console.log('Socket connected', arguments);
+                // console.log('Socket connected', arguments);
             });
 
             socket.on('connect_error', function(e) {
-                console.log('Socket connection error', arguments);
+                // console.log('Socket connection error', arguments);
             });
 
             socket.on('connect_timeout', function(e) {
-                console.log('Socket connection timeout', arguments);
+                // console.log('Socket connection timeout', arguments);
             });
 
             socket.on('reconnect', function(e) {
-                console.log('Socket reconnected', arguments);
+                // console.log('Socket reconnected', arguments);
             });
 
             socket.on('reconnect_error', function(e) {
-                console.log('Socket reconnected failure', arguments);
+                // console.log('Socket reconnected failure', arguments);
             });
 
 
