@@ -1,6 +1,8 @@
 {
   "name": "ZapTV",
   "app_id": "",
+  "keystore": "release",
+  "password": "zaper123zaper123",
   "gulpStartupTasks": [
     "sass",
     "watch"
