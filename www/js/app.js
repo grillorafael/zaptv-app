@@ -45,7 +45,7 @@
                     $cordovaAppRateProvider.setPreferences({
                         language: 'pt',
                         appName: 'Zaper',
-                        iosURL: 'com.goldenkricket.zaper',
+                        iosURL: '1000641642',
                         androidURL: 'market://details?id=com.goldenkricket.zaper',
                         usesUntilPrompt: 3,
                         promptForNewVersion: true,
