@@ -1,6 +1,6 @@
 <ion-view hide-back-button="true" class="channels-view" view-title="Conversas disponíveis" enable-menu-with-back-views="false">
     <ion-nav-buttons side="right">
-        <button class="button button-clear" ng-click="openPopover($event)" ng-cloak>
+        <button class="button button-clear" attention="suggestion_box" ng-click="openPopover($event)" ng-cloak>
             <i class="icon ion-android-more-horizontal"></i>
         </button>
     </ion-nav-buttons>
@@ -55,8 +55,13 @@
                 <ion-item class="item-icon-left" ng-click="goToFavorites()">
                     <i class="icon ion-ios-star"></i> Programas favoritos
                 </ion-item>
+                <!--
                 <ion-item class="item-icon-left" ng-click="rateApp()">
                     <i class="icon ion-android-favorite salmon"></i> Avaliar app!
+                </ion-item>
+                -->
+                <ion-item class="item-icon-left" attention="suggestion_box" attention-type="dark" ng-click="sendSuggestion()">
+                    <i class="icon ion-android-favorite salmon"></i> Envie sua Sugestão!
                 </ion-item>
                 <ion-item class="item-icon-left" ng-click="shareApp()">
                     <i class="icon ion-android-share-alt facebook"></i> Compartilhar app

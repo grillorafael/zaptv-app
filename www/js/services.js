@@ -309,6 +309,16 @@
             return deferred.promise;
         }
 
+        function sendSuggestion(info) {
+            var deferred = $q.defer();
+
+            $http.post(Auth.appendToken(Config.ENDPOINT + '/suggestion'), {
+                info: info
+            }).success(deferred.resolve).error(deferred.reject);
+
+            return deferred.promise;
+        }
+
         return {
             register: register,
             login: login,
@@ -319,7 +329,8 @@
             getUserInfo: getUserInfo,
             update: update,
             myFavorites: myFavorites,
-            forgotPassword: forgotPassword
+            forgotPassword: forgotPassword,
+            sendSuggestion: sendSuggestion
         };
     }
 

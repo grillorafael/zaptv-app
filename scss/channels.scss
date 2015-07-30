@@ -164,6 +164,18 @@
     }
 }
 
+.suggestion-popup {
+    .popup-head {
+        background-color: $salmon;
+    }
+    &.popup-container .popup {
+        border: 2px solid $salmon;
+        .popup-buttons {
+            flex-direction: row;
+            align-content: space-around;
+        }
+    }
+}
 
 // MEDIA QUERIES
 

@@ -4,8 +4,8 @@
 
     function ChannelsCtrl($scope, $state, $ionicPlatform, $cordovaGeolocation,
         $ionicPopover, $ionicHistory, $ionicTabsDelegate, $cordovaAppRate, $animationTrigger,
-        $localForage, $cordovaAppVersion, $cordovaSocialSharing, Analytics, Auth, State,
-        ReverseGeolocation, GeoInfo, Channel, Socket, Utils) {
+        $localForage, $cordovaAppVersion, $cordovaSocialSharing, $ionicPopup, Analytics,
+        Auth, State, ReverseGeolocation, GeoInfo, Channel, Socket, Utils, User) {
 
         var appVersion = null;
         var geoState = null;
@@ -16,6 +16,7 @@
         $scope.openChannels = [];
         $scope.privateChannels = [];
         $scope.user = Auth.getUser();
+        $scope.data = {};
 
         $ionicPopover.fromTemplateUrl('channels_popover', {
             scope: $scope
@@ -37,15 +38,12 @@
                     parsePlugin.initialize("RcQLqd4pd9Hx4LqNV5nwEFey2rA1oVoefmMZP24Q", "89SWpicNJom2o8vTBAsETw0UFmYdtptP2mr8Ltnl", function() {
                         try {
                             parsePlugin.subscribe("user_" + $scope.user.id, function() {});
-                        }
-                        catch(e) {
-                        }
-                    }, function(e) {
-                    });
+                        } catch (e) {}
+                    }, function(e) {});
                 }
             });
 
-            if(!firstLoad) {
+            if (!firstLoad) {
                 listChannels(State.get('geo_state'));
             }
 
@@ -61,16 +59,16 @@
         });
 
         function askRating() {
-            if(!window.cordova) {
+            if (!window.cordova) {
                 return;
             }
 
             $cordovaAppVersion.getAppVersion().then(function(version) {
                 appVersion = version;
-                if(appVersion !== null) {
+                if (appVersion !== null) {
                     var key = 'rate_ask_' + appVersion;
                     $localForage.getItem(key).then(function(rateAsk) {
-                        if(rateAsk === 'NOT_ASK') {
+                        if (rateAsk === 'NOT_ASK') {
                             return;
                         }
 
@@ -128,11 +126,10 @@
                 });
 
                 Channel.saveChannelsCache(openChannels, privateChannels);
-                if($scope.openChannels.length === 0) {
+                if ($scope.openChannels.length === 0) {
                     $scope.openChannels = openChannels;
                     $scope.privateChannels = privateChannels;
-                }
-                else {
+                } else {
                     openChannels.forEach(function(oc, i) {
                         $scope.openChannels[i].current_schedule = oc.current_schedule;
                     });
@@ -160,7 +157,7 @@
         }
 
         $scope.hideRateBar = function() {
-            if(appVersion) {
+            if (appVersion) {
                 $localForage.setItem('rate_ask_' + appVersion, 0);
             }
             $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.STOP);
@@ -195,13 +192,45 @@
             $cordovaAppRate.navigateToAppStore().then(function(result) {});
             $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.STOP);
             $scope.popover.hide();
-            if(appVersion) {
+            if (appVersion) {
                 $localForage.setItem('rate_ask_' + appVersion, 'NOT_ASK');
             }
         };
 
+        $scope.sendSuggestion = function() {
+            $scope.popover.hide();
+            $ionicPopup.show({
+                cssClass: 'suggestion-popup',
+                templateUrl: 'templates/partials/suggestion_popup.html',
+                title: 'Escreva sua sugestão!',
+                subTitle: '',
+                scope: $scope,
+                buttons: [{
+                    text: 'Voltar'
+                }, {
+                    text: '<b>Enviar</b>',
+                    type: 'button-salmon',
+                    onTap: function(e) {
+                        console.log($scope.data.suggestion);
+                        if($scope.data.suggestion && $scope.data.suggestion.length > 0) {
+                            User.sendSuggestion($scope.data.suggestion).then(function (suggestion) {
+                                console.log(suggestion);
+                            });
+                        }
+                        // if()
+                        // if (!$scope.data.wifi) {
+                        //     //don't allow the user to close unless he enters wifi password
+                        //     e.preventDefault();
+                        // } else {
+                        //     return $scope.data.wifi;
+                        // }
+                    }
+                }]
+            });
+        };
+
         $scope.noThanks = function() {
-            if(appVersion) {
+            if (appVersion) {
                 $localForage.setItem('rate_ask_' + appVersion, 'NOT_ASK');
             }
             $animationTrigger.trigger('rating-box', 'slide-up', $animationTrigger.STOP);

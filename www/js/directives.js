@@ -14,7 +14,29 @@
         .directive('preloadImage', preloadImage)
         .directive('compile', compile)
         .directive('expandItem', expandItem)
-        .directive('keepFocusOnTextarea', keepFocusOnTextarea);
+        .directive('keepFocusOnTextarea', keepFocusOnTextarea)
+        .directive('attention', attention);
+
+    function attention() {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                var label = attrs.attention;
+
+                if(attrs.attentionType) {
+                    element.addClass('attention-type-' + attrs.attentionType);
+                }
+
+                if(!localStorage.getItem('attention_' + label)) {
+                    element.addClass('attention');
+                    element.on('click', function() {
+                        localStorage.setItem('attention_' + label, true);
+                        element.removeClass('attention');
+                    });
+                }
+            }
+        }
+    }
 
     function keepFocusOnTextarea ($timeout) {
         return {

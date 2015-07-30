@@ -13,9 +13,16 @@
             'ngNotify',
             'monospaced.elastic'
         ])
-        .run(function($ionicPlatform, $timeout, $localForage, amMoment, Auth) {
+        .run(function($ionicPlatform, $timeout, $localForage, $cordovaDevice, amMoment, Auth) {
             amMoment.changeLocale('pt-br');
             $ionicPlatform.ready(function() {
+                if(window.cordova) {
+                    var version = $cordovaDevice.getVersion();
+                    if(!localStorage.getItem('last_version')) {
+                        localStorage.setItem('last_version', version);
+                    }
+                }
+
                 if (window.cordova && window.cordova.plugins.Keyboard) {
                     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 }

@@ -9,12 +9,14 @@ $royal: #4fc6b3 !default;
 $dark: #444 !default;
 $salmon: #dd5e6a;
 $facebook: #3b5998;
-$twitter:#55acee;
-$zaper-strong-blue: #949DD3;
-$zaper-light-blue: #BADEF4;
-$zaper-green: #ACCE8E;
+$twitter: #55acee;
+$zaper-strong-blue: #949dd3;
+$zaper-light-blue: #badef4;
+$zaper-green: #acce8e;
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "animations";
@@ -30,6 +32,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "forgot-view";
 @import "ngNotify-theme";
 @import "tutorial";
+
 //
 // @font-face {
 //     font-family: 'MyWebFont';
@@ -44,25 +47,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 body {
     font-weight: 300;
 }
-
 .salmon {
     color: $salmon;
 }
 .zaper-strong-blue {
     color: $zaper-strong-blue;
 }
-
 .zaper-green {
     color: darken($zaper-green, 20%);
 }
-
 .popup-container .popup {
     border: 2px solid $facebook;
     border-radius: 5px;
 }
 .channel-popover.popover .item-btn-schedule.item {
     padding: 1em;
-    background:darken($zaper-green, 20%);
+    background: darken($zaper-green, 20%);
     p {
         color: white;
         font-weight: 500;
@@ -83,20 +83,16 @@ body {
 .popup-title {
     color: white;
 }
-
 .btn-zaper-green {
     background: darken($zaper-green, 20%);
     color: white;
     border-color: darken($zaper-green, 20%);
 }
-
 .btn-outline-zaper-green {
     background: none;
     border: 2px solid darken($zaper-green, 20%);
     color: white;
 }
-
-
 label {
     &.error i {
         color: $assertive;
@@ -105,16 +101,13 @@ label {
         color: $royal;
     }
 }
-
 .popup-container .popup {
     width: 300px;
 }
-
 .bar-salmon .button-clear.button-clear.ion-android-more-vertical {
     font-size: 2em;
     padding-right: 10px;
 }
-
 .white-spinner {
     stroke: white;
     fill: white;
@@ -126,14 +119,12 @@ label {
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
 }
-
 .centered-pixel {
     margin-left: 50%;
     margin-right: auto;
     margin-top: 50%;
     display: block;
 }
-
 .button.button-login {
     border-radius: 6px;
     border: 0;
@@ -163,11 +154,9 @@ label {
 .platform-ios .popover .scroll-content.has-header {
     margin-bottom: 0;
 }
-
 .platform-ios .action-sheet-option i {
     display: none;
 }
-
 .card {
     box-shadow: none;
 }
@@ -178,27 +167,20 @@ label {
     height: auto;
 }
 
-
-
-
-
 /* allows the bar-footer to be elastic /*
 /* optionally set a max-height */
 /* maxlength on the textarea will prevent /*
 /* it from getting too large also */
 .bar-footer {
-  overflow: visible !important;
-  height: 44px;
-  min-height: 44px;
-  max-height: 500px;
+    overflow: visible !important;
+    height: 44px;
+    min-height: 44px;
+    max-height: 500px;
 }
-
 .bar-footer textarea {
-  resize: none;
-  height: 25px;
+    resize: none;
+    height: 25px;
 }
-
-
 .platform-android .action-sheet-wrapper {
     position: fixed;
     top: 60%;
@@ -207,49 +189,58 @@ label {
     transform: translate(-50%, -50%);
     width: 80%;
     .action-sheet-group {
-        padding: .2em .2em;
+        padding: 0.2em;
         border-radius: 5px;
-
     }
 }
-
 .loading-container .loading {
     padding: 10px 15px;
 }
 /* fixes an ios bug bear */
 button.ion-android-send {
-  padding-top: 2px;
+    padding-top: 2px;
 }
 
 /* add this to keep your footer buttons down
 at the bottom as the textarea resizes */
 .footer-btn-wrap {
-  position: relative;
-  height: 100%;
-  width: 50px;
-  top: 7px;
+    position: relative;
+    height: 100%;
+    width: 50px;
+    top: 7px;
 }
-
 .footer-btn {
-  position: absolute !important;
-  bottom: 0;
+    position: absolute !important;
+    bottom: 0;
 }
-
 .right-button {
     position: absolute;
     right: 5px;
     top: 5px;
 }
-
-
 .platform-android .popover .item {
     border: 1px solid #ddd;
 }
-
 .popover .item:first-child {
     border-top: 0;
 }
-
 .popover .item:last-child {
     border-bottom: 0;
+}
+.attention {
+    &:before {
+        content: '';
+        border: 1px solid white;
+        height: 0;
+        width: 100%;
+        position: absolute;
+        animation: pulsate 1s ease-out;
+        animation-iteration-count: infinite;
+        opacity: 0.0;
+        left: 0;
+        bottom: 0;
+    }
+    &.attention-type-dark:before {
+        border: 1px solid $salmon;
+    }
 }
