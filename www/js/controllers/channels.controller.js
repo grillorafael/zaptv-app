@@ -246,6 +246,7 @@
         };
 
         $scope.openPopover = function($event) {
+            Analytics.trackEvent('Channels', 'open_popover');
             $scope.popover.show($event);
         };
 
